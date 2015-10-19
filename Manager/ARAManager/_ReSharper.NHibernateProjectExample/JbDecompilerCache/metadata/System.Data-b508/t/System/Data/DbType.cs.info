@@ -1,0 +1,20 @@
+﻿Code version: 6.1.1000.82
+Assembly name System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 mvid {6c14c135-2282-49c2-bc13-218b638c1381}
+* ref mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+  mvid {89d33fd5-0701-464e-8ebb-a6d19f781c96}
+* ref System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+  mvid {b53305d1-7565-42e2-bfe3-a98fdcd07c39}
+* ref Microsoft.VisualC, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+  mvid {c6506637-2cc3-46fe-ad67-5b43c20d2f0a}
+* ref System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+  mvid {c62d0ac7-313d-4446-9ef6-018846137c3a}
+* ref System.Transactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+  mvid {b96dfb5a-0451-40b5-b3b1-f5a3b54c5866}
+* ref System.Numerics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+  mvid {93ca6ff7-81b4-4dff-9e29-a5bcb271504c}
+* ref System.EnterpriseServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+  mvid {900715d2-0612-4b01-b621-ed4903c071ef}
+* ref System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+  mvid {275dfa15-c566-407d-893a-33ef21db2cef}
+* ref System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+  mvid {f41a81b4-2d8c-4ebf-a26f-33ad20a48b9e}

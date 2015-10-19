@@ -1,0 +1,17 @@
+D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Dao\bin\Debug\ARAManager.Business.Dao.dll
+D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Dao\bin\Debug\ARAManager.Business.Dao.pdb
+D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Dao\obj\Debug\ARAManager.Business.Dao.dll
+D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Dao\obj\Debug\ARAManager.Business.Dao.pdb
+D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Dao\obj\Debug\ARAManager.Business.Dao.csprojResolveAssemblyReference.cache
+d:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Dao\obj\Debug\ARAManager.Business.Dao.NHibernate.Transaction.DataExceptionStrings.resources
+d:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Dao\obj\Debug\ARAManager.Business.Dao.csproj.GenerateResource.Cache
+d:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Dao\bin\Debug\ARAManager.Common.dll
+d:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Dao\bin\Debug\log4net.dll
+d:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Dao\bin\Debug\NHibernate.dll
+d:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Dao\bin\Debug\NHibernate.Mapping.Attributes.dll
+d:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Dao\bin\Debug\Ninject.dll
+d:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Dao\bin\Debug\Ninject.Extensions.Interception.dll
+d:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Dao\bin\Debug\Iesi.Collections.dll
+d:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Dao\bin\Debug\ARAManager.Common.pdb
+d:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Dao\bin\Debug\Ninject.pdb
+d:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Dao\bin\Debug\Ninject.xml

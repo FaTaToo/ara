@@ -1,0 +1,66 @@
+﻿<RecentFiles>
+  <RecentFiles>
+    <File id="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2/d:Dto/f:Rank.cs" caret="0" fromTop="0" />
+    <File id="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2/d:Dto/f:Group.cs" caret="1496" fromTop="0" />
+    <File id="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2/d:Dto/f:Function.cs" caret="960" fromTop="22" />
+    <File id="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2/d:Services/d:Behaviors/f:PreserveReferencesAttribute.cs" caret="3337" fromTop="12" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Interfaces/f:IEmployeeDataAccess.cs" caret="382" fromTop="9" />
+    <File id="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2/d:Services/f:IGroupService.cs" caret="0" fromTop="0" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/f:Web.config" caret="2610" fromTop="38" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:Services/f:FunctionServiceImpl.svc.cs" caret="505" fromTop="11" />
+    <File id="CEF9566D-F135-4099-B821-5B3F89D42D28/f:App.config" caret="2835" fromTop="31" />
+    <File id="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2/d:Dto/f:EmployeeFunctionProject.cs" caret="1380" fromTop="18" />
+    <File id="CEF9566D-F135-4099-B821-5B3F89D42D28/d:Connectivity/f:ClientServiceFactory.cs" caret="5254" fromTop="21" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:NHibernate/d:Transaction/f:NHibernateSessionFactory.cs" caret="4335" fromTop="12" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:NHibernate/d:Transaction/f:NHTransactionScope.cs" caret="0" fromTop="0" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Implementation/f:GroupDataAccessImpl.cs" caret="0" fromTop="0" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Implementation/f:EmployeeDataAccessImpl.cs" caret="765" fromTop="10" />
+    <File id="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2/d:Dto/f:University.cs" caret="564" fromTop="14" />
+    <File id="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2/d:Services/d:Behaviors/f:PreserveReferencesOperationBehavior.cs" caret="4347" fromTop="14" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:Services/f:EmployeeServiceImpl.svc.cs" caret="3488" fromTop="14" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Implementation/f:GenericDataAccessImpl.cs" caret="1131" fromTop="5" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:Ninject/f:ServiceBindingModule.cs" caret="2274" fromTop="22" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:Interceptors/f:ServiceInterceptor.cs" caret="1846" fromTop="11" />
+    <File id="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2/d:Dto/f:Employee.cs" caret="875" fromTop="20" />
+    <File id="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2/d:Dto/f:EmployeeDescriptor.cs" caret="2213" fromTop="26" />
+    <File id="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2/d:Services/f:IEmployeeService.cs" caret="1784" fromTop="33" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Interfaces/f:IGenericDataAccess.cs" caret="0" fromTop="0" />
+    <File id="CEF9566D-F135-4099-B821-5B3F89D42D28/f:Program.cs" caret="2676" fromTop="68" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:Services/f:GroupServiceImpl.svc.cs" caret="0" fromTop="0" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:Services/f:ProjectServiceImpl.svc.cs" caret="0" fromTop="0" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:Services/f:RankServiceImpl.svc.cs" caret="0" fromTop="0" />
+    <File id="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2/d:Dto/f:Project.cs" caret="545" fromTop="13" />
+  </RecentFiles>
+  <RecentEdits>
+    <File id="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2/d:Dto/f:EmployeeDescriptor.cs" caret="714" fromTop="11" />
+    <File id="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2/d:Services/f:IEmployeeService.cs" caret="1848" fromTop="35" />
+    <File id="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2/d:Dto/f:EmployeeDescriptor.cs" caret="2213" fromTop="26" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Interfaces/f:IGenericDataAccess.cs" caret="1796" fromTop="22" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Interfaces/f:IGenericDataAccess.cs" caret="2119" fromTop="29" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Implementation/f:GenericDataAccessImpl.cs" caret="3668" fromTop="4" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Implementation/f:GenericDataAccessImpl.cs" caret="4378" fromTop="23" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:Services/f:EmployeeServiceImpl.svc.cs" caret="3623" fromTop="24" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:Ninject/f:ServiceBindingModule.cs" caret="2419" fromTop="24" />
+    <File id="CEF9566D-F135-4099-B821-5B3F89D42D28/f:Program.cs" caret="2025" fromTop="25" />
+    <File id="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2/d:Dto/f:University.cs" caret="599" fromTop="20" />
+    <File id="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2/d:Dto/f:University.cs" caret="688" fromTop="16" />
+    <File id="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2/d:Dto/f:University.cs" caret="307" fromTop="6" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Implementation/f:GenericDataAccessImpl.cs" caret="4100" fromTop="5" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Implementation/f:GenericDataAccessImpl.cs" caret="4505" fromTop="28" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Implementation/f:GenericDataAccessImpl.cs" caret="4505" fromTop="20" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Implementation/f:GenericDataAccessImpl.cs" caret="4505" fromTop="26" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Implementation/f:GenericDataAccessImpl.cs" caret="4413" fromTop="15" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Implementation/f:GenericDataAccessImpl.cs" caret="4828" fromTop="22" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Implementation/f:GenericDataAccessImpl.cs" caret="4505" fromTop="5" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Implementation/f:GenericDataAccessImpl.cs" caret="5333" fromTop="25" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Implementation/f:GenericDataAccessImpl.cs" caret="6060" fromTop="40" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Implementation/f:GenericDataAccessImpl.cs" caret="5165" fromTop="20" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Interfaces/f:IGenericDataAccess.cs" caret="2243" fromTop="24" />
+    <File id="8C0B34C0-E1B1-4DDC-B609-D100E5C30436/d:DataAccess/d:Interfaces/f:IGenericDataAccess.cs" caret="2566" fromTop="31" />
+    <File id="CEF9566D-F135-4099-B821-5B3F89D42D28/f:Program.cs" caret="1004" fromTop="6" />
+    <File id="CEF9566D-F135-4099-B821-5B3F89D42D28/f:Program.cs" caret="1471" fromTop="15" />
+    <File id="CEF9566D-F135-4099-B821-5B3F89D42D28/f:Program.cs" caret="148" fromTop="1" />
+    <File id="CEF9566D-F135-4099-B821-5B3F89D42D28/f:Program.cs" caret="359" fromTop="9" />
+    <File id="CEF9566D-F135-4099-B821-5B3F89D42D28/f:Program.cs" caret="2550" fromTop="27" />
+  </RecentEdits>
+</RecentFiles>

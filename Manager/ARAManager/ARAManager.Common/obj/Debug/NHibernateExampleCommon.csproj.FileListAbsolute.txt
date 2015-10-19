@@ -1,0 +1,10 @@
+D:\PHUC\doc\NHIBERNATE-12\E-T-15_NHIBERNATE\Please_do_this_exercise\Exercise\NHibernateProjectExample\Common\bin\Debug\NHibernateExampleCommon.dll
+D:\PHUC\doc\NHIBERNATE-12\E-T-15_NHIBERNATE\Please_do_this_exercise\Exercise\NHibernateProjectExample\Common\bin\Debug\NHibernateExampleCommon.pdb
+D:\PHUC\doc\NHIBERNATE-12\E-T-15_NHIBERNATE\Please_do_this_exercise\Exercise\NHibernateProjectExample\Common\bin\Debug\Iesi.Collections.dll
+D:\PHUC\doc\NHIBERNATE-12\E-T-15_NHIBERNATE\Please_do_this_exercise\Exercise\NHibernateProjectExample\Common\bin\Debug\NHibernate.Mapping.Attributes.dll
+D:\PHUC\doc\NHIBERNATE-12\E-T-15_NHIBERNATE\Please_do_this_exercise\Exercise\NHibernateProjectExample\Common\bin\Debug\Ninject.dll
+D:\PHUC\doc\NHIBERNATE-12\E-T-15_NHIBERNATE\Please_do_this_exercise\Exercise\NHibernateProjectExample\Common\bin\Debug\Ninject.pdb
+D:\PHUC\doc\NHIBERNATE-12\E-T-15_NHIBERNATE\Please_do_this_exercise\Exercise\NHibernateProjectExample\Common\bin\Debug\Ninject.xml
+D:\PHUC\doc\NHIBERNATE-12\E-T-15_NHIBERNATE\Please_do_this_exercise\Exercise\NHibernateProjectExample\Common\obj\Debug\NHibernateExampleCommon.dll
+D:\PHUC\doc\NHIBERNATE-12\E-T-15_NHIBERNATE\Please_do_this_exercise\Exercise\NHibernateProjectExample\Common\obj\Debug\NHibernateExampleCommon.pdb
+D:\PHUC\doc\NHIBERNATE-12\E-T-15_NHIBERNATE\Please_do_this_exercise\Exercise\NHibernateProjectExample\Common\obj\Debug\NHibernateExampleCommon.csprojResolveAssemblyReference.cache

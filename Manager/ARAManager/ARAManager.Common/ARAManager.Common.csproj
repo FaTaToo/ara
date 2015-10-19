@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ARAManager.Common</RootNamespace>
+    <AssemblyName>ARAManager.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\Lib\NHibernate 3.2\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Mapping.Attributes">
+      <HintPath>..\..\Lib\NHibernate 3.2\NHibernate.Mapping.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernateExampleService">
+      <HintPath>..\ARAManager.Business\ARAManager.Business.Service\Bin\NHibernateExampleService.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\..\Lib\Ninject\Ninject.3.0.0-rc3\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dto\AccountType.cs" />
+    <Compile Include="Dto\Account.cs" />
+    <Compile Include="Dto\ArData.cs" />
+    <Compile Include="Dto\Campaign.cs" />
+    <Compile Include="Dto\Company.cs" />
+    <Compile Include="Dto\CompanyAccount.cs" />
+    <Compile Include="Dto\Customer.cs" />
+    <Compile Include="Dto\Mission.cs" />
+    <Compile Include="Dto\ModelBase.cs" />
+    <Compile Include="Dto\Subscription.cs" />
+    <Compile Include="Dto\Target.cs" />
+    <Compile Include="Exception\AccountType\AccountTypeAlreadyDeletedException.cs" />
+    <Compile Include="Exception\AccountType\AccountTypeNameAlreadyExistException.cs" />
+    <Compile Include="Exception\AccountType\WrongTypeOfGroupAccountException.cs" />
+    <Compile Include="Exception\Account\AccountAlreadyDeletedException.cs" />
+    <Compile Include="Exception\Campaign\CampaignAlreadyDeletedException.cs" />
+    <Compile Include="Exception\Campaign\CampaignNameAlreadyExistException.cs" />
+    <Compile Include="Exception\Company\CompanyAlreadyDeletedException.cs" />
+    <Compile Include="Exception\Company\CompanyEmailAlreadyExistException.cs" />
+    <Compile Include="Exception\Company\CompanyNameAlreadyExistException.cs" />
+    <Compile Include="Exception\Company\CompanyPhoneAlreadyExistException.cs" />
+    <Compile Include="Exception\Generic\ConcurrentUpdateException.cs" />
+    <Compile Include="Exception\Generic\InvalidDataException.cs" />
+    <Compile Include="Exception\Generic\UserNameAlreadyExistException.cs" />
+    <Compile Include="Exception\Mission\MissionAlreadyDeletedException.cs" />
+    <Compile Include="Exception\Mission\MissionNameAlreadyExistException.cs" />
+    <Compile Include="Exception\Mission\PreMissionAlreadyExistException.cs" />
+    <Compile Include="Exception\Subscription\SubscriptionAlreadyDeletedException.cs" />
+    <Compile Include="Exception\Subscription\SubscriptionAlreadyExistException.cs" />
+    <Compile Include="Exception\Target\PreTargetAlreadyExistException.cs" />
+    <Compile Include="Exception\Target\TargetAlreadyDeletedException.cs" />
+    <Compile Include="Exception\Target\TargetNameAlreadyExistException.cs" />
+    <Compile Include="Factory\NinjectKernelFactory.cs" />
+    <Compile Include="Messages.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Behaviors\PreserveReferencesAttribute.cs" />
+    <Compile Include="Services\Behaviors\PreserveReferencesOperationBehavior.cs" />
+    <Compile Include="Services\IAccountServiceImpl.cs" />
+    <Compile Include="Services\IAccountTypeServiceImpl.cs" />
+    <Compile Include="Services\IArDataServiceImpl.cs" />
+    <Compile Include="Services\ICampaignServiceImpl.cs" />
+    <Compile Include="Services\ICompanyAccountServiceImpl.cs" />
+    <Compile Include="Services\ICompanyServiceImpl.cs" />
+    <Compile Include="Services\ICustomerServiceImpl.cs" />
+    <Compile Include="Services\IMissionServiceImpl.cs" />
+    <Compile Include="Services\ISubscriptionServiceImpl.cs" />
+    <Compile Include="Services\ITargetServiceImpl.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Exception\ArData\" />
+    <Folder Include="Exception\CompanyAccount\" />
+    <Folder Include="Exception\Customer\" />
+    <Folder Include="Extension\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

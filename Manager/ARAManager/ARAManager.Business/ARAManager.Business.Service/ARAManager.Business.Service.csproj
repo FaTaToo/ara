@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8C0B34C0-E1B1-4DDC-B609-D100E5C30436}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ARAManager.Business.Service</RootNamespace>
+    <AssemblyName>ARAManager.Business.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LinFu.DynamicProxy">
+      <HintPath>..\..\Lib\Ninject\Ninject.Extensions.Interception.Linfu.3.0.0-rc3\lib\net35\LinFu.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\Lib\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\..\Lib\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\Lib\NHibernate 3.2\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Mapping.Attributes">
+      <HintPath>..\..\Lib\NHibernate 3.2\NHibernate.Mapping.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\..\Lib\Ninject\Ninject.3.0.0-rc3\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception">
+      <HintPath>..\..\Lib\Ninject\Ninject.Extensions.Interception.3.0.0-rc3\lib\net40\Ninject.Extensions.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception.LinFu">
+      <HintPath>..\..\Lib\Ninject\Ninject.Extensions.Interception.Linfu.3.0.0-rc3\lib\net35\Ninject.Extensions.Interception.LinFu.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\..\Lib\Ninject\Ninject.Web.Common.3.0.0-rc3\lib\net40-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivator">
+      <HintPath>..\..\Lib\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Services\AccountServiceImpl.svc" />
+    <Content Include="Services\AccountTypeServiceImpl.svc" />
+    <Content Include="Services\ArDataServiceImpl.svc" />
+    <Content Include="Services\CampaignServiceImpl.svc" />
+    <Content Include="Services\CompanyAccountServiceImpl.svc" />
+    <Content Include="Services\CompanyServiceImpl.svc" />
+    <Content Include="Services\CustomerServiceImpl.svc" />
+    <Content Include="Services\MissionServiceImpl.svc" />
+    <Content Include="Services\SubscriptionServiceImpl.svc" />
+    <Content Include="Services\TargetServiceImpl.svc" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Ninject\ServiceBindingModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AccountServiceImpl.svc.cs">
+      <DependentUpon>AccountServiceImpl.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\AccountTypeServiceImpl.svc.cs">
+      <DependentUpon>AccountTypeServiceImpl.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ArDataServiceImpl.svc.cs">
+      <DependentUpon>ArDataServiceImpl.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CampaignServiceImpl.svc.cs">
+      <DependentUpon>CampaignServiceImpl.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CompanyAccountServiceImpl.svc.cs">
+      <DependentUpon>CompanyAccountServiceImpl.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CompanyServiceImpl.svc.cs">
+      <DependentUpon>CompanyServiceImpl.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CustomerServiceImpl.svc.cs">
+      <DependentUpon>CustomerServiceImpl.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\MissionServiceImpl.svc.cs">
+      <DependentUpon>MissionServiceImpl.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\SubscriptionServiceImpl.svc.cs">
+      <DependentUpon>SubscriptionServiceImpl.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\TargetServiceImpl.svc.cs">
+      <DependentUpon>TargetServiceImpl.svc</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Services\Presenter\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ARAManager.Common\ARAManager.Common.csproj">
+      <Project>{D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2}</Project>
+      <Name>ARAManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ARAManager.Business.Dao\ARAManager.Business.Dao.csproj">
+      <Project>{6760e5f8-5224-4239-8b02-42937a4a34b3}</Project>
+      <Name>ARAManager.Business.Dao</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>52396</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
