@@ -101,7 +101,6 @@ namespace ARAManager.Business.Service.Services {
         /// </summary>
         /// <param name="accounts"></param>
         public void DeleteAccounts(List<int> accounts) {
-            var srvDao = NinjectKernelFactory.Kernel.Get<IAccountDataAccess>();
             foreach (var account in accounts) {
                 try {
                     DeleteAccount(account);

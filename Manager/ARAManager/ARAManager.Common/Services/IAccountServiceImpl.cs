@@ -13,6 +13,7 @@
 using System.Collections.Generic;
 using System.ServiceModel;
 using ARAManager.Common.Dto;
+using ARAManager.Common.Exception.Generic;
 using ARAManager.Common.Services.Behaviors;
 
 namespace ARAManager.Common.Services {
@@ -29,14 +30,18 @@ namespace ARAManager.Common.Services {
 
         [OperationContract]
         [PreserveReferences]
+        [FaultContract(typeof(UserNameAlreadyExistException))]
+        [FaultContract(typeof(ConcurrentUpdateException))]
         void SaveNewAccount(Account account);
 
         [OperationContract]
         [PreserveReferences]
+        [FaultContract(typeof(ConcurrentUpdateException))]
         void DeleteAccount(int accountId);
 
         [OperationContract]
         [PreserveReferences]
+        [FaultContract(typeof(ConcurrentUpdateException))]
         void DeleteAccounts(List<int> accounts);
     }
 }

@@ -15,7 +15,6 @@ using System.ServiceModel;
 namespace ARAManager.Common.Services {
     [ServiceContract]
     public interface ICompanyServiceImpl {
-        [OperationContract]
-        void DoWork();
+
     }
 }

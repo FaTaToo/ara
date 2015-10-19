@@ -15,7 +15,6 @@ using System.ServiceModel;
 namespace ARAManager.Common.Services {
     [ServiceContract]
     public interface ICampaignServiceImpl {
-        [OperationContract]
-        void DoWork();
+     
     }
 }

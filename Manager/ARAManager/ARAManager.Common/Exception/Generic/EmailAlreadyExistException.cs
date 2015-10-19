@@ -1,23 +1,25 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="WrongTypeOfGroupAccountException.cs" group="288-462">
+// <header file="EmailAlreadyExistException.cs" group="288-462">
 //
 // Last modified: 
 // Author: LE Sanh Phuc - 11520288
 //
 // </header>
 // <summary>
-// Implement the WrongTypeOfGroupAccountException.
+// Implement the EmailAlreadyExistException.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Runtime.Serialization;
 
-namespace ARAManager.Common.Exception.AccountType {
+namespace ARAManager.Common.Exception.Generic
+{
     /// <summary>
-    /// The type of account has been created in wrong group.
+    /// The email has already existed.
     /// </summary>
     [DataContract]
-    public class WrongTypeOfGroupAccountException {
+    public class EmailAlreadyExistException
+    {
         [DataMember]
         public string MessageError { get; set; }
     }

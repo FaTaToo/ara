@@ -10,14 +10,102 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.ServiceModel;
+using ARAManager.Business.Dao.DataAccess.Interfaces;
+using ARAManager.Business.Dao.NHibernate.Transaction;
+using ARAManager.Common;
+using ARAManager.Common.Dto;
+using ARAManager.Common.Exception.Campaign;
+using ARAManager.Common.Exception.Generic;
+using ARAManager.Common.Factory;
 using ARAManager.Common.Services;
+using NHibernate;
+using NHibernate.Criterion;
+using Ninject;
 
 namespace ARAManager.Business.Service.Services {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "CampaignServiceImpl" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select CampaignServiceImpl.svc or CampaignServiceImpl.svc.cs at the Solution Explorer and start debugging.
     public class CampaignServiceImpl : ICampaignServiceImpl {
-        public void DoWork()
-        {
+        #region IMethods
+        public Campaign GetCampaignById(int campaignId) {
+            var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
+            return srvDao.GetById(campaignId);
         }
+        public IList<Campaign> GetAllCampaigns()
+        {
+            var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
+            var criteria = DetachedCriteria.For<Campaign>();
+            return srvDao.FindByCriteria(criteria);
+        }
+
+        public void SaveNewCampaign(Campaign campaign)
+        {
+            var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
+            using (NhTransactionScope tr = TransactionsFactory.CreateTransactionScope())
+            {
+                try
+                {
+                    srvDao.Save(campaign);
+                }
+                catch (ADOException)
+                {
+                    throw new FaultException<CampaignNameAlreadyExistException>(
+                        new CampaignNameAlreadyExistException { MessageError = Messages.CAMPAIGN_NAME_CONSTRAINT_EXCEPTION_MSG },
+                        new FaultReason(Messages.UNIQUE_CONSTRAINT_EXCEPTION_REASON));
+                }
+                catch (StaleObjectStateException)
+                {
+                    throw new FaultException<ConcurrentUpdateException>(
+                        new ConcurrentUpdateException { MessageError = Messages.CAMPAIGN_CONCURRENT_UPDATE_EXCEPTION_MSG },
+                        new FaultReason(Messages.CAMPAIGN_CONCURRENT_UPDATE_EXCEPTION_MSG));
+                }
+                catch (Exception ex)
+                {
+                    throw new FaultException<Exception>(
+                       new Exception(ex.Message),
+                       new FaultReason(Messages.UNKNOWN_REASON));
+                }
+                tr.Complete();
+            }
+        }
+
+        public void DeleteCampaign(int campaignId)
+        {
+            var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
+            using (NhTransactionScope tr = TransactionsFactory.CreateTransactionScope())
+            {
+                try
+                {
+                    var deleteCampaign = srvDao.GetById(campaignId);
+                    srvDao.Delete(deleteCampaign);
+                }
+                catch (Exception)
+                {
+                    throw new FaultException<ConcurrentUpdateException>(
+                       new ConcurrentUpdateException { MessageError = Messages.CAMPAIGN_DELETED_EXCEPTION_MSG },
+                       new FaultReason(Messages.DELETED_EXCEPTION_REASON));
+                }
+                tr.Complete();
+            }
+        }
+
+        public void DeleteCampaigns(List<int> campaigns)
+        {
+            foreach (var campaign in campaigns)
+            {
+                try
+                {
+                    DeleteCampaign(campaign);
+                }
+                catch (Exception)
+                {
+                    throw new FaultException<ConcurrentUpdateException>(
+                       new ConcurrentUpdateException { MessageError = Messages.CAMPAIGN_DELETED_EXCEPTION_MSG },
+                       new FaultReason(Messages.DELETED_EXCEPTION_REASON));
+                }
+            }
+        }
+        #endregion IMethods
     }
 }
