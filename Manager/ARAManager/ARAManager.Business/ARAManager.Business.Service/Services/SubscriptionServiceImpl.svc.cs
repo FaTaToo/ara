@@ -14,8 +14,6 @@ using ARAManager.Common.Services;
 
 namespace ARAManager.Business.Service.Services {
     public class SubscriptionServiceImpl : ISubscriptionServiceImpl {
-        public void DoWork()
-        {
-        }
+  
     }
 }

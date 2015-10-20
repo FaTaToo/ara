@@ -17,9 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARAManager.Business.Dao", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARAManager.Presentation", "ARAManager.Presentation\ARAManager.Presentation\ARAManager.Presentation.csproj", "{CEF9566D-F135-4099-B821-5B3F89D42D28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARAManager.Presentation.Client", "ARAManager.Presentation\ARAManager.Presentation.Client\ARAManager.Presentation.Client.csproj", "{8B7FF0C3-3794-4788-8148-178604419D5A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ARAManager.Test", "ARAManager.Test", "{5DF282C2-4A82-41A8-89C9-CA02A40268DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARAManager.Presentation.Client", "ARAManager.Presentation\ARAManager.Presentation.Client\ARAManager.Presentation.Client.csproj", "{8B7FF0C3-3794-4788-8148-178604419D5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

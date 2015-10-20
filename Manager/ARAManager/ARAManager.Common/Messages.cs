@@ -49,6 +49,13 @@
                 "The company name has already existed.";
                 #endregion Company
 
+                #region Customer
+                public const string CUSTOMER_CONCURRENT_UPDATE_EXCEPTION_MSG =
+               "The customer has been edited by another.";
+                public const string CUSTOMER_DELETED_EXCEPTION_MSG =
+                "The customer has been already deleted.";
+                #endregion Customer
+
                 #region Mission
                 public const string MISSION_CONCURRENT_UPDATE_EXCEPTION_MSG = 
                 "The mission has been edited by another.";
@@ -68,17 +75,6 @@
                 public const string SUBSCRIPTION_CONSTRAINT_EXCEPTION_MSG =
                 "The subscription has already joined the campaign.";
                 #endregion Subscription
-
-                #region Target
-                public const string TARGET_CONCURRENT_UPDATE_EXCEPTION_MSG = 
-                "The target has been edited by another.";
-                public const string TARGET_DELETED_EXCEPTION_MSG = 
-                "The target has been already deleted.";
-                public const string TARGET_NAME_CONSTRAINT_EXCEPTION_MSG = 
-                "The target name has already existed.";
-                public const string PRE_TARGET_CONSTRAINT_EXCEPTION_MSG = 
-                "The pre target has already existed.";
-                #endregion Target
 
                 #endregion ExceptionMessages
 

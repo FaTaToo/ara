@@ -17,7 +17,6 @@ using ARAManager.Business.Dao.DataAccess.Interfaces;
 using ARAManager.Business.Dao.NHibernate.Transaction;
 using ARAManager.Common;
 using ARAManager.Common.Dto;
-using ARAManager.Common.Exception.AccountType;
 using ARAManager.Common.Exception.Generic;
 using ARAManager.Common.Exception.Mission;
 using ARAManager.Common.Factory;
@@ -74,37 +73,37 @@ namespace ARAManager.Business.Service.Services {
             }
         }
 
-        public void DeleteAccountType(int accountTypeId)
+        public void DeleteMission(int missionId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<IMissionDataAccess>();
             using (NhTransactionScope tr = TransactionsFactory.CreateTransactionScope())
             {
                 try
                 {
-                    var deleteAccountType = srvDao.GetById(accountTypeId);
-                    srvDao.Delete(deleteAccountType);
+                    var deleteMission = srvDao.GetById(missionId);
+                    srvDao.Delete(deleteMission);
                 }
                 catch (Exception)
                 {
-                    throw new FaultException<ConcurrentUpdateException>(
-                       new ConcurrentUpdateException { MessageError = Messages.MISSION_DELETED_EXCEPTION_MSG },
+                    throw new FaultException<MissionAlreadyDeletedException>(
+                       new MissionAlreadyDeletedException { MessageError = Messages.MISSION_DELETED_EXCEPTION_MSG },
                        new FaultReason(Messages.DELETED_EXCEPTION_REASON));
                 }
                 tr.Complete();
             }
         }
-        public void DeleteAccountTypes(List<int> accountTypes)
+        public void DeleteMissions(List<int> missions)
         {
-            foreach (var accounType in accountTypes)
+            foreach (var accounType in missions)
             {
                 try
                 {
-                    DeleteAccountType(accounType);
+                    DeleteMission(accounType);
                 }
                 catch (Exception)
                 {
-                    throw new FaultException<ConcurrentUpdateException>(
-                       new ConcurrentUpdateException { MessageError = Messages.MISSION_DELETED_EXCEPTION_MSG },
+                    throw new FaultException<MissionAlreadyDeletedException>(
+                       new MissionAlreadyDeletedException { MessageError = Messages.MISSION_DELETED_EXCEPTION_MSG },
                        new FaultReason(Messages.MISSION_DELETED_EXCEPTION_MSG));
                 }
             }

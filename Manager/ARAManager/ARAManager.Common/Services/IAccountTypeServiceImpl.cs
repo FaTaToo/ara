@@ -36,12 +36,12 @@ namespace ARAManager.Common.Services {
 
         [OperationContract]
         [PreserveReferences]
-        [FaultContract(typeof(ConcurrentUpdateException))]
+        [FaultContract(typeof(AccountTypeAlreadyDeletedException))]
         void DeleteAccountType(int accountTypeId);
 
         [OperationContract]
         [PreserveReferences]
-        [FaultContract(typeof(ConcurrentUpdateException))]
+        [FaultContract(typeof(AccountTypeAlreadyDeletedException))]
         void DeleteAccountTypes(List<int> accountTypes);
     }
 }

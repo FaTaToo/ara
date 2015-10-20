@@ -69,8 +69,8 @@ namespace ARAManager.Business.Service.Services {
                     srvDao.Delete(deleteAccountType);
                 }
                 catch (Exception) {
-                    throw new FaultException<ConcurrentUpdateException>(
-                       new ConcurrentUpdateException { MessageError = Messages.ACCOUNTTYPE_DELETED_EXCEPTION_MSG },
+                    throw new FaultException<AccountTypeAlreadyDeletedException>(
+                       new AccountTypeAlreadyDeletedException { MessageError = Messages.ACCOUNTTYPE_DELETED_EXCEPTION_MSG },
                        new FaultReason(Messages.DELETED_EXCEPTION_REASON));
                 }
                 tr.Complete();
@@ -83,8 +83,8 @@ namespace ARAManager.Business.Service.Services {
                     DeleteAccountType(accounType);
                 }
                 catch (Exception) {
-                    throw new FaultException<ConcurrentUpdateException>(
-                       new ConcurrentUpdateException { MessageError = Messages.ACCOUNTTYPE_DELETED_EXCEPTION_MSG },
+                    throw new FaultException<AccountTypeAlreadyDeletedException>(
+                       new AccountTypeAlreadyDeletedException { MessageError = Messages.ACCOUNTTYPE_DELETED_EXCEPTION_MSG },
                        new FaultReason(Messages.DELETED_EXCEPTION_REASON));
                 }
             }

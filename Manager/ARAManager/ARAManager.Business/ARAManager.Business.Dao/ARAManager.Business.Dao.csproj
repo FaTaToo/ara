@@ -34,6 +34,10 @@
     <Reference Include="log4net">
       <HintPath>..\ARAManager.Business.Service\Bin\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\..\..\Lib\NHibernate 3.2\NHibernate.dll</HintPath>
     </Reference>
@@ -104,6 +108,9 @@
       <Project>{D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2}</Project>
       <Name>ARAManager.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

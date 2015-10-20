@@ -83,8 +83,8 @@ namespace ARAManager.Business.Service.Services {
                }
                catch (Exception)
                {
-                   throw new FaultException<ConcurrentUpdateException>(
-                      new ConcurrentUpdateException { MessageError = Messages.COMPANY_DELETED_EXCEPTION_MSG },
+                   throw new FaultException<CompanyAlreadyDeletedException>(
+                      new CompanyAlreadyDeletedException { MessageError = Messages.COMPANY_DELETED_EXCEPTION_MSG },
                       new FaultReason(Messages.DELETED_EXCEPTION_REASON));
                }
                tr.Complete();
@@ -101,8 +101,8 @@ namespace ARAManager.Business.Service.Services {
                }
                catch (Exception)
                {
-                   throw new FaultException<ConcurrentUpdateException>(
-                      new ConcurrentUpdateException { MessageError = Messages.COMPANY_DELETED_EXCEPTION_MSG },
+                   throw new FaultException<CompanyAlreadyDeletedException>(
+                      new CompanyAlreadyDeletedException { MessageError = Messages.COMPANY_DELETED_EXCEPTION_MSG },
                       new FaultReason(Messages.DELETED_EXCEPTION_REASON));
                }
            }

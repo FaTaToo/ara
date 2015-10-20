@@ -82,8 +82,8 @@ namespace ARAManager.Business.Service.Services {
                 }
                 catch (Exception)
                 {
-                    throw new FaultException<ConcurrentUpdateException>(
-                       new ConcurrentUpdateException { MessageError = Messages.CAMPAIGN_DELETED_EXCEPTION_MSG },
+                    throw new FaultException<CampaignAlreadyDeletedException>(
+                       new CampaignAlreadyDeletedException { MessageError = Messages.CAMPAIGN_DELETED_EXCEPTION_MSG },
                        new FaultReason(Messages.DELETED_EXCEPTION_REASON));
                 }
                 tr.Complete();
@@ -100,8 +100,8 @@ namespace ARAManager.Business.Service.Services {
                 }
                 catch (Exception)
                 {
-                    throw new FaultException<ConcurrentUpdateException>(
-                       new ConcurrentUpdateException { MessageError = Messages.CAMPAIGN_DELETED_EXCEPTION_MSG },
+                    throw new FaultException<CampaignAlreadyDeletedException>(
+                       new CampaignAlreadyDeletedException { MessageError = Messages.CAMPAIGN_DELETED_EXCEPTION_MSG },
                        new FaultReason(Messages.DELETED_EXCEPTION_REASON));
                 }
             }
