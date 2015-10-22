@@ -10,51 +10,51 @@
 namespace ARAManager.Presentation.Client.Master_Pages {
     
     
-    public partial class Management {
+    public partial class Management_Company {
         
         /// <summary>
-        /// lbLogout control.
+        /// btnStaff control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbLogout;
+        protected global::System.Web.UI.WebControls.Button btnStaff;
         
         /// <summary>
-        /// lblUser control.
+        /// btnCampaign control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUser;
+        protected global::System.Web.UI.WebControls.Button btnCampaign;
         
         /// <summary>
-        /// ContentPlaceHolder_Menu control.
+        /// btnStatistics control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder_Menu;
+        protected global::System.Web.UI.WebControls.Button btnStatistics;
         
         /// <summary>
-        /// ContentPlaceHolder_BodySearch control.
+        /// ContentPlaceHolder1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder_BodySearch;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
         
         /// <summary>
-        /// ContentPlaceHolder_BodyResult control.
+        /// ContentPlaceHolder_Content control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder_BodyResult;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder_Content;
     }
 }

@@ -7,81 +7,63 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ARAManager.Presentation.Client.Aspx {
+namespace ARAManager.Presentation.Client.Master_Pages {
     
     
-    public partial class Default {
+    public partial class Management_Admin {
         
         /// <summary>
-        /// UserEmail control.
+        /// btnCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox UserEmail;
+        protected global::System.Web.UI.WebControls.Button btnCategory;
         
         /// <summary>
-        /// RequiredFieldValidator_UserEmail control.
+        /// btnCompany control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_UserEmail;
+        protected global::System.Web.UI.WebControls.Button btnCompany;
         
         /// <summary>
-        /// UserPass control.
+        /// btnCustomer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox UserPass;
+        protected global::System.Web.UI.WebControls.Button btnCustomer;
         
         /// <summary>
-        /// RequiredFieldValidator_UserPass control.
+        /// btnStatistics control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_UserPass;
+        protected global::System.Web.UI.WebControls.Button btnStatistics;
         
         /// <summary>
-        /// cbRememberPassword control.
+        /// ContentPlaceHolder1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbRememberPassword;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
         
         /// <summary>
-        /// hpForgetPass control.
+        /// ContentPlaceHolder_Content control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hpForgetPass;
-        
-        /// <summary>
-        /// lblMessageIncredential control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMessageIncredential;
-        
-        /// <summary>
-        /// btnLogin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogin;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder_Content;
     }
 }

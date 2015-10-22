@@ -1,0 +1,28 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Master_Pages/Management.Master" AutoEventWireup="true" CodeBehind="Management_Admin.master.cs" Inherits="ARAManager.Presentation.Client.Master_Pages.Management_Admin" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Menu" runat="server">
+    <div class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-warning">
+                <img src="../Resources/Images/home.png" />
+            </button>
+        </div>
+        <div class="btn-group" role="group">
+            <asp:Button ID="btnCategory" ForeColor="Black" CssClass="btn btn-warning" runat="server"  Text="CATEGORY" />
+        </div>
+        <div class="btn-group" role="group">
+            <asp:Button ID="btnCompany" ForeColor="Black" CssClass="btn btn-warning" runat="server"  Text="COMPANY" />
+        </div>
+        <div class="btn-group" role="group">
+            <asp:Button ID="btnCustomer" ForeColor="Black" CssClass="btn btn-warning" runat="server"  Text="CUSTOMER" />
+        </div>
+        <div class="btn-group" role="group">
+             <asp:Button ID="btnStatistics" ForeColor="Black" CssClass="btn btn-warning" runat="server"  Text="STATISTICS" />
+        </div>
+    </div>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_BodySearch" runat="server">
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_BodyResult" runat="server">
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder_Content" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
