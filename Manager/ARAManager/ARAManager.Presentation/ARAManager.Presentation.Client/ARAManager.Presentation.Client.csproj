@@ -134,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Aspx\Default.aspx" />
+    <Content Include="Aspx\WebForm1.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -204,7 +205,15 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Resources\Images\AddNew.png" />
+    <Content Include="Resources\Images\atm.png" />
     <Content Include="Resources\Images\logo.png" />
+    <Content Include="Resources\Images\mastercard.png" />
+    <Content Include="Resources\Images\Partners\cgv.png" />
+    <Content Include="Resources\Images\Partners\GalaxyCinema.jpg" />
+    <Content Include="Resources\Images\Partners\LotteCinema.jpg" />
+    <Content Include="Resources\Images\Payment.png" />
+    <Content Include="Resources\Images\visa.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -257,6 +266,13 @@
     </Compile>
     <Compile Include="Aspx\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

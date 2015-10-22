@@ -2,19 +2,175 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head runat="server">
-    <title></title>
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
+    <title>ARA - AR advertisement on mobile - Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
-    </div>
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1467368513579600";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    <form runat="server">
+        <div class=".container-fluid" style="background: linear-gradient(to right, red, black); width: 100%">
+            <!--Header-->
+            <div class="row" style="padding-top: 20px">
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-6">
+                    <ul class="nav nav-pills pull-right">
+                        <li role="presentation"><a href="#" style="color: white">Introduction</a></li>
+                        <li role="presentation"><a href="#" style="color: white">>News - Events</a></li>
+                        <li role="presentation"><a href="#" style="color: white">LeaderBoard</a></li>
+                        <li role="presentation"><a href="#" style="color: white">Instruction</a></li>
+                        <li role="presentation"><a href="#" style="color: white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+            </div>
+            <div class="row" style="padding-top: 20px">
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-6">
+                    <asp:LinkButton ID="lbLogout" CssClass="pull-right" ForeColor="gold"
+                        OnClick="lbLogout_OnClick"
+                        runat="server">Log out</asp:LinkButton>
+                    <ul class="nav nav-pills pull-right" style="margin-right: 30px">
+                        <li role="presentation" style="color: gold">Hi, </li>
+                        <li role="presentation" style="color: goldenrod">
+                            <asp:Label ID="lblUser" runat="server" />
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+            </div>
+            <div class="row" style="padding-top: 20px">
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1">
+                    <img class="img-responsive center-block" src="../Resources/Images/logo.png" />
+                </div>
+                <div class="col-md-1">
+                    <p style="color: gold; font-size: 36px; font-family: fantasy;"><strong>ARA</strong><strong style="color: gold">Dashboard</strong></p>
+                </div>
+                <div class="col-md-6">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder_Menu" runat="server"></asp:ContentPlaceHolder>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+            </div>
+            <div class="row" style="padding-top: 20px">
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-6">
+                    <ul class="nav nav-pills pull-right">
+                        <li role="presentation" style="margin-right: 15px">
+                            <img src="../Resources/Images/atm.png" /></li>
+                        <li role="presentation" style="margin-right: 15px">
+                            <img src="../Resources/Images/mastercard.png" /></li>
+                        <li role="presentation" style="margin-right: 15px">
+                            <img src="../Resources/Images/visa.png" /></li>
+                    </ul>
+
+                    <img src="../Resources/Images/Payment.png" class="pull-right" style="margin-right: 15px" />
+
+                    <a href="#" class="pull-right" style="color: white; font-size: 20px; font-weight: bold; margin-right: 30px">CREATE NEW CAMPAIGN </a>
+
+                    <img src="../Resources/Images/AddNew.png" class="pull-right" style="margin-right: 15px" />
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+            </div>
+            <div class="row" style="padding-top: 5px">
+                <hr style="color: goldenrod;" />
+            </div>
+            <!--------------------------------------------------------------------------------------------->
+            <!--Body-->
+            <div class="row" style="padding-top: 20px; background: antiquewhite">
+                <div class="col-md-2">
+                    <ul class="nav nav-pills nav-stacked pull-left" style="margin-left: 20px">
+                        <li role="presentation" style="margin-top: 15px">
+                            <div class="fb-page" data-href="https://www.facebook.com/uratvclothing?fref=ts" data-width="250" data-height="50" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true">
+                                <div class="fb-xfbml-parse-ignore">
+                                    <blockquote cite="https://www.facebook.com/uratvclothing?fref=ts"><a href="https://www.facebook.com/uratvclothing?fref=ts">Uratv Clothing</a></blockquote>
+                                </div>
+                            </div>
+                        </li>
+                        <li role="presentation" style="margin-top: 15px">
+                            <iframe width="250" height="250" src="https://www.youtube.com/embed/RcFAK5vlVHE"></iframe>
+                        </li>
+                        <li role="presentation">
+                            <a href="ymsgr:SendIM?YahooUser25">
+                                <img src="http://opi.yahoo.com/online?u=YahooUser25&amp;m=g&amp;t=2" /></a>
+                        </li>
+                        <li role="presentation">
+                            <a href="ymsgr:SendIM?YahooUser25">
+                                <img src="http://opi.yahoo.com/online?u=YahooUser25&amp;m=g&amp;t=2" /></a>
+                        </li>
+                        <li role="presentation">
+                            <a href="ymsgr:SendIM?YahooUser25">
+                                <img src="http://opi.yahoo.com/online?u=YahooUser25&amp;m=g&amp;t=2" /></a>
+                        </li>
+                        <li role="presentation">
+                            <a href="ymsgr:SendIM?YahooUser25">
+                                <img src="http://opi.yahoo.com/online?u=YahooUser25&amp;m=g&amp;t=2" /></a>
+                        </li>
+                        <li role="presentation">
+                            <a href="ymsgr:SendIM?YahooUser25">
+                                <img src="http://opi.yahoo.com/online?u=YahooUser25&amp;m=g&amp;t=2" /></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder_Body" runat="server"></asp:ContentPlaceHolder>
+                </div>
+                <div class="col-md-4">
+                    <ul class="nav nav-pills nav-stacked pull-right" style="margin-right: 20px">
+                        <li role="presentation" style="margin-top: 15px">
+                            <img src="../Resources/Images/Partners/cgv.png" /></li>
+                        <li role="presentation" style="margin-top: 15px">
+                            <img src="../Resources/Images/Partners/GalaxyCinema.jpg" /></li>
+                        <li role="presentation" style="margin-top: 15px">
+                            <img src="../Resources/Images/Partners/LotteCinema.jpg" /></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 5px">
+                <hr style="color: goldenrod;" />
+            </div>
+            <!--------------------------------------------------------------------------------------------->
+            <!--Footer-->
+            <div class="row" style="padding-top: 20px">
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-4">
+                    <p class="pull-left" style="color: white">
+                        Copyright © 2015 | LE Sanh Phuc - PHAM Tang Tung
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <p class="pull-right" style="color: white">Contact: 0933.111.975 (Phuc)</p>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+            </div>
+            <!--------------------------------------------------------------------------------------------->
+        </div>
     </form>
 </body>
 </html>

@@ -11,20 +11,20 @@
 <body>
     <div class=".container-fluid" style="background: linear-gradient(to right, red, black); width: 100%">
         <div class="row" style="padding-top: 81px">
-            <div class="col-md-4"></div>
-            <div class="col-md-1">
+            <div class="col-md-4 col-xs-4 col-sm-4"></div>
+            <div class="col-md-1 col-xs-1 col-sm-4">
                 <img class="img-responsive center-block" src="../Resources/Images/logo.png" />
             </div>
-            <div class="col-md-1">
-                <p style="color: black; font-size: 36px; font-family: fantasy;"><strong>A</strong>r<strong style="color: yellow">Advertisement</strong></p>
+            <div class="col-md-1 col-xs-1 col-sm-1">
+                <p style="color: black; font-size: 36px; font-family: fantasy;"><strong>A</strong>r<strong style="color: gold">Advertisement</strong></p>
             </div>
-            <div class="col-md-1"></div>
-            <div class="col-md-1"></div>
-            <div class="col-md-4"></div>
+            <div class="col-md-1 col-xs-1 col-sm-1"></div>
+            <div class="col-md-1 col-xs-1 col-sm-1"></div>
+            <div class="col-md-4 col-xs-4 col-sm-4"></div>
         </div>
         <div class="row" style="padding-top: 36px; padding-bottom: 81px">
-            <div class="col-md-4"></div>
-            <div class="col-md-4" style="background: silver">
+            <div class="col-md-4 col-xs-4 col-sm-4"></div>
+            <div class="col-md-4 col-xs-4 col-sm-4" style="background: silver">
                 <form role="form" runat="server">
                     <div class="form-group">
                         <label style="padding-top: 15px; font-size: 20px">Username</label>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group">
                         <label style="padding-top: 15px; font-size: 20px">Password</label>
-                        <asp:TextBox ID="UserPass" CssClass="form-control" runat="server" />
+                        <asp:TextBox ID="UserPass" CssClass="form-control" TextMode="Password" runat="server"/>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator_UserPass"
                             ControlToValidate="UserPass"
                             ForeColor="Red"
@@ -63,7 +63,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-4 col-xs-4 col-sm-4"></div>
         </div>
     </div>
 </body>

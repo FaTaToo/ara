@@ -24,6 +24,7 @@ namespace ARAManager.Presentation.Client.Aspx {
         protected void btnLogin_OnClick(object sender, EventArgs e) {
             if ((UserEmail.Text == "admin") && (UserPass.Text == "admin")) {
                 FormsAuthentication.RedirectFromLoginPage(UserEmail.Text, Persist.Checked);
+                Response.Redirect("WebForm1.aspx");
             } else {
                 lblMessageIncredential.Text = "Invalid credentials. Please try again.";
             }
