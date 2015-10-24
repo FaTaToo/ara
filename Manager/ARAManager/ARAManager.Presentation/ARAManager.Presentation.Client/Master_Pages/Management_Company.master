@@ -18,7 +18,7 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_BodySearch" runat="server">
-    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder_Search" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_BodyResult" runat="server">
     <asp:ContentPlaceHolder ID="ContentPlaceHolder_Content" runat="server"></asp:ContentPlaceHolder>

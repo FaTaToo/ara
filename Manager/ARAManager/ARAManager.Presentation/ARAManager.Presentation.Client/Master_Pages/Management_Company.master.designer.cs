@@ -40,13 +40,13 @@ namespace ARAManager.Presentation.Client.Master_Pages {
         protected global::System.Web.UI.WebControls.Button btnStatistics;
         
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// ContentPlaceHolder_Search control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder_Search;
         
         /// <summary>
         /// ContentPlaceHolder_Content control.

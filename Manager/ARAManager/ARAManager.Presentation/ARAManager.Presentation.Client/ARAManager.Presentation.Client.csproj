@@ -39,8 +39,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AspNet.ScriptManager.jQuery, Version=1.9.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\AspNet.ScriptManager.jQuery.1.9.1\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    <Reference Include="AspNet.ScriptManager.jQuery, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AspNet.ScriptManager.jQuery.2.1.4\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -133,8 +133,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Aspx\AdminHome.aspx" />
+    <Content Include="Aspx\CampaignCompany.aspx" />
+    <Content Include="Aspx\CategoryAdmin.aspx" />
+    <Content Include="Aspx\CompanyAdmin.aspx" />
+    <Content Include="Aspx\CustomerAdmin.aspx" />
     <Content Include="Aspx\Default.aspx" />
+    <Content Include="Aspx\EditCampaignCompany.aspx" />
+    <Content Include="Aspx\EditCategoryAdmin.aspx" />
+    <Content Include="Aspx\EditCompanyAdmin.aspx" />
+    <Content Include="Aspx\EditCustomerAdmin.aspx" />
+    <Content Include="Aspx\EditStaffCompany.aspx" />
+    <Content Include="Aspx\HomeAdmin.aspx" />
+    <Content Include="Aspx\StaffCompany.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -206,12 +216,21 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Master_Pages\Management_Admin.master" />
     <Content Include="Master_Pages\Management_Company.master" />
-    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Plugins\jquery-searchable-master\.gitattributes" />
+    <Content Include="Plugins\jquery-searchable-master\.gitignore" />
+    <Content Include="Plugins\jquery-searchable-master\dist\jquery.searchable-1.0.0.min.js" />
+    <Content Include="Plugins\jquery-searchable-master\dist\jquery.searchable-1.1.0.min.js" />
+    <Content Include="Plugins\jquery-searchable-master\dist\jquery.searchable-ie-1.1.0.min.js" />
+    <Content Include="Plugins\jquery-searchable-master\Gruntfile.js" />
+    <Content Include="Plugins\jquery-searchable-master\jquery.searchable-ie.js" />
+    <Content Include="Plugins\jquery-searchable-master\jquery.searchable.js" />
     <Content Include="Resources\Images\AddNew.png" />
     <Content Include="Resources\Images\atm.png" />
     <Content Include="Resources\Images\facebook.png" />
+    <Content Include="Resources\Images\google.png" />
     <Content Include="Resources\Images\home.png" />
     <Content Include="Resources\Images\in.png" />
+    <Content Include="Resources\Images\instragram.png" />
     <Content Include="Resources\Images\logo.png" />
     <Content Include="Resources\Images\mail.png" />
     <Content Include="Resources\Images\mastercard.png" />
@@ -220,14 +239,22 @@
     <Content Include="Resources\Images\Partners\LotteCinema.jpg" />
     <Content Include="Resources\Images\Payment.png" />
     <Content Include="Resources\Images\phone.png" />
+    <Content Include="Resources\Images\support.png" />
     <Content Include="Resources\Images\twitter.png" />
     <Content Include="Resources\Images\vi.png" />
     <Content Include="Resources\Images\visa.png" />
     <Content Include="Resources\Images\youtube.png" />
+    <Content Include="Resources\Images\zingme.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Plugins\jquery-searchable-master\.jshintrc" />
+    <Content Include="Plugins\jquery-searchable-master\bower.json" />
+    <Content Include="Plugins\jquery-searchable-master\LICENSE" />
+    <Content Include="Plugins\jquery-searchable-master\package.json" />
+    <Content Include="Plugins\jquery-searchable-master\README.md" />
+    <None Include="Scripts\jquery-2.1.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -252,7 +279,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -270,12 +297,33 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Aspx\AdminHome.aspx.cs">
-      <DependentUpon>AdminHome.aspx</DependentUpon>
+    <Compile Include="Aspx\CampaignCompany.aspx.cs">
+      <DependentUpon>CampaignCompany.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Aspx\AdminHome.aspx.designer.cs">
-      <DependentUpon>AdminHome.aspx</DependentUpon>
+    <Compile Include="Aspx\CampaignCompany.aspx.designer.cs">
+      <DependentUpon>CampaignCompany.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\CategoryAdmin.aspx.cs">
+      <DependentUpon>CategoryAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\CategoryAdmin.aspx.designer.cs">
+      <DependentUpon>CategoryAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\CompanyAdmin.aspx.cs">
+      <DependentUpon>CompanyAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\CompanyAdmin.aspx.designer.cs">
+      <DependentUpon>CompanyAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\CustomerAdmin.aspx.cs">
+      <DependentUpon>CustomerAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\CustomerAdmin.aspx.designer.cs">
+      <DependentUpon>CustomerAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -283,6 +331,55 @@
     </Compile>
     <Compile Include="Aspx\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\EditCampaignCompany.aspx.cs">
+      <DependentUpon>EditCampaignCompany.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\EditCampaignCompany.aspx.designer.cs">
+      <DependentUpon>EditCampaignCompany.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\EditCategoryAdmin.aspx.cs">
+      <DependentUpon>EditCategoryAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\EditCategoryAdmin.aspx.designer.cs">
+      <DependentUpon>EditCategoryAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\EditCompanyAdmin.aspx.cs">
+      <DependentUpon>EditCompanyAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\EditCompanyAdmin.aspx.designer.cs">
+      <DependentUpon>EditCompanyAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\EditCustomerAdmin.aspx.cs">
+      <DependentUpon>EditCustomerAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\EditCustomerAdmin.aspx.designer.cs">
+      <DependentUpon>EditCustomerAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\EditStaffCompany.aspx.cs">
+      <DependentUpon>EditStaffCompany.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\EditStaffCompany.aspx.designer.cs">
+      <DependentUpon>EditStaffCompany.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\HomeAdmin.aspx.cs">
+      <DependentUpon>HomeAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\HomeAdmin.aspx.designer.cs">
+      <DependentUpon>HomeAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Aspx\StaffCompany.aspx.cs">
+      <DependentUpon>StaffCompany.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\StaffCompany.aspx.designer.cs">
+      <DependentUpon>StaffCompany.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

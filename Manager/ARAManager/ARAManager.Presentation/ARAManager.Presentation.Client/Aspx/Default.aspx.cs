@@ -22,9 +22,11 @@ namespace ARAManager.Presentation.Client.Aspx {
         }
 
         protected void btnLogin_OnClick(object sender, EventArgs e) {
+            // Replace by checking account service
             if ((UserEmail.Text == "admin") && (UserPass.Text == "admin")) {
                 FormsAuthentication.RedirectFromLoginPage(UserEmail.Text, cbRememberPassword.Checked);
-                Response.Redirect("AdminHome.aspx");
+
+                Response.Redirect("CategoryAdmin.aspx");
             } else {
                 lblMessageIncredential.Text = "Invalid credentials. Please try again.";
             }

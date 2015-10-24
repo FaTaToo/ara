@@ -27,7 +27,7 @@ namespace ARAManager.Common.Dto {
 
         [DataMember]
         [Property(Column = "Name", Name = "Name", TypeType = typeof(string), Length = 100, NotNull = true)]
-        public virtual string UserName { get; set; }
+        public virtual string Name { get; set; }
 
         [DataMember]
         [Property(Column = "GroupType", Name = "GroupType", TypeType = typeof(int), NotNull = true)]
