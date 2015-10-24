@@ -58,12 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dto\AccountType.cs" />
     <Compile Include="Dto\Account.cs" />
     <Compile Include="Dto\ArData.cs" />
     <Compile Include="Dto\Campaign.cs" />
     <Compile Include="Dto\Company.cs" />
-    <Compile Include="Dto\CompanyAccount.cs" />
     <Compile Include="Dto\Customer.cs" />
     <Compile Include="Dto\Mission.cs" />
     <Compile Include="Dto\ModelBase.cs" />
@@ -96,10 +94,8 @@
     <Compile Include="Services\Behaviors\PreserveReferencesAttribute.cs" />
     <Compile Include="Services\Behaviors\PreserveReferencesOperationBehavior.cs" />
     <Compile Include="Services\IAccountServiceImpl.cs" />
-    <Compile Include="Services\IAccountTypeServiceImpl.cs" />
     <Compile Include="Services\IArDataServiceImpl.cs" />
     <Compile Include="Services\ICampaignServiceImpl.cs" />
-    <Compile Include="Services\ICompanyAccountServiceImpl.cs" />
     <Compile Include="Services\ICompanyServiceImpl.cs" />
     <Compile Include="Services\ICustomerServiceImpl.cs" />
     <Compile Include="Services\IMissionServiceImpl.cs" />

@@ -29,7 +29,7 @@ namespace ARAManager.Common.Dto {
         public virtual string Url { get; set; }
 
         [DataMember]
-        [Property(Column = "Name", Name = "Name", TypeType = typeof(string), Length = 100, NotNull = true)]
+        [Property(Column = "TargetName", Name = "Name", TypeType = typeof(string), Length = 100, NotNull = true)]
         public virtual string Name { get; set; }
 
         [DataMember]
@@ -41,18 +41,18 @@ namespace ARAManager.Common.Dto {
         public virtual int Longitude { get; set; }
         
         [DataMember]
-        [Property(Column = "Descriptor", Name = "Descriptor", TypeType = typeof(string), Length = 500, NotNull = true)]
-        public virtual string Descriptor { get; set; }
+        [Property(Column = "Description", Name = "Description", TypeType = typeof(string), Length = 500, NotNull = true)]
+        public virtual string Description { get; set; }
 
         [DataMember]
         [Property(Column = "IsComplete", Name = "IsComplete", TypeType = typeof(bool), NotNull = true)]
         public virtual bool IsComplete { get; set; }
 
-        [ManyToOne(Name = "Mission", Column = "MissionId", NotNull = false, Fetch = FetchMode.Select)]
+        [ManyToOne(Name = "Mission", Column = "MissionName", NotNull = false, Fetch = FetchMode.Select)]
         [DataMember]
         public virtual Mission Mission { get; set; }
 
-        [ManyToOne(Name = "PreTarget", Column = "PreTarget", NotNull = false, Fetch = FetchMode.Select)]
+        [ManyToOne(Name = "PreTarget", Column = "TargetName", NotNull = false, Fetch = FetchMode.Select)]
         [DataMember]
         public virtual Target PreTarget { get; set; }
         #endregion IProperties

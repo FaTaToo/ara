@@ -7,9 +7,6 @@
             </button>
         </div>
         <div class="btn-group" role="group">
-            <asp:Button ID="btnCategory" ForeColor="Black" CssClass="btn btn-warning" runat="server"  Text="CATEGORY" />
-        </div>
-        <div class="btn-group" role="group">
             <asp:Button ID="btnCompany" ForeColor="Black" CssClass="btn btn-warning" runat="server"  Text="COMPANY" />
         </div>
         <div class="btn-group" role="group">

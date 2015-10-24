@@ -27,7 +27,7 @@ namespace ARAManager.Common.Dto {
         public virtual int CampaignId { get; set; }
 
         [DataMember]
-        [Property(Column = "Name", Name = "Name", TypeType = typeof(string), Length = 100, NotNull = true)]
+        [Property(Column = "CampaignName", Name = "Name", TypeType = typeof(string), Length = 100, NotNull = true)]
         public virtual string Name { get; set; }
 
         [DataMember]
@@ -39,8 +39,8 @@ namespace ARAManager.Common.Dto {
         public virtual DateTime? EndTime { get; set; }
 
         [DataMember]
-        [Property(Column = "Descriptor", Name = "Descriptor", TypeType = typeof(string), Length = 500, NotNull = true)]
-        public virtual string Descriptor { get; set; }
+        [Property(Column = "Description", Name = "Description", TypeType = typeof(string), Length = 500, NotNull = true)]
+        public virtual string Description { get; set; }
 
         [DataMember]
         [Property(Column = "Banner", Name = "Banner", TypeType = typeof(string), Length = 500, NotNull = true)]
@@ -58,7 +58,7 @@ namespace ARAManager.Common.Dto {
         [Property(Column = "NumMission", Name = "NumMission", TypeType = typeof(int), NotNull = true)]
         public virtual string NumMission { get; set; }
 
-        [ManyToOne(Name = "Company", Column = "CompanyId", NotNull = true, Fetch = FetchMode.Select)]
+        [ManyToOne(Name = "Company", Column = "CompanyName", NotNull = true, Fetch = FetchMode.Select)]
         [DataMember]
         public virtual Company Company { get; set; }
 

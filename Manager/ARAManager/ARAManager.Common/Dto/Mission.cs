@@ -29,8 +29,8 @@ namespace ARAManager.Common.Dto {
         public virtual string Name { get; set; }
 
         [DataMember]
-        [Property(Column = "Descriptor", Name = "Descriptor", TypeType = typeof(string), Length = 500, NotNull = true)]
-        public virtual string Descriptor { get; set; }
+        [Property(Column = "Description", Name = "Description", TypeType = typeof(string), Length = 500, NotNull = true)]
+        public virtual string Description { get; set; }
 
         [DataMember]
         [Property(Column = "Avatar", Name = "Avatar", TypeType = typeof(string), Length = 500, NotNull = true)]
@@ -44,11 +44,11 @@ namespace ARAManager.Common.Dto {
         [Property(Column = "NumTarget", Name = "NumTarget", TypeType = typeof(int), NotNull = true)]
         public virtual int NumTarget { get; set; }
 
-        [ManyToOne(Name = "Campaign", Column = "CampaignId", NotNull = false, Fetch = FetchMode.Select)]
+        [ManyToOne(Name = "Campaign", Column = "CampaignName", NotNull = false, Fetch = FetchMode.Select)]
         [DataMember]
         public virtual Campaign Campaign { get; set; }
 
-        [ManyToOne(Name = "PreMission", Column = "PreMission", NotNull = false, Fetch = FetchMode.Select)]
+        [ManyToOne(Name = "PreMission", Column = "MissionName", NotNull = false, Fetch = FetchMode.Select)]
         [DataMember]
         public virtual Mission PreMission { get; set; }
 

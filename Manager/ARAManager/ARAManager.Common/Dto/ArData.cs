@@ -37,7 +37,7 @@ namespace ARAManager.Common.Dto {
         [Property(Column = "YoutubeUrl", Name = "YoutubeUrl", TypeType = typeof(string), Length = 500, NotNull = true)]
         public virtual string YoutubeUrl { get; set; }
 
-        [ManyToOne(Name = "Target", Column = "TargetId", NotNull = false, Fetch = FetchMode.Select)]
+        [ManyToOne(Name = "Target", Column = "TargetName", NotNull = false, Fetch = FetchMode.Select)]
         [DataMember]
         public virtual Target Target { get; set; }
 

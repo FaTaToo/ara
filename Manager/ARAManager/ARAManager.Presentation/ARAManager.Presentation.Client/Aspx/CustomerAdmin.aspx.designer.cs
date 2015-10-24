@@ -85,22 +85,22 @@ namespace ARAManager.Presentation.Client.Aspx {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_Phone;
         
         /// <summary>
-        /// txtAccountId control.
+        /// txtUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAccountId;
+        protected global::System.Web.UI.WebControls.TextBox txtUserName;
         
         /// <summary>
-        /// RangeValidator_AccountId control.
+        /// CustomValidator_UserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator_AccountId;
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_UserName;
         
         /// <summary>
         /// CustomValidator_RequireFileds control.

@@ -25,7 +25,7 @@ namespace ARAManager.Common.Dto {
         public virtual int CompanyId { get; set; }
 
         [DataMember]
-        [Property(Column = "Name", Name = "Name", TypeType = typeof(string), Length = 100, NotNull = true)]
+        [Property(Column = "CompanyName", Name = "Name", TypeType = typeof(string), Length = 100, NotNull = true)]
         public virtual string Name { get; set; }
 
         [DataMember]
@@ -40,7 +40,7 @@ namespace ARAManager.Common.Dto {
         [Property(Column = "Phone", Name = "Phone", TypeType = typeof(string), Length = 20, NotNull = true)]
         public virtual string Phone { get; set; }
 
-        [ManyToOne(Column = "Account", Name = "Account", NotNull = true, Fetch = FetchMode.Select)]
+        [ManyToOne(Column = "UserName", Name = "Account", NotNull = true, Fetch = FetchMode.Select)]
         [DataMember]
         public virtual Account Account { get; set; }
 

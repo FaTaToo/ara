@@ -3,28 +3,35 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-2">
                 <ul class="nav nav-pills nav-stacked pull-left">
                     <li role="presentation">
                         <asp:TextBox ID="txtCompanyName" runat="server"
                             placeholder="Name of company" />
                     </li>
                     <li role="presentation">
-                        <asp:CustomValidator ID="CustomValidator_CompanyName" runat="server" ErrorMessage="CustomValidator"/>
+                        <asp:CustomValidator ID="CustomValidator_CompanyName" runat="server" ErrorMessage="CustomValidator" />
                     </li>
                     <li role="presentation">
                         <asp:TextBox ID="txtEmail" runat="server"
                             placeholder="Email address" />
                     </li>
                     <li role="presentation">
-                        <asp:CustomValidator ID="CustomValidator_EmailAddress" runat="server" ErrorMessage="CustomValidator"/>
+                        <asp:CustomValidator ID="CustomValidator_EmailAddress" runat="server" ErrorMessage="CustomValidator" />
                     </li>
                     <li role="presentation">
                         <asp:TextBox ID="txtPhone" runat="server"
                             placeholder="Phone number" />
                     </li>
-                     <li role="presentation">
-                         <asp:CustomValidator ID="CustomValidator_PhoneNumber" runat="server" ErrorMessage="CustomValidator"/>
+                    <li role="presentation">
+                        <asp:CustomValidator ID="CustomValidator_PhoneNumber" runat="server" ErrorMessage="CustomValidator" />
+                    </li>
+                    <li role="presentation">
+                        <asp:TextBox ID="txtUserName" runat="server"
+                            placeholder="UserName" />
+                    </li>
+                    <li role="presentation">
+                        <asp:CustomValidator ID="CustomValidator_UserName" runat="server" ErrorMessage="CustomValidator" />
                     </li>
                     <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_RequireFileds" runat="server"
@@ -44,9 +51,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" runat="server">
     <div class="container">
         <div class="row">
-            <div class="col-md-12" style="margin-top: 20px;">
+            <div class="col-md-6" style="margin-top: 20px; margin-left: 20px">
                 <asp:TextBox ID="txtCompany"
-                    Width="55%"
+                    Width="100%"
                     BackColor="darkred"
                     Font-Size="large"
                     Font-Bold="True"
@@ -57,36 +64,36 @@
                     runat="server">COMPANY</asp:TextBox>
             </div>
         </div>
-                <div class="row">
-            <div class="col-md-12" style="margin-top: 20px;">
+        <div class="row">
+            <div class="col-md-6" style="margin-top: 20px; margin-left: 20px">
                 <div class="btn-toolbar" role="toolbar">
                     <div class="btn-group" role="group">
-                        <asp:Button ID="btnSelectAll" runat="server" 
-                            CssClass="btn btn-block"
+                        <asp:Button ID="btnSelectAll" runat="server"
+                            CssClass="btn btn-warning"
                             Text="Select all" />
                     </div>
                     <div class="btn-group" role="group">
-                        <asp:Button ID="btnDeselectAll" runat="server" 
+                        <asp:Button ID="btnDeselectAll" runat="server"
                             CssClass="btn btn-warning"
                             Text="Deselect all" />
                     </div>
                     <div class="btn-group" role="group">
-                        <asp:Button ID="btnDelete" runat="server" 
+                        <asp:Button ID="btnDelete" runat="server"
                             CssClass="btn btn-danger"
                             Text="Delete" />
                     </div>
-                     <div class="btn-group" role="group">
-                        <asp:Button ID="btnClear" runat="server" 
-                            CssClass="btn btn-primary"
+                    <div class="btn-group" role="group">
+                        <asp:Button ID="btnClear" runat="server"
+                            CssClass="btn btn-warning"
                             Text="Clear" />
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12" style="margin-top: 20px; margin-bottom: 20px">
+            <div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px">
                 <asp:GridView ID="GridViewResult" runat="server"
-                    Width="55%"
+                    Width="100%"
                     AllowPaging="True"
                     AllowSorting="True"
                     AutoGenerateColumns="False"

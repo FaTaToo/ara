@@ -28,16 +28,15 @@ namespace ARAManager.Common.Dto {
         [DataMember]
         [Property(Column = "UserName", Name = "UserName", TypeType = typeof(string), Length = 100, NotNull = true)]
         public virtual string UserName { get; set; }
-
-
+        
         [DataMember]
         [Property(Column = "Password", Name = "Password", TypeType = typeof(string), Length = 100, NotNull = true)]
         public virtual string Password { get; set; }
 
-        [ManyToOne(Name = "AccountType", Column = "AccountTypeId", NotNull = true, Fetch = FetchMode.Select)]
         [DataMember]
-        public virtual AccountType AccountType { get; set; }
+        [Property(Column = "GroupNum", Name = "GroupNum", TypeType = typeof(int), NotNull = true)]
+        public virtual int GroupNum { get; set; }
+       
         #endregion IProperties
-
     }
 }

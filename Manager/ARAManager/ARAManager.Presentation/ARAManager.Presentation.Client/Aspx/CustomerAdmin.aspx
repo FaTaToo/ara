@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-2">
                 <ul class="nav nav-pills nav-stacked pull-left">
                     <li role="presentation">
                         <asp:TextBox ID="txtFirstName" runat="server"
@@ -34,17 +34,11 @@
                         <asp:CustomValidator ID="CustomValidator_Phone" runat="server" ErrorMessage="CustomValidator"></asp:CustomValidator>
                     </li>
                     <li role="presentation">
-                        <asp:TextBox ID="txtAccountId" runat="server"
-                            placeholder="Account Id number" />
+                        <asp:TextBox ID="txtUserName" runat="server"
+                            placeholder="UserName" />
                     </li>
                     <li role="presentation">
-                        <asp:RangeValidator ID="RangeValidator_AccountId" runat="server"
-                            ForeColor="Red"
-                            Type="Integer"
-                            MinimumValue="1"
-                            MaximumValue="2147483647"
-                            ControlToValidate="txtAccountId"
-                            ErrorMessage="Please enter account id in range from 0 to 2,147,483,647." />
+                        <asp:CustomValidator ID="CustomValidator_UserName" runat="server" ErrorMessage="CustomValidator" />
                     </li>
                     <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_RequireFileds" runat="server"
@@ -64,9 +58,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" runat="server">
     <div class="container">
         <div class="row">
-            <div class="col-md-12" style="margin-top: 20px;">
+            <div class="col-md-6" style="margin-top: 20px;margin-left: 20px">
                 <asp:TextBox ID="txtCustomer"
-                    Width="55%"
+                    Width="100%"
                     BackColor="darkred"
                     Font-Size="large"
                     Font-Bold="True"
@@ -78,11 +72,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12" style="margin-top: 20px;">
+            <div class="col-md-6" style="margin-top: 20px; margin-left: 20px;">
                 <div class="btn-toolbar" role="toolbar">
                     <div class="btn-group" role="group">
                         <asp:Button ID="btnSelectAll" runat="server"
-                            CssClass="btn btn-block"
+                            CssClass="btn btn-warning"
                             Text="Select all" />
                     </div>
                     <div class="btn-group" role="group">
@@ -97,16 +91,16 @@
                     </div>
                     <div class="btn-group" role="group">
                         <asp:Button ID="btnClear" runat="server"
-                            CssClass="btn btn-primary"
+                            CssClass="btn btn-warning"
                             Text="Clear" />
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12" style="margin-top: 20px; margin-bottom: 20px">
+            <div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px;margin-left: 20px">
                 <asp:GridView ID="GridViewResult" runat="server"
-                    Width="55%"
+                    Width="100%"
                     AllowPaging="True"
                     AllowSorting="True"
                     AutoGenerateColumns="False"

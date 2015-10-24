@@ -56,7 +56,7 @@ namespace ARAManager.Common.Dto
         [Property(Column = "Phone", Name = "Phone", TypeType = typeof(string), Length = 20, NotNull = true)]
         public virtual string Phone { get; set; }
 
-        [ManyToOne(Column = "Account", Name = "Account", NotNull = true, Fetch = FetchMode.Select)]
+        [ManyToOne(Column = "UserName", Name = "Account", NotNull = true, Fetch = FetchMode.Select)]
         [DataMember]
         public virtual Account Account { get; set; }
 

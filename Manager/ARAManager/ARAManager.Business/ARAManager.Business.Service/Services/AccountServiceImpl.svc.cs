@@ -111,6 +111,13 @@ namespace ARAManager.Business.Service.Services {
                 }
             }
         }
+
+        public int CheckLogin(string username, string password)
+        {
+            var srvDao = NinjectKernelFactory.Kernel.Get<IAccountDataAccess>();
+            var criteria = DetachedCriteria.For<Account>();
+            return 0;
+        }
         #endregion IMethods
     }
 }

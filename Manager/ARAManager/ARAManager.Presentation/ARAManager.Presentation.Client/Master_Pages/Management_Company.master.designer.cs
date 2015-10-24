@@ -13,15 +13,6 @@ namespace ARAManager.Presentation.Client.Master_Pages {
     public partial class Management_Company {
         
         /// <summary>
-        /// btnStaff control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnStaff;
-        
-        /// <summary>
         /// btnCampaign control.
         /// </summary>
         /// <remarks>

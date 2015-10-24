@@ -11,62 +11,50 @@ create table ARA_Customer
 	Phone		varchar(20) unique,
 	---
 	--Foreign key
-	AccountId	int unique not null,
+	UserName	varchar(100) unique not null,
 	---
 	RowVersion	RowVersion
 )
 
-create table ARA_AccountType
-(
-	AccountTypeId	int not null primary key identity(1,1),
-	Name			nvarchar(100) unique not null,
-	GroupType		int not null,
-	---
-	--Check whether the account is business type or customer type.
-	constraint check_GroupType check (GroupType in (1,2)),
-	---
-	RowVersion		RowVersion
-)
-
 create table ARA_Account
 (
-	AccountId		int not null primary key identity(1,1),
-	UserName		varchar(100) unique not null,
-	Password		varchar(100) not null,
+	AccountId	int not null primary key identity(1,1),
+	UserName	varchar(100) unique not null,
+	Password	varchar(100) not null,
+	GroupNum	int not null,
 	---
-	--Foreign key
-	AccountTypeId	int not null,
-	---
+	--Check whether the GroupNum is business type or customer type.
+	constraint check_GroupNum check (GroupNum in (1,2)),
 	RowVersion	RowVersion
 )
 
 create table ARA_Company
 (
 	CompanyId	int not null primary key identity(1,1),
-	Name		nvarchar(100) unique not null,
+	CompanyName	nvarchar(100) unique not null,
 	Address		nvarchar(500) not null,
 	Email		varchar(100) unique not null,
 	Phone		varchar(20) unique not null,
 	---
 	--Foreign key
-	AccountId	int unique not null,
+	UserName	varchar(100) unique not null,
 	RowVersion	RowVersion
 )
 
 create table ARA_Campaign
 (
 	CampaignId	int not null primary key identity(1,1),
-	Name		nvarchar(100) unique not null,
+	CampaignName nvarchar(100) unique not null,
 	StartTime	datetime not null,
 	EndTime		datetime,
-	Descriptor	nvarchar(500) not null,
+	Description	nvarchar(500) not null,
 	Banner		varchar(500) not null,
 	Avatar		varchar(500) not null,
 	Gift		nvarchar(500) not null,
 	NumMission	int	not null,
 	---
 	--Foreign key
-	CompanyId	int not null,
+	CompanyName	nvarchar(100) unique not null,
 	---
 	RowVersion	RowVersion
 )
@@ -74,15 +62,14 @@ create table ARA_Campaign
 create table ARA_Mission
 (
 	MissionId	int not null primary key identity(1,1),
-	Name		nvarchar(100) unique not null,		
-	Descriptor	nvarchar(500) not null,
+	MissionName	nvarchar(100) unique not null,		
+	Description	nvarchar(500) not null,
 	Avatar		varchar(500) not null,	
 	IsComplete  bit not null,	
 	NumTarget	int not null,
 	---
 	--Foreign key
-	CampaignId	int not null,
-	PreMission	int unique,
+	CampaignName nvarchar(100) unique not null,
 	---
 	RowVersion	RowVersion
 )
@@ -91,15 +78,14 @@ create table ARA_Target
 (
 	TargetId	int not null primary key identity(1,1),
 	Url			varchar(500) not null,
-	Name		nvarchar(100) unique not null,
+	TargetName	nvarchar(100) unique not null,
 	Latitude	int,
 	Longitude	int,
-	Descriptor	nvarchar(500) not null,
+	Description	nvarchar(500) not null,
 	IsComplete  bit not null,	
 	--
 	--Foreign key
-	MissionId	int not null,
-	PreTarget	int unique,
+	MissionName	nvarchar(100) not null,		
 	---
 	RowVersion	RowVersion
 )
@@ -112,7 +98,7 @@ create table ARA_ArData
 	YoutubeUrl	nvarchar(500),
 	---
 	--Foreign key
-	TargetId	int unique not null,
+	TargetName	nvarchar(100) unique not null,
 	---
 	RowVersion	RowVersion
 )
@@ -126,7 +112,7 @@ create table ARA_Subscription
 	Comment		nvarchar(500) not null,
 	Rating		int not null,
 	---
-	--Check whether the account is business type or customer type.
+	--Check whether the rating value is suitable.
 	constraint check_Rating check (Rating in (1,2,3,4,5)),
 	--primary key
 	Primary key (CustomerId,CampaignId),
@@ -138,33 +124,29 @@ create table ARA_Subscription
 --ADD FOREIGN KEY-------------------------------------------------------------------------------------------
 Alter table ARA_Customer
 Add constraint FK_ARA_Customer
-	foreign key (AccountId) references ARA_Account(AccountId)
-
-Alter table ARA_Account
-Add constraint FK_ARA_Account
-	foreign key (AccountTypeId) references ARA_AccountType(AccountTypeId)
+	foreign key (UserName) references ARA_Account(UserName)
 
 Alter table ARA_Company
 Add constraint FK_ARA_Company
-	foreign key (AccountId) references ARA_Account(AccountId)
+	foreign key (UserName) references ARA_Account(UserName)
 
 Alter table ARA_Campaign
 Add constraint FK_ARA_Campaign
-	foreign key (CompanyId) references ARA_Company(CompanyId)
+	foreign key (CompanyName) references ARA_Company(CompanyName)
 
 Alter table ARA_Mission
 Add constraint FK_ARA_Mission
-	foreign key (CampaignId) references ARA_Campaign(CampaignId),
-	foreign key (PreMission) references ARA_Mission(MissionId) 
+	foreign key (CampaignName) references ARA_Campaign(CampaignName),
+	foreign key (MissionName) references ARA_Mission(MissionName) 
 
 Alter table ARA_Target
 Add constraint FK_ARA_Target 
-	foreign key (MissionId) references ARA_Mission(MissionId),
-	foreign key (PreTarget) references ARA_Target(TargetId)
+	foreign key (MissionName) references ARA_Mission(MissionName),
+	foreign key (TargetName) references ARA_Target(TargetName)
 
 Alter table ARA_ArData
 Add constraint FK_ARA_ArData
-	foreign key (TargetId) references ARA_Target(TargetId)
+	foreign key (TargetName) references ARA_Target(TargetName)
 
 Alter table ARA_Subscription
 Add constraint FK_ARA_Subscription
@@ -173,15 +155,8 @@ Add constraint FK_ARA_Subscription
 ------------------------------------------------------------------------------------------------------------
 
 --INSERT DATA-----------------------------------------------------------------------------------------------
-insert into ARA_AccountType (Name,GroupType) values ('Limited company',1)
-insert into ARA_AccountType (Name,GroupType) values ('Movie theater',1)
-insert into ARA_AccountType (Name,GroupType) values ('Stock company',1)
-insert into ARA_AccountType (Name,GroupType) values ('Shop',1)
-insert into ARA_AccountType (Name,GroupType) values ('Customer',2)
+insert into ARA_Account(UserName,Password,GroupNum) values ('admin','admin',1)
+insert into ARA_Account(UserName,Password,GroupNum) values ('CA1','CA1',2)
+
+insert into ARA_Company(CompanyName,Address,Email,Phone,UserName) values ('NEC','abc','phucls288@gmail.com','0933111875','CA1')
 ------------------------------------------------------------------------------------------------------------
-
-insert into ARA_AccountType (Name,GroupType) values ('root',1)
-insert into ARA_Account (UserName,Password,AccountTypeId) values ('admin','admin',6)
-
-insert into ARA_Account (UserName,Password,AccountTypeId) values ('Lotte','123456',2)
-insert into ARA_Company(Name,Address,Email,Phone,AccountId) values ('ELCA', 'abc', 'abc@abc.abc', '0933111875',2)

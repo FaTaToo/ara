@@ -104,10 +104,8 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Services\AccountServiceImpl.svc" />
-    <Content Include="Services\AccountTypeServiceImpl.svc" />
     <Content Include="Services\ArDataServiceImpl.svc" />
     <Content Include="Services\CampaignServiceImpl.svc" />
-    <Content Include="Services\CompanyAccountServiceImpl.svc" />
     <Content Include="Services\CompanyServiceImpl.svc" />
     <Content Include="Services\CustomerServiceImpl.svc" />
     <Content Include="Services\MissionServiceImpl.svc" />
@@ -132,17 +130,11 @@
     <Compile Include="Services\AccountServiceImpl.svc.cs">
       <DependentUpon>AccountServiceImpl.svc</DependentUpon>
     </Compile>
-    <Compile Include="Services\AccountTypeServiceImpl.svc.cs">
-      <DependentUpon>AccountTypeServiceImpl.svc</DependentUpon>
-    </Compile>
     <Compile Include="Services\ArDataServiceImpl.svc.cs">
       <DependentUpon>ArDataServiceImpl.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\CampaignServiceImpl.svc.cs">
       <DependentUpon>CampaignServiceImpl.svc</DependentUpon>
-    </Compile>
-    <Compile Include="Services\CompanyAccountServiceImpl.svc.cs">
-      <DependentUpon>CompanyAccountServiceImpl.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\CompanyServiceImpl.svc.cs">
       <DependentUpon>CompanyServiceImpl.svc</DependentUpon>

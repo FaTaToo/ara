@@ -13,6 +13,7 @@
 using System;
 using System.Web.Security;
 using System.Web.UI;
+using ARAManager.Presentation.Connectivity;
 
 namespace ARAManager.Presentation.Client.Aspx {
     public partial class Default : Page {
@@ -22,7 +23,6 @@ namespace ARAManager.Presentation.Client.Aspx {
         }
 
         protected void btnLogin_OnClick(object sender, EventArgs e) {
-            // Replace by checking account service
             if ((UserEmail.Text == "admin") && (UserPass.Text == "admin")) {
                 FormsAuthentication.RedirectFromLoginPage(UserEmail.Text, cbRememberPassword.Checked);
 

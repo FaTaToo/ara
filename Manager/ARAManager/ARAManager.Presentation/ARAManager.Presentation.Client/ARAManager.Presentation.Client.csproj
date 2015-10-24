@@ -134,17 +134,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Aspx\CampaignCompany.aspx" />
-    <Content Include="Aspx\CategoryAdmin.aspx" />
     <Content Include="Aspx\CompanyAdmin.aspx" />
     <Content Include="Aspx\CustomerAdmin.aspx" />
     <Content Include="Aspx\Default.aspx" />
     <Content Include="Aspx\EditCampaignCompany.aspx" />
-    <Content Include="Aspx\EditCategoryAdmin.aspx" />
     <Content Include="Aspx\EditCompanyAdmin.aspx" />
     <Content Include="Aspx\EditCustomerAdmin.aspx" />
-    <Content Include="Aspx\EditStaffCompany.aspx" />
     <Content Include="Aspx\HomeAdmin.aspx" />
-    <Content Include="Aspx\StaffCompany.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -304,13 +300,6 @@
     <Compile Include="Aspx\CampaignCompany.aspx.designer.cs">
       <DependentUpon>CampaignCompany.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Aspx\CategoryAdmin.aspx.cs">
-      <DependentUpon>CategoryAdmin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Aspx\CategoryAdmin.aspx.designer.cs">
-      <DependentUpon>CategoryAdmin.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Aspx\CompanyAdmin.aspx.cs">
       <DependentUpon>CompanyAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -339,13 +328,6 @@
     <Compile Include="Aspx\EditCampaignCompany.aspx.designer.cs">
       <DependentUpon>EditCampaignCompany.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Aspx\EditCategoryAdmin.aspx.cs">
-      <DependentUpon>EditCategoryAdmin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Aspx\EditCategoryAdmin.aspx.designer.cs">
-      <DependentUpon>EditCategoryAdmin.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Aspx\EditCompanyAdmin.aspx.cs">
       <DependentUpon>EditCompanyAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -360,26 +342,12 @@
     <Compile Include="Aspx\EditCustomerAdmin.aspx.designer.cs">
       <DependentUpon>EditCustomerAdmin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Aspx\EditStaffCompany.aspx.cs">
-      <DependentUpon>EditStaffCompany.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Aspx\EditStaffCompany.aspx.designer.cs">
-      <DependentUpon>EditStaffCompany.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Aspx\HomeAdmin.aspx.cs">
       <DependentUpon>HomeAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Aspx\HomeAdmin.aspx.designer.cs">
       <DependentUpon>HomeAdmin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Aspx\StaffCompany.aspx.cs">
-      <DependentUpon>StaffCompany.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Aspx\StaffCompany.aspx.designer.cs">
-      <DependentUpon>StaffCompany.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
