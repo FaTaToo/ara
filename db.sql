@@ -40,19 +40,6 @@ create table ARA_Account
 	RowVersion	RowVersion
 )
 
-create table ARA_CompanyAccount
-(
-	AccountId	int not null,
-	CompanyId	int not null,
-	UserName	nvarchar(100) not null,
-	Password	varchar(100) not null,
-	---
-	--primary key
-	Primary key (AccountId, CompanyId),
-	---
-	RowVersion	RowVersion
-)
-
 create table ARA_Company
 (
 	CompanyId	int not null primary key identity(1,1),
@@ -178,11 +165,6 @@ Add constraint FK_ARA_Target
 Alter table ARA_ArData
 Add constraint FK_ARA_ArData
 	foreign key (TargetId) references ARA_Target(TargetId)
-
-Alter table ARA_CompanyAccount
-Add constraint FK_ARA_CompanyAccount
-	foreign key (AccountId) references ARA_Account(AccountId),
-	foreign key (CompanyId) references ARA_Company(CompanyId)
 
 Alter table ARA_Subscription
 Add constraint FK_ARA_Subscription
