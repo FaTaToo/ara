@@ -61,6 +61,8 @@ create table ARA_Company
 	Email		varchar(100) unique not null,
 	Phone		varchar(20) unique not null,
 	---
+	--Foreign key
+	AccountId	int unique not null,
 	RowVersion	RowVersion
 )
 
@@ -155,6 +157,10 @@ Alter table ARA_Account
 Add constraint FK_ARA_Account
 	foreign key (AccountTypeId) references ARA_AccountType(AccountTypeId)
 
+Alter table ARA_Company
+Add constraint FK_ARA_Company
+	foreign key (AccountId) references ARA_Account(AccountId)
+
 Alter table ARA_Campaign
 Add constraint FK_ARA_Campaign
 	foreign key (CompanyId) references ARA_Company(CompanyId)
@@ -191,3 +197,9 @@ insert into ARA_AccountType (Name,GroupType) values ('Stock company',1)
 insert into ARA_AccountType (Name,GroupType) values ('Shop',1)
 insert into ARA_AccountType (Name,GroupType) values ('Customer',2)
 ------------------------------------------------------------------------------------------------------------
+
+insert into ARA_AccountType (Name,GroupType) values ('root',1)
+insert into ARA_Account (UserName,Password,AccountTypeId) values ('admin','admin',6)
+
+insert into ARA_Account (UserName,Password,AccountTypeId) values ('Lotte','123456',2)
+insert into ARA_Company(Name,Address,Email,Phone,AccountId) values ('ELCA', 'abc', 'abc@abc.abc', '0933111875',2)
