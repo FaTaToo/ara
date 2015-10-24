@@ -31,7 +31,15 @@ namespace ARAManager.Presentation.Connectivity
         /// Account service name
         /// </summary>
         private const string ACCOUNT_SERVICE_NAME = "AccountService";
-
+        private const string ACCOUNT_TYPE_SERVICE_NAME = "AccountTypeService";
+        private const string AR_DATA_SERVICE_NAME = "ArDataService";
+        private const string CAMPAIGN_SERVICE_NAME = "CampaignService";
+        private const string COMPANY_ACCOUNT_SERVICE_NAME = "CompanyAccountService";
+        private const string COMPANY_SERVICE_NAME = "CompanyService";
+        private const string CUSTOMER_SERVICE_NAME = "CustomerService";
+        private const string MISSION_SERVICE_NAME = "MissionService";
+        private const string SUBSCRIPTION_SERVICE_NAME = "SubscriptionService";
+        private const string TARGET_SERVICE_NAME = "TargetService";
         #endregion Constants
 
         #region IFields
@@ -71,6 +79,31 @@ namespace ARAManager.Presentation.Connectivity
                         case ACCOUNT_SERVICE_NAME:
                             m_serviceFactories[endpoint.Name] = new ChannelFactory<IAccountServiceImpl>(endpoint.Name);
                             break;
+                        case AR_DATA_SERVICE_NAME:
+                            m_serviceFactories[endpoint.Name] = new ChannelFactory<IAccountServiceImpl>(endpoint.Name);
+                            break;
+                        case CAMPAIGN_SERVICE_NAME:
+                            m_serviceFactories[endpoint.Name] = new ChannelFactory<IAccountServiceImpl>(endpoint.Name);
+                            break;
+                        case COMPANY_ACCOUNT_SERVICE_NAME:
+                            m_serviceFactories[endpoint.Name] = new ChannelFactory<IAccountServiceImpl>(endpoint.Name);
+                            break;
+                        case COMPANY_SERVICE_NAME:
+                            m_serviceFactories[endpoint.Name] = new ChannelFactory<IAccountServiceImpl>(endpoint.Name);
+                            break;
+                        case CUSTOMER_SERVICE_NAME:
+                            m_serviceFactories[endpoint.Name] = new ChannelFactory<IAccountServiceImpl>(endpoint.Name);
+                            break;
+                        case MISSION_SERVICE_NAME:
+                            m_serviceFactories[endpoint.Name] = new ChannelFactory<IAccountServiceImpl>(endpoint.Name);
+                            break;
+                        case SUBSCRIPTION_SERVICE_NAME:
+                            m_serviceFactories[endpoint.Name] = new ChannelFactory<IAccountServiceImpl>(endpoint.Name);
+                            break;
+                        case TARGET_SERVICE_NAME:
+                            m_serviceFactories[endpoint.Name] = new ChannelFactory<IAccountServiceImpl>(endpoint.Name);
+                            break;
+
                     }
                 }
             }
@@ -83,7 +116,7 @@ namespace ARAManager.Presentation.Connectivity
         /// <summary>
         /// Gets the application information service.
         /// </summary>
-        public static IAccountServiceImpl EmployeeService
+        public static IAccountServiceImpl AccountService
         {
             get
             {
@@ -91,6 +124,76 @@ namespace ARAManager.Presentation.Connectivity
             }
         }
 
+        public static IAccountTypeServiceImpl AccountTypeService
+        {
+            get
+            {
+                return Get<IAccountTypeServiceImpl>(ACCOUNT_TYPE_SERVICE_NAME);
+            }
+        }
+
+        public static IArDataServiceImpl ArDataService
+        {
+            get
+            {
+                return Get<IArDataServiceImpl>(AR_DATA_SERVICE_NAME);
+            }
+        }
+
+        public static ICampaignServiceImpl CampaignService
+        {
+            get
+            {
+                return Get<ICampaignServiceImpl>(CAMPAIGN_SERVICE_NAME);
+            }
+        }
+
+        public static ICompanyAccountServiceImpl CompanyAccountService
+        {
+            get
+            {
+                return Get<ICompanyAccountServiceImpl>(COMPANY_ACCOUNT_SERVICE_NAME);
+            }
+        }
+
+        public static ICompanyServiceImpl CompanyService
+        {
+            get
+            {
+                return Get<ICompanyServiceImpl>(COMPANY_SERVICE_NAME);
+            }
+        }
+
+        public static ICustomerServiceImpl CustomerService
+        {
+            get
+            {
+                return Get<ICustomerServiceImpl>(CUSTOMER_SERVICE_NAME);
+            }
+        }
+        public static IMissionServiceImpl MissionService
+        {
+            get
+            {
+                return Get<IMissionServiceImpl>(MISSION_SERVICE_NAME);
+            }
+        }
+
+        public static ISubscriptionServiceImpl SubscriptionService
+        {
+            get
+            {
+                return Get<ISubscriptionServiceImpl>(SUBSCRIPTION_SERVICE_NAME);
+            }
+        }
+
+        public static ITargetServiceImpl TargetService
+        {
+            get
+            {
+                return Get<ITargetServiceImpl>(TARGET_SERVICE_NAME);
+            }
+        }
         #endregion IProperties
         
         #region IMethods
