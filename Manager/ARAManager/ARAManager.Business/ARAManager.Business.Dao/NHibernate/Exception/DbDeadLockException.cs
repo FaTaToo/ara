@@ -14,8 +14,7 @@ using System;
 using System.Runtime.Serialization;
 using NHibernate;
 
-namespace ARAManager.Business.Dao.NHibernate.Exception
-{
+namespace ARAManager.Business.Dao.NHibernate.Exception {
     /// <summary>
     /// The transaction has been chosen as deadlock victim.
     /// </summary>

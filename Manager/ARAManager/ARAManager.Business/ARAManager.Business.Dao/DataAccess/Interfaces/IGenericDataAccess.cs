@@ -13,15 +13,13 @@
 using System.Collections.Generic;
 using NHibernate.Criterion;
 
-namespace ARAManager.Business.Dao.DataAccess.Interfaces
-{
+namespace ARAManager.Business.Dao.DataAccess.Interfaces {
     /// <summary>
     /// All generic methods of NHibernate
     /// </summary>
     /// <typeparam name="T">type of object</typeparam>
     /// <typeparam name="TPk">type of primary key</typeparam>
-    public interface IGenericDataAccess<T, in TPk>
-    {
+    public interface IGenericDataAccess<T, in TPk> {
         /// <summary>
         /// Saves the specified item.
         /// </summary>

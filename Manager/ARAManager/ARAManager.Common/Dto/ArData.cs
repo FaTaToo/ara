@@ -15,7 +15,7 @@ using NHibernate.Mapping.Attributes;
 
 namespace ARAManager.Common.Dto {
     [DataContract]
-    [Class(Table = "[ARA_ArData]", NameType = typeof(ArData), Lazy = false)]
+    [Class(Table = "ARA_ArData", NameType = typeof(ArData), Lazy = false)]
     public class ArData: ModelBase {
 
         #region IProperties

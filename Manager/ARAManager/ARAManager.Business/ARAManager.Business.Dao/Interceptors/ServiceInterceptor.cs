@@ -49,6 +49,5 @@ namespace ARAManager.Business.Dao.Interceptors {
         }
 
         #endregion IMethods
-
     }
 }

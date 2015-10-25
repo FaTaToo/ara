@@ -126,8 +126,7 @@ namespace ARAManager.Business.Service.Services {
             var result = srvDao.FindByCriteria(criteria).First();
             return ((Account) result).GroupNum;
         }
-
-       
+        
         #endregion IMethods
     }
 }

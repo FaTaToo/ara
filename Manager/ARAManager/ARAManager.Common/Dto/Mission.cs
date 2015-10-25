@@ -15,7 +15,7 @@ using NHibernate.Mapping.Attributes;
 
 namespace ARAManager.Common.Dto {
     [DataContract]
-    [Class(Table = "[ARA_Mission]", NameType = typeof(Mission), Lazy = false)]
+    [Class(Table = "ARA_Mission", NameType = typeof(Mission), Lazy = false)]
     public class Mission: ModelBase {
         #region IProperties
 
@@ -25,7 +25,7 @@ namespace ARAManager.Common.Dto {
         public virtual int MissionId { get; set; }
 
         [DataMember]
-        [Property(Column = "Name", Name = "Name", TypeType = typeof(string), Length = 100, NotNull = true)]
+        [Property(Column = "MissionName", Name = "Name", TypeType = typeof(string), Length = 100, NotNull = true)]
         public virtual string Name { get; set; }
 
         [DataMember]
@@ -47,10 +47,6 @@ namespace ARAManager.Common.Dto {
         [ManyToOne(Name = "Campaign", Column = "CampaignName", NotNull = false, Fetch = FetchMode.Select)]
         [DataMember]
         public virtual Campaign Campaign { get; set; }
-
-        [ManyToOne(Name = "PreMission", Column = "MissionName", NotNull = false, Fetch = FetchMode.Select)]
-        [DataMember]
-        public virtual Mission PreMission { get; set; }
 
         #endregion IProperties
     }

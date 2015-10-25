@@ -31,8 +31,7 @@ namespace ARAManager.Business.Dao.NHibernate.Transaction {
     /// The class cannot prevent a forced distributed connection when the option
     /// <c>RequiresNew</c> is used in the constructor.
     /// </remarks>
-    public class NhTransactionScope : IDisposable
-    {
+    public class NhTransactionScope : IDisposable {
         #region Constants
 
         /// <summary>
@@ -103,8 +102,7 @@ namespace ARAManager.Business.Dao.NHibernate.Transaction {
         /// enumeration that describes the transaction requirements associated
         /// with this transaction scope.
         /// </param>
-        public NhTransactionScope(TransactionScopeOption scopeOption)
-        {
+        public NhTransactionScope(TransactionScopeOption scopeOption) {
             // No :this(...) -> underlying TransactionScope constructors implementations are different
             m_transactionScope = new TransactionScope(scopeOption);
             InitializeScopeLinking(scopeOption);

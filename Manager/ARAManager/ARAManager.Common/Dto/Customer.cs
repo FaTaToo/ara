@@ -17,7 +17,7 @@ using NHibernate.Mapping.Attributes;
 namespace ARAManager.Common.Dto
 {
     [DataContract]
-    [Class(Table = "[ARA_Customer]", NameType = typeof(Customer), Lazy = false)]
+    [Class(Table = "ARA_Customer", NameType = typeof(Customer), Lazy = false)]
     public class Customer : ModelBase
     {
 
@@ -45,7 +45,7 @@ namespace ARAManager.Common.Dto
         public virtual string BirthDay { get; set; }
 
         [DataMember]
-        [Property(Column = "Address", Name = "Address", TypeType = typeof(string), Length = 500, NotNull = true)]
+        [Property(Column = "Address", Name = "Address", TypeType = typeof(string), Length = 500, NotNull = false)]
         public virtual string Address { get; set; }
 
         [DataMember]

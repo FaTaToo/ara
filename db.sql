@@ -105,17 +105,15 @@ create table ARA_ArData
 
 create table ARA_Subscription
 (
+	SubscriptionId	nvarchar(100) primary key,	
 	CustomerId	int not null,
 	CampaignId	int not null,
 	IsComplete	bit not null,
-	GiftCode	char(20),
 	Comment		nvarchar(500) not null,
 	Rating		int not null,
 	---
 	--Check whether the rating value is suitable.
 	constraint check_Rating check (Rating in (1,2,3,4,5)),
-	--primary key
-	Primary key (CustomerId,CampaignId),
 	---
 	RowVersion	RowVersion
 )
@@ -136,13 +134,11 @@ Add constraint FK_ARA_Campaign
 
 Alter table ARA_Mission
 Add constraint FK_ARA_Mission
-	foreign key (CampaignName) references ARA_Campaign(CampaignName),
-	foreign key (MissionName) references ARA_Mission(MissionName) 
+	foreign key (CampaignName) references ARA_Campaign(CampaignName)
 
 Alter table ARA_Target
 Add constraint FK_ARA_Target 
-	foreign key (MissionName) references ARA_Mission(MissionName),
-	foreign key (TargetName) references ARA_Target(TargetName)
+	foreign key (MissionName) references ARA_Mission(MissionName)
 
 Alter table ARA_ArData
 Add constraint FK_ARA_ArData

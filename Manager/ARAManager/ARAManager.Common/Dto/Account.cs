@@ -14,8 +14,8 @@ using System.Runtime.Serialization;
 using NHibernate.Mapping.Attributes;
 
 namespace ARAManager.Common.Dto {
+    [Class(Table = "ARA_Account", NameType = typeof(Account), Lazy = false)]
     [DataContract]
-    [Class(Table = "[ARA_Account]", NameType = typeof(Account), Lazy = false)]
     public class Account: ModelBase {
 
         #region IProperties

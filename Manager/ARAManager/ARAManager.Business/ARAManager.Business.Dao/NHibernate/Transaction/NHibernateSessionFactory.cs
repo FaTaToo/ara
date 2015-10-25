@@ -17,6 +17,7 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.Reflection;
 using ARAManager.Business.Dao.NHibernate.Helper;
+using ARAManager.Common.Dto;
 using NHibernate;
 using NHibernate.Mapping.Attributes;
 
@@ -88,8 +89,8 @@ namespace ARAManager.Business.Dao.NHibernate.Transaction {
         /// NHibernate configuration
         /// </returns>
         public Configuration GetConfiguration(string connectionAlias) {
-            Assembly asm = this.GetAssemblyForResourceAssemblyName();
-            string resourceName = this.GetResourceName();
+            Assembly asm = GetAssemblyForResourceAssemblyName();
+            string resourceName = GetResourceName();
             Configuration cfg = new Configuration();
             cfg.Configure(asm, resourceName);
             if (string.Equals(cfg.GetProperty(Environment.SqlExceptionConverter), typeof(NHibernateSessionFactory).AssemblyQualifiedName))
@@ -99,7 +100,7 @@ namespace ARAManager.Business.Dao.NHibernate.Transaction {
                     typeof(NHibernateSessionFactory).AssemblyQualifiedName);
             }
 
-            this.SerializeDomainObjects(cfg);
+            SerializeDomainObjects(cfg);
             return cfg;
         }
 
@@ -117,10 +118,7 @@ namespace ARAManager.Business.Dao.NHibernate.Transaction {
             {
                 return m_sessionFactory.OpenSession(connection, interceptor);
             }
-            else
-            {
-                return m_sessionFactory.OpenSession(connection);
-            }
+            return m_sessionFactory.OpenSession(connection);
         }
 
         /// <summary>
@@ -151,8 +149,19 @@ namespace ARAManager.Business.Dao.NHibernate.Transaction {
         /// </summary>
         /// <param name="configuration">Nhibernate configuration</param>
         private void SerializeDomainObjects(Configuration configuration) {
-            HbmSerializer.Default.Validate = true; // Enable validation (optional)
-            configuration.AddInputStream(HbmSerializer.Default.Serialize(AssemblyLoadingHelper.GetOrLoadAssembly("ARAManager.Common")));
+            HbmSerializer.Default.Validate = true;
+            // Added by PhucLS - 20151025 - Fix Mapping in another way because assembly by ARAManager.Common is not corrected.
+            //                              Reason: Unknown
+            //configuration.AddInputStream(HbmSerializer.Default.Serialize(AssemblyLoadingHelper.GetOrLoadAssembly("ARAManager.Common")));
+            configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Account)));
+            configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Customer)));
+            configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Company)));
+            configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Campaign)));
+            configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Mission)));
+            configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Subscription)));
+            configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Target)));
+            configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(ArData)));
+            // Ended by PhucLS - 20151025
         }
 
         /// <summary>
@@ -193,7 +202,7 @@ namespace ARAManager.Business.Dao.NHibernate.Transaction {
                                                             ConfigurationManager.ConnectionStrings.Count));
             }
 
-            this.m_connectionString = ConfigurationManager.ConnectionStrings[0];
+            m_connectionString = ConfigurationManager.ConnectionStrings[0];
         }
 
         /// <summary>
@@ -226,11 +235,11 @@ namespace ARAManager.Business.Dao.NHibernate.Transaction {
         private DbConnection BuildConnection(string alias) {
             // use a provider instance and factory to create the connection
             string providerName = FetchProviderName(alias);
-            DbConnection connection = null;
             DbProviderFactory factory = DbProviderFactories.GetFactory(providerName);
-            connection = factory.CreateConnection();
+            var connection = factory.CreateConnection();
 
             // simple connection string validation
+            // ReSharper disable once CollectionNeverQueried.Local -- Added by PhucLS
             var builder = new DbConnectionStringBuilder {
                 ConnectionString = FetchConnectionString(alias)
             };
@@ -238,10 +247,11 @@ namespace ARAManager.Business.Dao.NHibernate.Transaction {
                 throw CreateInvalidFormattedConnectionStringException(FetchConnectionString(alias));
             }
 
+            // ReSharper disable once PossibleNullReferenceException -- Added by PhucLS
             connection.ConnectionString = builder.ConnectionString;
 
             if (connection == null) {
-                throw this.CreateProviderFactoryNoConnectionCreatedException();
+                throw CreateProviderFactoryNoConnectionCreatedException();
             }
 
             // everything ok --> hand connection to client.
@@ -298,6 +308,7 @@ namespace ARAManager.Business.Dao.NHibernate.Transaction {
         /// <returns>
         /// Complete settings for a given connection alias.
         /// </returns>
+        // ReSharper disable once UnusedParameter.Local - Added by PhucLS
         private ConnectionStringSettings FetchConnectionStringSettings(string alias) {
             return m_connectionString;
         }
@@ -336,7 +347,7 @@ namespace ARAManager.Business.Dao.NHibernate.Transaction {
         /// </summary>
         /// <returns>Session factory</returns>
         private ISessionFactory CreateSessionFactory() {
-            Configuration cfg = this.GetConfiguration(null);
+            Configuration cfg = GetConfiguration(null);
             return cfg.BuildSessionFactory();
         }
 

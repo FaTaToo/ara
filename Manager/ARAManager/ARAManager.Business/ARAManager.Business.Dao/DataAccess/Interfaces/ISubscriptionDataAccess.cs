@@ -12,10 +12,8 @@
 
 using ARAManager.Common.Dto;
 
-namespace ARAManager.Business.Dao.DataAccess.Interfaces
-{
-    public interface ISubscriptionDataAccess : IGenericDataAccess<Subscription, int>
-    {
+namespace ARAManager.Business.Dao.DataAccess.Interfaces {
+    public interface ISubscriptionDataAccess : IGenericDataAccess<Subscription, int> {
         #region Constants
 
         #endregion Constants

@@ -19,23 +19,21 @@ namespace ARAManager.Presentation.Client.Aspx {
     public partial class Default : Page {
         #region IMethods
         protected void Page_Load(object sender, EventArgs e) {
-            
+
         }
 
-        protected void btnLogin_OnClick(object sender, EventArgs e)
-        {
+        protected void btnLogin_OnClick(object sender, EventArgs e) {
             int login = -1;
             login = ClientServiceFactory.AccountService.AuthenticateUser(
                 UserEmail.Text, UserPass.Text);
-            if (login != -1)
-            {
+            if (login != -1) {
                 FormsAuthentication.RedirectFromLoginPage(UserEmail.Text, cbRememberPassword.Checked);
                 Response.Redirect(login == 1 ? "HomeAdmin.aspx" : "CampaignCompany.aspx");
-            }
-            else {
+            } else {
                 lblMessageIncredential.Text = "Invalid credentials. Please try again.";
             }
         }
+
         #endregion IMethods
     }
 }

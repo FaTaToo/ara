@@ -30,6 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Iesi.Collections">
       <HintPath>..\..\Lib\NHibernate 3.2\Iesi.Collections.dll</HintPath>
@@ -67,8 +70,6 @@
     <Compile Include="Dto\ModelBase.cs" />
     <Compile Include="Dto\Subscription.cs" />
     <Compile Include="Dto\Target.cs" />
-    <Compile Include="Exception\AccountType\AccountTypeAlreadyDeletedException.cs" />
-    <Compile Include="Exception\AccountType\AccountTypeNameAlreadyExistException.cs" />
     <Compile Include="Exception\Account\AccountAlreadyDeletedException.cs" />
     <Compile Include="Exception\Campaign\CampaignAlreadyDeletedException.cs" />
     <Compile Include="Exception\Campaign\CampaignNameAlreadyExistException.cs" />
@@ -104,7 +105,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exception\ArData\" />
-    <Folder Include="Exception\CompanyAccount\" />
     <Folder Include="Extension\" />
   </ItemGroup>
   <ItemGroup>
