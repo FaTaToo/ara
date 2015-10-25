@@ -43,5 +43,9 @@ namespace ARAManager.Common.Services {
         [PreserveReferences]
         [FaultContract(typeof(ConcurrentUpdateException))]
         void DeleteAccounts(List<int> accounts);
+
+        [OperationContract]
+        [PreserveReferences]
+        int AuthenticateUser(string username, string password);
     }
 }

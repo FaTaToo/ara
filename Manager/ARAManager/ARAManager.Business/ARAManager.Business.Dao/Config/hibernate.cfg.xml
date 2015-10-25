@@ -4,7 +4,6 @@
 
   <!-- an ISessionFactory instance -->
   <session-factory>
-
     <!-- properties -->
     <property name="connection.provider">NHibernate.Connection.UserSuppliedConnectionProvider</property>
     <property name="show_sql">true</property>

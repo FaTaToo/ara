@@ -10,6 +10,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using ARAManager.Business.Dao.DataAccess.Implementation;
+using ARAManager.Business.Dao.DataAccess.Interfaces;
 using ARAManager.Business.Dao.Interceptors;
 using ARAManager.Business.Service.Services;
 using ARAManager.Common.Services;
@@ -23,34 +25,6 @@ namespace ARAManager.Business.Service.Ninject
     /// </summary>
     public class ServiceBindingModule : NinjectModule
     {
-        #region Constants
-
-        #endregion Constants
-
-        #region SFields
-
-        #endregion SFields
-
-        #region IFields
-
-        #endregion IFields
-
-        #region SConstructor
-
-        #endregion SConstructor
-
-        #region IConstructors
-
-        #endregion IConstructors
-
-        #region IDestructor
-
-        #endregion IDestructor
-
-        #region SMethods
-
-        #endregion SMethods
-
         #region IMethods
 
         /// <summary>
@@ -58,17 +32,10 @@ namespace ARAManager.Business.Service.Ninject
         /// </summary>
         public override void Load()
         {
+            Bind<IAccountDataAccess>().To<AccountDataAccessImpl>();
             Bind<IAccountServiceImpl>().To<AccountServiceImpl>().Intercept().With<ServiceInterceptor>();
         }
 
         #endregion IMethods
-
-        #region SProperties
-
-        #endregion SProperties
-
-        #region IProperties
-
-        #endregion IProperties
     }
 }

@@ -1,11 +1,12 @@
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Service\bin\ARAManager.Business.Service.dll.config
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Service\bin\ARAManager.Business.Service.dll
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Service\bin\ARAManager.Business.Service.pdb
+D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Service\bin\ARAManager.Business.Dao.dll
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Service\bin\ARAManager.Common.dll
+D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Service\bin\Newtonsoft.Json.dll
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Service\bin\ARAManager.Common.pdb
+D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Service\bin\ARAManager.Business.Dao.pdb
+D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Service\bin\Newtonsoft.Json.xml
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Service\obj\Debug\ARAManager.Business.Service.csprojResolveAssemblyReference.cache
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Service\obj\Debug\ARAManager.Business.Service.dll
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Service\obj\Debug\ARAManager.Business.Service.pdb
-D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Service\bin\ARAManager.Business.Dao.dll
-D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Service\bin\ARAManager.Business.Dao.pdb
-d:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Business\ARAManager.Business.Service\bin\Iesi.Collections.dll

@@ -22,12 +22,17 @@ namespace ARAManager.Presentation.Client.Aspx {
             
         }
 
-        protected void btnLogin_OnClick(object sender, EventArgs e) {
-            if ((UserEmail.Text == "admin") && (UserPass.Text == "admin")) {
+        protected void btnLogin_OnClick(object sender, EventArgs e)
+        {
+            int login = -1;
+            login = ClientServiceFactory.AccountService.AuthenticateUser(
+                UserEmail.Text, UserPass.Text);
+            if (login != -1)
+            {
                 FormsAuthentication.RedirectFromLoginPage(UserEmail.Text, cbRememberPassword.Checked);
-
-                Response.Redirect("CategoryAdmin.aspx");
-            } else {
+                Response.Redirect(login == 1 ? "HomeAdmin.aspx" : "CampaignCompany.aspx");
+            }
+            else {
                 lblMessageIncredential.Text = "Invalid credentials. Please try again.";
             }
         }

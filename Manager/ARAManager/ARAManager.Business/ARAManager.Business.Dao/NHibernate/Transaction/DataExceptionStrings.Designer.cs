@@ -39,7 +39,7 @@ namespace ARAManager.Business.Dao.NHibernate.Transaction {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager(
-                        "NHibernate.Example.Service.NHibernate.Transaction.DataExceptionStrings", typeof(DataExceptionStrings).Assembly);
+                        "ARAManager.Business.Dao.NHibernate.Transaction.DataExceptionStrings", typeof(DataExceptionStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

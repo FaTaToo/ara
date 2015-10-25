@@ -152,7 +152,7 @@ namespace ARAManager.Business.Dao.NHibernate.Transaction {
         /// <param name="configuration">Nhibernate configuration</param>
         private void SerializeDomainObjects(Configuration configuration) {
             HbmSerializer.Default.Validate = true; // Enable validation (optional)
-            configuration.AddInputStream(HbmSerializer.Default.Serialize(AssemblyLoadingHelper.GetOrLoadAssembly("NHibernateExampleCommon")));
+            configuration.AddInputStream(HbmSerializer.Default.Serialize(AssemblyLoadingHelper.GetOrLoadAssembly("ARAManager.Common")));
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace ARAManager.Business.Dao.NHibernate.Transaction {
             LoadConnectionStringsFromConfig();
             try
             {
-                this.m_sessionFactory = this.CreateSessionFactory();
+                m_sessionFactory = CreateSessionFactory();
             }
             catch (HibernateException hibEx)
             {

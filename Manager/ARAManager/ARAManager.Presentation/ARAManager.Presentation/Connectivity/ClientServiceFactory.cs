@@ -75,28 +75,44 @@ namespace ARAManager.Presentation.Connectivity
                     switch (endpoint.Name)
                     {
                         case ACCOUNT_SERVICE_NAME:
-                            m_serviceFactories[endpoint.Name] = new ChannelFactory<IAccountServiceImpl>(endpoint.Name);
+                            var binding = new BasicHttpBinding();
+                            var endpointAddress = new EndpointAddress(endpoint.Address);
+                            m_serviceFactories[endpoint.Name] = new ChannelFactory<IAccountServiceImpl>(binding, endpointAddress);
                             break;
                         case AR_DATA_SERVICE_NAME:
-                            m_serviceFactories[endpoint.Name] = new ChannelFactory<IArDataServiceImpl>(endpoint.Name);
+                            binding = new BasicHttpBinding();
+                            endpointAddress = new EndpointAddress(endpoint.Address);
+                            m_serviceFactories[endpoint.Name] = new ChannelFactory<IArDataServiceImpl>(binding, endpointAddress);
                             break;
                         case CAMPAIGN_SERVICE_NAME:
-                            m_serviceFactories[endpoint.Name] = new ChannelFactory<ICampaignServiceImpl>(endpoint.Name);
+                            binding = new BasicHttpBinding();
+                            endpointAddress = new EndpointAddress(endpoint.Address);
+                            m_serviceFactories[endpoint.Name] = new ChannelFactory<ICampaignServiceImpl>(binding, endpointAddress);
                             break;
                         case COMPANY_SERVICE_NAME:
-                            m_serviceFactories[endpoint.Name] = new ChannelFactory<ICompanyServiceImpl>(endpoint.Name);
+                            binding = new BasicHttpBinding();
+                            endpointAddress = new EndpointAddress(endpoint.Address);
+                            m_serviceFactories[endpoint.Name] = new ChannelFactory<ICompanyServiceImpl>(binding, endpointAddress);
                             break;
                         case CUSTOMER_SERVICE_NAME:
-                            m_serviceFactories[endpoint.Name] = new ChannelFactory<ICustomerServiceImpl>(endpoint.Name);
+                            binding = new BasicHttpBinding();
+                            endpointAddress = new EndpointAddress(endpoint.Address);
+                            m_serviceFactories[endpoint.Name] = new ChannelFactory<ICustomerServiceImpl>(binding, endpointAddress);
                             break;
                         case MISSION_SERVICE_NAME:
-                            m_serviceFactories[endpoint.Name] = new ChannelFactory<IMissionServiceImpl>(endpoint.Name);
+                            binding = new BasicHttpBinding();
+                            endpointAddress = new EndpointAddress(endpoint.Address);
+                            m_serviceFactories[endpoint.Name] = new ChannelFactory<IMissionServiceImpl>(binding, endpointAddress);
                             break;
                         case SUBSCRIPTION_SERVICE_NAME:
-                            m_serviceFactories[endpoint.Name] = new ChannelFactory<ISubscriptionServiceImpl>(endpoint.Name);
+                            binding = new BasicHttpBinding();
+                            endpointAddress = new EndpointAddress(endpoint.Address);
+                            m_serviceFactories[endpoint.Name] = new ChannelFactory<ISubscriptionServiceImpl>(binding, endpointAddress);
                             break;
                         case TARGET_SERVICE_NAME:
-                            m_serviceFactories[endpoint.Name] = new ChannelFactory<ITargetServiceImpl>(endpoint.Name);
+                            binding = new BasicHttpBinding();
+                            endpointAddress = new EndpointAddress(endpoint.Address);
+                            m_serviceFactories[endpoint.Name] = new ChannelFactory<ITargetServiceImpl>(binding, endpointAddress);
                             break;
                     }
                 }

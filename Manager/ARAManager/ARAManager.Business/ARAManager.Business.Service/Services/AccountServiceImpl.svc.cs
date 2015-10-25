@@ -22,6 +22,7 @@ using ARAManager.Common.Factory;
 using ARAManager.Common.Services;
 using NHibernate;
 using NHibernate.Criterion;
+using NHibernate.Util;
 using Ninject;
 
 namespace ARAManager.Business.Service.Services {
@@ -112,12 +113,21 @@ namespace ARAManager.Business.Service.Services {
             }
         }
 
-        public int CheckLogin(string username, string password)
+        public int AuthenticateUser(string username, string password)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<IAccountDataAccess>();
             var criteria = DetachedCriteria.For<Account>();
-            return 0;
+
+            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
+            {
+                criteria.Add(Restrictions.Where<Account>(a => a.UserName == username));
+                criteria.Add(Restrictions.Where<Account>(a => a.Password == password));
+            }
+            var result = srvDao.FindByCriteria(criteria).First();
+            return ((Account) result).GroupNum;
         }
+
+       
         #endregion IMethods
     }
 }

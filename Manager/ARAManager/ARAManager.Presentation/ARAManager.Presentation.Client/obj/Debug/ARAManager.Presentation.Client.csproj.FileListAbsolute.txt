@@ -1,4 +1,3 @@
-D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\obj\Debug\ARAManager.Presentation.Client.csprojResolveAssemblyReference.cache
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\ARAManager.Presentation.Client.dll.config
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\ARAManager.Presentation.Client.dll
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\ARAManager.Presentation.Client.pdb
@@ -21,6 +20,7 @@ D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\Microsoft.ScriptManager.MSAjax.dll
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\Microsoft.ScriptManager.WebForms.dll
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\Microsoft.Web.Infrastructure.dll
+D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\Newtonsoft.Json.dll
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\System.Web.Optimization.dll
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\System.Web.Providers.dll
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\WebGrease.dll
@@ -28,6 +28,7 @@ D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\NHibernate.Mapping.Attributes.dll
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\ARAManager.Common.pdb
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\ARAManager.Presentation.pdb
+D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\Newtonsoft.Json.xml
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\EntityFramework.xml
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\EntityFramework.SqlServer.xml
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\System.Web.Providers.xml
@@ -41,6 +42,7 @@ D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\Microsoft.AspNet.FriendlyUrls.xml
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\Ninject.pdb
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\Ninject.xml
+D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\obj\Debug\ARAManager.Presentation.Client.csprojResolveAssemblyReference.cache
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\obj\Debug\ARAManager.Presentation.Client.dll
 D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\obj\Debug\ARAManager.Presentation.Client.pdb
-d:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\log4net.dll
+D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\bin\log4net.dll
