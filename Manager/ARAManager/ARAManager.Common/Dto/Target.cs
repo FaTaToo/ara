@@ -29,8 +29,8 @@ namespace ARAManager.Common.Dto {
         public virtual string Url { get; set; }
 
         [DataMember]
-        [Property(Column = "TargetName", Name = "Name", TypeType = typeof(string), Length = 100, NotNull = true)]
-        public virtual string Name { get; set; }
+        [Property(Column = "TargetName", Name = "TargetName", TypeType = typeof(string), Length = 100, NotNull = true)]
+        public virtual string TargetName { get; set; }
 
         [DataMember]
         [Property(Column = "Latitude", Name = "Latitude", TypeType = typeof(int),NotNull = false)]
@@ -48,9 +48,22 @@ namespace ARAManager.Common.Dto {
         [Property(Column = "IsComplete", Name = "IsComplete", TypeType = typeof(bool), NotNull = true)]
         public virtual bool IsComplete { get; set; }
 
+        [DataMember]
+        [Property(Column = "VideoUrl", Name = "VideoUrl", TypeType = typeof(string), Length = 500, NotNull = true)]
+        public virtual string VideoUrl { get; set; }
+
+        [DataMember]
+        [Property(Column = "FacebookUrl", Name = "FacebookUrl", TypeType = typeof(string), Length = 500, NotNull = true)]
+        public virtual string FacebookUrl { get; set; }
+
+        [DataMember]
+        [Property(Column = "YoutubeUrl", Name = "YoutubeUrl", TypeType = typeof(string), Length = 500, NotNull = true)]
+        public virtual string YoutubeUrl { get; set; }
+
         [ManyToOne(Name = "Mission", Column = "MissionName", NotNull = false, Fetch = FetchMode.Select)]
         [DataMember]
         public virtual Mission Mission { get; set; }
+
         #endregion IProperties
     }
 }

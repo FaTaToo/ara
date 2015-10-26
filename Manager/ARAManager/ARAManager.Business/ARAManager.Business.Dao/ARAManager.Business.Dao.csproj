@@ -66,8 +66,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccess\Implementation\AccountDataAccessImpl.cs" />
-    <Compile Include="DataAccess\Implementation\ArDataDataAccessImpl.cs" />
     <Compile Include="DataAccess\Implementation\CampaignDataAccessImpl.cs" />
     <Compile Include="DataAccess\Implementation\CompanyDataAccessImpl.cs" />
     <Compile Include="DataAccess\Implementation\CustomerDataAccessImpl.cs" />
@@ -75,8 +73,6 @@
     <Compile Include="DataAccess\Implementation\MissionDataAccessImpl.cs" />
     <Compile Include="DataAccess\Implementation\SubscriptionDataAccessImpl.cs" />
     <Compile Include="DataAccess\Implementation\TargetDataAccessImpl.cs" />
-    <Compile Include="DataAccess\Interfaces\IAccountDataAccess.cs" />
-    <Compile Include="DataAccess\Interfaces\IArDataDataAccess.cs" />
     <Compile Include="DataAccess\Interfaces\ICampaignDataAccess.cs" />
     <Compile Include="DataAccess\Interfaces\ICompanyDataAccess.cs" />
     <Compile Include="DataAccess\Interfaces\ICustomerDataAccess.cs" />

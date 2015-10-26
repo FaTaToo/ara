@@ -8,23 +8,22 @@
                     <li role="presentation">
                         <asp:TextBox ID="txtCampaignName" runat="server"
                             placeholder="Campaign name" />
-                    </li>
-                    <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_CampaignName" runat="server" ErrorMessage="CustomValidator" />
                     </li>
                     <li role="presentation">
                         <asp:TextBox ID="txtStartTime" runat="server"
                             placeholder="Start time" />
-                    </li>
-                    <li role="presentation">
-                        <asp:CustomValidator ID="CustomValidator_StartTime" runat="server" ErrorMessage="CustomValidator" />
+                         <asp:CustomValidator ID="CustomValidator_StartTime" runat="server" ErrorMessage="CustomValidator" />
                     </li>
                     <li role="presentation">
                         <asp:TextBox ID="txtEndTime" runat="server"
                             placeholder="End time" />
+                        <asp:CustomValidator ID="CustomValidator_EndTime" runat="server" ErrorMessage="CustomValidator" />
                     </li>
                     <li role="presentation">
-                        <asp:CustomValidator ID="CustomValidator_EndTime" runat="server" ErrorMessage="CustomValidator" />
+                        <asp:TextBox ID="txtCompany" runat="server"
+                            placeholder="Company name" />
+                        <asp:CustomValidator ID="CustomValidator_Company" runat="server" ErrorMessage="CustomValidator" />
                     </li>
                     <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_RequireFileds" runat="server"
@@ -41,11 +40,11 @@
         </div>
     </div>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" Visible="False" runat="server">
     <div class="container">
         <div class="row">
             <div class="col-md-6" style="margin-top: 20px;margin-left: 20px">
-                <asp:TextBox ID="txtTypeOfAccount"
+                <asp:TextBox ID="txtCampaign"
                     Width="100%"
                     BackColor="darkred"
                     Font-Size="large"
@@ -54,7 +53,7 @@
                     BorderColor="yellow"
                     Enabled="False"
                     Style="text-align: center"
-                    runat="server">ACCOUNT CATEGORIES</asp:TextBox>
+                    runat="server">CAMPAIGNS</asp:TextBox>
             </div>
         </div>
         <div class="row">
@@ -97,12 +96,6 @@
                                 <asp:CheckBox ID="cbSelect" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:HyperLinkField
-                            DataNavigateUrlFields="AccountTypeId"
-                            HeaderText="Id"
-                            DataNavigateUrlFormatString="abc.aspx?Id={0}"
-                            DataTextField="AccountTypeId"
-                            ItemStyle-Width="20%" />
                         <asp:BoundField DataField="Name" HeaderText="Name"
                             ItemStyle-Width="70%" />
                         <%--  <asp:TemplateField HeaderText="Type">

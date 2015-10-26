@@ -103,8 +103,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Services\AccountServiceImpl.svc" />
-    <Content Include="Services\ArDataServiceImpl.svc" />
     <Content Include="Services\CampaignServiceImpl.svc" />
     <Content Include="Services\CompanyServiceImpl.svc" />
     <Content Include="Services\CustomerServiceImpl.svc" />
@@ -127,12 +125,6 @@
     </Compile>
     <Compile Include="Ninject\ServiceBindingModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\AccountServiceImpl.svc.cs">
-      <DependentUpon>AccountServiceImpl.svc</DependentUpon>
-    </Compile>
-    <Compile Include="Services\ArDataServiceImpl.svc.cs">
-      <DependentUpon>ArDataServiceImpl.svc</DependentUpon>
-    </Compile>
     <Compile Include="Services\CampaignServiceImpl.svc.cs">
       <DependentUpon>CampaignServiceImpl.svc</DependentUpon>
     </Compile>

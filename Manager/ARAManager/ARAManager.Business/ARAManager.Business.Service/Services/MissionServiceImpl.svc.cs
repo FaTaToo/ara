@@ -54,7 +54,7 @@ namespace ARAManager.Business.Service.Services {
                 catch (ADOException)
                 {
                     throw new FaultException<MissionNameAlreadyExistException>(
-                        new MissionNameAlreadyExistException { MessageError = Messages.ACCOUNTTYPE_NAME_CONSTRAINT_EXCEPTION_MSG },
+                        new MissionNameAlreadyExistException { MessageError = Messages.MISSION_NAME_CONSTRAINT_EXCEPTION_MSG },
                         new FaultReason(Messages.UNIQUE_CONSTRAINT_EXCEPTION_REASON));
                 }
                 catch (StaleObjectStateException)
@@ -94,11 +94,11 @@ namespace ARAManager.Business.Service.Services {
         }
         public void DeleteMissions(List<int> missions)
         {
-            foreach (var accounType in missions)
+            foreach (var mission in missions)
             {
                 try
                 {
-                    DeleteMission(accounType);
+                    DeleteMission(mission);
                 }
                 catch (Exception)
                 {

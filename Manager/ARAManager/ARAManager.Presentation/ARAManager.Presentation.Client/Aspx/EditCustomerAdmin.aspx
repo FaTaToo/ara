@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px">
-                <asp:TextBox ID="txtTypeOfAccount"
+                <asp:TextBox ID="txtCustomer"
                     Width="100%"
                     BackColor="darkred"
                     Font-Size="large"

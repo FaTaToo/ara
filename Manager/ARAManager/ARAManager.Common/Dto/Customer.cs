@@ -11,6 +11,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using NHibernate.Mapping.Attributes;
 
@@ -20,6 +21,20 @@ namespace ARAManager.Common.Dto
     [Class(Table = "ARA_Customer", NameType = typeof(Customer), Lazy = false)]
     public class Customer : ModelBase
     {
+        #region IFields
+
+        private ICollection<Subscription> m_subscriptions;
+
+        #endregion IFields
+
+        #region IConstructors
+
+        public Customer()
+        {
+            m_subscriptions = new HashSet<Subscription>();
+        }
+
+        #endregion IConstructors
 
         #region IProperties
 
@@ -56,11 +71,27 @@ namespace ARAManager.Common.Dto
         [Property(Column = "Phone", Name = "Phone", TypeType = typeof(string), Length = 20, NotNull = true)]
         public virtual string Phone { get; set; }
 
-        [ManyToOne(Column = "UserName", Name = "Account", NotNull = true, Fetch = FetchMode.Select)]
         [DataMember]
-        public virtual Account Account { get; set; }
+        [Property(Column = "UserName", Name = "UserName", TypeType = typeof(string), Length = 100, NotNull = true)]
+        public virtual string UserName { get; set; }
+
+        [DataMember]
+        [Property(Column = "Password", Name = "Password", TypeType = typeof(string), Length = 100, NotNull = true)]
+        public virtual string Password { get; set; }
+
+        [DataMember]
+        [Set(0, Table = "Subscription", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_subscriptions")]
+        [Key(1, Column = "CustomerId")]
+        [OneToMany(2, ClassType = typeof(Subscription))]
+        public virtual ICollection<Subscription> Subscriptions
+        {
+            get
+            {
+                m_subscriptions = m_subscriptions ?? new HashSet<Subscription>();
+                return m_subscriptions;
+            }
+        }
 
         #endregion IProperties
-
     }
 }

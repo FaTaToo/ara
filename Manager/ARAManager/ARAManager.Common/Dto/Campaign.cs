@@ -11,6 +11,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using NHibernate.Mapping.Attributes;
 
@@ -18,6 +19,20 @@ namespace ARAManager.Common.Dto {
     [DataContract]
     [Class(Table = "ARA_Campaign", NameType = typeof(Campaign), Lazy = false)]
     public class Campaign: ModelBase {
+        #region IFields
+
+        private ICollection<Mission> m_missions;
+        private ICollection<Subscription> m_subscriptions;
+
+        #endregion IFields
+
+        #region IConstructors
+        public Campaign() {
+            m_missions = new HashSet<Mission>();
+            m_subscriptions = new HashSet<Subscription>();
+        }
+
+        #endregion IConstructors
 
         #region IProperties
 
@@ -61,6 +76,32 @@ namespace ARAManager.Common.Dto {
         [ManyToOne(Name = "Company", Column = "CompanyName", NotNull = true, Fetch = FetchMode.Select)]
         [DataMember]
         public virtual Company Company { get; set; }
+
+        [DataMember]
+        [Set(0, Table = "Mission", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_missions")]
+        [Key(1, Column = "CampaignName")]
+        [OneToMany(2, ClassType = typeof(Mission))]
+        public virtual ICollection<Mission> Missions
+        {
+            get
+            {
+                m_missions = m_missions ?? new HashSet<Mission>();
+                return m_missions;
+            }
+        }
+
+        [DataMember]
+        [Set(0, Table = "Subscription", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_subscriptions")]
+        [Key(1, Column = "CampaignId")]
+        [OneToMany(2, ClassType = typeof(Subscription))]
+        public virtual ICollection<Subscription> Subscriptions
+        {
+            get
+            {
+                m_subscriptions = m_subscriptions ?? new HashSet<Subscription>();
+                return m_subscriptions;
+            }
+        }
 
         #endregion IProperties
 

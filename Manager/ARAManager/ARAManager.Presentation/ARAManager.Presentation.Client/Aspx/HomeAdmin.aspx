@@ -161,75 +161,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" runat="server">
     <div class="container" style="margin-top: 20px; margin-left: 30px">
         <div class="row">
-            <div class="col-md6" style="margin-left: 20px">
-                <asp:TextBox ID="txtListOfCinema"
-                    Width="550px"
-                    BackColor="darkred"
-                    Font-Size="large"
-                    Font-Bold="True"
-                    ForeColor="white"
-                    BorderColor="yellow"
-                    Enabled="False"
-                    Style="text-align: center"
-                    runat="server">LIST OF MOVIE THEATERS</asp:TextBox>
-            </div>
+  
+        </div>
+        <div class="row">
+          
         </div>
         <div class="row">
             <div class="col-md-6">
-                <input type="search" id="search" value="" class="form-control" style="margin-top: 20px"
-                    placeholder="Enter keyword to search.">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <table class="table" id="table">
-                    <thead>
-                        <tr>
-                            <th>Region</th>
-                            <th>Cinema</th>
-                            <th>City</th>
-                            <th>Name</th>
-                            <th>Address</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>South</td>
-                            <td>Lotte</td>
-                            <td>HCM</td>
-                            <td>Cantavil</td>
-                            <td>Tầng 7, Cantavil Premier, Xa lộ Hà Nội, P.An Phú, Q.2, TP.HCM</td>
-                        </tr>
-                        <tr>
-                            <td>South</td>
-                            <td>Lotte</td>
-                            <td>HCM</td>
-                            <td>Cộng Hòa</td>
-                            <td>Tầng 4, Pico Plaza, 20 Cộng Hòa, P.12, Q.Tân Bình, TPHCM</td>
-                        </tr>
-                        <tr>
-                            <td>South</td>
-                            <td>Lotte</td>
-                            <td>HCM</td>
-                            <td>Nam Sài Gòn</td>
-                            <td>Địa chỉ: Tầng 3 Lotte Mart NSG, 469 Nguyễn Hữu Thọ, q7, TPHCM</td>
-                        </tr>
-                        <tr>
-                            <td>South</td>
-                            <td>Lotte</td>
-                            <td>HCM</td>
-                            <td>Cantavil</td>
-                            <td>Tầng 7, Cantavil Premier, Xa lộ Hà Nội, P.An Phú, Q.2, TP.HCM</td>
-                        </tr>
-                        <tr>
-                            <td>South</td>
-                            <td>Lotte</td>
-                            <td>HCM</td>
-                            <td>Phú Thọ</td>
-                            <td>Tầng 4 Lotte Mart Phú Thọ, Ngã tư 3/2 và Lê Đại Hành,Quận 11, TPHCM</td>
-                        </tr>
-                    </tbody>
-                </table>
+              
                 <hr>
             </div>
         </div>

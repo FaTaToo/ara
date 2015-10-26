@@ -153,14 +153,12 @@ namespace ARAManager.Business.Dao.NHibernate.Transaction {
             // Added by PhucLS - 20151025 - Fix Mapping in another way because assembly by ARAManager.Common is not corrected.
             //                              Reason: Unknown
             //configuration.AddInputStream(HbmSerializer.Default.Serialize(AssemblyLoadingHelper.GetOrLoadAssembly("ARAManager.Common")));
-            configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Account)));
             configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Customer)));
             configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Company)));
             configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Campaign)));
             configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Mission)));
             configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Subscription)));
             configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Target)));
-            configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(ArData)));
             // Ended by PhucLS - 20151025
         }
 

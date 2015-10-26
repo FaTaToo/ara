@@ -7,13 +7,18 @@
             </button>
         </div>
         <div class="btn-group" role="group">
-            <asp:Button ID="btnCompany" ForeColor="Black" CssClass="btn btn-warning" runat="server"  Text="COMPANY" />
+            <asp:Button ID="btnCompany" ForeColor="Black" CssClass="btn btn-warning" runat="server"  
+                Text="COMPANY" 
+                OnClick="btnCompany_OnClick"/>
         </div>
         <div class="btn-group" role="group">
-            <asp:Button ID="btnCustomer" ForeColor="Black" CssClass="btn btn-warning" runat="server"  Text="CUSTOMER" />
+            <asp:Button ID="btnCustomer" ForeColor="Black" CssClass="btn btn-warning" runat="server"  
+                Text="CUSTOMER"
+                OnClick="btnCustomer_OnClick" />
         </div>
         <div class="btn-group" role="group">
-             <asp:Button ID="btnStatistics" ForeColor="Black" CssClass="btn btn-warning" runat="server"  Text="STATISTICS" />
+             <asp:Button ID="btnStatistics" ForeColor="Black" CssClass="btn btn-warning" runat="server"  
+                 Text="STATISTICS" />
         </div>
     </div>
 </asp:Content>

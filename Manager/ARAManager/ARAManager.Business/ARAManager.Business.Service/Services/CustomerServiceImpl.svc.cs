@@ -73,8 +73,8 @@ namespace ARAManager.Business.Service.Services {
             {
                 try
                 {
-                    var deleteAccountType = srvDao.GetById(customerId);
-                    srvDao.Delete(deleteAccountType);
+                    var deleteCustomer = srvDao.GetById(customerId);
+                    srvDao.Delete(deleteCustomer);
                 }
                 catch (Exception)
                 {
@@ -87,11 +87,11 @@ namespace ARAManager.Business.Service.Services {
         }
         public void DeleteCustomers(List<int> customers)
         {
-            foreach (var accounType in customers)
+            foreach (var customer in customers)
             {
                 try
                 {
-                    DeleteCustomer(accounType);
+                    DeleteCustomer(customer);
                 }
                 catch (Exception)
                 {

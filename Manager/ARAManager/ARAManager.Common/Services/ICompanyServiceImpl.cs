@@ -43,5 +43,13 @@ namespace ARAManager.Common.Services {
         [PreserveReferences]
         [FaultContract(typeof(CompanyAlreadyDeletedException))]
         void DeleteCompanies(List<int> companies);
+
+        [OperationContract]
+        [PreserveReferences]
+        IList<Company> SearchCompany(string name, string email, string phone, string username);
+
+        [OperationContract]
+        [PreserveReferences]
+        int AuthenticateUser(string username, string password);
     }
 }

@@ -10,6 +10,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using NHibernate.Mapping.Attributes;
 
@@ -17,6 +18,20 @@ namespace ARAManager.Common.Dto {
     [DataContract]
     [Class(Table = "ARA_Mission", NameType = typeof(Mission), Lazy = false)]
     public class Mission: ModelBase {
+        #region IFields
+
+        private ICollection<Target> m_targets;
+
+        #endregion IFields
+
+        #region IConstructors
+
+        public Mission() {
+            m_targets = new HashSet<Target>();
+        }
+
+        #endregion IConstructors
+
         #region IProperties
 
         [DataMember]
@@ -47,6 +62,17 @@ namespace ARAManager.Common.Dto {
         [ManyToOne(Name = "Campaign", Column = "CampaignName", NotNull = false, Fetch = FetchMode.Select)]
         [DataMember]
         public virtual Campaign Campaign { get; set; }
+
+        [DataMember]
+        [Set(0, Table = "Target", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_targets")]
+        [Key(1, Column = "MissionName")]
+        [OneToMany(2, ClassType = typeof(Target))]
+        public virtual ICollection<Target> Targets {
+            get {
+                m_targets = m_targets ?? new HashSet<Target>();
+                return m_targets;
+            }
+        }
 
         #endregion IProperties
     }

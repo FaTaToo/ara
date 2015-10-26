@@ -22,13 +22,13 @@ namespace ARAManager.Presentation.Client.Aspx {
         protected global::System.Web.UI.WebControls.TextBox UserEmail;
         
         /// <summary>
-        /// RequiredFieldValidator_UserEmail control.
+        /// CustomValidator_UserEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_UserEmail;
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_UserEmail;
         
         /// <summary>
         /// UserPass control.
@@ -40,13 +40,13 @@ namespace ARAManager.Presentation.Client.Aspx {
         protected global::System.Web.UI.WebControls.TextBox UserPass;
         
         /// <summary>
-        /// RequiredFieldValidator_UserPass control.
+        /// CustomValidator_UserPass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_UserPass;
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_UserPass;
         
         /// <summary>
         /// cbRememberPassword control.

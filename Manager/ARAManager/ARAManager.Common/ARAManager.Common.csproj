@@ -61,8 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dto\Account.cs" />
-    <Compile Include="Dto\ArData.cs" />
     <Compile Include="Dto\Campaign.cs" />
     <Compile Include="Dto\Company.cs" />
     <Compile Include="Dto\Customer.cs" />
@@ -70,7 +68,6 @@
     <Compile Include="Dto\ModelBase.cs" />
     <Compile Include="Dto\Subscription.cs" />
     <Compile Include="Dto\Target.cs" />
-    <Compile Include="Exception\Account\AccountAlreadyDeletedException.cs" />
     <Compile Include="Exception\Campaign\CampaignAlreadyDeletedException.cs" />
     <Compile Include="Exception\Campaign\CampaignNameAlreadyExistException.cs" />
     <Compile Include="Exception\Company\CompanyAlreadyDeletedException.cs" />
@@ -94,8 +91,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Behaviors\PreserveReferencesAttribute.cs" />
     <Compile Include="Services\Behaviors\PreserveReferencesOperationBehavior.cs" />
-    <Compile Include="Services\IAccountServiceImpl.cs" />
-    <Compile Include="Services\IArDataServiceImpl.cs" />
     <Compile Include="Services\ICampaignServiceImpl.cs" />
     <Compile Include="Services\ICompanyServiceImpl.cs" />
     <Compile Include="Services\ICustomerServiceImpl.cs" />
@@ -104,7 +99,6 @@
     <Compile Include="Services\ITargetServiceImpl.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Exception\ArData\" />
     <Folder Include="Extension\" />
   </ItemGroup>
   <ItemGroup>

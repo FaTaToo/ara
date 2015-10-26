@@ -9,22 +9,9 @@ create table ARA_Customer
 	Address		nvarchar(500),
 	Email		varchar(100) unique not null,
 	Phone		varchar(20) unique,
-	---
-	--Foreign key
-	UserName	varchar(100) unique not null,
-	---
-	RowVersion	RowVersion
-)
-
-create table ARA_Account
-(
-	AccountId	int not null primary key identity(1,1),
 	UserName	varchar(100) unique not null,
 	Password	varchar(100) not null,
-	GroupNum	int not null,
 	---
-	--Check whether the GroupNum is business type or customer type.
-	constraint check_GroupNum check (GroupNum in (1,2)),
 	RowVersion	RowVersion
 )
 
@@ -35,9 +22,8 @@ create table ARA_Company
 	Address		nvarchar(500) not null,
 	Email		varchar(100) unique not null,
 	Phone		varchar(20) unique not null,
-	---
-	--Foreign key
 	UserName	varchar(100) unique not null,
+	Password	varchar(100) not null,
 	RowVersion	RowVersion
 )
 
@@ -83,22 +69,12 @@ create table ARA_Target
 	Longitude	int,
 	Description	nvarchar(500) not null,
 	IsComplete  bit not null,	
-	--
-	--Foreign key
-	MissionName	nvarchar(100) not null,		
-	---
-	RowVersion	RowVersion
-)
-
-create table ARA_ArData
-(
-	ArDataId	int not null primary key identity(1,1),
 	VideoUrl	nvarchar(500),
 	FacebookUrl	nvarchar(500),
 	YoutubeUrl	nvarchar(500),
-	---
+	--
 	--Foreign key
-	TargetName	nvarchar(100) unique not null,
+	MissionName	nvarchar(100) not null,		
 	---
 	RowVersion	RowVersion
 )
@@ -113,21 +89,13 @@ create table ARA_Subscription
 	Rating		int not null,
 	---
 	--Check whether the rating value is suitable.
-	constraint check_Rating check (Rating in (1,2,3,4,5)),
+	constraint chk_Rating check (Rating in (1,2,3,4,5)),
 	---
 	RowVersion	RowVersion
 )
 ------------------------------------------------------------------------------------------------------------
 
 --ADD FOREIGN KEY-------------------------------------------------------------------------------------------
-Alter table ARA_Customer
-Add constraint FK_ARA_Customer
-	foreign key (UserName) references ARA_Account(UserName)
-
-Alter table ARA_Company
-Add constraint FK_ARA_Company
-	foreign key (UserName) references ARA_Account(UserName)
-
 Alter table ARA_Campaign
 Add constraint FK_ARA_Campaign
 	foreign key (CompanyName) references ARA_Company(CompanyName)
@@ -140,10 +108,6 @@ Alter table ARA_Target
 Add constraint FK_ARA_Target 
 	foreign key (MissionName) references ARA_Mission(MissionName)
 
-Alter table ARA_ArData
-Add constraint FK_ARA_ArData
-	foreign key (TargetName) references ARA_Target(TargetName)
-
 Alter table ARA_Subscription
 Add constraint FK_ARA_Subscription
 	foreign key (CustomerId) references ARA_Customer(CustomerId),
@@ -151,8 +115,11 @@ Add constraint FK_ARA_Subscription
 ------------------------------------------------------------------------------------------------------------
 
 --INSERT DATA-----------------------------------------------------------------------------------------------
-insert into ARA_Account(UserName,Password,GroupNum) values ('admin','admin',1)
-insert into ARA_Account(UserName,Password,GroupNum) values ('CA1','CA1',2)
+--Customer
+insert into ARA_Customer(FirstName,LastName,Sex,BirthDay,Address,Email,Phone,UserName,Password)
+values ('Phuc','Le','1','1993-02-18','abc','phucls288@gmail.com','0933111875','phucls','phuc')
 
-insert into ARA_Company(CompanyName,Address,Email,Phone,UserName) values ('NEC','abc','phucls288@gmail.com','0933111875','CA1')
+--Company
+insert into ARA_Company(CompanyName,Address,Email,Phone,UserName,Password) 
+values ('ELCA','N1 Dien Bienh Phu','elca@elca.ch','12345','elca','mpt')
 ------------------------------------------------------------------------------------------------------------

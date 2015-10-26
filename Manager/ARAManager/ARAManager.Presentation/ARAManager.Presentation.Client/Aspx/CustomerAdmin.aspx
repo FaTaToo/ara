@@ -111,12 +111,6 @@
                                 <asp:CheckBox ID="cbSelect" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:HyperLinkField
-                            DataNavigateUrlFields="AccountTypeId"
-                            HeaderText="Id"
-                            DataNavigateUrlFormatString="abc.aspx?Id={0}"
-                            DataTextField="AccountTypeId"
-                            ItemStyle-Width="20%" />
                         <asp:BoundField DataField="Name" HeaderText="Name"
                             ItemStyle-Width="70%" />
                         <%--  <asp:TemplateField HeaderText="Type">

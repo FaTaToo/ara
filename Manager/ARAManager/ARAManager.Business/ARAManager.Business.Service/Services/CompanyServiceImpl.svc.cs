@@ -27,6 +27,13 @@ using Ninject;
 
 namespace ARAManager.Business.Service.Services {
    public class CompanyServiceImpl : ICompanyServiceImpl {
+       #region IFields
+
+       private const string ADMIN_USERNAME = "admin";
+       private const string ADMIN_PASSWORD = "admin";
+
+       #endregion IFields
+
        #region IMethods
        public Company GetCompanyById(int companyId)
        {
@@ -106,6 +113,51 @@ namespace ARAManager.Business.Service.Services {
                       new FaultReason(Messages.DELETED_EXCEPTION_REASON));
                }
            }
+       }
+
+       public IList<Company> SearchCompany(string name, string email, string phone, string username) {
+           var srvDao = NinjectKernelFactory.Kernel.Get<ICompanyDataAccess>();
+           var criteria = DetachedCriteria.For<Company>();
+           
+           if (!string.IsNullOrEmpty(name)) {
+               criteria.Add(Restrictions.Where<Company>(c=>c.CompanyName==name));
+           }
+
+           if (!string.IsNullOrEmpty(email))
+           {
+               criteria.Add(Restrictions.Where<Company>(c => c.Email == email));
+           }
+
+           if (!string.IsNullOrEmpty(phone))
+           {
+               criteria.Add(Restrictions.Where<Company>(c => c.Phone == phone));
+           }
+
+           var result = srvDao.FindByCriteria(criteria);
+           return result;
+       }
+
+       public int AuthenticateUser(string username, string password)
+       {
+           if (String.CompareOrdinal(username, ADMIN_USERNAME) == 0 ||
+               String.CompareOrdinal(password, ADMIN_PASSWORD) == 0) {
+               return 1;
+           }
+
+           var srvDao = NinjectKernelFactory.Kernel.Get<ICompanyDataAccess>();
+           var criteria = DetachedCriteria.For<Company>();
+
+           if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password)) {
+               criteria.Add(Restrictions.Where<Company>(a => a.UserName == username));
+               criteria.Add(Restrictions.Where<Company>(a => a.Password == password));
+           }
+
+           var result = srvDao.FindByCriteria(criteria);
+
+           if (result.Count !=0) {
+                return 2;
+           }
+           return -1;
        }
        #endregion IMethods
     }

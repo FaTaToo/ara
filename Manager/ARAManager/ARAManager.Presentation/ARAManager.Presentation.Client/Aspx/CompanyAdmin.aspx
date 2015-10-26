@@ -3,45 +3,53 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
     <div class="container">
         <div class="row">
-            <div class="col-md-2">
+            <!--Modified by PhucLS - 20151027 - Change md-2 to md-6 for fixing lack of space for validators-->
+            <div class="col-md-6">
+            <!--Ended by PhucLS - 20151027 - Change md-2 to md-6 for fixing lack of space for validators-->
                 <ul class="nav nav-pills nav-stacked pull-left">
                     <li role="presentation">
                         <asp:TextBox ID="txtCompanyName" runat="server"
                             placeholder="Name of company" />
-                    </li>
-                    <li role="presentation">
-                        <asp:CustomValidator ID="CustomValidator_CompanyName" runat="server" ErrorMessage="CustomValidator" />
+                        <asp:CustomValidator ID="CustomValidator_CompanyName" runat="server"
+                            ForeColor="Red"
+                            OnServerValidate="CustomValidator_CompanyName_OnServerValidate"
+                            ErrorMessage="Please enter company name with length from 1 to 100" />
                     </li>
                     <li role="presentation">
                         <asp:TextBox ID="txtEmail" runat="server"
                             placeholder="Email address" />
-                    </li>
-                    <li role="presentation">
-                        <asp:CustomValidator ID="CustomValidator_EmailAddress" runat="server" ErrorMessage="CustomValidator" />
+                        <asp:CustomValidator ID="CustomValidator_EmailAddress" runat="server"
+                            ForeColor="Red"
+                            OnServerValidate="CustomValidator_EmailAddress_OnServerValidate"
+                            ErrorMessage="Please enter email address with length from 1 to 100" />
                     </li>
                     <li role="presentation">
                         <asp:TextBox ID="txtPhone" runat="server"
                             placeholder="Phone number" />
-                    </li>
-                    <li role="presentation">
-                        <asp:CustomValidator ID="CustomValidator_PhoneNumber" runat="server" ErrorMessage="CustomValidator" />
+                        <asp:CustomValidator ID="CustomValidator_PhoneNumber" runat="server"
+                            ForeColor="Red"
+                            OnServerValidate="CustomValidator_PhoneNumber_OnServerValidate"
+                            ErrorMessage="Please enter phone number with length from 1 to 20" />
                     </li>
                     <li role="presentation">
                         <asp:TextBox ID="txtUserName" runat="server"
                             placeholder="UserName" />
-                    </li>
-                    <li role="presentation">
-                        <asp:CustomValidator ID="CustomValidator_UserName" runat="server" ErrorMessage="CustomValidator" />
+                        <asp:CustomValidator ID="CustomValidator_UserName" runat="server"
+                            ForeColor="Red"
+                            OnServerValidate="CustomValidator_UserName_OnServerValidate"
+                            ErrorMessage="Please enter user name with length from 1 to 100" />
                     </li>
                     <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_RequireFileds" runat="server"
                             ForeColor="Red"
+                            OnServerValidate="CustomValidator_RequireFileds_OnServerValidate"
                             ErrorMessage="Please enter at lease one criterion to search." />
                     </li>
                     <li role="presentation" style="margin-left: 30px">
                         <asp:Button ID="btnSearch" runat="server"
                             CssClass="btn btn-success"
-                            Text="Search" />
+                            Text="Search"
+                            OnClick="btnSearch_OnClick" />
                     </li>
                 </ul>
             </div>
@@ -49,77 +57,77 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" runat="server">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6" style="margin-top: 20px; margin-left: 20px">
-                <asp:TextBox ID="txtCompany"
-                    Width="100%"
-                    BackColor="darkred"
-                    Font-Size="large"
-                    Font-Bold="True"
-                    ForeColor="white"
-                    BorderColor="yellow"
-                    Enabled="False"
-                    Style="text-align: center"
-                    runat="server">COMPANY</asp:TextBox>
+    <asp:Panel ID="Panel_Result" runat="server" Visible="False">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6" style="margin-top: 20px; margin-left: 20px">
+                    <asp:TextBox ID="txtCompany"
+                        Width="100%"
+                        BackColor="darkred"
+                        Font-Size="large"
+                        Font-Bold="True"
+                        ForeColor="white"
+                        BorderColor="yellow"
+                        Enabled="False"
+                        Style="text-align: center"
+                        runat="server">COMPANY</asp:TextBox>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6" style="margin-top: 20px; margin-left: 20px">
-                <div class="btn-toolbar" role="toolbar">
-                    <div class="btn-group" role="group">
-                        <asp:Button ID="btnSelectAll" runat="server"
-                            CssClass="btn btn-warning"
-                            Text="Select all" />
-                    </div>
-                    <div class="btn-group" role="group">
-                        <asp:Button ID="btnDeselectAll" runat="server"
-                            CssClass="btn btn-warning"
-                            Text="Deselect all" />
-                    </div>
-                    <div class="btn-group" role="group">
-                        <asp:Button ID="btnDelete" runat="server"
-                            CssClass="btn btn-danger"
-                            Text="Delete" />
-                    </div>
-                    <div class="btn-group" role="group">
-                        <asp:Button ID="btnClear" runat="server"
-                            CssClass="btn btn-warning"
-                            Text="Clear" />
+            <div class="row">
+                <div class="col-md-6" style="margin-top: 20px; margin-left: 20px">
+                    <div class="btn-toolbar" role="toolbar">
+                        <div class="btn-group" role="group">
+                            <asp:Button ID="btnSelectAll" runat="server"
+                                CssClass="btn btn-warning"
+                                Text="Select all" />
+                        </div>
+                        <div class="btn-group" role="group">
+                            <asp:Button ID="btnDeselectAll" runat="server"
+                                CssClass="btn btn-warning"
+                                Text="Deselect all" />
+                        </div>
+                        <div class="btn-group" role="group">
+                            <asp:Button ID="btnDelete" runat="server"
+                                CssClass="btn btn-danger"
+                                Text="Delete" />
+                        </div>
+                        <div class="btn-group" role="group">
+                            <asp:Button ID="btnClear" runat="server"
+                                CssClass="btn btn-warning"
+                                Text="Clear" />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px">
-                <asp:GridView ID="GridViewResult" runat="server"
-                    Width="100%"
-                    AllowPaging="True"
-                    AllowSorting="True"
-                    AutoGenerateColumns="False"
-                    RowStyle-HorizontalAlign="Center">
-                    <Columns>
-                        <asp:TemplateField>
-                            <ItemTemplate>
-                                <asp:CheckBox ID="cbSelect" runat="server" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:HyperLinkField
-                            DataNavigateUrlFields="AccountTypeId"
-                            HeaderText="Id"
-                            DataNavigateUrlFormatString="abc.aspx?Id={0}"
-                            DataTextField="AccountTypeId"
-                            ItemStyle-Width="20%" />
-                        <asp:BoundField DataField="Name" HeaderText="Name"
-                            ItemStyle-Width="70%" />
-                        <%--  <asp:TemplateField HeaderText="Type">
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# ConvertStatus(Eval("GroupType")) %>'/>
-                        </ItemTemplate>
-                        </asp:TemplateField>--%>
-                    </Columns>
-                </asp:GridView>
+            <div class="row">
+                <div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px">
+                    <asp:GridView ID="GridViewResult" runat="server"
+                        Width="100%"
+                        AllowPaging="True"
+                        AllowSorting="True"
+                        AutoGenerateColumns="False"
+                        RowStyle-HorizontalAlign="Center">
+                        <Columns>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:CheckBox ID="cbSelect" runat="server" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:HyperLinkField
+                                DataNavigateUrlFields="CompanyId"
+                                HeaderText="Id"
+                                DataNavigateUrlFormatString="EditCompanyAdmin.aspx?Id={0}"
+                                DataTextField="CompanyId"
+                                ItemStyle-Width="7%" />
+                            <asp:BoundField DataField="CompanyName" HeaderText="Name" ItemStyle-Width="15%" />
+                            <asp:BoundField DataField="Address" HeaderText="Address" ItemStyle-Width="30%" />
+                            <asp:BoundField DataField="Email" HeaderText="Email" ItemStyle-Width="15%" />
+                            <asp:BoundField DataField="Phone" HeaderText="Phone" ItemStyle-Width="15%" />
+                            <asp:BoundField DataField="UserName" HeaderText="Username" ItemStyle-Width="15%" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
             </div>
         </div>
-    </div>
+    </asp:Panel>
 </asp:Content>
