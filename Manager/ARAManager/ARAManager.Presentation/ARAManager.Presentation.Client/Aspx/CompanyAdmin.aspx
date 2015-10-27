@@ -5,45 +5,39 @@
         <div class="row">
             <!--Modified by PhucLS - 20151027 - Change md-2 to md-6 for fixing lack of space for validators-->
             <div class="col-md-6">
-            <!--Ended by PhucLS - 20151027 - Change md-2 to md-6 for fixing lack of space for validators-->
+                <!--Ended by PhucLS - 20151027 - Change md-2 to md-6 for fixing lack of space for validators-->
                 <ul class="nav nav-pills nav-stacked pull-left">
                     <li role="presentation">
                         <asp:TextBox ID="txtCompanyName" runat="server"
                             placeholder="Name of company" />
                         <asp:CustomValidator ID="CustomValidator_CompanyName" runat="server"
                             ForeColor="Red"
-                            OnServerValidate="CustomValidator_CompanyName_OnServerValidate"
-                            ErrorMessage="Please enter company name with length from 1 to 100" />
+                            OnServerValidate="CustomValidator_CompanyName_OnServerValidate" />
                     </li>
                     <li role="presentation">
                         <asp:TextBox ID="txtEmail" runat="server"
                             placeholder="Email address" />
                         <asp:CustomValidator ID="CustomValidator_EmailAddress" runat="server"
-                            ForeColor="Red"
-                            OnServerValidate="CustomValidator_EmailAddress_OnServerValidate"
-                            ErrorMessage="Please enter email address with length from 1 to 100" />
+                            ForeColor="Red" />
                     </li>
                     <li role="presentation">
                         <asp:TextBox ID="txtPhone" runat="server"
                             placeholder="Phone number" />
                         <asp:CustomValidator ID="CustomValidator_PhoneNumber" runat="server"
                             ForeColor="Red"
-                            OnServerValidate="CustomValidator_PhoneNumber_OnServerValidate"
-                            ErrorMessage="Please enter phone number with length from 1 to 20" />
+                            OnServerValidate="CustomValidator_PhoneNumber_OnServerValidate" />
                     </li>
                     <li role="presentation">
                         <asp:TextBox ID="txtUserName" runat="server"
                             placeholder="UserName" />
                         <asp:CustomValidator ID="CustomValidator_UserName" runat="server"
                             ForeColor="Red"
-                            OnServerValidate="CustomValidator_UserName_OnServerValidate"
-                            ErrorMessage="Please enter user name with length from 1 to 100" />
+                            OnServerValidate="CustomValidator_UserName_OnServerValidate" />
                     </li>
                     <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_RequireFileds" runat="server"
                             ForeColor="Red"
-                            OnServerValidate="CustomValidator_RequireFileds_OnServerValidate"
-                            ErrorMessage="Please enter at lease one criterion to search." />
+                            OnServerValidate="CustomValidator_RequireFileds_OnServerValidate" />
                     </li>
                     <li role="presentation" style="margin-left: 30px">
                         <asp:Button ID="btnSearch" runat="server"
@@ -73,28 +67,38 @@
                         runat="server">COMPANY</asp:TextBox>
                 </div>
             </div>
+             <div class="row">
+                <div class="col-md-6" style="margin-top: 20px; margin-left: 20px">
+                    <asp:Label ID="lblMessage" runat="server"
+                        ForeColor="Red"/>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-6" style="margin-top: 20px; margin-left: 20px">
                     <div class="btn-toolbar" role="toolbar">
                         <div class="btn-group" role="group">
                             <asp:Button ID="btnSelectAll" runat="server"
                                 CssClass="btn btn-warning"
-                                Text="Select all" />
+                                Text="Select all"
+                                OnClick="btnSelectAll_OnClick" />
                         </div>
                         <div class="btn-group" role="group">
                             <asp:Button ID="btnDeselectAll" runat="server"
                                 CssClass="btn btn-warning"
-                                Text="Deselect all" />
+                                Text="Deselect all"
+                                OnClick="btnDeselectAll_OnClick" />
                         </div>
                         <div class="btn-group" role="group">
                             <asp:Button ID="btnDelete" runat="server"
                                 CssClass="btn btn-danger"
-                                Text="Delete" />
+                                Text="Delete"
+                                OnClick="btnDelete_OnClick" />
                         </div>
                         <div class="btn-group" role="group">
                             <asp:Button ID="btnClear" runat="server"
                                 CssClass="btn btn-warning"
-                                Text="Clear" />
+                                Text="Clear"
+                                OnClick="btnClear_OnClick" />
                         </div>
                     </div>
                 </div>
@@ -108,9 +112,14 @@
                         AutoGenerateColumns="False"
                         RowStyle-HorizontalAlign="Center">
                         <Columns>
-                            <asp:TemplateField>
+                            <asp:TemplateField ItemStyle-Width="5%">
                                 <ItemTemplate>
                                     <asp:CheckBox ID="cbSelect" runat="server" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblId" runat="server" Text='<%# Eval("CompanyId") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:HyperLinkField
@@ -118,7 +127,7 @@
                                 HeaderText="Id"
                                 DataNavigateUrlFormatString="EditCompanyAdmin.aspx?Id={0}"
                                 DataTextField="CompanyId"
-                                ItemStyle-Width="7%" />
+                                ItemStyle-Width="5%" />
                             <asp:BoundField DataField="CompanyName" HeaderText="Name" ItemStyle-Width="15%" />
                             <asp:BoundField DataField="Address" HeaderText="Address" ItemStyle-Width="30%" />
                             <asp:BoundField DataField="Email" HeaderText="Email" ItemStyle-Width="15%" />

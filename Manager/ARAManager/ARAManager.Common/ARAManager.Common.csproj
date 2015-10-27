@@ -87,7 +87,7 @@
     <Compile Include="Exception\Target\TargetAlreadyDeletedException.cs" />
     <Compile Include="Exception\Target\TargetNameAlreadyExistException.cs" />
     <Compile Include="Factory\NinjectKernelFactory.cs" />
-    <Compile Include="Messages.cs" />
+    <Compile Include="Dictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Behaviors\PreserveReferencesAttribute.cs" />
     <Compile Include="Services\Behaviors\PreserveReferencesOperationBehavior.cs" />

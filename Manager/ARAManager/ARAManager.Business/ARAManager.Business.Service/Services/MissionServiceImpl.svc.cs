@@ -54,20 +54,20 @@ namespace ARAManager.Business.Service.Services {
                 catch (ADOException)
                 {
                     throw new FaultException<MissionNameAlreadyExistException>(
-                        new MissionNameAlreadyExistException { MessageError = Messages.MISSION_NAME_CONSTRAINT_EXCEPTION_MSG },
-                        new FaultReason(Messages.UNIQUE_CONSTRAINT_EXCEPTION_REASON));
+                        new MissionNameAlreadyExistException { MessageError = Dictionary.MISSION_NAME_CONSTRAINT_EXCEPTION_MSG },
+                        new FaultReason(Dictionary.UNIQUE_CONSTRAINT_EXCEPTION_REASON));
                 }
                 catch (StaleObjectStateException)
                 {
                     throw new FaultException<ConcurrentUpdateException>(
-                        new ConcurrentUpdateException { MessageError = Messages.MISSION_CONCURRENT_UPDATE_EXCEPTION_MSG },
-                        new FaultReason(Messages.CONCURRENT_UPDATE_EXCEPTION_REASON));
+                        new ConcurrentUpdateException { MessageError = Dictionary.MISSION_CONCURRENT_UPDATE_EXCEPTION_MSG },
+                        new FaultReason(Dictionary.CONCURRENT_UPDATE_EXCEPTION_REASON));
                 }
                 catch (Exception ex)
                 {
                     throw new FaultException<Exception>(
                        new Exception(ex.Message),
-                       new FaultReason(Messages.UNKNOWN_REASON));
+                       new FaultReason(Dictionary.UNKNOWN_REASON));
                 }
                 tr.Complete();
             }
@@ -86,8 +86,8 @@ namespace ARAManager.Business.Service.Services {
                 catch (Exception)
                 {
                     throw new FaultException<MissionAlreadyDeletedException>(
-                       new MissionAlreadyDeletedException { MessageError = Messages.MISSION_DELETED_EXCEPTION_MSG },
-                       new FaultReason(Messages.DELETED_EXCEPTION_REASON));
+                       new MissionAlreadyDeletedException { MessageError = Dictionary.MISSION_DELETED_EXCEPTION_MSG },
+                       new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
                 }
                 tr.Complete();
             }
@@ -103,8 +103,8 @@ namespace ARAManager.Business.Service.Services {
                 catch (Exception)
                 {
                     throw new FaultException<MissionAlreadyDeletedException>(
-                       new MissionAlreadyDeletedException { MessageError = Messages.MISSION_DELETED_EXCEPTION_MSG },
-                       new FaultReason(Messages.MISSION_DELETED_EXCEPTION_MSG));
+                       new MissionAlreadyDeletedException { MessageError = Dictionary.MISSION_DELETED_EXCEPTION_MSG },
+                       new FaultReason(Dictionary.MISSION_DELETED_EXCEPTION_MSG));
                 }
             }
         }

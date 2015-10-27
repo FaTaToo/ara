@@ -59,20 +59,20 @@ namespace ARAManager.Business.Service.Services {
                catch (ADOException)
                {
                    throw new FaultException<CompanyNameAlreadyExistException>(
-                       new CompanyNameAlreadyExistException { MessageError = Messages.COMPANY_NAME_CONSTRAINT_EXCEPTION_MSG },
-                       new FaultReason(Messages.UNIQUE_CONSTRAINT_EXCEPTION_REASON));
+                       new CompanyNameAlreadyExistException { MessageError = Dictionary.COMPANY_NAME_CONSTRAINT_EXCEPTION_MSG },
+                       new FaultReason(Dictionary.UNIQUE_CONSTRAINT_EXCEPTION_REASON));
                }
                catch (StaleObjectStateException)
                {
                    throw new FaultException<ConcurrentUpdateException>(
-                       new ConcurrentUpdateException { MessageError = Messages.COMPANY_CONCURRENT_UPDATE_EXCEPTION_MSG },
-                       new FaultReason(Messages.COMPANY_CONCURRENT_UPDATE_EXCEPTION_MSG));
+                       new ConcurrentUpdateException { MessageError = Dictionary.COMPANY_CONCURRENT_UPDATE_EXCEPTION_MSG },
+                       new FaultReason(Dictionary.COMPANY_CONCURRENT_UPDATE_EXCEPTION_MSG));
                }
                catch (Exception ex)
                {
                    throw new FaultException<Exception>(
                       new Exception(ex.Message),
-                      new FaultReason(Messages.UNKNOWN_REASON));
+                      new FaultReason(Dictionary.UNKNOWN_REASON));
                }
                tr.Complete();
            }
@@ -91,8 +91,8 @@ namespace ARAManager.Business.Service.Services {
                catch (Exception)
                {
                    throw new FaultException<CompanyAlreadyDeletedException>(
-                      new CompanyAlreadyDeletedException { MessageError = Messages.COMPANY_DELETED_EXCEPTION_MSG },
-                      new FaultReason(Messages.DELETED_EXCEPTION_REASON));
+                      new CompanyAlreadyDeletedException { MessageError = Dictionary.COMPANY_DELETED_EXCEPTION_MSG },
+                      new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
                }
                tr.Complete();
            }
@@ -109,8 +109,8 @@ namespace ARAManager.Business.Service.Services {
                catch (Exception)
                {
                    throw new FaultException<CompanyAlreadyDeletedException>(
-                      new CompanyAlreadyDeletedException { MessageError = Messages.COMPANY_DELETED_EXCEPTION_MSG },
-                      new FaultReason(Messages.DELETED_EXCEPTION_REASON));
+                      new CompanyAlreadyDeletedException { MessageError = Dictionary.COMPANY_DELETED_EXCEPTION_MSG },
+                      new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
                }
            }
        }
@@ -148,15 +148,15 @@ namespace ARAManager.Business.Service.Services {
            var criteria = DetachedCriteria.For<Company>();
 
            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password)) {
-               criteria.Add(Restrictions.Where<Company>(a => a.UserName == username));
+               criteria.Add(Restrictions.Where<Company>(a => a.UserName== username));
                criteria.Add(Restrictions.Where<Company>(a => a.Password == password));
+               var result = srvDao.FindByCriteria(criteria);
+               if (result.Count != 0)
+               {
+                   return 2;
+               }
            }
-
-           var result = srvDao.FindByCriteria(criteria);
-
-           if (result.Count !=0) {
-                return 2;
-           }
+           
            return -1;
        }
        #endregion IMethods

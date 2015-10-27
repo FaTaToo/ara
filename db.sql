@@ -121,5 +121,5 @@ values ('Phuc','Le','1','1993-02-18','abc','phucls288@gmail.com','0933111875','p
 
 --Company
 insert into ARA_Company(CompanyName,Address,Email,Phone,UserName,Password) 
-values ('ELCA','N1 Dien Bienh Phu','elca@elca.ch','12345','elca','mpt')
+values ('ELCA','N1 Dien Bien Phu','elca@elca.ch','12345','elca','mpt')
 ------------------------------------------------------------------------------------------------------------

@@ -51,20 +51,20 @@ namespace ARAManager.Business.Service.Services {
                 catch (ADOException)
                 {
                     throw new FaultException<CampaignNameAlreadyExistException>(
-                        new CampaignNameAlreadyExistException { MessageError = Messages.CAMPAIGN_NAME_CONSTRAINT_EXCEPTION_MSG },
-                        new FaultReason(Messages.UNIQUE_CONSTRAINT_EXCEPTION_REASON));
+                        new CampaignNameAlreadyExistException { MessageError = Dictionary.CAMPAIGN_NAME_CONSTRAINT_EXCEPTION_MSG },
+                        new FaultReason(Dictionary.UNIQUE_CONSTRAINT_EXCEPTION_REASON));
                 }
                 catch (StaleObjectStateException)
                 {
                     throw new FaultException<ConcurrentUpdateException>(
-                        new ConcurrentUpdateException { MessageError = Messages.CAMPAIGN_CONCURRENT_UPDATE_EXCEPTION_MSG },
-                        new FaultReason(Messages.CAMPAIGN_CONCURRENT_UPDATE_EXCEPTION_MSG));
+                        new ConcurrentUpdateException { MessageError = Dictionary.CAMPAIGN_CONCURRENT_UPDATE_EXCEPTION_MSG },
+                        new FaultReason(Dictionary.CAMPAIGN_CONCURRENT_UPDATE_EXCEPTION_MSG));
                 }
                 catch (Exception ex)
                 {
                     throw new FaultException<Exception>(
                        new Exception(ex.Message),
-                       new FaultReason(Messages.UNKNOWN_REASON));
+                       new FaultReason(Dictionary.UNKNOWN_REASON));
                 }
                 tr.Complete();
             }
@@ -83,8 +83,8 @@ namespace ARAManager.Business.Service.Services {
                 catch (Exception)
                 {
                     throw new FaultException<CampaignAlreadyDeletedException>(
-                       new CampaignAlreadyDeletedException { MessageError = Messages.CAMPAIGN_DELETED_EXCEPTION_MSG },
-                       new FaultReason(Messages.DELETED_EXCEPTION_REASON));
+                       new CampaignAlreadyDeletedException { MessageError = Dictionary.CAMPAIGN_DELETED_EXCEPTION_MSG },
+                       new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
                 }
                 tr.Complete();
             }
@@ -101,8 +101,8 @@ namespace ARAManager.Business.Service.Services {
                 catch (Exception)
                 {
                     throw new FaultException<CampaignAlreadyDeletedException>(
-                       new CampaignAlreadyDeletedException { MessageError = Messages.CAMPAIGN_DELETED_EXCEPTION_MSG },
-                       new FaultReason(Messages.DELETED_EXCEPTION_REASON));
+                       new CampaignAlreadyDeletedException { MessageError = Dictionary.CAMPAIGN_DELETED_EXCEPTION_MSG },
+                       new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
                 }
             }
         }

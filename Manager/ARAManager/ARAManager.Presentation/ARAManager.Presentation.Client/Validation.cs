@@ -10,14 +10,21 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.ComponentModel.Design.Serialization;
+
 namespace ARAManager.Presentation.Client
 {
     public class Validation
     {
         #region IFields
 
-        public const string VALIDATOR_USEREMAIL = "Incorrect username format";
-        public const string VALIDATOR_USERPASS = "Incorrect password format";
+        public const string VALIDATOR_USEREMAIL_FORMAT = "Incorrect username format";
+        public const string VALIDATOR_USERPASS_FORMAT = "Incorrect password format";
+        public const string VALIDATOR_COMPANYADMIN_NAME = "Please enter company name with length from 1 to 100";
+        public const string VALIDATOR_EMAIL = "Please enter email address with length from 1 to 100";
+        public const string VALIDATOR_PHONE = "Please enter phone number with length from 1 to 20";
+        public const string VALIDATOR_USERNAME = "Please enter user name with length from 1 to 100";
+        public const string VALIDATOR_REQUIRED_CRITERION_SEARCH = "Please enter at lease one criterion to search.";
 
         #endregion IFields
 

@@ -31,6 +31,9 @@ namespace ARAManager.Presentation.Client.Aspx {
         }
 
         protected void btnLogin_OnClick(object sender, EventArgs e) {
+            CustomValidator_UserEmail.Validate();
+            CustomValidator_UserPass.Validate();
+
             if (!Page.IsValid) {
                 return;
             }
@@ -41,26 +44,20 @@ namespace ARAManager.Presentation.Client.Aspx {
                 FormsAuthentication.RedirectFromLoginPage(UserEmail.Text, cbRememberPassword.Checked);
                 Response.Redirect(login == 1 ? "HomeAdmin.aspx" : "CampaignCompany.aspx");
             } else {
-                lblMessageIncredential.Text = Messages.INVALID_LOGIN;
+                lblMessageIncredential.Text = Dictionary.INVALID_LOGIN;
+                UserEmail.Text = string.Empty;
+                UserPass.Text = string.Empty;
             }
         }
 
         protected void CustomValidator_UserEmail_OnServerValidate(object source, ServerValidateEventArgs args) {
-            CustomValidator_UserEmail.ErrorMessage = Validation.VALIDATOR_USEREMAIL;
+            CustomValidator_UserEmail.ErrorMessage = Validation.VALIDATOR_USEREMAIL_FORMAT;
             args.IsValid = m_validator.ValidateChar100(UserEmail.Text);
         }
 
         protected void CustomValidator_UserPass_OnServerValidate(object source, ServerValidateEventArgs args) {
-            CustomValidator_UserEmail.ErrorMessage = Validation.VALIDATOR_USERPASS;
+            CustomValidator_UserPass.ErrorMessage = Validation.VALIDATOR_USERPASS_FORMAT;
             args.IsValid = m_validator.ValidateChar100(UserPass.Text);
-        }
-
-        protected void UserEmail_OnTextChanged(object sender, EventArgs e) {
-            CustomValidator_UserEmail.Validate(); 
-        }
-
-        protected void UserPass_OnTextChanged(object sender, EventArgs e) {
-            CustomValidator_UserPass.Validate();
         }
 
         #endregion IMethods

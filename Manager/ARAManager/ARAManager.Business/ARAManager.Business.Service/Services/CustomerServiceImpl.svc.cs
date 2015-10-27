@@ -53,14 +53,14 @@ namespace ARAManager.Business.Service.Services {
                 catch (StaleObjectStateException)
                 {
                     throw new FaultException<ConcurrentUpdateException>(
-                        new ConcurrentUpdateException { MessageError = Messages.CUSTOMER_CONCURRENT_UPDATE_EXCEPTION_MSG },
-                        new FaultReason(Messages.CONCURRENT_UPDATE_EXCEPTION_REASON));
+                        new ConcurrentUpdateException { MessageError = Dictionary.CUSTOMER_CONCURRENT_UPDATE_EXCEPTION_MSG },
+                        new FaultReason(Dictionary.CONCURRENT_UPDATE_EXCEPTION_REASON));
                 }
                 catch (Exception ex)
                 {
                     throw new FaultException<Exception>(
                        new Exception(ex.Message),
-                       new FaultReason(Messages.UNKNOWN_REASON));
+                       new FaultReason(Dictionary.UNKNOWN_REASON));
                 }
                 tr.Complete();
             }
@@ -79,8 +79,8 @@ namespace ARAManager.Business.Service.Services {
                 catch (Exception)
                 {
                     throw new FaultException<CustomerAlreadyDeletedException>(
-                       new CustomerAlreadyDeletedException { MessageError = Messages.CUSTOMER_DELETED_EXCEPTION_MSG },
-                       new FaultReason(Messages.DELETED_EXCEPTION_REASON));
+                       new CustomerAlreadyDeletedException { MessageError = Dictionary.CUSTOMER_DELETED_EXCEPTION_MSG },
+                       new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
                 }
                 tr.Complete();
             }
@@ -96,8 +96,8 @@ namespace ARAManager.Business.Service.Services {
                 catch (Exception)
                 {
                     throw new FaultException<CustomerAlreadyDeletedException>(
-                       new CustomerAlreadyDeletedException { MessageError = Messages.CUSTOMER_DELETED_EXCEPTION_MSG },
-                       new FaultReason(Messages.DELETED_EXCEPTION_REASON));
+                       new CustomerAlreadyDeletedException { MessageError = Dictionary.CUSTOMER_DELETED_EXCEPTION_MSG },
+                       new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
                 }
             }
         }
