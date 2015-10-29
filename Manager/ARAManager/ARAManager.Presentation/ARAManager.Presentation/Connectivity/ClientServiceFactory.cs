@@ -58,7 +58,7 @@ namespace ARAManager.Presentation.Connectivity
         {
             m_serviceFactories = new Dictionary<string, object>();
             Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(new ExeConfigurationFileMap() {
-                ExeConfigFilename = @"D:\Projects\AEP_ARAds\ver-1.0\src\ARA\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\bin\Debug\ARAManager.Presentation.Client.exe.config",
+                ExeConfigFilename = @"D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\bin\Debug\ARAManager.Presentation.Client.exe.config",
                 }, ConfigurationUserLevel.None);
 
             var serviceGroup = ServiceModelSectionGroup.GetSectionGroup(configuration);
