@@ -34,11 +34,11 @@ namespace ARAManager.Common.Dto {
 
         [DataMember]
         [Property(Column = "Latitude", Name = "Latitude", TypeType = typeof(int),NotNull = false)]
-        public virtual int Latitude { get; set; }
+        public virtual int? Latitude { get; set; }
 
         [DataMember]
         [Property(Column = "Longitude", Name = "Longitude", TypeType = typeof(int), NotNull = false)]
-        public virtual int Longitude { get; set; }
+        public virtual int? Longitude { get; set; }
         
         [DataMember]
         [Property(Column = "Description", Name = "Description", TypeType = typeof(string), Length = 500, NotNull = true)]
@@ -49,15 +49,15 @@ namespace ARAManager.Common.Dto {
         public virtual bool IsComplete { get; set; }
 
         [DataMember]
-        [Property(Column = "VideoUrl", Name = "VideoUrl", TypeType = typeof(string), Length = 500, NotNull = true)]
+        [Property(Column = "VideoUrl", Name = "VideoUrl", TypeType = typeof(string), Length = 500, NotNull = false)]
         public virtual string VideoUrl { get; set; }
 
         [DataMember]
-        [Property(Column = "FacebookUrl", Name = "FacebookUrl", TypeType = typeof(string), Length = 500, NotNull = true)]
+        [Property(Column = "FacebookUrl", Name = "FacebookUrl", TypeType = typeof(string), Length = 500, NotNull = false)]
         public virtual string FacebookUrl { get; set; }
 
         [DataMember]
-        [Property(Column = "YoutubeUrl", Name = "YoutubeUrl", TypeType = typeof(string), Length = 500, NotNull = true)]
+        [Property(Column = "YoutubeUrl", Name = "YoutubeUrl", TypeType = typeof(string), Length = 500, NotNull = false)]
         public virtual string YoutubeUrl { get; set; }
 
         [ManyToOne(Name = "Mission", Column = "MissionName", NotNull = false, Fetch = FetchMode.Select)]

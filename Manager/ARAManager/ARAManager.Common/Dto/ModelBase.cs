@@ -28,7 +28,7 @@ namespace ARAManager.Common.Dto
         [DataMember]
         public virtual byte[] RowVersion {
             get;
-            private set;
+            set;
         }
 
         #endregion IProperties

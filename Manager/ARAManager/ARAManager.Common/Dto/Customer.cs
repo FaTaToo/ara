@@ -52,15 +52,15 @@ namespace ARAManager.Common.Dto
         public virtual string LastName { get; set; }
 
         [DataMember]
-        [Property(Column = "Sex", Name = "Sex", TypeType = typeof(bool), NotNull = true)]
-        public virtual bool Sex { get; set; }
+        [Property(Column = "Sex", Name = "Sex", TypeType = typeof(string), Length = 6, NotNull = true)]
+        public virtual string Sex { get; set; }
 
         [DataMember]
-        [Property(Column = "BirthDay", Name = "BirthDay", TypeType = typeof(DateTime), NotNull = false)]
-        public virtual string BirthDay { get; set; }
+        [Property(Column = "BirthDay", Name = "BirthDay", TypeType = typeof(DateTime), NotNull = true)]
+        public virtual DateTime BirthDay { get; set; }
 
         [DataMember]
-        [Property(Column = "Address", Name = "Address", TypeType = typeof(string), Length = 500, NotNull = false)]
+        [Property(Column = "Address", Name = "Address", TypeType = typeof(string), Length = 500, NotNull = true)]
         public virtual string Address { get; set; }
 
         [DataMember]
