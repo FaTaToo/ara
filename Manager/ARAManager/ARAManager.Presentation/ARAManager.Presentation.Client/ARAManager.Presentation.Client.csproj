@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=15.1.3.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Phuc\Documents\ASP.NET AJAX Control Toolkit\Bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="AspNet.ScriptManager.jQuery, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\AspNet.ScriptManager.jQuery.2.1.4\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
       <Private>True</Private>
@@ -138,7 +142,7 @@
     <Content Include="Aspx\CompanyAdmin.aspx" />
     <Content Include="Aspx\CustomerAdmin.aspx" />
     <Content Include="Aspx\Default.aspx" />
-    <Content Include="Aspx\EditCampaignCompany.aspx" />
+    <Content Include="Aspx\NewCampaignCompany.aspx" />
     <Content Include="Aspx\EditCompanyAdmin.aspx" />
     <Content Include="Aspx\EditCustomerAdmin.aspx" />
     <Content Include="Aspx\HomeAdmin.aspx" />
@@ -322,12 +326,12 @@
     <Compile Include="Aspx\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Aspx\EditCampaignCompany.aspx.cs">
-      <DependentUpon>EditCampaignCompany.aspx</DependentUpon>
+    <Compile Include="Aspx\NewCampaignCompany.aspx.cs">
+      <DependentUpon>NewCampaignCompany.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Aspx\EditCampaignCompany.aspx.designer.cs">
-      <DependentUpon>EditCampaignCompany.aspx</DependentUpon>
+    <Compile Include="Aspx\NewCampaignCompany.aspx.designer.cs">
+      <DependentUpon>NewCampaignCompany.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aspx\EditCompanyAdmin.aspx.cs">
       <DependentUpon>EditCompanyAdmin.aspx</DependentUpon>
