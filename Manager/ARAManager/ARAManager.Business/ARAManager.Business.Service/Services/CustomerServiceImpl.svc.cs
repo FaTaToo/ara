@@ -101,6 +101,35 @@ namespace ARAManager.Business.Service.Services {
                 }
             }
         }
+
+        public IList<Customer> SearchCustomer(string firstname, string lastname, string email, string phone, string username) {
+            var srvDao = NinjectKernelFactory.Kernel.Get<ICustomerDataAccess>();
+            var criteria = DetachedCriteria.For<Customer>();
+
+            if (!string.IsNullOrEmpty(firstname)) {
+                criteria.Add(Restrictions.Where<Customer>(c => c.FirstName == firstname));
+            }
+
+            if (!string.IsNullOrEmpty(lastname)) {
+                criteria.Add(Restrictions.Where<Customer>(c => c.LastName == lastname));
+            }
+
+            if (!string.IsNullOrEmpty(email)) {
+                criteria.Add(Restrictions.Where<Customer>(c => c.Email == email));
+            }
+
+            if (!string.IsNullOrEmpty(phone)) {
+                criteria.Add(Restrictions.Where<Customer>(c => c.Phone == phone));
+            }
+
+            if (!string.IsNullOrEmpty(username))
+            {
+                criteria.Add(Restrictions.Where<Customer>(c => c.UserName == username));
+            }
+
+            var result = srvDao.FindByCriteria(criteria);
+            return result;
+        }
         #endregion IMethods
     }
 }

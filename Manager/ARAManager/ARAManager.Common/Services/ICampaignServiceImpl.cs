@@ -10,6 +10,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.ServiceModel;
 using ARAManager.Common.Dto;
@@ -43,5 +44,9 @@ namespace ARAManager.Common.Services {
         [PreserveReferences]
         [FaultContract(typeof(CampaignNameAlreadyExistException))]
         void DeleteCampaigns(List<int> campaigns);
+
+        [OperationContract]
+        [PreserveReferences]
+        IList<Campaign> SearchCampaign(string campaignname, string companyname);
     }
 }

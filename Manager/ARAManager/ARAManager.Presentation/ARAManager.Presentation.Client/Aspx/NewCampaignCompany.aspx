@@ -1,11 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/Management_Company.master" AutoEventWireup="true" CodeBehind="EditCampaignCompany.aspx.cs" Inherits="ARAManager.Presentation.Client.Aspx.EditCampaignCompany" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/Management_Company.master" AutoEventWireup="true" CodeBehind="NewCampaignCompany.aspx.cs" Inherits="ARAManager.Presentation.Client.Aspx.EditCampaignCompany" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
-</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server"></asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" runat="server">
+    <!--#region EDIT_INFORMATION-->
     <div class="container">
         <div class="row">
             <div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px">
+                <!--#region TITLE-->
                 <asp:TextBox ID="txtCampaign"
                     Width="100%"
                     BackColor="darkred"
@@ -16,6 +18,9 @@
                     Enabled="False"
                     Style="text-align: center"
                     runat="server">Edit "CAMPAIGN" information</asp:TextBox>
+                <!--#endregion TITLE-->
+
+                <!--#region INFORMATION-->
                 <table class="table" style="border-style: none">
                     <tr>
                         <td style="width: 30%">Name</td>
@@ -23,7 +28,7 @@
                             <asp:TextBox ID="txtCampaignName" runat="server"
                                 Width="100%"
                                 placeholder="Campaign name" />
-                            <asp:CustomValidator ID="CustomValidator_CampaignName" runat="server" ErrorMessage="CustomValidator" />
+                            <asp:CustomValidator ID="CustomValidator_CampaignName" runat="server" />
                         </td>
                     </tr>
                     <tr>
@@ -32,7 +37,7 @@
                             <asp:TextBox ID="txtStartTime" runat="server"
                                 Width="100%"
                                 placeholder="The time which the campaign starts" />
-                            <asp:CustomValidator ID="CustomValidator_StartTime" runat="server" ErrorMessage="CustomValidator" />
+                            <asp:CustomValidator ID="CustomValidator_StartTime" runat="server" />
                         </td>
                     </tr>
                     <tr>
@@ -41,7 +46,7 @@
                             <asp:TextBox ID="txtEndTime" runat="server"
                                 Width="100%"
                                 placeholder="The time which the campaign ends" />
-                            <asp:CustomValidator ID="CustomValidator_EndTime" runat="server" ErrorMessage="CustomValidator" />
+                            <asp:CustomValidator ID="CustomValidator_EndTime" runat="server" />
                         </td>
                     </tr>
                     <tr>
@@ -50,7 +55,7 @@
                             <asp:TextBox ID="txtDescription" runat="server"
                                 Width="100%"
                                 placeholder="Description of the campaign" />
-                            <asp:CustomValidator ID="CustomValidator_Description" runat="server" ErrorMessage="CustomValidator" />
+                            <asp:CustomValidator ID="CustomValidator_Description" runat="server" />
                         </td>
                     </tr>
                     <tr>
@@ -59,7 +64,7 @@
                             <asp:TextBox ID="txtBanner" runat="server"
                                 Width="100%"
                                 placeholder="Banner link of the campaign" />
-                            <asp:CustomValidator ID="CustomValidator_Banner" runat="server" ErrorMessage="CustomValidator" />
+                            <asp:CustomValidator ID="CustomValidator_Banner" runat="server" />
                         </td>
                     </tr>
                     <tr>
@@ -68,7 +73,7 @@
                             <asp:TextBox ID="txtAvatar" runat="server"
                                 Width="100%"
                                 placeholder="Avatar link of the campaign" />
-                            <asp:CustomValidator ID="CustomValidator_Avatar" runat="server" ErrorMessage="CustomValidator" />
+                            <asp:CustomValidator ID="CustomValidator_Avatar" runat="server" />
                         </td>
                     </tr>
                     <tr>
@@ -77,7 +82,7 @@
                             <asp:TextBox ID="txtGift" runat="server"
                                 Width="100%"
                                 placeholder="Gift of the campaign" />
-                            <asp:CustomValidator ID="CustomValidator_Gift" runat="server" ErrorMessage="CustomValidator" />
+                            <asp:CustomValidator ID="CustomValidator_Gift" runat="server" />
                         </td>
                     </tr>
                     <tr>
@@ -96,6 +101,9 @@
                         </td>
                     </tr>
                 </table>
+                <!--#endregion INFORMATION-->
+                
+                <!--#region BUTTON-->
                 <ul class="nav nav-pills pull-left">
                     <li role="presentation">
                         <asp:Button ID="btnSave" runat="server"
@@ -108,7 +116,9 @@
                             Text="Cancel" />
                     </li>
                 </ul>
+                <!--#endregion BUTTON-->
             </div>
         </div>
     </div>
+    <!--#endregion EDIT_INFORMATION-->
 </asp:Content>

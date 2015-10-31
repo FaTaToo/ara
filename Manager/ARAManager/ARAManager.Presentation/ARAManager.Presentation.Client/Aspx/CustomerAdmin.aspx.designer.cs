@@ -121,6 +121,15 @@ namespace ARAManager.Presentation.Client.Aspx {
         protected global::System.Web.UI.WebControls.Button btnSearch;
         
         /// <summary>
+        /// Panel_Result control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel_Result;
+        
+        /// <summary>
         /// txtCustomer control.
         /// </summary>
         /// <remarks>
@@ -128,6 +137,15 @@ namespace ARAManager.Presentation.Client.Aspx {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCustomer;
+        
+        /// <summary>
+        /// lblMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMessage;
         
         /// <summary>
         /// btnSelectAll control.

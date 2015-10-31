@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/Management_Admin.master" AutoEventWireup="true" CodeBehind="CompanyAdmin.aspx.cs" Inherits="ARAManager.Presentation.Client.Aspx.CompanyAdmin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
+    <!--#region SEARCH_FORMS-->
     <div class="container">
         <div class="row">
             <!--Modified by PhucLS - 20151027 - Change md-2 to md-6 for fixing lack of space for validators-->
@@ -39,7 +40,7 @@
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_RequireFileds_OnServerValidate" />
                     </li>
-                    <li role="presentation" style="margin-left: 30px">
+                    <li role="presentation" style="margin-left: 30px; margin-top:20px">
                         <asp:Button ID="btnSearch" runat="server"
                             CssClass="btn btn-success"
                             Text="Search"
@@ -49,8 +50,11 @@
             </div>
         </div>
     </div>
+    <!--#endregion SEARCH_FORMS-->
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" runat="server">
+    <!--#region SEARCH_RESULT-->
     <asp:Panel ID="Panel_Result" runat="server" Visible="False">
         <div class="container">
             <div class="row">
@@ -125,7 +129,7 @@
                             <asp:HyperLinkField
                                 DataNavigateUrlFields="CompanyId"
                                 HeaderText="Id"
-                                DataNavigateUrlFormatString="EditCompanyAdmin.aspx?Id={0}"
+                                DataNavigateUrlFormatString="EditCompanyAdmin.aspx?RequestId={0}"
                                 DataTextField="CompanyId"
                                 ItemStyle-Width="5%" />
                             <asp:BoundField DataField="CompanyName" HeaderText="Name" ItemStyle-Width="15%" />
@@ -139,4 +143,5 @@
             </div>
         </div>
     </asp:Panel>
+    <!--#endregion SEARCH_RESULT-->
 </asp:Content>

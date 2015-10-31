@@ -123,13 +123,11 @@ namespace ARAManager.Business.Service.Services {
                criteria.Add(Restrictions.Where<Company>(c=>c.CompanyName==name));
            }
 
-           if (!string.IsNullOrEmpty(email))
-           {
+           if (!string.IsNullOrEmpty(email)) {
                criteria.Add(Restrictions.Where<Company>(c => c.Email == email));
            }
 
-           if (!string.IsNullOrEmpty(phone))
-           {
+           if (!string.IsNullOrEmpty(phone)) {
                criteria.Add(Restrictions.Where<Company>(c => c.Phone == phone));
            }
 

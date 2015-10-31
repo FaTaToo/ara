@@ -42,5 +42,9 @@ namespace ARAManager.Common.Services {
         [PreserveReferences]
         [FaultContract(typeof(CustomerAlreadyDeletedException))]
         void DeleteCustomers(List<int> customers);
+
+        [OperationContract]
+        [PreserveReferences]
+        IList<Customer> SearchCustomer(string firstname, string lastname, string email, string phone, string username);
     }
 }

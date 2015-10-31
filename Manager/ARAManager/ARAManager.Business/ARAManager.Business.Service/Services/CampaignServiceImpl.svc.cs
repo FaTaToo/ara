@@ -106,6 +106,24 @@ namespace ARAManager.Business.Service.Services {
                 }
             }
         }
+
+        public IList<Campaign> SearchCampaign(string campaignname, string companyname) {
+            var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
+            var criteria = DetachedCriteria.For<Campaign>();
+
+            if (!string.IsNullOrEmpty(campaignname))
+            {
+                criteria.Add(Restrictions.Where<Campaign>(c => c.Name == campaignname));
+            }
+
+            if (!string.IsNullOrEmpty(companyname))
+            {
+                criteria.Add(Restrictions.Where<Campaign>(c => c.Company.CompanyName == companyname));
+            }
+
+            var result = srvDao.FindByCriteria(criteria);
+            return result;
+        }
         #endregion IMethods
     }
 }
