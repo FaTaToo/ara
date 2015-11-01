@@ -142,11 +142,12 @@
     <Content Include="Aspx\CompanyAdmin.aspx" />
     <Content Include="Aspx\CustomerAdmin.aspx" />
     <Content Include="Aspx\Default.aspx" />
+    <Content Include="Aspx\MissionCampaignCompany.aspx" />
     <Content Include="Aspx\NewCampaignCompany.aspx" />
     <Content Include="Aspx\EditCompanyAdmin.aspx" />
     <Content Include="Aspx\EditCustomerAdmin.aspx" />
     <Content Include="Aspx\HomeAdmin.aspx" />
-    <Content Include="Aspx\NewMissionCampaignCompany.aspx" />
+    <Content Include="Aspx\TargetMissionCampaignCompany.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -327,6 +328,13 @@
     <Compile Include="Aspx\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Aspx\MissionCampaignCompany.aspx.cs">
+      <DependentUpon>MissionCampaignCompany.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Aspx\MissionCampaignCompany.aspx.designer.cs">
+      <DependentUpon>MissionCampaignCompany.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aspx\NewCampaignCompany.aspx.cs">
       <DependentUpon>NewCampaignCompany.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -355,12 +363,12 @@
     <Compile Include="Aspx\HomeAdmin.aspx.designer.cs">
       <DependentUpon>HomeAdmin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Aspx\NewMissionCampaignCompany.aspx.cs">
-      <DependentUpon>NewMissionCampaignCompany.aspx</DependentUpon>
+    <Compile Include="Aspx\TargetMissionCampaignCompany.aspx.cs">
+      <DependentUpon>TargetMissionCampaignCompany.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Aspx\NewMissionCampaignCompany.aspx.designer.cs">
-      <DependentUpon>NewMissionCampaignCompany.aspx</DependentUpon>
+    <Compile Include="Aspx\TargetMissionCampaignCompany.aspx.designer.cs">
+      <DependentUpon>TargetMissionCampaignCompany.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

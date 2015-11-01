@@ -103,15 +103,10 @@
                                     <asp:CheckBox ID="cbSelect" runat="server" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblId" runat="server" Text='<%# Eval("CampaignId") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
                             <asp:HyperLinkField
                                 DataNavigateUrlFields="CampaignId"
                                 HeaderText="Id"
-                                DataNavigateUrlFormatString="NewCampaignCompany.aspx?RequestId={0}"
+                                DataNavigateUrlFormatString="MissionCampaignCompany.aspx?RequestId={0}"
                                 DataTextField="CampaignId"
                                 ItemStyle-Width="5%" />
                             <asp:BoundField DataField="CampaignName" HeaderText="Name" ItemStyle-Width="10%" />

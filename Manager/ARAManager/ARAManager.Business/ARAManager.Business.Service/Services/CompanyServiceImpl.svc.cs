@@ -27,12 +27,6 @@ using Ninject;
 
 namespace ARAManager.Business.Service.Services {
    public class CompanyServiceImpl : ICompanyServiceImpl {
-       #region IFields
-
-       private const string ADMIN_USERNAME = "admin";
-       private const string ADMIN_PASSWORD = "admin";
-
-       #endregion IFields
 
        #region IMethods
        public Company GetCompanyById(int companyId)
@@ -137,8 +131,8 @@ namespace ARAManager.Business.Service.Services {
 
        public int AuthenticateUser(string username, string password)
        {
-           if (String.CompareOrdinal(username, ADMIN_USERNAME) == 0 ||
-               String.CompareOrdinal(password, ADMIN_PASSWORD) == 0) {
+           if (String.CompareOrdinal(username, Dictionary.ADMIN_USERNAME) == 0 ||
+               String.CompareOrdinal(password, Dictionary.ADMIN_PASSWORD) == 0) {
                return 1;
            }
 

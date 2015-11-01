@@ -45,10 +45,6 @@ namespace ARAManager.Common.Dto {
         public virtual string Description { get; set; }
 
         [DataMember]
-        [Property(Column = "IsComplete", Name = "IsComplete", TypeType = typeof(bool), NotNull = true)]
-        public virtual bool IsComplete { get; set; }
-
-        [DataMember]
         [Property(Column = "VideoUrl", Name = "VideoUrl", TypeType = typeof(string), Length = 500, NotNull = false)]
         public virtual string VideoUrl { get; set; }
 

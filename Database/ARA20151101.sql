@@ -54,7 +54,6 @@ create table ARA_Mission
 	MissionName	nvarchar(100) unique not null,		
 	Description	nvarchar(500) not null,
 	Avatar		image not null,	
-	IsComplete  bit not null,	
 	NumTarget	int not null,
 	---
 	--Foreign key
@@ -71,7 +70,6 @@ create table ARA_Target
 	Latitude	int,
 	Longitude	int,
 	Description	nvarchar(500) not null,
-	IsComplete  bit not null,	
 	VideoUrl	nvarchar(500),
 	FacebookUrl	nvarchar(500),
 	YoutubeUrl	nvarchar(500),

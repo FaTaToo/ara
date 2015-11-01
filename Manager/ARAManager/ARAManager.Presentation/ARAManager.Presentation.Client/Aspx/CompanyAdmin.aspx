@@ -43,14 +43,12 @@
                     <li role="presentation" style="margin-top:20px">
                         <asp:Button ID="btnSearch" runat="server"
                             CssClass="btn btn-success"
-                            Width="100%"
                             Text="Search"
                             OnClick="btnSearch_OnClick" />
                     </li>
                     <li role="presentation" style="margin-top:20px">
                         <asp:Button ID="btnNewCompany" runat="server"
                             CssClass="btn btn-success"
-                            Width="100%"
                             Text="Create new company"
                             OnClick="btnNewCompany_OnClick" />
                     </li>
@@ -127,11 +125,6 @@
                             <asp:TemplateField ItemStyle-Width="5%">
                                 <ItemTemplate>
                                     <asp:CheckBox ID="cbSelect" runat="server" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblId" runat="server" Text='<%# Eval("CompanyId") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:HyperLinkField

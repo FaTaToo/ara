@@ -50,10 +50,6 @@ namespace ARAManager.Common.Dto {
         [DataMember]
         [Property(Column = "Avatar", Name = "Avatar", TypeType = typeof(byte[]), Length = 500, NotNull = true)]
         public virtual byte[] Avatar { get; set; }
-
-        [DataMember]
-        [Property(Column = "IsComplete", Name = "IsComplete", TypeType = typeof(bool), NotNull = true)]
-        public virtual bool IsComplete { get; set; }
         
         [DataMember]
         [Property(Column = "NumTarget", Name = "NumTarget", TypeType = typeof(int), NotNull = true)]
