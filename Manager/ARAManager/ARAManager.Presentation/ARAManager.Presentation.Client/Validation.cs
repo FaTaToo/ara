@@ -10,8 +10,6 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.ComponentModel.Design.Serialization;
-
 namespace ARAManager.Presentation.Client
 {
     public class Validation
@@ -32,9 +30,16 @@ namespace ARAManager.Presentation.Client
         public const string VALIDATOR_PHONE = "Please enter phone number with length from 1 to 20.";
         public const string VALIDATOR_USERNAME = "Please enter user name with length from 1 to 100.";
         public const string VALIDATOR_PASSWORD = "Please enter password with length from 1 to 100.";
+        public const string VALIDATOR_GIFT = "Please enter gift with length from 1 to 500.";
+        public const string VALIDATOR_NUM_MISSION = "Please enter number of mission in range from 0 to 2,147,483,647.";
 
         public const string REQUIRE_COMPANYADMIN_NAME = "Company name can not be empty.";
+        public const string REQUIRE_CAMPAIGNCOMPANY_NAME = "Campaign name can not be empty.";
         public const string REQUIRE_CUSTOMER_NAME = "Customer name can not be empty.";
+        public const string REQUIRE_CAMPAIGNCOMPANY_STARTTIME = "Start time can not be empty.";
+        public const string REQUIRE_CAMPAIGNCOMPANY_DESCRIPTION = "Description can not be empty.";
+        public const string REQUIRE_CAMPAIGNCOMPANY_GIFT = "Gift can not be empty.";
+        public const string REQUIRE_CAMPAIGNCOMPANY_NUM_MISSION = "Number of mission can not be empty.";
         public const string REQUIRE_CUSTOMER_SEX = "Sex can not be empty.";
         public const string REQUIRE_ADDRESS = "Adress can not be empty.";
         public const string REQUIRE_EMAIL = "Email address wcan not be empty.";

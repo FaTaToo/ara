@@ -13,8 +13,7 @@
 using System.Runtime.Serialization;
 using NHibernate.Mapping.Attributes;
 
-namespace ARAManager.Common.Dto
-{
+namespace ARAManager.Common.Dto {
     [DataContract]
     public class ModelBase {
 

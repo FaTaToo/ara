@@ -15,12 +15,10 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using NHibernate.Mapping.Attributes;
 
-namespace ARAManager.Common.Dto
-{
+namespace ARAManager.Common.Dto {
     [DataContract]
     [Class(Table = "ARA_Customer", NameType = typeof(Customer), Lazy = false)]
-    public class Customer : ModelBase
-    {
+    public class Customer : ModelBase {
         #region IFields
 
         private ICollection<Subscription> m_subscriptions;
@@ -29,8 +27,7 @@ namespace ARAManager.Common.Dto
 
         #region IConstructors
 
-        public Customer()
-        {
+        public Customer() {
             m_subscriptions = new HashSet<Subscription>();
         }
 
@@ -83,10 +80,8 @@ namespace ARAManager.Common.Dto
         [Set(0, Table = "Subscription", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_subscriptions")]
         [Key(1, Column = "CustomerId")]
         [OneToMany(2, ClassType = typeof(Subscription))]
-        public virtual ICollection<Subscription> Subscriptions
-        {
-            get
-            {
+        public virtual ICollection<Subscription> Subscriptions  {
+            get {
                 m_subscriptions = m_subscriptions ?? new HashSet<Subscription>();
                 return m_subscriptions;
             }

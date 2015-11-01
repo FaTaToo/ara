@@ -14,7 +14,7 @@ namespace ARAManager.Presentation.Client.Aspx {
 
         #region IMethods
         protected void Page_Load(object sender, EventArgs e) {
-
+            EnableValidator(false);
         }
 
         protected void CustomValidator_CampaignName_OnServerValidate(object source, ServerValidateEventArgs args) {
@@ -38,6 +38,8 @@ namespace ARAManager.Presentation.Client.Aspx {
         }
  
         protected void btnSearch_OnClick(object sender, EventArgs e) {
+            EnableValidator(true);
+            Validate();
             if (Page.IsValid) {
                 Search();
             }
@@ -87,6 +89,12 @@ namespace ARAManager.Presentation.Client.Aspx {
                     cb.Checked = flag;
                 }
             }
+        }
+
+        private void EnableValidator(bool flag) {
+            CustomValidator_CampaignName.Enabled = flag;
+            CustomValidator_Company.Enabled = flag;
+            CustomValidator_RequireFileds.Enabled = flag;
         }
 
         #endregion IMethods

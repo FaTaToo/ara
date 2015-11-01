@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/Management_Admin.master" AutoEventWireup="true" CodeBehind="HomeAdmin.aspx.cs" Inherits="ARAManager.Presentation.Client.Aspx.HomeAdmin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/ManagementAdmin.master" AutoEventWireup="true" CodeBehind="HomeAdmin.aspx.cs" Inherits="ARAManager.Presentation.Client.Aspx.HomeAdmin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
     <div class="container">

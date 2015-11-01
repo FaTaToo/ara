@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/Management_Admin.master" AutoEventWireup="true" CodeBehind="CustomerAdmin.aspx.cs" Inherits="ARAManager.Presentation.Client.Aspx.CustomerAdmin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/ManagementAdmin.master" AutoEventWireup="true" CodeBehind="CustomerAdmin.aspx.cs" Inherits="ARAManager.Presentation.Client.Aspx.CustomerAdmin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
     <!--#region SEARCH_FORMS-->
@@ -46,11 +46,19 @@
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_RequireFileds_OnServerValidate" />
                     </li>
-                    <li role="presentation" style="margin-left: 30px">
+                    <li role="presentation" style="margin-top:20px">
                         <asp:Button ID="btnSearch" runat="server"
                             CssClass="btn btn-success"
+                            Width="100%"
                             Text="Search"
                             OnClick="btnSearch_OnClick" />
+                    </li>
+                    <li role="presentation" style="margin-top:20px">
+                        <asp:Button ID="btnNewCustomer" runat="server"
+                            CssClass="btn btn-success"
+                            Width="100%"
+                            Text="Create new customer"
+                            OnClick="btnNewCustomer_OnClick" />
                     </li>
                 </ul>
             </div>

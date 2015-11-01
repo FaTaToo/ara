@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/Master_Pages/Management.Master" AutoEventWireup="true" CodeBehind="Management_Admin.master.cs" Inherits="ARAManager.Presentation.Client.Master_Pages.Management_Admin" %>
+﻿<%@ Master Language="C#" MasterPageFile="~/Master_Pages/Management.Master" AutoEventWireup="true" CodeBehind="ManagementCompany.master.cs" Inherits="ARAManager.Presentation.Client.Master_Pages.ManagementCompany" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Menu" runat="server">
     <div class="btn-group btn-group-justified" role="group">
         <div class="btn-group" role="group">
@@ -7,18 +7,11 @@
             </button>
         </div>
         <div class="btn-group" role="group">
-            <asp:Button ID="btnCompany" ForeColor="Black" CssClass="btn btn-warning" runat="server"  
-                Text="COMPANY" 
-                OnClick="btnCompany_OnClick"/>
+            <asp:Button ID="btnCampaign" ForeColor="Black" CssClass="btn btn-warning" runat="server"  Text="CAMPAIGN" />
         </div>
         <div class="btn-group" role="group">
-            <asp:Button ID="btnCustomer" ForeColor="Black" CssClass="btn btn-warning" runat="server"  
-                Text="CUSTOMER"
-                OnClick="btnCustomer_OnClick" />
-        </div>
-        <div class="btn-group" role="group">
-             <asp:Button ID="btnStatistics" ForeColor="Black" CssClass="btn btn-warning" runat="server"  
-                 Text="STATISTICS" />
+             <asp:Button ID="btnStatistics" ForeColor="Black" CssClass="btn btn-warning" runat="server"  Text="STATISTICS"
+                 Enabled="False" />
         </div>
     </div>
 </asp:Content>

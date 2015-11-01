@@ -26,34 +26,28 @@ namespace ARAManager.Presentation.Client.Aspx {
         
         #region IMethods
         protected void Page_Load(object sender, EventArgs e) {
-
+            EnableValidator(false);
         }
-       
         protected void CustomValidator_FirstName_OnServerValidate(object source, ServerValidateEventArgs args) {
             CustomValidator_FirstName.ErrorMessage = Validation.VALIDATOR_CUSTOMER_NAME;
             args.IsValid = m_validator.ValidateChar100(txtFirstName.Text);
         }
-
         protected void CustomValidator_LastName_OnServerValidate(object source, ServerValidateEventArgs args) {
             CustomValidator_LastName.ErrorMessage = Validation.VALIDATOR_CUSTOMER_NAME;
             args.IsValid = m_validator.ValidateChar100(txtLastName.Text);
         }
-
         protected void CustomValidator_Email_OnServerValidate(object source, ServerValidateEventArgs args) {
             CustomValidator_Email.ErrorMessage = Validation.VALIDATOR_EMAIL;
             args.IsValid = m_validator.ValidateChar100(txtEmail.Text);
         }
-
         protected void CustomValidator_Phone_OnServerValidate(object source, ServerValidateEventArgs args) {
             CustomValidator_LastName.ErrorMessage = Validation.VALIDATOR_PHONE;
             args.IsValid = m_validator.ValidateChar100(txtPhone.Text);
         }
-
         protected void CustomValidator_UserName_OnServerValidate(object source, ServerValidateEventArgs args) {
             CustomValidator_LastName.ErrorMessage = Validation.VALIDATOR_USERNAME;
             args.IsValid = m_validator.ValidateChar100(txtUserName.Text);
         }
-
         protected void CustomValidator_RequireFileds_OnServerValidate(object source, ServerValidateEventArgs args) {
             CustomValidator_RequireFileds.ErrorMessage = Validation.VALIDATOR_REQUIRED_CRITERION_SEARCH;
             if (!string.IsNullOrEmpty(txtFirstName.Text) ||
@@ -66,15 +60,12 @@ namespace ARAManager.Presentation.Client.Aspx {
                 args.IsValid = false;
             }
         }
-        
         protected void btnSelectAll_OnClick(object sender, EventArgs e) {
             SelectDeselectGridView(true);
         }
-
         protected void btnDeselectAll_OnClick(object sender, EventArgs e) {
             SelectDeselectGridView(false);
         }
-
         protected void btnDelete_OnClick(object sender, EventArgs e) {
             var deletedCustomers = (from GridViewRow row in GridViewResult.Rows
                                     let checkBox = row.Cells[0].FindControl("cbSelect") as CheckBox
@@ -90,7 +81,6 @@ namespace ARAManager.Presentation.Client.Aspx {
             }
             Search();
         }
-
         protected void btnClear_OnClick(object sender, EventArgs e) {
             txtFirstName.Text = string.Empty;
             txtLastName.Text = String.Empty;
@@ -101,11 +91,16 @@ namespace ARAManager.Presentation.Client.Aspx {
             GridViewResult.DataBind();
             Panel_Result.Visible = false;
         }
-
         protected void btnSearch_OnClick(object sender, EventArgs e) {
+            EnableValidator(true);
+            Page.Validate();
             if (Page.IsValid) {
                 Search();
             }
+        }
+        protected void btnNewCustomer_OnClick(object sender, EventArgs e)
+        {
+            Response.Redirect("EditCustomerAdmin.aspx?RequestId=-4438");
         }
         private void Search()
         {
@@ -128,6 +123,15 @@ namespace ARAManager.Presentation.Client.Aspx {
                     cb.Checked = flag;
                 }
             }
+        }
+
+        private void EnableValidator(bool flag) {
+            CustomValidator_FirstName.Enabled = flag;
+            CustomValidator_LastName.Enabled = flag;
+            CustomValidator_Email.Enabled = flag;
+            CustomValidator_Phone.Enabled = flag;
+            CustomValidator_UserName.Enabled = flag;
+            CustomValidator_RequireFileds.Enabled = flag;
         }
 
         #endregion IMethods

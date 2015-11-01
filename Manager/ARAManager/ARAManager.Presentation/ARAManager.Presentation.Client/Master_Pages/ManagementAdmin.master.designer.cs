@@ -10,16 +10,25 @@
 namespace ARAManager.Presentation.Client.Master_Pages {
     
     
-    public partial class Management_Company {
+    public partial class ManagementAdmin {
         
         /// <summary>
-        /// btnCampaign control.
+        /// btnCompany control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCampaign;
+        protected global::System.Web.UI.WebControls.Button btnCompany;
+        
+        /// <summary>
+        /// btnCustomer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCustomer;
         
         /// <summary>
         /// btnStatistics control.

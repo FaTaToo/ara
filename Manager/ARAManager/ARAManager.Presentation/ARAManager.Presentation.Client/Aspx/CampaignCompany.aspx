@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/Management_Company.master" AutoEventWireup="true" CodeBehind="CampaignCompany.aspx.cs" Inherits="ARAManager.Presentation.Client.Aspx.CampaignCompany" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/ManagementCompany.master" AutoEventWireup="true" CodeBehind="CampaignCompany.aspx.cs" Inherits="ARAManager.Presentation.Client.Aspx.CampaignCompany" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
     <!--#region SEARCH_FORMS-->
@@ -111,7 +111,7 @@
                             <asp:HyperLinkField
                                 DataNavigateUrlFields="CampaignId"
                                 HeaderText="Id"
-                                DataNavigateUrlFormatString="Abcefg.aspx?RequestId={0}"
+                                DataNavigateUrlFormatString="NewCampaignCompany.aspx?RequestId={0}"
                                 DataTextField="CampaignId"
                                 ItemStyle-Width="5%" />
                             <asp:BoundField DataField="CampaignName" HeaderText="Name" ItemStyle-Width="10%" />

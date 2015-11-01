@@ -58,12 +58,12 @@ namespace ARAManager.Common.Dto {
         public virtual string Description { get; set; }
 
         [DataMember]
-        [Property(Column = "Banner", Name = "Banner", TypeType = typeof(string), Length = 500, NotNull = true)]
-        public virtual string Banner { get; set; }
+        [Property(Column = "Banner", Name = "Banner", TypeType = typeof(byte[]), NotNull = true)]
+        public virtual byte[] Banner { get; set; }
 
         [DataMember]
-        [Property(Column = "Avatar", Name = "Avatar", TypeType = typeof(string), Length = 500, NotNull = true)]
-        public virtual string Avatar { get; set; }
+        [Property(Column = "Avatar", Name = "Avatar", TypeType = typeof(byte[]), NotNull = true)]
+        public virtual byte[] Avatar { get; set; }
 
         [DataMember]
         [Property(Column = "Gift", Name = "Gift", TypeType = typeof(string), Length = 500, NotNull = true)]
@@ -81,10 +81,8 @@ namespace ARAManager.Common.Dto {
         [Set(0, Table = "Mission", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_missions")]
         [Key(1, Column = "CampaignName")]
         [OneToMany(2, ClassType = typeof(Mission))]
-        public virtual ICollection<Mission> Missions
-        {
-            get
-            {
+        public virtual ICollection<Mission> Missions {
+            get {
                 m_missions = m_missions ?? new HashSet<Mission>();
                 return m_missions;
             }
@@ -94,10 +92,8 @@ namespace ARAManager.Common.Dto {
         [Set(0, Table = "Subscription", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_subscriptions")]
         [Key(1, Column = "CampaignId")]
         [OneToMany(2, ClassType = typeof(Subscription))]
-        public virtual ICollection<Subscription> Subscriptions
-        {
-            get
-            {
+        public virtual ICollection<Subscription> Subscriptions {
+            get {
                 m_subscriptions = m_subscriptions ?? new HashSet<Subscription>();
                 return m_subscriptions;
             }

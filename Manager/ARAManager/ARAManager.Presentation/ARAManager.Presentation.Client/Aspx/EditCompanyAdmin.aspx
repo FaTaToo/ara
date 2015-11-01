@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/Management_Admin.master" AutoEventWireup="true" CodeBehind="EditCompanyAdmin.aspx.cs" Inherits="ARAManager.Presentation.Client.Aspx.EditCompanyAdmin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/ManagementAdmin.master" AutoEventWireup="true" CodeBehind="EditCompanyAdmin.aspx.cs" Inherits="ARAManager.Presentation.Client.Aspx.EditCompanyAdmin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server"></asp:Content>
 

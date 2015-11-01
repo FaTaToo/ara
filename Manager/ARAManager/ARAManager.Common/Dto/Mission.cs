@@ -48,8 +48,8 @@ namespace ARAManager.Common.Dto {
         public virtual string Description { get; set; }
 
         [DataMember]
-        [Property(Column = "Avatar", Name = "Avatar", TypeType = typeof(string), Length = 500, NotNull = true)]
-        public virtual string Avatar { get; set; }
+        [Property(Column = "Avatar", Name = "Avatar", TypeType = typeof(byte[]), Length = 500, NotNull = true)]
+        public virtual byte[] Avatar { get; set; }
 
         [DataMember]
         [Property(Column = "IsComplete", Name = "IsComplete", TypeType = typeof(bool), NotNull = true)]

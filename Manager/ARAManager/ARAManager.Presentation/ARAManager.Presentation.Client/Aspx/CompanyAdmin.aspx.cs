@@ -26,7 +26,7 @@ namespace ARAManager.Presentation.Client.Aspx {
 
         #region IMethods
         protected void Page_Load(object sender, EventArgs e) {
-
+            EnableValidator(false);
         }
         protected void CustomValidator_CompanyName_OnServerValidate(object source, ServerValidateEventArgs args) {
             CustomValidator_CompanyName.ErrorMessage = Validation.VALIDATOR_COMPANY_NAME;
@@ -39,7 +39,7 @@ namespace ARAManager.Presentation.Client.Aspx {
         }
 
         protected void CustomValidator_PhoneNumber_OnServerValidate(object source, ServerValidateEventArgs args) {
-            CustomValidator_EmailAddress.ErrorMessage = Validation.VALIDATOR_PHONE;
+            CustomValidator_PhoneNumber.ErrorMessage = Validation.VALIDATOR_PHONE;
             args.IsValid = m_validator.ValidateChar20(txtPhone.Text);
         }
 
@@ -61,6 +61,8 @@ namespace ARAManager.Presentation.Client.Aspx {
         }
 
         protected void btnSearch_OnClick(object sender, EventArgs e) {
+            EnableValidator(true);
+            Validate();
             if (Page.IsValid) {
                 Search();
             }
@@ -98,7 +100,11 @@ namespace ARAManager.Presentation.Client.Aspx {
             GridViewResult.DataBind();
             Panel_Result.Visible = false;
         }
-        
+        protected void btnNewCompany_OnClick(object sender, EventArgs e)
+        {
+            Response.Redirect("EditCompanyAdmin.aspx?RequestId=-4438");
+        }
+
         private void Search() {
             Panel_Result.Visible = true;
             var result = ClientServiceFactory.CompanyService.SearchCompany(txtCompanyName.Text,
@@ -118,6 +124,14 @@ namespace ARAManager.Presentation.Client.Aspx {
                     cb.Checked = flag;
                 }
             }
+        }
+
+        private void EnableValidator(bool flag) {
+            CustomValidator_CompanyName.Enabled = flag;
+            CustomValidator_EmailAddress.Enabled = flag;
+            CustomValidator_PhoneNumber.Enabled = flag;
+            CustomValidator_UserName.Enabled = flag;
+            CustomValidator_RequireFileds.Enabled = flag;
         }
 
         #endregion IMethods

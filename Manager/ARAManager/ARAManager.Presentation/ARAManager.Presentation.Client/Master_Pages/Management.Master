@@ -123,7 +123,7 @@
                     <img src="../Resources/Images/Payment.png" class="pull-right" style="margin-right: 15px" alt="Image is lost."/>
 
                     <!--Create new campaign-->
-                    <a href="#" class="pull-right" style="color: white; font-size: 20px; font-weight: bold; margin-right: 30px">CREATE NEW CAMPAIGN </a>
+                    <a href="../Aspx/NewCampaignCompany.aspx" class="pull-right" style="color: white; font-size: 20px; font-weight: bold; margin-right: 30px">CREATE NEW CAMPAIGN </a>
 
                     <img src="../Resources/Images/AddNew.png" class="pull-right" style="margin-right: 15px" alt="Image is lost."/>
                 </div>

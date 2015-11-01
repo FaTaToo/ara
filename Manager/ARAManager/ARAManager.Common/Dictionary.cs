@@ -9,6 +9,8 @@ namespace ARAManager.Common
         #region Constants
 
         public const string DATE_FORMAT = "MM.dd.yy";
+        public const string ADMIN_USERNAME = "admin";
+        public const string ADMIN_PASSWORD = "admin";
 
         #region ExceptionMessages
 
@@ -84,18 +86,12 @@ namespace ARAManager.Common
         #region GuiMessages
 
         public const string INVALID_LOGIN = "Invalid credentials. Please try again.";
-
-        #endregion GuiMessages
-
-        #region ControlText
-
+        public const string ADMIN_CAMPAIGN_ERROR = "Admin can not create campaign.";
         public const string COMPANY_ADMIN_NEW_HEADER = "New " + "COMPANY" + " information";
         public const string COMPANY_ADMIN_EDIT_HEADER = "Edit " + "COMPANY" + " information";
-
         public const string CUSTOMER_ADMIN_NEW_HEADER = "New " + "CUSTOMER" + " information";
         public const string CUSTOMER_ADMIN_EDIT_HEADER = "Edit " + "CUSTOMER" + " information";
-
-        #endregion ControlText
+        #endregion GuiMessages
 
         #endregion Constants
     }

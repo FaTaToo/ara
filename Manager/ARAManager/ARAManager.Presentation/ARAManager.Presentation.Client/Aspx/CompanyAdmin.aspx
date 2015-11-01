@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/Management_Admin.master" AutoEventWireup="true" CodeBehind="CompanyAdmin.aspx.cs" Inherits="ARAManager.Presentation.Client.Aspx.CompanyAdmin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/ManagementAdmin.master" AutoEventWireup="true" CodeBehind="CompanyAdmin.aspx.cs" Inherits="ARAManager.Presentation.Client.Aspx.CompanyAdmin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
     <!--#region SEARCH_FORMS-->
@@ -40,11 +40,19 @@
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_RequireFileds_OnServerValidate" />
                     </li>
-                    <li role="presentation" style="margin-left: 30px; margin-top:20px">
+                    <li role="presentation" style="margin-top:20px">
                         <asp:Button ID="btnSearch" runat="server"
                             CssClass="btn btn-success"
+                            Width="100%"
                             Text="Search"
                             OnClick="btnSearch_OnClick" />
+                    </li>
+                    <li role="presentation" style="margin-top:20px">
+                        <asp:Button ID="btnNewCompany" runat="server"
+                            CssClass="btn btn-success"
+                            Width="100%"
+                            Text="Create new company"
+                            OnClick="btnNewCompany_OnClick" />
                     </li>
                 </ul>
             </div>

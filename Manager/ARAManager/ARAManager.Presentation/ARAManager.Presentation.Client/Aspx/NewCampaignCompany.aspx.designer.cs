@@ -10,7 +10,7 @@
 namespace ARAManager.Presentation.Client.Aspx {
     
     
-    public partial class EditCampaignCompany {
+    public partial class NewCampaignCompany {
         
         /// <summary>
         /// txtCampaign control.
@@ -22,6 +22,15 @@ namespace ARAManager.Presentation.Client.Aspx {
         protected global::System.Web.UI.WebControls.TextBox txtCampaign;
         
         /// <summary>
+        /// lblMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMessage;
+        
+        /// <summary>
         /// txtCampaignName control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace ARAManager.Presentation.Client.Aspx {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCampaignName;
+        
+        /// <summary>
+        /// RequiredFieldValidator_CampaignName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_CampaignName;
         
         /// <summary>
         /// CustomValidator_CampaignName control.
@@ -49,13 +67,13 @@ namespace ARAManager.Presentation.Client.Aspx {
         protected global::System.Web.UI.WebControls.TextBox txtStartTime;
         
         /// <summary>
-        /// CustomValidator_StartTime control.
+        /// RequiredFieldValidator_StartTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_StartTime;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_StartTime;
         
         /// <summary>
         /// txtEndTime control.
@@ -85,6 +103,15 @@ namespace ARAManager.Presentation.Client.Aspx {
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
         
         /// <summary>
+        /// RequiredFieldValidator_Description control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Description;
+        
+        /// <summary>
         /// CustomValidator_Description control.
         /// </summary>
         /// <remarks>
@@ -94,40 +121,22 @@ namespace ARAManager.Presentation.Client.Aspx {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_Description;
         
         /// <summary>
-        /// txtBanner control.
+        /// FileUpload_Banner control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBanner;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload_Banner;
         
         /// <summary>
-        /// CustomValidator_Banner control.
+        /// FileUpload_Avatar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_Banner;
-        
-        /// <summary>
-        /// txtAvatar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAvatar;
-        
-        /// <summary>
-        /// CustomValidator_Avatar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_Avatar;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload_Avatar;
         
         /// <summary>
         /// txtGift control.
@@ -137,6 +146,15 @@ namespace ARAManager.Presentation.Client.Aspx {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtGift;
+        
+        /// <summary>
+        /// RequiredFieldValidator_Gift control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Gift;
         
         /// <summary>
         /// CustomValidator_Gift control.
@@ -157,13 +175,22 @@ namespace ARAManager.Presentation.Client.Aspx {
         protected global::System.Web.UI.WebControls.TextBox txtMission;
         
         /// <summary>
-        /// RangeValidator_Mission control.
+        /// RequiredFieldValidator_NumMission control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator_Mission;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_NumMission;
+        
+        /// <summary>
+        /// RangeValidator_NumMission control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator_NumMission;
         
         /// <summary>
         /// btnSave control.

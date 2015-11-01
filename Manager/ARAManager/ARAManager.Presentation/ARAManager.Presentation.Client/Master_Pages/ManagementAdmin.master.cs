@@ -1,7 +1,7 @@
 ﻿using System;
 namespace ARAManager.Presentation.Client.Master_Pages {
     // ReSharper disable once InconsistentNaming - Added by PhucLS
-    public partial class Management_Admin : System.Web.UI.MasterPage {
+    public partial class ManagementAdmin : System.Web.UI.MasterPage {
         #region IMethods
         protected void Page_Load(object sender, EventArgs e) {
 

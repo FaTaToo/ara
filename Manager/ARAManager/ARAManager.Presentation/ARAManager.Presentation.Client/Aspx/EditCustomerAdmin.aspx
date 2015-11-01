@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/Management_Admin.master" AutoEventWireup="true" CodeBehind="EditCustomerAdmin.aspx.cs" Inherits="ARAManager.Presentation.Client.Aspx.EditCustomerAdmin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/ManagementAdmin.master" AutoEventWireup="true" CodeBehind="EditCustomerAdmin.aspx.cs" Inherits="ARAManager.Presentation.Client.Aspx.EditCustomerAdmin" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 

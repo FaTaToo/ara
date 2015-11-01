@@ -32,19 +32,8 @@ namespace ARAManager.Presentation.Client.Aspx {
 
         #region IMethods
         protected void Page_Load(object sender, EventArgs e) {
-            CustomValidator_FirstName.ErrorMessage = Validation.VALIDATOR_CUSTOMER_NAME;
-            CustomValidator_LastName.ErrorMessage = Validation.VALIDATOR_CUSTOMER_NAME;
-            CustomValidator_Birthday.ErrorMessage = Validation.VALIDATOR_DATE_FORMAT;
-            CustomValidator_Address.ErrorMessage = Validation.VALIDATOR_ADDRESS;
-            CustomValidator_Email.ErrorMessage = Validation.VALIDATOR_EMAIL;
-            CustomValidator_Phone.ErrorMessage = Validation.VALIDATOR_PHONE;
-            CustomValidator_Username.ErrorMessage = Validation.VALIDATOR_USERNAME;
-            CustomValidator_Password.ErrorMessage = Validation.VALIDATOR_PASSWORD;
-            RequiredFieldValidator_FirstName.ErrorMessage = Validation.REQUIRE_CUSTOMER_NAME;
-            RequiredFieldValidator_LastName.ErrorMessage = Validation.REQUIRE_CUSTOMER_NAME;
-            RequiredFieldValidator_Email.ErrorMessage = Validation.REQUIRE_EMAIL;
-            RequiredFieldValidator_Username.ErrorMessage = Validation.REQUIRE_USERNAME;
-            RequiredFieldValidator_Password.ErrorMessage = Validation.REQUIRE_PASSWORD;
+            SetErrorMessages();
+            EnableValidator(false);
             if (!Page.IsPostBack) {
                 m_customerId = int.Parse(Request.QueryString["RequestId"]);
                 m_customer = ClientServiceFactory.CustomerService.GetCustomerById(m_customerId);
@@ -68,15 +57,9 @@ namespace ARAManager.Presentation.Client.Aspx {
                 }
             }
         }
-
-        protected void CustomValidator_FirstName_OnServerValidate(object source, ServerValidateEventArgs args) {
-            args.IsValid = m_validator.ValidateChar100(txtFirstName.Text);
-        }
-
         protected void CustomValidator_LastName_OnServerValidate(object source, ServerValidateEventArgs args) {
             args.IsValid = m_validator.ValidateChar100(txtLastName.Text);
         }
-
         protected void CustomValidator_Birthday_OnServerValidate(object source, ServerValidateEventArgs args) {
             if (!string.IsNullOrEmpty(txtBirthday.Text)) {
                 DateTime birthday;
@@ -95,29 +78,24 @@ namespace ARAManager.Presentation.Client.Aspx {
                 }
             }
         }
-
         protected void CustomValidator_Address_OnServerValidate(object source, ServerValidateEventArgs args) {
             args.IsValid = m_validator.ValidateChar500(txtAddress.Text);
         }
-
         protected void CustomValidator_Email_OnServerValidate(object source, ServerValidateEventArgs args) {
             args.IsValid = m_validator.ValidateChar100(txtEmail.Text);
         }
-
         protected void CustomValidator_Phone_OnServerValidate(object source, ServerValidateEventArgs args) {
             args.IsValid = m_validator.ValidateChar20(txtPhone.Text);
         }
-
         protected void CustomValidator_Username_OnServerValidate(object source, ServerValidateEventArgs args) {
             args.IsValid = m_validator.ValidateChar100(txtUsername.Text);
         }
-
         protected void CustomValidator_Password_OnServerValidate(object source, ServerValidateEventArgs args) {
             args.IsValid = m_validator.ValidateChar100(txtPassword.Text);
         }
-
         protected void btnSave_OnClick(object sender, EventArgs e) {
-            ValidateInput();
+            EnableValidator(true);
+            Page.Validate();
             if (txtCustomer.Text == Dictionary.COMPANY_ADMIN_NEW_HEADER) {
                 var customer = new Customer {
                     FirstName = txtFirstName.Text,
@@ -155,26 +133,42 @@ namespace ARAManager.Presentation.Client.Aspx {
                 }
             }
         }
-
-        protected void btnCancel_OnClick(object sender, EventArgs e)
-        {
+        protected void btnCancel_OnClick(object sender, EventArgs e) {
             Response.Redirect("CustomerAdmin.aspx");
         }
-
-        private void ValidateInput() {
-            CustomValidator_FirstName.Validate();
-            CustomValidator_LastName.Validate();
-            CustomValidator_Birthday.Validate();
-            CustomValidator_Address.Validate();
-            CustomValidator_Email.Validate();
-            CustomValidator_Phone.Validate();
-            CustomValidator_Username.Validate();
-            CustomValidator_Password.Validate();
-            RequiredFieldValidator_FirstName.Validate();
-            RequiredFieldValidator_LastName.Validate();
-            RequiredFieldValidator_Email.Validate();
-            RequiredFieldValidator_Username.Validate();
-            RequiredFieldValidator_Password.Validate();
+        private void SetErrorMessages() {
+            CustomValidator_FirstName.ErrorMessage = Validation.VALIDATOR_CUSTOMER_NAME;
+            CustomValidator_LastName.ErrorMessage = Validation.VALIDATOR_CUSTOMER_NAME;
+            CustomValidator_Birthday.ErrorMessage = Validation.VALIDATOR_DATE_FORMAT;
+            CustomValidator_Address.ErrorMessage = Validation.VALIDATOR_ADDRESS;
+            CustomValidator_Email.ErrorMessage = Validation.VALIDATOR_EMAIL;
+            CustomValidator_Phone.ErrorMessage = Validation.VALIDATOR_PHONE;
+            CustomValidator_Username.ErrorMessage = Validation.VALIDATOR_USERNAME;
+            CustomValidator_Password.ErrorMessage = Validation.VALIDATOR_PASSWORD;
+            RequiredFieldValidator_FirstName.ErrorMessage = Validation.REQUIRE_CUSTOMER_NAME;
+            RequiredFieldValidator_LastName.ErrorMessage = Validation.REQUIRE_CUSTOMER_NAME;
+            RequiredFieldValidator_Email.ErrorMessage = Validation.REQUIRE_EMAIL;
+            RequiredFieldValidator_Username.ErrorMessage = Validation.REQUIRE_USERNAME;
+            RequiredFieldValidator_Password.ErrorMessage = Validation.REQUIRE_PASSWORD;
+        }
+        protected void CustomValidator_FirstName_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = m_validator.ValidateChar100(txtFirstName.Text);
+        }
+        private void EnableValidator(bool flag) {
+            CustomValidator_FirstName.Enabled = flag;
+            CustomValidator_LastName.Enabled = flag;
+            CustomValidator_Birthday.Enabled = flag;
+            CustomValidator_Address.Enabled = flag;
+            CustomValidator_Email.Enabled = flag;
+            CustomValidator_Phone.Enabled = flag;
+            CustomValidator_Username.Enabled = flag;
+            CustomValidator_Password.Enabled = flag;
+            RequiredFieldValidator_FirstName.Enabled = flag;
+            RequiredFieldValidator_LastName.Enabled = flag;
+            RequiredFieldValidator_Email.Enabled = flag;
+            RequiredFieldValidator_Username.Enabled = flag;
+            RequiredFieldValidator_Password.Enabled = flag;
         }
         #endregion IMethods
     }
