@@ -1,1 +1,0 @@
-Here are documents of ARA.
