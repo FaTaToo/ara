@@ -103,6 +103,15 @@ namespace ARAManager.Presentation.Client.Aspx {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_Description;
         
         /// <summary>
+        /// GMap1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Subgurim.Controles.GMap GMap1;
+        
+        /// <summary>
         /// lblMessage control.
         /// </summary>
         /// <remarks>

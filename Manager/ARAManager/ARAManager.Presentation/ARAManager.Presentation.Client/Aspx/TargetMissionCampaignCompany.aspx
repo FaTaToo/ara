@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/ManagementCompany.master" AutoEventWireup="true" CodeBehind="TargetMissionCampaignCompany.aspx.cs" Inherits="ARAManager.Presentation.Client.Aspx.TargetMissionCampaignCompany" %>
+<%@ register assembly="GMaps" namespace="Subgurim.Controles" tagprefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
     <div class="container">
@@ -87,7 +88,7 @@
                         <!--#endregion DESCRIPTION-->
                         
                         <!--#region GOOGLE_MAP-->
-                        
+                        <cc1:GMap ID="GMap1" runat="server" />
                         <!--#endregion GOOGLE_MAP-->
 
                         <!--#region ERROR_MESSAGE-->

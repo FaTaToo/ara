@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xmlns:v="urn:schemas-microsoft-com:vml">
 <head runat="server">
     <title>ARA - AR advertisement on mobile - Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
@@ -11,6 +11,11 @@
     <script src="../Plugins/jquery-searchable-master/jquery.searchable.js"></script>
 </head>
 <body>
+    <style type="text/css">
+        v\:* {
+            behavior: url(#default#VML);
+        }
+    </style>
     <!--Facebook plugin -->
     <div id="fb-root"></div>
     <script>(function (d, s, id) {
@@ -55,7 +60,7 @@
                 <div class="col-md-1"></div>
                 <div class="col-md-1"></div>
                 <div class="col-md-6">
-                    <img class="pull-right" src="../Resources/Images/vi.png" alt="Image is lost."/>
+                    <img class="pull-right" src="../Resources/Images/vi.png" alt="Image is lost." />
                     <a href="#" class="pull-right" style="color: white; margin-right: 20px">Instruction</a>
                     <a href="#" class="pull-right" style="color: white; margin-right: 20px">LeaderBoard</a>
                     <a href="#" class="pull-right" style="color: white; margin-right: 20px">News</a>
@@ -113,19 +118,19 @@
                     <!--Payment methods-->
                     <ul class="nav nav-pills pull-right">
                         <li role="presentation" style="margin-right: 15px">
-                            <img src="../Resources/Images/atm.png" alt="Image is lost."/></li>
+                            <img src="../Resources/Images/atm.png" alt="Image is lost." /></li>
                         <li role="presentation" style="margin-right: 15px">
-                            <img src="../Resources/Images/mastercard.png" alt="Image is lost."/></li>
+                            <img src="../Resources/Images/mastercard.png" alt="Image is lost." /></li>
                         <li role="presentation" style="margin-right: 15px">
-                            <img src="../Resources/Images/visa.png" alt="Image is lost."/></li>
+                            <img src="../Resources/Images/visa.png" alt="Image is lost." /></li>
                     </ul>
 
-                    <img src="../Resources/Images/Payment.png" class="pull-right" style="margin-right: 15px" alt="Image is lost."/>
+                    <img src="../Resources/Images/Payment.png" class="pull-right" style="margin-right: 15px" alt="Image is lost." />
 
                     <!--Create new campaign-->
                     <a href="../Aspx/NewCampaignCompany.aspx" class="pull-right" style="color: white; font-size: 20px; font-weight: bold; margin-right: 30px">CREATE NEW CAMPAIGN </a>
 
-                    <img src="../Resources/Images/AddNew.png" class="pull-right" style="margin-right: 15px" alt="Image is lost."/>
+                    <img src="../Resources/Images/AddNew.png" class="pull-right" style="margin-right: 15px" alt="Image is lost." />
                 </div>
                 <div class="col-md-1"></div>
                 <div class="col-md-1"></div>
@@ -156,7 +161,7 @@
                 <div class="col-md-2">
                     <ul class="nav nav-pills nav-stacked pull-right" style="margin-right: 20px">
                         <li role="presentation" style="margin-bottom: 30px">
-                            <img class="img-responsive center-block" src="../Resources/Images/support.png" alt="Image is lost."/>
+                            <img class="img-responsive center-block" src="../Resources/Images/support.png" alt="Image is lost." />
                         </li>
                         <!--Yahoo-->
                         <li role="presentation">
@@ -198,29 +203,29 @@
                     </div>
                     <ul class="nav nav-pills pull-left">
                         <li role="presentation" style="margin-right: 20px; margin-top: 10px">
-                            <img src="../Resources/Images/youtube.png" alt="Image is lost."/></li>
+                            <img src="../Resources/Images/youtube.png" alt="Image is lost." /></li>
                         <li role="presentation" style="margin-right: 20px; margin-top: 10px">
-                            <img src="../Resources/Images/facebook.png" alt="Image is lost."/></li>
+                            <img src="../Resources/Images/facebook.png" alt="Image is lost." /></li>
                         <li role="presentation" style="margin-right: 20px; margin-top: 10px">
-                            <img src="../Resources/Images/twitter.png" alt="Image is lost."/></li>
+                            <img src="../Resources/Images/twitter.png" alt="Image is lost." /></li>
                         <li role="presentation" style="margin-right: 20px; margin-top: 10px">
-                            <img src="../Resources/Images/in.png" alt="Image is lost."/></li>
+                            <img src="../Resources/Images/in.png" alt="Image is lost." /></li>
                         <li role="presentation" style="margin-right: 20px; margin-top: 10px">
-                            <img src="../Resources/Images/google.png" alt="Image is lost."/></li>
+                            <img src="../Resources/Images/google.png" alt="Image is lost." /></li>
                         <li role="presentation" style="margin-right: 20px; margin-top: 10px">
-                            <img src="../Resources/Images/instragram.png" alt="Image is lost."/></li>
+                            <img src="../Resources/Images/instragram.png" alt="Image is lost." /></li>
                         <li role="presentation" style="margin-right: 20px; margin-top: 10px">
-                            <img src="../Resources/Images/zingme.png" alt="Image is lost."/></li>
+                            <img src="../Resources/Images/zingme.png" alt="Image is lost." /></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <ul class="nav nav-pills pull-right">
                         <li role="presentation" style="margin-right: 20px">
-                            <img src="../Resources/Images/Partners/cgv.jpg" alt="Image is lost."/></li>
+                            <img src="../Resources/Images/Partners/cgv.jpg" alt="Image is lost." /></li>
                         <li role="presentation" style="margin-right: 20px">
-                            <img src="../Resources/Images/Partners/GalaxyCinema.jpg" alt="Image is lost."/></li>
+                            <img src="../Resources/Images/Partners/GalaxyCinema.jpg" alt="Image is lost." /></li>
                         <li role="presentation" style="margin-right: 20px">
-                            <img src="../Resources/Images/Partners/LotteCinema.jpg" alt="Image is lost."/></li>
+                            <img src="../Resources/Images/Partners/LotteCinema.jpg" alt="Image is lost." /></li>
                     </ul>
                 </div>
             </div>
@@ -240,9 +245,9 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-4">
                     <p class="pull-right" style="color: white; margin-right: 20px">0933.111.975  (<strong style="color: gold">Phuc</strong>)</p>
-                    <img class="pull-right" style="margin-right: 20px" src="../Resources/Images/phone.png" alt="Image is lost."/>
+                    <img class="pull-right" style="margin-right: 20px" src="../Resources/Images/phone.png" alt="Image is lost." />
                     <p class="pull-right" style="color: white; margin-right: 20px">phucls288@gmail.com </p>
-                    <img class="pull-right" style="margin-right: 20px" src="../Resources/Images/mail.png" alt="Image is lost."/>
+                    <img class="pull-right" style="margin-right: 20px" src="../Resources/Images/mail.png" alt="Image is lost." />
                 </div>
             </div>
             <!--------------------------------------------------------------------------------------------->
