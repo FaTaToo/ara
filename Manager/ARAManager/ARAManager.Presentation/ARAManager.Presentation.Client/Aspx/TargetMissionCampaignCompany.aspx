@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/ManagementCompany.master" AutoEventWireup="true" CodeBehind="TargetMissionCampaignCompany.aspx.cs" Inherits="ARAManager.Presentation.Client.Aspx.TargetMissionCampaignCompany" %>
-<%@ register assembly="GMaps" namespace="Subgurim.Controles" tagprefix="cc1" %>
+
+<%@ Register Assembly="GMaps" Namespace="Subgurim.Controles" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
     <div class="container">
@@ -61,7 +62,8 @@
                                     ControlToValidate="txtTargetName"
                                     ForeColor="Red" />
                                 <asp:CustomValidator ID="CustomValidator_TargetName" runat="server"
-                                    ForeColor="Red" />
+                                    ForeColor="Red" 
+                                    OnServerValidate="CustomValidator_TargetName_OnServerValidate"/>
                             </td>
                         </tr>
                         <!--#endregion NAME-->
@@ -82,14 +84,77 @@
                                     ControlToValidate="txtDescription"
                                     ForeColor="Red" />
                                 <asp:CustomValidator ID="CustomValidator_Description" runat="server"
-                                    ForeColor="Red" />
+                                    ForeColor="Red"
+                                    OnServerValidate="CustomValidator_Description_OnServerValidate"/>
                             </td>
                         </tr>
                         <!--#endregion DESCRIPTION-->
-                        
+
                         <!--#region GOOGLE_MAP-->
-                        <cc1:GMap ID="GMap1" runat="server" />
+                        <tr>
+                            <td style="width: 30%"></td>
+                            <td style="width: 70%">
+                                <cc1:GMap ID="GMAP_Target" runat="server" />
+                            </td>
+                        </tr>
                         <!--#endregion GOOGLE_MAP-->
+
+                        <!--#region VIDEO_URL-->
+                        <tr>
+                            <td style="width: 30%">Video</td>
+                            <td style="width: 70%">
+                                <asp:TextBox ID="txtVideoUrl" runat="server"
+                                    Width="100%"
+                                    placeholder="Video URL" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 30%"></td>
+                            <td style="width: 70%">
+                                <asp:CustomValidator ID="CustomValidator_Video" runat="server"
+                                    ForeColor="Red" 
+                                    OnServerValidate="CustomValidator_Video_OnServerValidate"/>
+                            </td>
+                        </tr>
+                        <!--#endregion VIDEO_URL-->
+
+                        <!--#region FACEBOOK_URL-->
+                        <tr>
+                            <td style="width: 30%">Facebook</td>
+                            <td style="width: 70%">
+                                <asp:TextBox ID="txtFacebookUrl" runat="server"
+                                    Width="100%"
+                                    placeholder="Facebook URL" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 30%"></td>
+                            <td style="width: 70%">
+                                <asp:CustomValidator ID="CustomValidator_Facebook" runat="server"
+                                    ForeColor="Red" 
+                                    OnServerValidate="CustomValidator_Facebook_OnServerValidate"/>
+                            </td>
+                        </tr>
+                        <!--#endregion FACEBOOK_URL-->
+
+                        <!--#region YOUTUBE_URL-->
+                        <tr>
+                            <td style="width: 30%">Youtube</td>
+                            <td style="width: 70%">
+                                <asp:TextBox ID="txtYoutubeUrl" runat="server"
+                                    Width="100%"
+                                    placeholder="Youtube URL" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 30%"></td>
+                            <td style="width: 70%">
+                                <asp:CustomValidator ID="CustomValidator_Youtube" runat="server"
+                                    ForeColor="Red" 
+                                    OnServerValidate="CustomValidator_Youtube_OnServerValidate"/>
+                            </td>
+                        </tr>
+                        <!--#endregion YOUTUBE_URL-->
 
                         <!--#region ERROR_MESSAGE-->
                         <tr>

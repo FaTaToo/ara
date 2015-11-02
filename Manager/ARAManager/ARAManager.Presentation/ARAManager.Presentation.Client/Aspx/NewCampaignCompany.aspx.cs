@@ -67,7 +67,8 @@ namespace ARAManager.Presentation.Client.Aspx {
         }
         private void SetErrorMessages() {
             CustomValidator_CampaignName.ErrorMessage = Validation.VALIDATOR_CAMPAIGN_NAME;
-            CustomValidator_EndTime.ErrorMessage = Validation.VALIDATOR_ENDTIME; 
+            CustomValidator_EndTime.ErrorMessage = Validation.VALIDATOR_ENDTIME;
+            CustomValidator_Description.ErrorMessage = Validation.VALIDATOR_DESCRIPTION;
             CustomValidator_Gift.ErrorMessage = Validation.VALIDATOR_GIFT;
             RangeValidator_NumMission.ErrorMessage = Validation.VALIDATOR_NUM_MISSION;
             RequiredFieldValidator_CampaignName.ErrorMessage = Validation.REQUIRE_CAMPAIGNCOMPANY_NAME;

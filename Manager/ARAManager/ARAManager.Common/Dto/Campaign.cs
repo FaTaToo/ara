@@ -71,7 +71,7 @@ namespace ARAManager.Common.Dto {
         
         [DataMember]
         [Property(Column = "NumMission", Name = "NumMission", TypeType = typeof(int), NotNull = true)]
-        public virtual string NumMission { get; set; }
+        public virtual int NumMission { get; set; }
 
         [ManyToOne(Name = "Company", Column = "CompanyName", NotNull = true, Fetch = FetchMode.Select)]
         [DataMember]

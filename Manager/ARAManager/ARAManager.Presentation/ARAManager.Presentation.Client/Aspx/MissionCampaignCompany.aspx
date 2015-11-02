@@ -23,7 +23,7 @@
         </div>
         <div class="row">
             <div class="col-md-2">
-                <asp:Button ID="btnCreateMission" runat="server" 
+                <asp:Button ID="btnCreateMission" runat="server"
                     CssClass="btn btn-success"
                     Text="Button" />
             </div>
@@ -68,7 +68,8 @@
                                     ControlToValidate="txtMissionName"
                                     ForeColor="Red" />
                                 <asp:CustomValidator ID="CustomValidator_MissionName" runat="server"
-                                    ForeColor="Red" />
+                                    ForeColor="Red"
+                                    OnServerValidate="CustomValidator_MissionName_OnServerValidate" />
                             </td>
                         </tr>
                         <!--#endregion NAME-->
@@ -89,7 +90,8 @@
                                     ControlToValidate="txtDescription"
                                     ForeColor="Red" />
                                 <asp:CustomValidator ID="CustomValidator_Description" runat="server"
-                                    ForeColor="Red" />
+                                    ForeColor="Red"
+                                    OnServerValidate="CustomValidator_Description_OnServerValidate" />
                             </td>
                         </tr>
                         <!--#endregion DESCRIPTION-->
@@ -98,19 +100,15 @@
                         <tr>
                             <td style="width: 30%">Avatar</td>
                             <td style="width: 70%">
-                                <asp:TextBox ID="txtAvatar" runat="server"
-                                    Width="100%"
-                                    placeholder="Avatar of the mission" />
+                                <asp:FileUpload ID="FileUpload_Avatar" runat="server" />
                             </td>
                         </tr>
                         <tr>
                             <td style="width: 30%"></td>
                             <td style="width: 70%">
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator_Avatar" runat="server"
-                                    ControlToValidate="txtAvatar"
-                                    ForeColor="Red" />
                                 <asp:CustomValidator ID="CustomValidator_Avatar" runat="server"
-                                    ForeColor="Red" />
+                                    ForeColor="Red"
+                                    OnServerValidate="CustomValidator_Avatar_OnServerValidate" />
                             </td>
                         </tr>
                         <!--#endregion AVATAR-->
@@ -130,8 +128,12 @@
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator_txtNumTarget" runat="server"
                                     ControlToValidate="txtNumTarget"
                                     ForeColor="Red" />
-                                <asp:CustomValidator ID="CustomValidator_txtNumTarget" runat="server"
-                                    ForeColor="Red" />
+                                <asp:RangeValidator ID="RangeValidator_NumMission" runat="server"
+                                    ForeColor="Red"
+                                    Type="Integer"
+                                    MinimumValue="0"
+                                    MaximumValue="2147483647"
+                                    ControlToValidate="txtNumTarget" />
                             </td>
                         </tr>
                         <!--#endregion NUM_TARGET-->
@@ -154,12 +156,14 @@
                         <li role="presentation">
                             <asp:Button ID="btnSave" runat="server"
                                 CssClass="btn btn-danger"
-                                Text="Save" />
+                                Text="Save"
+                                OnClick="btnSave_OnClick" />
                         </li>
                         <li role="presentation" style="margin-left: 20px">
                             <asp:Button ID="btnCancel" runat="server"
                                 CssClass="btn btn-warning"
-                                Text="Cancel" />
+                                Text="Cancel"
+                                OnClick="btnCancel_OnClick" />
                         </li>
                         <li role="presentation" style="margin-left: 20px">
                             <asp:Label ID="lblCreateMission" runat="server" />
@@ -167,7 +171,8 @@
                         <li role="presentation" style="margin-left: 20px">
                             <asp:Button ID="btnCreateTarget" runat="server"
                                 CssClass="btn btn-warning"
-                                Text="Upload target NOW" />
+                                Text="Upload target NOW"
+                                OnClick="btnCreateTarget_OnClick" />
                         </li>
                     </ul>
                     <!--#endregion BUTTON-->

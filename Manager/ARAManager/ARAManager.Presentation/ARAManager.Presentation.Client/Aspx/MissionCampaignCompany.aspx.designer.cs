@@ -112,22 +112,13 @@ namespace ARAManager.Presentation.Client.Aspx {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_Description;
         
         /// <summary>
-        /// txtAvatar control.
+        /// FileUpload_Avatar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAvatar;
-        
-        /// <summary>
-        /// RequiredFieldValidator_Avatar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Avatar;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload_Avatar;
         
         /// <summary>
         /// CustomValidator_Avatar control.
@@ -157,13 +148,13 @@ namespace ARAManager.Presentation.Client.Aspx {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_txtNumTarget;
         
         /// <summary>
-        /// CustomValidator_txtNumTarget control.
+        /// RangeValidator_NumMission control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_txtNumTarget;
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator_NumMission;
         
         /// <summary>
         /// lblMessage control.

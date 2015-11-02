@@ -25,6 +25,8 @@ namespace ARAManager.Presentation.Client
         public const string VALIDATOR_COMPANY_NAME = "Please enter company name with length from 1 to 100.";
         public const string VALIDATOR_CUSTOMER_NAME = "Please enter customer name with length from 1 to 100.";
         public const string VALIDATOR_CAMPAIGN_NAME = "Please enter customer name with length from 1 to 100.";
+        public const string VALIDATOR_MISSION_NAME = "Please enter customer name with length from 1 to 100.";
+        public const string VALIDATOR_DESCRIPTION = "Please enter description with length from 1 to 100.";
         public const string VALIDATOR_ADDRESS = "Please enter address with length from 1 to 500.";
         public const string VALIDATOR_EMAIL = "Please enter email address with length from 1 to 100.";
         public const string VALIDATOR_PHONE = "Please enter phone number with length from 1 to 20.";

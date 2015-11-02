@@ -103,13 +103,67 @@ namespace ARAManager.Presentation.Client.Aspx {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_Description;
         
         /// <summary>
-        /// GMap1 control.
+        /// GMAP_Target control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Subgurim.Controles.GMap GMap1;
+        protected global::Subgurim.Controles.GMap GMAP_Target;
+        
+        /// <summary>
+        /// txtVideoUrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtVideoUrl;
+        
+        /// <summary>
+        /// CustomValidator_Video control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_Video;
+        
+        /// <summary>
+        /// txtFacebookUrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFacebookUrl;
+        
+        /// <summary>
+        /// CustomValidator_Facebook control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_Facebook;
+        
+        /// <summary>
+        /// txtYoutubeUrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtYoutubeUrl;
+        
+        /// <summary>
+        /// CustomValidator_Youtube control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_Youtube;
         
         /// <summary>
         /// lblMessage control.
