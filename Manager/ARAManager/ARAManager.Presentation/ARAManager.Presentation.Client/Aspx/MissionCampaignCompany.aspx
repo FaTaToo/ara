@@ -152,19 +152,7 @@
                     <!--#endregion INFORMATION-->
 
                     <!--#region BUTTON-->
-                    <ul class="nav nav-pills pull-left">
-                        <li role="presentation">
-                            <asp:Button ID="btnSave" runat="server"
-                                CssClass="btn btn-danger"
-                                Text="Save"
-                                OnClick="btnSave_OnClick" />
-                        </li>
-                        <li role="presentation" style="margin-left: 20px">
-                            <asp:Button ID="btnCancel" runat="server"
-                                CssClass="btn btn-warning"
-                                Text="Cancel"
-                                OnClick="btnCancel_OnClick" />
-                        </li>
+                    <ul class="nav nav-pills pull-left">                       
                         <li role="presentation" style="margin-left: 20px">
                             <asp:Label ID="lblCreateMission" runat="server" />
                         </li>
@@ -173,6 +161,12 @@
                                 CssClass="btn btn-warning"
                                 Text="Upload target NOW"
                                 OnClick="btnCreateTarget_OnClick" />
+                        </li>
+                        <li role="presentation" style="margin-left: 20px">
+                            <asp:Button ID="btnCancel" runat="server"
+                                CssClass="btn btn-warning"
+                                Text="Cancel"
+                                OnClick="btnCancel_OnClick" />
                         </li>
                     </ul>
                     <!--#endregion BUTTON-->

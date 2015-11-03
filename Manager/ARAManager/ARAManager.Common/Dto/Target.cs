@@ -33,12 +33,12 @@ namespace ARAManager.Common.Dto {
         public virtual string TargetName { get; set; }
 
         [DataMember]
-        [Property(Column = "Latitude", Name = "Latitude", TypeType = typeof(int),NotNull = false)]
-        public virtual int? Latitude { get; set; }
+        [Property(Column = "Latitude", Name = "Latitude", TypeType = typeof(double),NotNull = false)]
+        public virtual double? Latitude { get; set; }
 
         [DataMember]
-        [Property(Column = "Longitude", Name = "Longitude", TypeType = typeof(int), NotNull = false)]
-        public virtual int? Longitude { get; set; }
+        [Property(Column = "Longitude", Name = "Longitude", TypeType = typeof(double), NotNull = false)]
+        public virtual double? Longitude { get; set; }
         
         [DataMember]
         [Property(Column = "Description", Name = "Description", TypeType = typeof(string), Length = 500, NotNull = true)]

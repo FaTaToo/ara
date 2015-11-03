@@ -112,7 +112,7 @@ namespace ARAManager.Presentation.Client.Aspx {
                 Banner = UploadImageBanner(),
                 Avatar = UploadImageAvatar(),
                 Gift = txtGift.Text,
-                NumMission = txtMission.Text,
+                NumMission = int.Parse(txtMission.Text),
                 Company = m_company
             };
             return campaign;
@@ -126,7 +126,7 @@ namespace ARAManager.Presentation.Client.Aspx {
                 Banner = UploadImageBanner(),
                 Avatar = UploadImageAvatar(),
                 Gift = txtGift.Text,
-                NumMission = txtMission.Text,
+                NumMission = int.Parse(txtMission.Text),
                 Company = m_company
             };
             return campaign;

@@ -94,7 +94,11 @@
                         <tr>
                             <td style="width: 30%"></td>
                             <td style="width: 70%">
-                                <cc1:GMap ID="GMAP_Target" runat="server" />
+                                <cc1:GMap ID="GMAP_Target" runat="server" 
+                                    enableServerEvents="True"
+                                    OnClick="GMAP_Target_OnClick"
+                                    OnMarkerClick="GMAP_Target_OnMarkerClick"
+                                    />
                             </td>
                         </tr>
                         <!--#endregion GOOGLE_MAP-->
@@ -171,23 +175,20 @@
 
                     <!--#region BUTTON-->
                     <ul class="nav nav-pills pull-left">
-                        <li role="presentation">
-                            <asp:Button ID="btnSave" runat="server"
-                                CssClass="btn btn-danger"
-                                Text="Save" />
-                        </li>
-                        <li role="presentation" style="margin-left: 20px">
-                            <asp:Button ID="btnCancel" runat="server"
-                                CssClass="btn btn-warning"
-                                Text="Cancel" />
-                        </li>
                         <li role="presentation" style="margin-left: 20px">
                             <asp:Label ID="lblCreateMission" runat="server" />
                         </li>
                         <li role="presentation" style="margin-left: 20px">
                             <asp:Button ID="btnCreateTarget" runat="server"
                                 CssClass="btn btn-warning"
-                                Text="Upload target NOW" />
+                                Text="Upload target NOW"
+                                OnClick="btnCreateTarget_OnClick" />
+                        </li>
+                        <li role="presentation" style="margin-left: 20px">
+                            <asp:Button ID="btnCancel" runat="server"
+                                CssClass="btn btn-warning"
+                                Text="Cancel"
+                                OnClick="btnCancel_OnClick" />
                         </li>
                     </ul>
                     <!--#endregion BUTTON-->

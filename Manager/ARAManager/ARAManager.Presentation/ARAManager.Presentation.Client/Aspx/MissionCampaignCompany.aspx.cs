@@ -43,7 +43,7 @@ namespace ARAManager.Presentation.Client.Aspx {
             }
             EnableValidator(false);
             lblCreateMission.Text = "You have " + s_numberOfMission + " left.";
-            GridView_Mission.DataSource = s_numberOfMission;
+            GridView_Mission.DataSource = m_camnpaign.Missions;
             GridView_Mission.DataBind();
         }
 
@@ -54,7 +54,7 @@ namespace ARAManager.Presentation.Client.Aspx {
         }
 
         protected void CustomValidator_Description_OnServerValidate(object source, ServerValidateEventArgs args) {
-            CustomValidator_MissionName.ErrorMessage = Validation.VALIDATOR_DESCRIPTION;
+            CustomValidator_Description.ErrorMessage = Validation.VALIDATOR_DESCRIPTION;
             args.IsValid = m_validator.ValidateChar500(txtDescription.Text);
         }
 
@@ -64,49 +64,52 @@ namespace ARAManager.Presentation.Client.Aspx {
         }
 
         #endregion IMethods
-
-        protected void btnSave_OnClick(object sender, EventArgs e) {
+        protected void btnCreateTarget_OnClick(object sender, EventArgs e)
+        {
             EnableValidator(true);
             Page.Validate();
-        }
-
-        protected void btnCancel_OnClick(object sender, EventArgs e) {
-            Response.Redirect("CampaignCompany.aspx");
-        }
-
-        protected void btnCreateTarget_OnClick(object sender, EventArgs e) {
-            EnableValidator(true);
-            Page.Validate();
-            if (Page.IsValid) {
+            if (Page.IsValid)
+            {
                 var avatar = FileUpload_Avatar.FileBytes;
 
-                var mission = new Mission() {
+                var mission = new Mission()
+                {
                     Name = txtMissionName.Text,
                     Description = txtDescription.Text,
                     NumTarget = int.Parse(txtNumTarget.Text),
                     Avatar = avatar,
                     Campaign = m_camnpaign
                 };
-                try {
+                try
+                {
                     ClientServiceFactory.MissionService.SaveNewMission(mission);
                     s_numberOfMission--;
-                    if (s_numberOfMission > 0) {
+                    if (s_numberOfMission > 0)
+                    {
                         Response.Redirect("MissionCampaignCompany.aspx");
                     }
-                } catch (FaultException<MissionNameAlreadyExistException> ex) {
+                }
+                catch (FaultException<MissionNameAlreadyExistException> ex)
+                {
                     lblMessage.Text = ex.Detail.MessageError;
-                } catch (FaultException<CampaignAlreadyDeletedException> ex) {
+                }
+                catch (FaultException<CampaignAlreadyDeletedException> ex)
+                {
                     lblMessage.Text = ex.Detail.MessageError;
                 }
             }
+        }
+
+        protected void btnCancel_OnClick(object sender, EventArgs e) {
+            Response.Redirect("CampaignCompany.aspx");
         }
 
         private void EnableValidator(bool flag) {
             CustomValidator_MissionName.Enabled = flag;
             CustomValidator_Description.Enabled = flag;
             CustomValidator_MissionName.Enabled = flag;
-            CustomValidator_Description.Enabled = flag;
             CustomValidator_Avatar.Enabled = flag;
+            RangeValidator_NumMission.Enabled = flag;
             RequiredFieldValidator_MissionName.Enabled = flag;
             RequiredFieldValidator_Description.Enabled = flag;
             RequiredFieldValidator_txtNumTarget.Enabled = flag;
