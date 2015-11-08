@@ -107,6 +107,11 @@
     <Content Include="Services\CompanyServiceImpl.svc" />
     <Content Include="Services\CustomerServiceImpl.svc" />
     <Content Include="Services\MissionServiceImpl.svc" />
+    <Content Include="Services\Presenter\Account.svc" />
+    <Content Include="Services\Presenter\Authentication.svc" />
+    <Content Include="Services\Presenter\Campaign.svc" />
+    <Content Include="Services\Presenter\ForgetPassword.svc" />
+    <Content Include="Services\Presenter\Subscription.svc" />
     <Content Include="Services\SubscriptionServiceImpl.svc" />
     <Content Include="Services\TargetServiceImpl.svc" />
     <Content Include="Web.config">
@@ -137,6 +142,21 @@
     <Compile Include="Services\MissionServiceImpl.svc.cs">
       <DependentUpon>MissionServiceImpl.svc</DependentUpon>
     </Compile>
+    <Compile Include="Services\Presenter\Account.svc.cs">
+      <DependentUpon>Account.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Presenter\Authentication.svc.cs">
+      <DependentUpon>Authentication.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Presenter\Campaign.svc.cs">
+      <DependentUpon>Campaign.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Presenter\ForgetPassword.svc.cs">
+      <DependentUpon>ForgetPassword.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Presenter\Subscription.svc.cs">
+      <DependentUpon>Subscription.svc</DependentUpon>
+    </Compile>
     <Compile Include="Services\SubscriptionServiceImpl.svc.cs">
       <DependentUpon>SubscriptionServiceImpl.svc</DependentUpon>
     </Compile>
@@ -146,7 +166,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Services\Presenter\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ARAManager.Common\ARAManager.Common.csproj">

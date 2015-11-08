@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="ARAManager.Business.Service.Services.Presenter.Authentication" CodeBehind="Authentication.svc.cs" %>

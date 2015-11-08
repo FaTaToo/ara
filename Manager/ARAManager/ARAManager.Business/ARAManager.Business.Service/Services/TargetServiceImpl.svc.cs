@@ -14,5 +14,6 @@ using ARAManager.Common.Services;
 
 namespace ARAManager.Business.Service.Services {
     public class TargetServiceImpl : ITargetServiceImpl {
+
     }
 }

@@ -11,8 +11,12 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.ServiceModel;
 using System.Web.UI.WebControls;
 using ARAManager.Common.Dto;
+using ARAManager.Common.Exception.Campaign;
+using ARAManager.Common.Exception.Mission;
+using ARAManager.Common.Exception.Target;
 using ARAManager.Presentation.Connectivity;
 using Subgurim.Controles;
 
@@ -94,6 +98,7 @@ namespace ARAManager.Presentation.Client.Aspx {
             GMarker marker = new GMarker(new GLatLng(5, 5));
             GInfoWindow window = new GInfoWindow(marker, "<center><b>Target location</b></center>", true);
             GMAP_Target.Add(window);
+            
         }
 
         private void EnableValidator(bool flag) {
@@ -111,11 +116,27 @@ namespace ARAManager.Presentation.Client.Aspx {
         }
 
         protected void btnCreateTarget_OnClick(object sender, EventArgs e) {
-            // Define null fields exeption
             EnableValidator(true);
             Page.Validate();
             if (Page.IsValid) {
-                
+                var target = new Target() {
+                    TargetName = txtTargetName.Text,
+                    Latitude = m_latitude,
+                    Longitude = m_longtitude,
+                    Description = txtDescription.Text,
+                    VideoUrl = txtVideoUrl.Text,
+                    FacebookUrl = txtFacebookUrl.Text,
+                    YoutubeUrl = txtYoutubeUrl.Text,
+                    Mission = m_mission
+                };
+                try
+                {
+                    
+                } catch (FaultException<TargetNameAlreadyExistException> ex) {
+                    lblMessage.Text = ex.Detail.MessageError;
+                } catch (FaultException<MissionAlreadyDeletedException> ex) {
+                    lblMessage.Text = ex.Detail.MessageError;
+                } 
             }
         }
 

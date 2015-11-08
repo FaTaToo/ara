@@ -91,10 +91,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Behaviors\PreserveReferencesAttribute.cs" />
     <Compile Include="Services\Behaviors\PreserveReferencesOperationBehavior.cs" />
+    <Compile Include="Services\IAccount.cs" />
+    <Compile Include="Services\IAuthentication.cs" />
+    <Compile Include="Services\ICampaign.cs" />
     <Compile Include="Services\ICampaignServiceImpl.cs" />
     <Compile Include="Services\ICompanyServiceImpl.cs" />
     <Compile Include="Services\ICustomerServiceImpl.cs" />
+    <Compile Include="Services\IForgetPassword.cs" />
     <Compile Include="Services\IMissionServiceImpl.cs" />
+    <Compile Include="Services\ISubscription.cs" />
     <Compile Include="Services\ISubscriptionServiceImpl.cs" />
     <Compile Include="Services\ITargetServiceImpl.cs" />
   </ItemGroup>
