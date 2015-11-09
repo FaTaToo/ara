@@ -78,7 +78,7 @@ namespace ARAManager.Common.Dto {
         public virtual Company Company { get; set; }
 
         [DataMember]
-        [Set(0, Table = "Mission", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_missions")]
+        [Set(0, Table = "ARA_Mission", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_missions")]
         [Key(1, Column = "CampaignName")]
         [OneToMany(2, ClassType = typeof(Mission))]
         public virtual ICollection<Mission> Missions {
@@ -89,7 +89,7 @@ namespace ARAManager.Common.Dto {
         }
 
         [DataMember]
-        [Set(0, Table = "Subscription", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_subscriptions")]
+        [Set(0, Table = "ARA_Subscription", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_subscriptions")]
         [Key(1, Column = "CampaignId")]
         [OneToMany(2, ClassType = typeof(Subscription))]
         public virtual ICollection<Subscription> Subscriptions {

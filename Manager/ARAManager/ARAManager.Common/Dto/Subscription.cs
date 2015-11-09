@@ -32,6 +32,14 @@ namespace ARAManager.Common.Dto {
         public virtual Campaign Campaign { get; set; }
 
         [DataMember]
+        [ManyToOne(Name = "CurrentMission", Column = "CurrentMission", NotNull = false, Fetch = FetchMode.Select)]
+        public virtual int CurrentMission { get; set; }
+
+        [DataMember]
+        [Property(Column = "NumOfCompletedMission", Name = "NumOfCompletedMission", TypeType = typeof(int), NotNull = true)]
+        public virtual int NumOfCompletedMission { get; set; }
+
+        [DataMember]
         [Property(Column = "IsComplete", Name = "IsComplete", TypeType = typeof(bool), NotNull = true)]
         public virtual bool IsComplete { get; set; }
 
@@ -42,6 +50,7 @@ namespace ARAManager.Common.Dto {
         [DataMember]
         [Property(Column = "Rating", Name = "Rating", TypeType = typeof(int), NotNull = true)]
         public virtual int Rating { get; set; }
+
         #endregion IProperties
     }
 }

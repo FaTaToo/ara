@@ -77,7 +77,7 @@ namespace ARAManager.Common.Dto {
         public virtual string Password { get; set; }
 
         [DataMember]
-        [Set(0, Table = "Subscription", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_subscriptions")]
+        [Set(0, Table = "ARA_Subscription", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_subscriptions")]
         [Key(1, Column = "CustomerId")]
         [OneToMany(2, ClassType = typeof(Subscription))]
         public virtual ICollection<Subscription> Subscriptions  {

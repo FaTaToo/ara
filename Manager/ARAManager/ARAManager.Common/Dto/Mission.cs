@@ -21,6 +21,7 @@ namespace ARAManager.Common.Dto {
         #region IFields
 
         private ICollection<Target> m_targets;
+        private ICollection<Subscription> m_subscriptions; 
 
         #endregion IFields
 
@@ -28,6 +29,7 @@ namespace ARAManager.Common.Dto {
 
         public Mission() {
             m_targets = new HashSet<Target>();
+            m_subscriptions = new HashSet<Subscription>();
         }
 
         #endregion IConstructors
@@ -60,13 +62,24 @@ namespace ARAManager.Common.Dto {
         public virtual Campaign Campaign { get; set; }
 
         [DataMember]
-        [Set(0, Table = "Target", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_targets")]
+        [Set(0, Table = "ARA_Target", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_targets")]
         [Key(1, Column = "MissionName")]
         [OneToMany(2, ClassType = typeof(Target))]
         public virtual ICollection<Target> Targets {
             get {
                 m_targets = m_targets ?? new HashSet<Target>();
                 return m_targets;
+            }
+        }
+
+        [DataMember]
+        [Set(0, Table = "ARA_Subscription", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_subscriptions")]
+        [Key(1, Column = "CurrentMission")]
+        [OneToMany(2, ClassType = typeof(Subscription))]
+        public virtual ICollection<Subscription> Subscriptions {
+            get {
+                m_subscriptions = m_subscriptions ?? new HashSet<Subscription>();
+                return m_subscriptions;
             }
         }
 

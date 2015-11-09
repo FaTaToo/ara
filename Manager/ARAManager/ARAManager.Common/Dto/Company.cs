@@ -61,7 +61,7 @@ namespace ARAManager.Common.Dto {
         public virtual string Password { get; set; }
 
         [DataMember]
-        [Set(0, Table = "Campaign", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_campaigns")]
+        [Set(0, Table = "ARA_Campaign", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_campaigns")]
         [Key(1, Column = "CompanyName")]
         [OneToMany(2, ClassType = typeof(Campaign))]
         public virtual ICollection<Campaign> Campaigns {
