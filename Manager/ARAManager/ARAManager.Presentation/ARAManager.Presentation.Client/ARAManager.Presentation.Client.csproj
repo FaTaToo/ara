@@ -243,9 +243,9 @@
     <Content Include="ARAManager.Presentation.Client.Resources\Images\zingme.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="ARAManager.Presentation.Client.Views\Master_Pages\Management.Master" />
     <Content Include="ARAManager.Presentation.Client.Views\Master_Pages\ManagementAdmin.master" />
     <Content Include="ARAManager.Presentation.Client.Views\Master_Pages\ManagementCompany.master" />
+    <Content Include="ARAManager.Presentation.Client.Views\Master_Pages\Management.Master" />
     <None Include="Scripts\jquery-2.1.4-vsdoc.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />

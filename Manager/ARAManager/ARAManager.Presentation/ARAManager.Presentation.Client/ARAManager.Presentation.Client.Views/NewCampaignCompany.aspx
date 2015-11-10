@@ -39,7 +39,8 @@
                     <tr>
                         <td style="width: 30%"></td>
                         <td style="width: 70%">
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_CampaignName" runat="server" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_CampaignName" runat="server" 
+                                ControlToValidate="txtCampaignName"/>
                             <asp:CustomValidator ID="CustomValidator_CampaignName" runat="server"
                                 OnServerValidate="CustomValidator_CampaignName_OnServerValidate" />
                         </td>
@@ -58,7 +59,8 @@
                     <tr>
                         <td style="width: 30%"></td>
                         <td style="width: 70%">
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_StartTime" runat="server" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_StartTime" runat="server" 
+                                ControlToValidate="txtStartTime"/>
                         </td>
                     </tr>
                     <!--#endregion START_TIME-->
@@ -93,7 +95,8 @@
                     <tr>
                         <td style="width: 30%"></td>
                         <td style="width: 70%">
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_Description" runat="server" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_Description" runat="server"
+                                ControlToValidate="txtDescription" />
                             <asp:CustomValidator ID="CustomValidator_Description" runat="server"
                                 OnServerValidate="CustomValidator_Description_OnServerValidate" />
                         </td>
@@ -130,7 +133,8 @@
                     <tr>
                         <td style="width: 30%"></td>
                         <td style="width: 70%">
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_Gift" runat="server" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_Gift" runat="server" 
+                                ControlToValidate="txtGift"/>
                             <asp:CustomValidator ID="CustomValidator_Gift" runat="server"
                                 OnServerValidate="CustomValidator_Gift_OnServerValidate" />
                         </td>
@@ -149,7 +153,8 @@
                     <tr>
                         <td style="width: 30%"></td>
                         <td style="width: 70%">
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_NumMission" runat="server" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_NumMission" runat="server"
+                                ControlToValidate="txtMission" />
                             <asp:RangeValidator ID="RangeValidator_NumMission" runat="server"
                                 ForeColor="Red"
                                 Type="Integer"

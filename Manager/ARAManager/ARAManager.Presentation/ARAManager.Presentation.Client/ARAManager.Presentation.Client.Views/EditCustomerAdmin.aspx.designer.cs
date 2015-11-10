@@ -13,6 +13,15 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
     public partial class EditCustomerAdmin {
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// txtCustomer control.
         /// </summary>
         /// <remarks>

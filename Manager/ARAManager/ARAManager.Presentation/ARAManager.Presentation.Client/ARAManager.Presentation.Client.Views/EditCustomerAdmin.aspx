@@ -5,6 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server"></asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"/>
     <!--#region EDIT_INFORMATION-->
     <div class="container">
         <div class="row">

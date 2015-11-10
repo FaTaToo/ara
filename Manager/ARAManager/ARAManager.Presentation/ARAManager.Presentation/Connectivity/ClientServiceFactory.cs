@@ -57,9 +57,10 @@ namespace ARAManager.Presentation.Connectivity
         private ClientServiceFactory()
         {
             m_serviceFactories = new Dictionary<string, object>();
-            Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(new ExeConfigurationFileMap() {
+            Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(new ExeConfigurationFileMap()
+            {
                 ExeConfigFilename = @"D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\bin\Debug\ARAManager.Presentation.Client.exe.config",
-                }, ConfigurationUserLevel.None);
+            }, ConfigurationUserLevel.None);
 
             var serviceGroup = ServiceModelSectionGroup.GetSectionGroup(configuration);
             if (serviceGroup != null)
@@ -155,7 +156,7 @@ namespace ARAManager.Presentation.Connectivity
             }
         }
         #endregion IProperties
-        
+
         #region IMethods
 
         /// <summary>

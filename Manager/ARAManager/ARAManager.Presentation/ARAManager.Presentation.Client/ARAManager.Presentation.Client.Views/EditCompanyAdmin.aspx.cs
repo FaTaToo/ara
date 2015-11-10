@@ -20,66 +20,87 @@ using ARAManager.Common.Exception.Generic;
 using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
 using ARAManager.Presentation.Connectivity;
 
-namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
-    public partial class EditCompanyAdmin : System.Web.UI.Page {
+namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
+{
+    public partial class EditCompanyAdmin : System.Web.UI.Page
+    {
         #region IFields
 
         private int m_companyId;
         private Company m_company;
         private readonly Validation m_validator = new Validation();
-        private byte[] m_rowVersion;
 
         #endregion IFields
 
+        #region SFields
+        
+        private static byte[] s_rowVersion;
+
+        #endregion SFields
+
         #region IMethods
-        protected void Page_Load(object sender, EventArgs e) {
+        protected void Page_Load(object sender, EventArgs e)
+        {
             SetErrorMessages();
             EnableValidator(false);
-
-            if (!Page.IsPostBack) {
-                m_companyId = int.Parse(Request.QueryString["RequestId"]);
-                m_company = ClientServiceFactory.CompanyService.GetCompanyById(m_companyId);
-                if (m_company != null) {
-                    txtCompany.Text = Dictionary.COMPANY_ADMIN_EDIT_HEADER;
-                    txtCompanyName.Text = m_company.CompanyName;
-                    txtAddress.Text = m_company.Address;
-                    txtEmail.Text = m_company.Email;
-                    txtPhone.Text = m_company.Phone;
-                    txtUsername.Text = m_company.UserName;
-                    txtPassword.Text = m_company.Password;
-                    m_rowVersion = m_company.RowVersion;
-                } else if (m_companyId == -4438) {
-                            txtCompany.Text = Dictionary.COMPANY_ADMIN_NEW_HEADER;
-                       } else {
-                            txtCompany.Text = Dictionary.COMPANY_DELETED_EXCEPTION_MSG;
-                       }
-                }
+            m_companyId = int.Parse(Request.QueryString["RequestId"]);
+            m_company = ClientServiceFactory.CompanyService.GetCompanyById(m_companyId);
+            if (Page.IsPostBack) return;
+            if (m_company != null)
+            {
+                txtCompany.Text = Dictionary.COMPANY_ADMIN_EDIT_HEADER;
+                txtCompanyName.Text = m_company.CompanyName;
+                txtAddress.Text = m_company.Address;
+                txtEmail.Text = m_company.Email;
+                txtPhone.Text = m_company.Phone;
+                txtUsername.Text = m_company.UserName;
+                txtPassword.Text = m_company.Password;
+                s_rowVersion = m_company.RowVersion;
+            }
+            else if (m_companyId == -4438)
+            {
+                txtCompany.Text = Dictionary.COMPANY_ADMIN_NEW_HEADER;
+            }
+            else
+            {
+                txtCompany.Text = Dictionary.COMPANY_DELETED_EXCEPTION_MSG;
+            }
         }
-        protected void CustomValidator_CompanyName_OnServerValidate(object source, ServerValidateEventArgs args) {
+        protected void CustomValidator_CompanyName_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
             args.IsValid = m_validator.ValidateChar100(txtCompanyName.Text);
         }
-        protected void CustomValidator_Address_OnServerValidate(object source, ServerValidateEventArgs args) {
-          
+        protected void CustomValidator_Address_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
+
             args.IsValid = m_validator.ValidateChar500(txtAddress.Text);
         }
-        protected void CustomValidator_Email_OnServerValidate(object source, ServerValidateEventArgs args) {
-            
+        protected void CustomValidator_Email_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
+
             args.IsValid = m_validator.ValidateChar100(txtEmail.Text);
         }
-        protected void CustomValidator_Phone_OnServerValidate(object source, ServerValidateEventArgs args) {
+        protected void CustomValidator_Phone_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
             args.IsValid = m_validator.ValidateChar20(txtPhone.Text);
         }
-        protected void CustomValidator_Username_OnServerValidate(object source, ServerValidateEventArgs args) {
+        protected void CustomValidator_Username_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
             args.IsValid = m_validator.ValidateChar100(txtUsername.Text);
         }
-        protected void CustomValidator_Password_OnServerValidate(object source, ServerValidateEventArgs args) {
+        protected void CustomValidator_Password_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
             args.IsValid = m_validator.ValidateChar100(txtPassword.Text);
         }
-        protected void btnSave_OnClick(object sender, EventArgs e) {
+        protected void btnSave_OnClick(object sender, EventArgs e)
+        {
             EnableValidator(true);
             Page.Validate();
-            if (txtCompany.Text == Dictionary.COMPANY_ADMIN_NEW_HEADER) {
-               var company = new Company {
+            if (!Page.IsValid) return;
+            if (txtCompany.Text == Dictionary.COMPANY_ADMIN_NEW_HEADER)
+            {
+                var company = new Company
+                {
                     CompanyName = txtCompanyName.Text,
                     Address = txtAddress.Text,
                     Email = txtAddress.Text,
@@ -87,33 +108,44 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
                     UserName = txtUsername.Text,
                     Password = txtPassword.Text
                 };
-                try {
+                try
+                {
                     ClientServiceFactory.CompanyService.SaveNewCompany(company);
                 }
-                catch (FaultException<CompanyNameAlreadyExistException> ex) {
+                catch (FaultException<CompanyNameAlreadyExistException> ex)
+                {
                     lblMessage.Text = ex.Detail.MessageError;
                 }
-                catch (FaultException<Exception> ex) {
+                catch (FaultException<Exception> ex)
+                {
                     lblMessage.Text = ex.Detail.Message;
                 }
-            } else {
+                RedirectToCompanyAdmin();
+            }
+            else
+            {
                 m_company.CompanyName = txtCompanyName.Text;
                 m_company.Address = txtAddress.Text;
                 m_company.Email = txtEmail.Text;
                 m_company.Phone = txtPhone.Text;
                 m_company.UserName = txtUsername.Text;
                 m_company.Password = txtPassword.Text;
-                m_company.RowVersion = m_rowVersion;
-                try {
+                m_company.RowVersion = s_rowVersion;
+                try
+                {
                     ClientServiceFactory.CompanyService.SaveNewCompany(m_company);
                 }
-                catch (FaultException<ConcurrentUpdateException> ex) {
+                catch (FaultException<ConcurrentUpdateException> ex)
+                {
                     lblMessage.Text = ex.Detail.MessageError;
                 }
+                RedirectToCompanyAdmin();
             }
+           
         }
-        protected void btnCancel_OnClick(object sender, EventArgs e) {
-            Response.Redirect("CompanyAdmin.aspx");
+        protected void btnCancel_OnClick(object sender, EventArgs e)
+        {
+            RedirectToCompanyAdmin();
         }
         private void SetErrorMessages()
         {
@@ -130,7 +162,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
             RequiredFieldValidator_Username.ErrorMessage = Validation.REQUIRE_USERNAME;
             RequiredFieldValidator_Password.ErrorMessage = Validation.REQUIRE_PASSWORD;
         }
-        private void EnableValidator(bool flag) {
+        private void EnableValidator(bool flag)
+        {
             CustomValidator_CompanyName.Enabled = flag;
             CustomValidator_Address.Enabled = flag;
             CustomValidator_Email.Enabled = flag;
@@ -142,6 +175,11 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
             RequiredFieldValidator_Phone.Enabled = flag;
             RequiredFieldValidator_Username.Enabled = flag;
         }
+        private void RedirectToCompanyAdmin()
+        {
+            Response.Redirect("CompanyAdmin.aspx");
+        }
+
         #endregion IMethods
     }
 }

@@ -51,5 +51,9 @@ namespace ARAManager.Common.Services {
         [OperationContract]
         [PreserveReferences]
         int AuthenticateUser(string username, string password);
+
+        [OperationContract]
+        [PreserveReferences]
+        Company GetCompanyByUserName(string userName);
     }
 }

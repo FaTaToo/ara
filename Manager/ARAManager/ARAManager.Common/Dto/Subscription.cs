@@ -33,7 +33,7 @@ namespace ARAManager.Common.Dto {
 
         [DataMember]
         [ManyToOne(Name = "CurrentMission", Column = "CurrentMission", NotNull = false, Fetch = FetchMode.Select)]
-        public virtual int CurrentMission { get; set; }
+        public virtual Mission CurrentMission { get; set; }
 
         [DataMember]
         [Property(Column = "NumOfCompletedMission", Name = "NumOfCompletedMission", TypeType = typeof(int), NotNull = true)]

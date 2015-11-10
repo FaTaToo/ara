@@ -2,9 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Menu" runat="server">
     <div class="btn-group btn-group-justified" role="group">
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-warning">
+            <a class="btn btn-warning" href="CampaignCompany.aspx">
                 <img src="../ARAManager.Presentation.Client.Resources/Images/home.png" />
-            </button>
+            </a>
         </div>
         <div class="btn-group" role="group">
             <asp:Button ID="btnCampaign" ForeColor="Black" CssClass="btn btn-warning" runat="server"  Text="CAMPAIGN" />

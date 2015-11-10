@@ -46,13 +46,13 @@
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_RequireFileds_OnServerValidate" />
                     </li>
-                    <li role="presentation" style="margin-top:20px">
+                    <li role="presentation" style="margin-top: 20px">
                         <asp:Button ID="btnSearch" runat="server"
                             CssClass="btn btn-success"
                             Text="Search"
                             OnClick="btnSearch_OnClick" />
                     </li>
-                    <li role="presentation" style="margin-top:20px">
+                    <li role="presentation" style="margin-top: 20px">
                         <asp:Button ID="btnNewCustomer" runat="server"
                             CssClass="btn btn-success"
                             Text="Create new customer"
@@ -86,7 +86,7 @@
             <div class="row">
                 <div class="col-md-6" style="margin-top: 20px; margin-left: 20px">
                     <asp:Label ID="lblMessage" runat="server"
-                        ForeColor="Red"/>
+                        ForeColor="Red" />
                 </div>
             </div>
             <div class="row">
@@ -95,26 +95,26 @@
                         <div class="btn-group" role="group">
                             <asp:Button ID="btnSelectAll" runat="server"
                                 CssClass="btn btn-warning"
-                                Text="Select all" 
-                                OnClick="btnSelectAll_OnClick"/>
+                                Text="Select all"
+                                OnClick="btnSelectAll_OnClick" />
                         </div>
                         <div class="btn-group" role="group">
                             <asp:Button ID="btnDeselectAll" runat="server"
                                 CssClass="btn btn-warning"
-                                Text="Deselect all" 
-                                OnClick="btnDeselectAll_OnClick"/>
+                                Text="Deselect all"
+                                OnClick="btnDeselectAll_OnClick" />
                         </div>
                         <div class="btn-group" role="group">
                             <asp:Button ID="btnDelete" runat="server"
                                 CssClass="btn btn-danger"
-                                Text="Delete" 
-                                OnClick="btnDelete_OnClick"/>
+                                Text="Delete"
+                                OnClick="btnDelete_OnClick" />
                         </div>
                         <div class="btn-group" role="group">
                             <asp:Button ID="btnClear" runat="server"
                                 CssClass="btn btn-warning"
-                                Text="Clear" 
-                                OnClick="btnClear_OnClick"/>
+                                Text="Clear"
+                                OnClick="btnClear_OnClick" />
                         </div>
                     </div>
                 </div>
@@ -133,6 +133,11 @@
                                     <asp:CheckBox ID="cbSelect" runat="server" />
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:TemplateField Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblID" runat="server" Text='<%# Eval("CustomerId") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:HyperLinkField
                                 DataNavigateUrlFields="CustomerId"
                                 HeaderText="Id"
@@ -142,7 +147,7 @@
                             <asp:BoundField DataField="FirstName" HeaderText="First Name" ItemStyle-Width="10%" />
                             <asp:BoundField DataField="LastName" HeaderText="Last Name" ItemStyle-Width="10%" />
                             <asp:BoundField DataField="Sex" HeaderText="Sex" ItemStyle-Width="10%" />
-                            <asp:BoundField DataField="BirthDay" HeaderText="BirthDay" DataFormatString="{0:MM.dd.yy}" ItemStyle-Width="10%"/>
+                            <asp:BoundField DataField="BirthDay" HeaderText="BirthDay" DataFormatString="{0:MM.dd.yy}" ItemStyle-Width="10%" />
                             <asp:BoundField DataField="Email" HeaderText="Email" ItemStyle-Width="20%" />
                             <asp:BoundField DataField="Phone" HeaderText="Phone" ItemStyle-Width="10%" />
                             <asp:BoundField DataField="UserName" HeaderText="Username" ItemStyle-Width="20%" />

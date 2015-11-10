@@ -19,8 +19,10 @@ using ARAManager.Common.Exception.Mission;
 using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
 using ARAManager.Presentation.Connectivity;
 
-namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
-    public partial class MissionCampaignCompany : System.Web.UI.Page {
+namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
+{
+    public partial class MissionCampaignCompany : System.Web.UI.Page
+    {
         #region IFields
 
         private int m_campaignId;
@@ -36,8 +38,10 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         #endregion SFields
 
         #region IMethods
-        protected void Page_Load(object sender, EventArgs e) {
-            if (!IsPostBack) {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
                 m_campaignId = int.Parse(Request.QueryString["RequestId"]);
                 m_camnpaign = ClientServiceFactory.CampaignService.GetCampaignById(m_campaignId);
                 s_numberOfMission = m_camnpaign.NumMission;
@@ -47,20 +51,18 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
             GridView_Mission.DataSource = m_camnpaign.Missions;
             GridView_Mission.DataBind();
         }
-
         protected void CustomValidator_MissionName_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             CustomValidator_MissionName.ErrorMessage = Validation.VALIDATOR_MISSION_NAME;
             args.IsValid = m_validator.ValidateChar100(txtMissionName.Text);
         }
-
-        protected void CustomValidator_Description_OnServerValidate(object source, ServerValidateEventArgs args) {
+        protected void CustomValidator_Description_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
             CustomValidator_Description.ErrorMessage = Validation.VALIDATOR_DESCRIPTION;
             args.IsValid = m_validator.ValidateChar500(txtDescription.Text);
         }
-
-        protected void CustomValidator_Avatar_OnServerValidate(object source, ServerValidateEventArgs args)  {
-
+        protected void CustomValidator_Avatar_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
             args.IsValid = FileUpload_Avatar.HasFile;
         }
 
@@ -72,7 +74,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
             if (Page.IsValid)
             {
                 var avatar = FileUpload_Avatar.FileBytes;
-
                 var mission = new Mission()
                 {
                     Name = txtMissionName.Text,
@@ -100,12 +101,12 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
                 }
             }
         }
-
-        protected void btnCancel_OnClick(object sender, EventArgs e) {
+        protected void btnCancel_OnClick(object sender, EventArgs e)
+        {
             Response.Redirect("CampaignCompany.aspx");
         }
-
-        private void EnableValidator(bool flag) {
+        private void EnableValidator(bool flag)
+        {
             CustomValidator_MissionName.Enabled = flag;
             CustomValidator_Description.Enabled = flag;
             CustomValidator_MissionName.Enabled = flag;

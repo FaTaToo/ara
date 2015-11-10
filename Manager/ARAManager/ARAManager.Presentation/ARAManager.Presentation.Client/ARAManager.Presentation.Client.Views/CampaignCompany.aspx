@@ -23,7 +23,7 @@
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_RequireFileds_OnServerValidate" />
                     </li>
-                    <li role="presentation" style="margin-left: 40px">
+                    <li role="presentation" style="margin-top: 20px; margin-left: 40px">
                         <asp:Button ID="btnSearch" runat="server"
                             CssClass="btn btn-success"
                             Text="Search"

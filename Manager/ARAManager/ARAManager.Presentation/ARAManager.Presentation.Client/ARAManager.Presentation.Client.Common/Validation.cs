@@ -20,7 +20,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common
 
         public const string VALIDATOR_USEREMAIL_FORMAT = "Incorrect username format";
         public const string VALIDATOR_USERPASS_FORMAT = "Incorrect password format";
-        public const string VALIDATOR_DATE_FORMAT= "Not correct datetime format";
+        public const string VALIDATOR_DATE_FORMAT = "Not correct datetime format";
 
         public const string VALIDATOR_COMPANY_NAME = "Please enter company name with length from 1 to 100.";
         public const string VALIDATOR_CUSTOMER_NAME = "Please enter customer name with length from 1 to 100.";
@@ -29,7 +29,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common
         public const string VALIDATOR_TARGET_NAME = "Please enter target name with length from 1 to 100.";
         public const string VALIDATOR_DESCRIPTION = "Please enter description with length from 1 to 100.";
         public const string VALIDATOR_VIDEO = "Please enter Video url with length from 1 to 500.";
-        public const string VALIDATOR_FACEBOOK= "Please enter Facebook url with length from 1 to 500.";
+        public const string VALIDATOR_FACEBOOK = "Please enter Facebook url with length from 1 to 500.";
         public const string VALIDATOR_YOUTUBE = "Please enter Youtube url with length from 1 to 500.";
         public const string VALIDATOR_ADDRESS = "Please enter address with length from 1 to 500.";
         public const string VALIDATOR_EMAIL = "Please enter email address with length from 1 to 100.";
@@ -78,8 +78,10 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common
         /// </summary>
         /// <param name="inp"></param>
         /// <returns></returns>
-        public bool ValidateChar100(string inp) {
-            if (inp.Length > 100) {   
+        public bool ValidateChar100(string inp)
+        {
+            if (inp.Length > 100)
+            {
                 return false;
             }
             return true;

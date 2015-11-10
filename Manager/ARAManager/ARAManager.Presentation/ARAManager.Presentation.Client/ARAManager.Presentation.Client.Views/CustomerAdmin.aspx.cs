@@ -17,63 +17,79 @@ using System.Web.UI.WebControls;
 using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
 using ARAManager.Presentation.Connectivity;
 
-namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
-    public partial class CustomerAdmin : System.Web.UI.Page {
+namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
+{
+    public partial class CustomerAdmin : System.Web.UI.Page
+    {
         #region IFields
 
         private readonly Validation m_validator = new Validation();
 
         #endregion IFields
-        
+
         #region IMethods
-        protected void Page_Load(object sender, EventArgs e) {
+        protected void Page_Load(object sender, EventArgs e)
+        {
             EnableValidator(false);
         }
-        protected void CustomValidator_FirstName_OnServerValidate(object source, ServerValidateEventArgs args) {
+        protected void CustomValidator_FirstName_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
             CustomValidator_FirstName.ErrorMessage = Validation.VALIDATOR_CUSTOMER_NAME;
             args.IsValid = m_validator.ValidateChar100(txtFirstName.Text);
         }
-        protected void CustomValidator_LastName_OnServerValidate(object source, ServerValidateEventArgs args) {
+        protected void CustomValidator_LastName_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
             CustomValidator_LastName.ErrorMessage = Validation.VALIDATOR_CUSTOMER_NAME;
             args.IsValid = m_validator.ValidateChar100(txtLastName.Text);
         }
-        protected void CustomValidator_Email_OnServerValidate(object source, ServerValidateEventArgs args) {
+        protected void CustomValidator_Email_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
             CustomValidator_Email.ErrorMessage = Validation.VALIDATOR_EMAIL;
             args.IsValid = m_validator.ValidateChar100(txtEmail.Text);
         }
-        protected void CustomValidator_Phone_OnServerValidate(object source, ServerValidateEventArgs args) {
+        protected void CustomValidator_Phone_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
             CustomValidator_LastName.ErrorMessage = Validation.VALIDATOR_PHONE;
             args.IsValid = m_validator.ValidateChar100(txtPhone.Text);
         }
-        protected void CustomValidator_UserName_OnServerValidate(object source, ServerValidateEventArgs args) {
+        protected void CustomValidator_UserName_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
             CustomValidator_LastName.ErrorMessage = Validation.VALIDATOR_USERNAME;
             args.IsValid = m_validator.ValidateChar100(txtUserName.Text);
         }
-        protected void CustomValidator_RequireFileds_OnServerValidate(object source, ServerValidateEventArgs args) {
+        protected void CustomValidator_RequireFileds_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
             CustomValidator_RequireFileds.ErrorMessage = Validation.VALIDATOR_REQUIRED_CRITERION_SEARCH;
             if (!string.IsNullOrEmpty(txtFirstName.Text) ||
                 !string.IsNullOrEmpty(txtLastName.Text) ||
                 !string.IsNullOrEmpty(txtEmail.Text) ||
                 !string.IsNullOrEmpty(txtPhone.Text) ||
-                !string.IsNullOrEmpty(txtUserName.Text)) {
+                !string.IsNullOrEmpty(txtUserName.Text))
+            {
                 args.IsValid = true;
-            } else {
+            }
+            else
+            {
                 args.IsValid = false;
             }
         }
-        protected void btnSelectAll_OnClick(object sender, EventArgs e) {
+        protected void btnSelectAll_OnClick(object sender, EventArgs e)
+        {
             SelectDeselectGridView(true);
         }
-        protected void btnDeselectAll_OnClick(object sender, EventArgs e) {
+        protected void btnDeselectAll_OnClick(object sender, EventArgs e)
+        {
             SelectDeselectGridView(false);
         }
-        protected void btnDelete_OnClick(object sender, EventArgs e) {
+        protected void btnDelete_OnClick(object sender, EventArgs e)
+        {
             var deletedCustomers = (from GridViewRow row in GridViewResult.Rows
                                     let checkBox = row.Cells[0].FindControl("cbSelect") as CheckBox
                                     where checkBox != null && checkBox.Checked
                                     select row.Cells[1].FindControl("lblId")).OfType<Label>().
                                         Select(label => int.Parse(label.Text)).ToList();
-            try {
+            try
+            {
                 ClientServiceFactory.CustomerService.DeleteCustomers(deletedCustomers);
             }
             catch (FaultException ex)
@@ -82,7 +98,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
             }
             Search();
         }
-        protected void btnClear_OnClick(object sender, EventArgs e) {
+        protected void btnClear_OnClick(object sender, EventArgs e)
+        {
             txtFirstName.Text = string.Empty;
             txtLastName.Text = String.Empty;
             txtEmail.Text = string.Empty;
@@ -92,10 +109,12 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
             GridViewResult.DataBind();
             Panel_Result.Visible = false;
         }
-        protected void btnSearch_OnClick(object sender, EventArgs e) {
+        protected void btnSearch_OnClick(object sender, EventArgs e)
+        {
             EnableValidator(true);
             Page.Validate();
-            if (Page.IsValid) {
+            if (Page.IsValid)
+            {
                 Search();
             }
         }
@@ -125,8 +144,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
                 }
             }
         }
-
-        private void EnableValidator(bool flag) {
+        private void EnableValidator(bool flag)
+        {
             CustomValidator_FirstName.Enabled = flag;
             CustomValidator_LastName.Enabled = flag;
             CustomValidator_Email.Enabled = flag;

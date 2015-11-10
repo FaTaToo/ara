@@ -86,7 +86,6 @@ namespace ARAManager.Common
         #region GuiMessages
 
         public const string INVALID_LOGIN = "Invalid credentials. Please try again.";
-        public const string ADMIN_CAMPAIGN_ERROR = "Admin can not create campaign.";
         public const string COMPANY_ADMIN_NEW_HEADER = "New " + "COMPANY" + " information";
         public const string COMPANY_ADMIN_EDIT_HEADER = "Edit " + "COMPANY" + " information";
         public const string CUSTOMER_ADMIN_NEW_HEADER = "New " + "CUSTOMER" + " information";

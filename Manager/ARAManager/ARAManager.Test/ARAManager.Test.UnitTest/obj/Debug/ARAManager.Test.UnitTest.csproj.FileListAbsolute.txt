@@ -1,0 +1,11 @@
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Test\ARAManager.Test.UnitTest\bin\Debug\ARAManager.Test.UnitTest.dll
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Test\ARAManager.Test.UnitTest\bin\Debug\ARAManager.Test.UnitTest.pdb
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Test\ARAManager.Test.UnitTest\bin\Debug\ARAManager.Common.dll
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Test\ARAManager.Test.UnitTest\bin\Debug\Ninject.dll
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Test\ARAManager.Test.UnitTest\bin\Debug\NHibernate.Mapping.Attributes.dll
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Test\ARAManager.Test.UnitTest\bin\Debug\ARAManager.Common.pdb
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Test\ARAManager.Test.UnitTest\bin\Debug\Ninject.pdb
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Test\ARAManager.Test.UnitTest\bin\Debug\Ninject.xml
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Test\ARAManager.Test.UnitTest\obj\Debug\ARAManager.Test.UnitTest.csprojResolveAssemblyReference.cache
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Test\ARAManager.Test.UnitTest\obj\Debug\ARAManager.Test.UnitTest.dll
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Test\ARAManager.Test.UnitTest\obj\Debug\ARAManager.Test.UnitTest.pdb

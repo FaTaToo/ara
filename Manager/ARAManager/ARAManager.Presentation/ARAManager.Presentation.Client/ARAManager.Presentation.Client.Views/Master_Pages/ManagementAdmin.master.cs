@@ -9,11 +9,11 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Ma
         }
 
         protected void btnCompany_OnClick(object sender, EventArgs e) {
-            Response.Redirect(@"~\Aspx\CompanyAdmin.aspx");
+            Response.Redirect(@"~\ARAManager.Presentation.Client.Views\CompanyAdmin.aspx");
         }
 
         protected void btnCustomer_OnClick(object sender, EventArgs e) {
-            Response.Redirect(@"~\Aspx\CustomerAdmin.aspx");
+            Response.Redirect(@"~\ARAManager.Presentation.Client.Views\CustomerAdmin.aspx");
         }
         #endregion IMethods
     }

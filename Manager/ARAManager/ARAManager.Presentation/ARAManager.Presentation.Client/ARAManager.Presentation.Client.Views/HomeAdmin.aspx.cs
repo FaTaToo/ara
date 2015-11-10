@@ -12,9 +12,12 @@
 
 using System;
 
-namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
-    public partial class HomeAdmin : System.Web.UI.Page {
-        protected void Page_Load(object sender, EventArgs e) {
+namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
+{
+    public partial class HomeAdmin : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
 
         }
     }

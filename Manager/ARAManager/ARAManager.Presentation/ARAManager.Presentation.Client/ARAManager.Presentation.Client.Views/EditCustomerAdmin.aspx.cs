@@ -20,103 +20,135 @@ using ARAManager.Common.Exception.Generic;
 using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
 using ARAManager.Presentation.Connectivity;
 
-namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
-    public partial class EditCustomerAdmin : System.Web.UI.Page {
+namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
+{
+    public partial class EditCustomerAdmin : System.Web.UI.Page
+    {
+        #region SFields
+
+        private static byte[] s_rowVersion;
+
+        #endregion SFields
+
         #region IFields
 
         private int m_customerId;
         private Customer m_customer;
         private readonly Validation m_validator = new Validation();
-        private byte[] m_rowVersion;
 
         #endregion IFields
 
         #region IMethods
-        protected void Page_Load(object sender, EventArgs e) {
+        protected void Page_Load(object sender, EventArgs e)
+        {
             SetErrorMessages();
             EnableValidator(false);
-            if (!Page.IsPostBack) {
-                m_customerId = int.Parse(Request.QueryString["RequestId"]);
-                m_customer = ClientServiceFactory.CustomerService.GetCustomerById(m_customerId);
-                if (m_customer != null) {
-                    txtCustomer.Text = Dictionary.CUSTOMER_ADMIN_EDIT_HEADER;
-                    txtFirstName.Text = m_customer.FirstName;
-                    txtLastName.Text = m_customer.LastName;
-                    DropDownList_Sex.SelectedValue = m_customer.Sex;
-                    txtBirthday.Text = m_customer.BirthDay.ToString(Dictionary.DATE_FORMAT);
-                    txtAddress.Text = m_customer.Address;
-                    txtEmail.Text = m_customer.Email;
-                    txtPhone.Text = m_customer.Phone;
-                    txtUsername.Text = m_customer.UserName;
-                    txtPassword.Text = m_customer.Password;
-                    m_rowVersion = m_customer.RowVersion;
-                } else if (m_customerId == -4438) {
-                    txtCustomer.Text = Dictionary.COMPANY_ADMIN_NEW_HEADER;
-                }
-                else {
-                    txtCustomer.Text = Dictionary.CUSTOMER_DELETED_EXCEPTION_MSG;
-                }
+            m_customerId = int.Parse(Request.QueryString["RequestId"]);
+            m_customer = ClientServiceFactory.CustomerService.GetCustomerById(m_customerId);
+            if (Page.IsPostBack) return;
+            if (m_customer != null)
+            {
+                txtCustomer.Text = Dictionary.CUSTOMER_ADMIN_EDIT_HEADER;
+                txtFirstName.Text = m_customer.FirstName;
+                txtLastName.Text = m_customer.LastName;
+                DropDownList_Sex.SelectedValue = m_customer.Sex;
+                txtBirthday.Text = m_customer.BirthDay.ToString(Dictionary.DATE_FORMAT);
+                txtAddress.Text = m_customer.Address;
+                txtEmail.Text = m_customer.Email;
+                txtPhone.Text = m_customer.Phone;
+                txtUsername.Text = m_customer.UserName;
+                txtPassword.Text = m_customer.Password;
+                s_rowVersion = m_customer.RowVersion;
+            }
+            else if (m_customerId == -4438)
+            {
+                txtCustomer.Text = Dictionary.COMPANY_ADMIN_NEW_HEADER;
+            }
+            else
+            {
+                txtCustomer.Text = Dictionary.CUSTOMER_DELETED_EXCEPTION_MSG;
             }
         }
-        protected void CustomValidator_LastName_OnServerValidate(object source, ServerValidateEventArgs args) {
+        protected void CustomValidator_LastName_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
             args.IsValid = m_validator.ValidateChar100(txtLastName.Text);
         }
-        protected void CustomValidator_Birthday_OnServerValidate(object source, ServerValidateEventArgs args) {
-            if (!string.IsNullOrEmpty(txtBirthday.Text)) {
+        protected void CustomValidator_Birthday_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
+            if (!string.IsNullOrEmpty(txtBirthday.Text))
+            {
                 DateTime birthday;
-                bool checkBirthday = DateTime.TryParseExact(txtBirthday.Text, 
-                    Dictionary.DATE_FORMAT, 
+                bool checkBirthday = DateTime.TryParseExact(txtBirthday.Text,
+                    Dictionary.DATE_FORMAT,
                     Dictionary.EnUs,
                     DateTimeStyles.None,
                     out birthday);
 
-                if (checkBirthday) {
+                if (checkBirthday)
+                {
                     args.IsValid = true;
                 }
-                else {
+                else
+                {
                     args.IsValid = false;
                     CustomValidator_Birthday.ErrorMessage = Dictionary.DATE_FORMAT;
                 }
             }
         }
-        protected void CustomValidator_Address_OnServerValidate(object source, ServerValidateEventArgs args) {
+        protected void CustomValidator_Address_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
             args.IsValid = m_validator.ValidateChar500(txtAddress.Text);
         }
-        protected void CustomValidator_Email_OnServerValidate(object source, ServerValidateEventArgs args) {
+        protected void CustomValidator_Email_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
             args.IsValid = m_validator.ValidateChar100(txtEmail.Text);
         }
-        protected void CustomValidator_Phone_OnServerValidate(object source, ServerValidateEventArgs args) {
+        protected void CustomValidator_Phone_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
             args.IsValid = m_validator.ValidateChar20(txtPhone.Text);
         }
-        protected void CustomValidator_Username_OnServerValidate(object source, ServerValidateEventArgs args) {
+        protected void CustomValidator_Username_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
             args.IsValid = m_validator.ValidateChar100(txtUsername.Text);
         }
-        protected void CustomValidator_Password_OnServerValidate(object source, ServerValidateEventArgs args) {
+        protected void CustomValidator_Password_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
             args.IsValid = m_validator.ValidateChar100(txtPassword.Text);
         }
-        protected void btnSave_OnClick(object sender, EventArgs e) {
+        protected void btnSave_OnClick(object sender, EventArgs e)
+        {
             EnableValidator(true);
             Page.Validate();
-            if (txtCustomer.Text == Dictionary.COMPANY_ADMIN_NEW_HEADER) {
-                var customer = new Customer {
+            if (txtCustomer.Text == Dictionary.COMPANY_ADMIN_NEW_HEADER)
+            {
+                var customer = new Customer
+                {
                     FirstName = txtFirstName.Text,
                     LastName = txtLastName.Text,
                     Sex = DropDownList_Sex.SelectedValue,
-                    BirthDay = DateTime.ParseExact(txtBirthday.Text,Dictionary.DATE_FORMAT, null),
+                    BirthDay = DateTime.ParseExact(txtBirthday.Text, Dictionary.DATE_FORMAT, null),
                     Address = txtAddress.Text,
                     Email = txtAddress.Text,
                     Phone = txtPhone.Text,
                     UserName = txtUsername.Text,
                     Password = txtPassword.Text
                 };
-                try {
+                try
+                {
                     ClientServiceFactory.CustomerService.SaveNewCustomer(customer);
-                } catch (FaultException<UserNameAlreadyExistException> ex) {
+                }
+                catch (FaultException<UserNameAlreadyExistException> ex)
+                {
                     lblMessage.Text = ex.Detail.MessageError;
-                } catch (FaultException<Exception> ex) {
+                }
+                catch (FaultException<Exception> ex)
+                {
                     lblMessage.Text = ex.Detail.Message;
                 }
-            } else {
+                RedirectToCustomerAdmin();
+            }
+            else
+            {
                 m_customer.FirstName = txtFirstName.Text;
                 m_customer.LastName = txtLastName.Text;
                 m_customer.Sex = DropDownList_Sex.SelectedValue;
@@ -126,18 +158,24 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
                 m_customer.Phone = txtPhone.Text;
                 m_customer.UserName = txtUsername.Text;
                 m_customer.Password = txtPassword.Text;
-                m_customer.RowVersion = m_rowVersion;
-                try {
+                m_customer.RowVersion = s_rowVersion;
+                try
+                {
                     ClientServiceFactory.CustomerService.SaveNewCustomer(m_customer);
-                } catch (FaultException<ConcurrentUpdateException> ex) {
+                }
+                catch (FaultException<ConcurrentUpdateException> ex)
+                {
                     lblMessage.Text = ex.Detail.MessageError;
                 }
+                RedirectToCustomerAdmin();
             }
         }
-        protected void btnCancel_OnClick(object sender, EventArgs e) {
-            Response.Redirect("CustomerAdmin.aspx");
+        protected void btnCancel_OnClick(object sender, EventArgs e)
+        {
+            RedirectToCustomerAdmin();
         }
-        private void SetErrorMessages() {
+        private void SetErrorMessages()
+        {
             CustomValidator_FirstName.ErrorMessage = Validation.VALIDATOR_CUSTOMER_NAME;
             CustomValidator_LastName.ErrorMessage = Validation.VALIDATOR_CUSTOMER_NAME;
             CustomValidator_Birthday.ErrorMessage = Validation.VALIDATOR_DATE_FORMAT;
@@ -156,7 +194,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         {
             args.IsValid = m_validator.ValidateChar100(txtFirstName.Text);
         }
-        private void EnableValidator(bool flag) {
+        private void EnableValidator(bool flag)
+        {
             CustomValidator_FirstName.Enabled = flag;
             CustomValidator_LastName.Enabled = flag;
             CustomValidator_Birthday.Enabled = flag;
@@ -171,6 +210,11 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
             RequiredFieldValidator_Username.Enabled = flag;
             RequiredFieldValidator_Password.Enabled = flag;
         }
+        private void RedirectToCustomerAdmin()
+        {
+            Response.Redirect("CustomerAdmin.aspx");
+        }
+
         #endregion IMethods
     }
 }

@@ -40,13 +40,13 @@
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_RequireFileds_OnServerValidate" />
                     </li>
-                    <li role="presentation" style="margin-top:20px">
+                    <li role="presentation" style="margin-top: 20px">
                         <asp:Button ID="btnSearch" runat="server"
                             CssClass="btn btn-success"
                             Text="Search"
                             OnClick="btnSearch_OnClick" />
                     </li>
-                    <li role="presentation" style="margin-top:20px">
+                    <li role="presentation" style="margin-top: 20px">
                         <asp:Button ID="btnNewCompany" runat="server"
                             CssClass="btn btn-success"
                             Text="Create new company"
@@ -77,10 +77,10 @@
                         runat="server">COMPANY</asp:TextBox>
                 </div>
             </div>
-             <div class="row">
+            <div class="row">
                 <div class="col-md-6" style="margin-top: 20px; margin-left: 20px">
                     <asp:Label ID="lblMessage" runat="server"
-                        ForeColor="Red"/>
+                        ForeColor="Red" />
                 </div>
             </div>
             <div class="row">
@@ -125,6 +125,11 @@
                             <asp:TemplateField ItemStyle-Width="5%">
                                 <ItemTemplate>
                                     <asp:CheckBox ID="cbSelect" runat="server" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblID" runat="server" Text='<%# Eval("CompanyId") %>'/>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:HyperLinkField
