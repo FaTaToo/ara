@@ -1,3 +1,15 @@
+// --------------------------------------------------------------------------------------------------------------------
+// <header file="DeleteTarget.php" group="288-462">
+    //
+    // Last modified:
+    // Author: LE Sanh Phuc - 11520288
+    //
+    // </header>
+// <summary>
+    // Used to delete target in Vuforia Cloud database by providing the target id.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 <?php
 require_once 'HTTP/Request2.php';
 require_once 'SignatureBuilder.php';
@@ -7,15 +19,13 @@ class DeleteTarget
     //Server Keys
     private $access_key = "a6c44bea1e3cc8c49202790ccb07784f4e4c29e7";
     private $secret_key = "0cc7e7988bf508652ddaa33620e1361a590571df";
-
-    private $targetId = "[ target id ]";
     private $url = "https://vws.vuforia.com";
     private $requestPath = "/targets/";
     private $request;
 
     function DeleteTarget()
     {
-        $this->requestPath = $this->requestPath . $this->targetId;
+        $this->requestPath = $this->requestPath . $_GET['targetId'];
         $this->execDeleteTarget();
     }
 
