@@ -1,3 +1,15 @@
+// --------------------------------------------------------------------------------------------------------------------
+// <header file="PostNewTarget.php" group="288-462">
+    //
+    // Last modified:
+    // Author: LE Sanh Phuc - 11520288
+    //
+    // </header>
+// <summary>
+    // Used to post new target to Vuforia Cloud database.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 <?php
 require_once 'HTTP/Request2.php';
 require_once 'SignatureBuilder.php';
@@ -12,18 +24,17 @@ class PostNewTarget
     private $requestPath = "/targets";
     private $request;       // the HTTP_Request2 object
     private $jsonRequestObject;
-    private $targetName = "[ name ]";
-    private $imageLocation = "[ /path/file.ext ]";
+    private $imageUrl = "D:/Projects/ARA/1.0/src/Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/Target";
 
     function PostNewTarget()
     {
-        $this->jsonRequestObject = json_encode(array('width' => 320.0, 'name' => $this->targetName, 'image' => $this->getImageAsBase64(), 'application_metadata' => base64_encode("Vuforia test metadata"), 'active_flag' => 1));
+        $this->jsonRequestObject = json_encode(array('width' => 320.0, 'name' => $_GET['targetName'], 'image' => $this->getImageAsBase64(), 'application_metadata' => base64_encode("Vuforia test metadata"), 'active_flag' => 1));
         $this->execPostNewTarget();
     }
 
     function getImageAsBase64()
     {
-        $file = file_get_contents($this->imageLocation);
+        $file = file_get_contents($this->imageUrl.$_GET['imageLocation']);
         if ($file) {
             $file = base64_encode($file);
         }
