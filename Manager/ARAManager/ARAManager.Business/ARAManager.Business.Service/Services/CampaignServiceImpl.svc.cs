@@ -12,6 +12,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.ServiceModel;
 using ARAManager.Business.Dao.DataAccess.Interfaces;
 using ARAManager.Business.Dao.NHibernate.Transaction;
@@ -32,13 +33,22 @@ namespace ARAManager.Business.Service.Services {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
             return srvDao.GetById(campaignId);
         }
+        public Campaign GetCampaignByName(string campaignName)
+        {
+            var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
+            var criteria = DetachedCriteria.For<Campaign>();
+            if (!string.IsNullOrEmpty(campaignName))
+            {
+                criteria.Add(Restrictions.Where<Campaign>(c => c.CampaignName == campaignName));
+            }
+            return srvDao.FindByCriteria(criteria).FirstOrDefault();
+        }
         public IList<Campaign> GetAllCampaigns()
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
             var criteria = DetachedCriteria.For<Campaign>();
             return srvDao.FindByCriteria(criteria);
         }
-
         public void SaveNewCampaign(Campaign campaign)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
@@ -69,7 +79,6 @@ namespace ARAManager.Business.Service.Services {
                 tr.Complete();
             }
         }
-
         public void DeleteCampaign(int campaignId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
@@ -89,7 +98,6 @@ namespace ARAManager.Business.Service.Services {
                 tr.Complete();
             }
         }
-
         public void DeleteCampaigns(List<int> campaigns)
         {
             foreach (var campaign in campaigns)
@@ -106,21 +114,15 @@ namespace ARAManager.Business.Service.Services {
                 }
             }
         }
-
-        public IList<Campaign> SearchCampaign(string campaignname, string companyname) {
+        public IList<Campaign> SearchCampaign(string campaignname) {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
             var criteria = DetachedCriteria.For<Campaign>();
 
             if (!string.IsNullOrEmpty(campaignname))
             {
-                criteria.Add(Restrictions.Where<Campaign>(c => c.Name == campaignname));
+                criteria.Add(Restrictions.Where<Campaign>(c => c.CampaignName == campaignname));
             }
-
-            if (!string.IsNullOrEmpty(companyname))
-            {
-                criteria.Add(Restrictions.Where<Campaign>(c => c.Company.CompanyName == companyname));
-            }
-
+            
             var result = srvDao.FindByCriteria(criteria);
             return result;
         }

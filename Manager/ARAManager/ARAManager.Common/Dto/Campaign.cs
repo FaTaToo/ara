@@ -14,6 +14,8 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using NHibernate.Mapping.Attributes;
+using NHibernate.Type;
+using FetchMode = NHibernate.Mapping.Attributes.FetchMode;
 
 namespace ARAManager.Common.Dto {
     [DataContract]
@@ -42,8 +44,8 @@ namespace ARAManager.Common.Dto {
         public virtual int CampaignId { get; set; }
 
         [DataMember]
-        [Property(Column = "CampaignName", Name = "Name", TypeType = typeof(string), Length = 100, NotNull = true)]
-        public virtual string Name { get; set; }
+        [Property(Column = "CampaignName", Name = "CampaignName", TypeType = typeof(string), Length = 100, NotNull = true)]
+        public virtual string CampaignName { get; set; }
 
         [DataMember]
         [Property(Column = "StartTime", Name = "StartTime", TypeType = typeof(DateTime), NotNull = true)]
@@ -58,12 +60,12 @@ namespace ARAManager.Common.Dto {
         public virtual string Description { get; set; }
 
         [DataMember]
-        [Property(Column = "Banner", Name = "Banner", TypeType = typeof(byte[]), NotNull = true)]
-        public virtual byte[] Banner { get; set; }
+        [Property(Column = "Banner", Name = "Banner", TypeType = typeof(string),Length = 500, NotNull = true)]
+        public virtual string Banner { get; set; }
 
         [DataMember]
-        [Property(Column = "Avatar", Name = "Avatar", TypeType = typeof(byte[]), NotNull = true)]
-        public virtual byte[] Avatar { get; set; }
+        [Property(Column = "Avatar", Name = "Avatar", TypeType = typeof(string),Length = 500, NotNull = true)]
+        public virtual string Avatar { get; set; }
 
         [DataMember]
         [Property(Column = "Gift", Name = "Gift", TypeType = typeof(string), Length = 500, NotNull = true)]
@@ -73,13 +75,13 @@ namespace ARAManager.Common.Dto {
         [Property(Column = "NumMission", Name = "NumMission", TypeType = typeof(int), NotNull = true)]
         public virtual int NumMission { get; set; }
 
-        [ManyToOne(Name = "Company", Column = "CompanyName", NotNull = true, Fetch = FetchMode.Select)]
+        [ManyToOne(Name = "Company", Column = "CompanyId", NotNull = true, Fetch = FetchMode.Select)]
         [DataMember]
         public virtual Company Company { get; set; }
 
         [DataMember]
         [Set(0, Table = "ARA_Mission", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_missions")]
-        [Key(1, Column = "CampaignName")]
+        [Key(1, Column = "CampaignId")]
         [OneToMany(2, ClassType = typeof(Mission))]
         public virtual ICollection<Mission> Missions {
             get {

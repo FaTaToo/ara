@@ -104,13 +104,17 @@ namespace ARAManager.Business.Service.Services {
            var srvDao = NinjectKernelFactory.Kernel.Get<ICompanyDataAccess>();
            var criteria = DetachedCriteria.For<Company>();
            if (!string.IsNullOrEmpty(name)) {
-               criteria.Add(Restrictions.Where<Company>(c=>c.CompanyName==name));
+               criteria.Add(Restrictions.Where<Company>(c=>c.CompanyName ==name));
            }
            if (!string.IsNullOrEmpty(email)) {
                criteria.Add(Restrictions.Where<Company>(c => c.Email == email));
            }
            if (!string.IsNullOrEmpty(phone)) {
                criteria.Add(Restrictions.Where<Company>(c => c.Phone == phone));
+           }
+           if (!string.IsNullOrEmpty(username))
+           {
+               criteria.Add(Restrictions.Where<Company>(c => c.UserName == username));
            }
            var result = srvDao.FindByCriteria(criteria);
            return result;

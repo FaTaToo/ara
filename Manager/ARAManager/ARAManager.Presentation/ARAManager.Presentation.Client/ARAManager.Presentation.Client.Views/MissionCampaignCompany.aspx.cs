@@ -11,8 +11,10 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.IO;
 using System.ServiceModel;
 using System.Web.UI.WebControls;
+using ARAManager.Common;
 using ARAManager.Common.Dto;
 using ARAManager.Common.Exception.Campaign;
 using ARAManager.Common.Exception.Mission;
@@ -25,7 +27,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
     {
         #region IFields
 
-        private int m_campaignId;
         private readonly Validation m_validator = new Validation();
         private Campaign m_camnpaign;
 
@@ -42,8 +43,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             if (!IsPostBack)
             {
-                m_campaignId = int.Parse(Request.QueryString["RequestId"]);
-                m_camnpaign = ClientServiceFactory.CampaignService.GetCampaignById(m_campaignId);
+                string campaignName = Request.QueryString["RequestId"];
+                m_camnpaign = ClientServiceFactory.CampaignService.GetCampaignByName(campaignName);
                 s_numberOfMission = m_camnpaign.NumMission;
             }
             EnableValidator(false);
@@ -51,6 +52,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             GridView_Mission.DataSource = m_camnpaign.Missions;
             GridView_Mission.DataBind();
         }
+
+        // Validators
         protected void CustomValidator_MissionName_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             CustomValidator_MissionName.ErrorMessage = Validation.VALIDATOR_MISSION_NAME;
@@ -65,21 +68,42 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             args.IsValid = FileUpload_Avatar.HasFile;
         }
+        //-----------------------------------------------------------------------------------------------------
 
-        #endregion IMethods
+        // Supported methods
+        private void EnableValidator(bool flag)
+        {
+            CustomValidator_MissionName.Enabled = flag;
+            CustomValidator_Description.Enabled = flag;
+            CustomValidator_MissionName.Enabled = flag;
+            CustomValidator_Avatar.Enabled = flag;
+            RangeValidator_NumMission.Enabled = flag;
+            RequiredFieldValidator_MissionName.Enabled = flag;
+            RequiredFieldValidator_Description.Enabled = flag;
+            RequiredFieldValidator_txtNumTarget.Enabled = flag;
+        }
+        //-----------------------------------------------------------------------------------------------------
+
+        // Events
         protected void btnCreateTarget_OnClick(object sender, EventArgs e)
         {
             EnableValidator(true);
             Page.Validate();
             if (Page.IsValid)
             {
-                var avatar = FileUpload_Avatar.FileBytes;
+                /* Modified by PhucLS - 20151114 - Change to accept new database with image urL, not byte[]
+                *  Notes: Have not fixed case "If the uploaded file is not image type"
+                */
+                string extension = Path.GetExtension(FileUpload_Avatar.FileName);
+                string filePath = Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + txtMissionName.Text + "Avatar" + extension;
+                FileUpload_Avatar.SaveAs(filePath);
+                // Ended by PhucLS
                 var mission = new Mission()
                 {
                     Name = txtMissionName.Text,
                     Description = txtDescription.Text,
                     NumTarget = int.Parse(txtNumTarget.Text),
-                    Avatar = avatar,
+                    Avatar = filePath,
                     Campaign = m_camnpaign
                 };
                 try
@@ -105,16 +129,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             Response.Redirect("CampaignCompany.aspx");
         }
-        private void EnableValidator(bool flag)
-        {
-            CustomValidator_MissionName.Enabled = flag;
-            CustomValidator_Description.Enabled = flag;
-            CustomValidator_MissionName.Enabled = flag;
-            CustomValidator_Avatar.Enabled = flag;
-            RangeValidator_NumMission.Enabled = flag;
-            RequiredFieldValidator_MissionName.Enabled = flag;
-            RequiredFieldValidator_Description.Enabled = flag;
-            RequiredFieldValidator_txtNumTarget.Enabled = flag;
-        }
+        //-----------------------------------------------------------------------------------------------------
+        #endregion IMethods
     }
 }

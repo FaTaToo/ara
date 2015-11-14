@@ -47,6 +47,10 @@ namespace ARAManager.Common.Services {
 
         [OperationContract]
         [PreserveReferences]
-        IList<Campaign> SearchCampaign(string campaignname, string companyname);
+        IList<Campaign> SearchCampaign(string campaignname);
+
+        [OperationContract]
+        [PreserveReferences]
+        Campaign GetCampaignByName(string campaignName);
     }
 }

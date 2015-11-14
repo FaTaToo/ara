@@ -62,7 +62,7 @@ namespace ARAManager.Common.Dto {
 
         [DataMember]
         [Set(0, Table = "ARA_Campaign", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_campaigns")]
-        [Key(1, Column = "CompanyName")]
+        [Key(1, Column = "CompanyId")]
         [OneToMany(2, ClassType = typeof(Campaign))]
         public virtual ICollection<Campaign> Campaigns {
             get {

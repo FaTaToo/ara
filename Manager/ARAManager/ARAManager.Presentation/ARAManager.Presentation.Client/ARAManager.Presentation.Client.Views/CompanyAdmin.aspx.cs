@@ -71,6 +71,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             EnableValidator(true);
             Validate();
+            Panel_Result.Visible = false;
             if (Page.IsValid)
             {
                 Search();
@@ -117,13 +118,17 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         }
         private void Search()
         {
-            Panel_Result.Visible = true;
+            Panel_Result.Visible = false;
             var result = ClientServiceFactory.CompanyService.SearchCompany(txtCompanyName.Text,
                 txtEmail.Text,
                 txtPhone.Text,
                 txtUserName.Text);
-            GridViewResult.DataSource = result;
-            GridViewResult.DataBind();
+            if (result != null)
+            {
+                Panel_Result.Visible = true;
+                GridViewResult.DataSource = result;
+                GridViewResult.DataBind();
+            }
         }
         private void SelectDeselectGridView(bool flag)
         {

@@ -11,6 +11,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.IO;
 using System.ServiceModel;
 using System.Web.UI.WebControls;
 using ARAManager.Common;
@@ -37,7 +38,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             SetErrorMessages();
             EnableValidator(false);
             string user = Page.User.Identity.Name;
-            if (Page.IsPostBack) return;
             if (user != Dictionary.ADMIN_USERNAME)
             {
                 try
@@ -55,8 +55,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             }
         }
 
-        #endregion IMethods
-
+        // Validators
         protected void CustomValidator_CampaignName_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar100(txtCampaignName.Text);
@@ -75,6 +74,9 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             args.IsValid = m_validator.ValidateChar500(txtGift.Text);
         }
+        //-----------------------------------------------------------------------------------------------------
+
+        // Supported methods
         private void SetErrorMessages()
         {
             CustomValidator_CampaignName.ErrorMessage = Validation.VALIDATOR_CAMPAIGN_NAME;
@@ -101,34 +103,17 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             RequiredFieldValidator_Description.Enabled = flag;
             RequiredFieldValidator_NumMission.Enabled = flag;
         }
-        protected void btnSave_OnClick(object sender, EventArgs e)
+      
+        private void RedirectToCampaignCompany()
         {
-            EnableValidator(true);
-            Page.Validate();
-            var campaign = !string.IsNullOrEmpty(txtEndTime.Text) ?
-                SaveNewCampaignWithEndTime() : SaveNewCampaignWithoutEndTime();
-            try
-            {
-                ClientServiceFactory.CampaignService.SaveNewCampaign(campaign);
-            }
-            catch (FaultException<CampaignNameAlreadyExistException> ex)
-            {
-                lblMessage.Text = ex.Detail.MessageError;
-            }
-            catch (FaultException<CampaignAlreadyDeletedException> ex)
-            {
-                lblMessage.Text = ex.Detail.MessageError;
-            }
-            catch (FaultException<Exception> ex)
-            {
-                lblMessage.Text = ex.Detail.Message;
-            }
+            Response.Redirect("CampaignCompany.aspx");
         }
+
         private Campaign SaveNewCampaignWithEndTime()
         {
             var campaign = new Campaign
             {
-                Name = txtCampaignName.Text,
+                CampaignName = txtCampaignName.Text,
                 StartTime = DateTime.ParseExact(txtStartTime.Text, Dictionary.DATE_FORMAT, null),
                 Description = txtDescription.Text,
                 Banner = UploadImageBanner(),
@@ -143,7 +128,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             var campaign = new Campaign
             {
-                Name = txtCampaignName.Text,
+                CampaignName = txtCampaignName.Text,
                 StartTime = DateTime.ParseExact(txtStartTime.Text, Dictionary.DATE_FORMAT, null),
                 EndTime = DateTime.ParseExact(txtEndTime.Text, Dictionary.DATE_FORMAT, null),
                 Description = txtDescription.Text,
@@ -151,27 +136,65 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 Avatar = UploadImageAvatar(),
                 Gift = txtGift.Text,
                 NumMission = int.Parse(txtMission.Text),
-                Company = m_company
+                Company= m_company
             };
             return campaign;
         }
-        private byte[] UploadImageBanner()
+        private string UploadImageBanner()
         {
-            int imageLength = FileUpload_Banner.PostedFile.ContentLength;
-            byte[] uploadImage = new byte[imageLength];
-            FileUpload_Banner.PostedFile.InputStream.Read(uploadImage, 0, imageLength);
-            return uploadImage;
+            /* Modified by PhucLS - 20151114 - Change to accept new database with image urL, not byte[]
+             * Notes: Have not fixed case "If the uploaded file is not image type"
+            */
+            string extension= Path.GetExtension(FileUpload_Banner.FileName);
+            string filePath = Dictionary.PATH_UPLOADED_CAMPAIGNS_BANNER + txtCampaignName.Text + "Banner" + extension;
+            FileUpload_Banner.SaveAs(filePath);
+            return filePath;
+            // Ended by PhucLS
         }
-        private byte[] UploadImageAvatar()
+        private string UploadImageAvatar()
         {
-            int imageLength = FileUpload_Avatar.PostedFile.ContentLength;
-            byte[] uploadImage = new byte[imageLength];
-            FileUpload_Avatar.PostedFile.InputStream.Read(uploadImage, 0, imageLength);
-            return uploadImage;
+            /* Modified by PhucLS - 20151114 - Change to accept new database with image urL, not byte[]
+             * Notes: Have not fixed case "If the uploaded file is not image type"
+            */
+            string extension = Path.GetExtension(FileUpload_Banner.FileName);
+            string filePath = Dictionary.PATH_UPLOADED_CAMPAIGNS_AVATAR + txtCampaignName.Text + "Avatar" + extension;
+            FileUpload_Banner.SaveAs(filePath);
+            return filePath;
+            // Ended by PhucLS
+        }
+        //-----------------------------------------------------------------------------------------------------
+
+        // Events
+        protected void btnSave_OnClick(object sender, EventArgs e)
+        {
+            EnableValidator(true);
+            Page.Validate();
+            var campaign = string.IsNullOrEmpty(txtEndTime.Text) ?
+                SaveNewCampaignWithEndTime() : SaveNewCampaignWithoutEndTime();
+            try
+            {
+                ClientServiceFactory.CampaignService.SaveNewCampaign(campaign);
+                Response.Redirect("MissionCampaignCompany.aspx?RequestId="+
+                    ClientServiceFactory.CampaignService.GetCampaignByName(txtCampaignName.Text).CampaignName);
+            }
+            catch (FaultException<CampaignNameAlreadyExistException> ex)
+            {
+                lblMessage.Text = ex.Detail.MessageError;
+            }
+            catch (FaultException<CampaignAlreadyDeletedException> ex)
+            {
+                lblMessage.Text = ex.Detail.MessageError;
+            }
+            catch (FaultException<Exception> ex)
+            {
+                lblMessage.Text = ex.Detail.Message;
+            }
         }
         protected void btnCancel_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect("CampaignCompany.aspx");
+            RedirectToCampaignCompany();
         }
+        //-----------------------------------------------------------------------------------------------------
+        #endregion IMethods
     }
 }

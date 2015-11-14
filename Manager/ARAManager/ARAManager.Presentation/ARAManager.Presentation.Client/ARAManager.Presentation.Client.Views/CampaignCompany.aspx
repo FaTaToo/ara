@@ -12,18 +12,12 @@
                         <asp:CustomValidator ID="CustomValidator_CampaignName" runat="server"
                             OnServerValidate="CustomValidator_CampaignName_OnServerValidate" />
                     </li>
-                    <li role="presentation">
-                        <asp:TextBox ID="txtCompany" runat="server"
-                            placeholder="Company name" />
-                        <asp:CustomValidator ID="CustomValidator_Company" runat="server"
-                            OnServerValidate="CustomValidator_Company_OnServerValidate" />
-                    </li>
-                    <li role="presentation">
+                     <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_RequireFileds" runat="server"
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_RequireFileds_OnServerValidate" />
                     </li>
-                    <li role="presentation" style="margin-top: 20px; margin-left: 40px">
+                    <li role="presentation" style="margin-top: 20px;margin-left: 35px">
                         <asp:Button ID="btnSearch" runat="server"
                             CssClass="btn btn-success"
                             Text="Search"

@@ -13,6 +13,15 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
     public partial class NewCampaignCompany {
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// txtCampaign control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         protected global::System.Web.UI.WebControls.TextBox txtStartTime;
         
         /// <summary>
+        /// CalendarExtender_txtStartTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender_txtStartTime;
+        
+        /// <summary>
         /// RequiredFieldValidator_StartTime control.
         /// </summary>
         /// <remarks>
@@ -83,6 +101,15 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEndTime;
+        
+        /// <summary>
+        /// CalendarExtender_EndTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender_EndTime;
         
         /// <summary>
         /// CustomValidator_EndTime control.

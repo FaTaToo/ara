@@ -75,7 +75,7 @@
                         <td style="width: 70%">
                             <asp:DropDownList ID="DropDownList_Sex" runat="server">
                                 <asp:ListItem Enabled="True" Selected="True" Text="Male" Value="Male"/>
-                                <asp:ListItem Enabled="True" Selected="True" Text="Female" Value="Female"/>
+                                <asp:ListItem Enabled="True" Text="Female" Value="Female"/>
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -86,10 +86,11 @@
                         <td style="width: 30%">Birthday</td>
                         <td style="width: 70%">
                             <asp:TextBox ID="txtBirthday" runat="server"
-                                Width="100%"
-                                Enabled="False"
+                                Width="30%"
                                 placeholder="Date of birth" />
                             <ajaxToolkit:CalendarExtender ID="CalendarExtender_Birthday" runat="server" 
+                                Enabled="True" 
+                                Format="MM.dd.yy"
                                 TargetControlID="txtBirthday"/>
                         </td>
                     </tr>
@@ -108,7 +109,7 @@
                         <td style="width: 70%">
                             <asp:TextBox ID="txtAddress" runat="server"
                                 Width="100%"
-                                placeholder="Address of company" />
+                                placeholder="Home address of customer" />
                         </td>
                     </tr>
                     <tr>

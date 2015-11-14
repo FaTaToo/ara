@@ -1,8 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ARAManager.Presentation.Client.Views/Master_Pages/ManagementCompany.master" AutoEventWireup="true" CodeBehind="NewCampaignCompany.aspx.cs" Inherits="ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.NewCampaignCompany" %>
+<%@ Register TagPrefix="ajaxToolkit" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit, Version=15.1.3.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server"></asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"/>
     <!--#region EDIT_INFORMATION-->
     <div class="container">
         <div class="row">
@@ -54,6 +56,10 @@
                             <asp:TextBox ID="txtStartTime" runat="server"
                                 Width="100%"
                                 placeholder="The time which the campaign starts" />
+                            <ajaxToolkit:CalendarExtender ID="CalendarExtender_txtStartTime" runat="server" 
+                                Enabled="True" 
+                                Format="MM.dd.yy"
+                                TargetControlID="txtStartTime"/>
                         </td>
                     </tr>
                     <tr>
@@ -72,6 +78,10 @@
                             <asp:TextBox ID="txtEndTime" runat="server"
                                 Width="100%"
                                 placeholder="The time which the campaign ends" />
+                            <ajaxToolkit:CalendarExtender ID="CalendarExtender_EndTime" runat="server" 
+                                Enabled="True" 
+                                Format="MM.dd.yy"
+                                TargetControlID="txtEndTime"/>
                         </td>
                     </tr>
                     <tr>
