@@ -48,8 +48,10 @@ namespace ARAManager.Common
         "The mission has been already deleted.";
         public const string MISSION_NAME_CONSTRAINT_EXCEPTION_MSG =
         "The mission name has already existed.";
-        public const string PRE_MISSION_CONSTRAINT_EXCEPTION_MSG =
-        "The pre mission has already existed.";
+        public const string TARGET_NAME_CONSTRAINT_EXCEPTION_MSG =
+        "The target name has already existed.";
+        public const string TARGET_CONCURRENT_UPDATE_EXCEPTION_MSG =
+        "The target has been edited by another.";
         public const string SUBSCRIPTION_CONCURRENT_UPDATE_EXCEPTION_MSG =
         "The subscription has been edited by another.";
         public const string SUBSCRIPTION_DELETED_EXCEPTION_MSG =

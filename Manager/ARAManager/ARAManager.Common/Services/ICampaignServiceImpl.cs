@@ -10,7 +10,6 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.ServiceModel;
 using ARAManager.Common.Dto;

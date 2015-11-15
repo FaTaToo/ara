@@ -10,6 +10,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Text;
+
 namespace ARAManager.Common.Extension
 {
     /// <summary>
@@ -17,5 +19,13 @@ namespace ARAManager.Common.Extension
     /// </summary>
     public static class StringExtension
     {
+        #region SMethods
+        public static string Append(this string para, string add)
+        {
+            var str= new StringBuilder(para);
+            str.Append(add);
+            return para;
+        }
+        #endregion SMethods
     }
 }

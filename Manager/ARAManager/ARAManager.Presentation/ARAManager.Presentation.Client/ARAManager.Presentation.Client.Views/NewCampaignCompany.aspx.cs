@@ -159,17 +159,11 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         }
         private string UploadImageAvatar()
         {
-            /* Modified by PhucLS - 20151115 - Change to accept new database with image urL, not byte[]
-             * Notes: _ Have not fixed case "If the uploaded file is not image type"
-             *        _ Check image resolution later
-             *        _ Validator if there is no file
-            */
             var extension = Path.GetExtension(FileUpload_Avatar.FileName);
             var fileName = txtCampaignName.Text + "Avatar" + extension;
             var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_CAMPAIGNS_AVATAR + fileName);
             FileUpload_Avatar.SaveAs(filePath);
             return fileName;
-            // Ended by PhucLS
         }
         //-----------------------------------------------------------------------------------------------------
 

@@ -3,27 +3,7 @@
 <%@ Register Assembly="GMaps" Namespace="Subgurim.Controles" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                <asp:Panel ID="Panel_Target" runat="server"
-                    ScrollBars="Vertical">
-                    <asp:GridView ID="GridView_Target" runat="server"
-                        Width="100%"
-                        BorderStyle="None"
-                        AutoGenerateColumns="False">
-                        <Columns>
-                            <asp:BoundField DataField="TargetName" />
-                            <asp:HyperLinkField
-                                DataNavigateUrlFields="TargetId"
-                                DataNavigateUrlFormatString="TargetMissionCampaignCompany.aspx?RequestId={0}"
-                                DataTextField="TargetId" />
-                        </Columns>
-                    </asp:GridView>
-                </asp:Panel>
-            </div>
-        </div>
-    </div>
+  
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" runat="server">
     <asp:Panel ID="Panel_Result" runat="server">
@@ -62,13 +42,13 @@
                                     ControlToValidate="txtTargetName"
                                     ForeColor="Red" />
                                 <asp:CustomValidator ID="CustomValidator_TargetName" runat="server"
-                                    ForeColor="Red" 
-                                    OnServerValidate="CustomValidator_TargetName_OnServerValidate"/>
+                                    ForeColor="Red"
+                                    OnServerValidate="CustomValidator_TargetName_OnServerValidate" />
                             </td>
                         </tr>
                         <!--#endregion NAME-->
 
-                         <!--#region TARGET-->
+                        <!--#region TARGET-->
                         <tr>
                             <td style="width: 30%">Target</td>
                             <td style="width: 70%">
@@ -94,7 +74,7 @@
                                     ForeColor="Red" />
                                 <asp:CustomValidator ID="CustomValidator_Description" runat="server"
                                     ForeColor="Red"
-                                    OnServerValidate="CustomValidator_Description_OnServerValidate"/>
+                                    OnServerValidate="CustomValidator_Description_OnServerValidate" />
                             </td>
                         </tr>
                         <!--#endregion DESCRIPTION-->
@@ -103,11 +83,10 @@
                         <tr>
                             <td style="width: 30%"></td>
                             <td style="width: 70%">
-                                <cc1:GMap ID="GMAP_Target" runat="server" 
+                                <cc1:GMap ID="GMAP_Target" runat="server"
                                     enableServerEvents="True"
                                     OnClick="GMAP_Target_OnClick"
-                                    OnMarkerClick="GMAP_Target_OnMarkerClick"
-                                    />
+                                    OnMarkerClick="GMAP_Target_OnMarkerClick" />
                             </td>
                         </tr>
                         <!--#endregion GOOGLE_MAP-->
@@ -125,8 +104,8 @@
                             <td style="width: 30%"></td>
                             <td style="width: 70%">
                                 <asp:CustomValidator ID="CustomValidator_Video" runat="server"
-                                    ForeColor="Red" 
-                                    OnServerValidate="CustomValidator_Video_OnServerValidate"/>
+                                    ForeColor="Red"
+                                    OnServerValidate="CustomValidator_Video_OnServerValidate" />
                             </td>
                         </tr>
                         <!--#endregion VIDEO_URL-->
@@ -144,8 +123,8 @@
                             <td style="width: 30%"></td>
                             <td style="width: 70%">
                                 <asp:CustomValidator ID="CustomValidator_Facebook" runat="server"
-                                    ForeColor="Red" 
-                                    OnServerValidate="CustomValidator_Facebook_OnServerValidate"/>
+                                    ForeColor="Red"
+                                    OnServerValidate="CustomValidator_Facebook_OnServerValidate" />
                             </td>
                         </tr>
                         <!--#endregion FACEBOOK_URL-->
@@ -163,8 +142,8 @@
                             <td style="width: 30%"></td>
                             <td style="width: 70%">
                                 <asp:CustomValidator ID="CustomValidator_Youtube" runat="server"
-                                    ForeColor="Red" 
-                                    OnServerValidate="CustomValidator_Youtube_OnServerValidate"/>
+                                    ForeColor="Red"
+                                    OnServerValidate="CustomValidator_Youtube_OnServerValidate" />
                             </td>
                         </tr>
                         <!--#endregion YOUTUBE_URL-->

@@ -10,7 +10,6 @@
 */
 // --------------------------------------------------------------------------------------------------------------------
 
-
 using System;
 using System.IO;
 using System.Net;
@@ -52,9 +51,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 s_numberOfTarget = m_mission.NumTarget;
             }
             EnableValidator(false);
-            lblCreateTarget.Text = "You have " + s_numberOfTarget;
-            GridView_Target.DataSource = m_mission.Targets;
-            GridView_Target.DataBind();
+            lblCreateTarget.Text = "You have " + s_numberOfTarget +" target(s)";
             InitializeDataForGMap();
         }
         protected void CustomValidator_TargetName_OnServerValidate(object source, ServerValidateEventArgs args)
@@ -138,14 +135,24 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
             var callPostNewTarget = new WebClient();
             var result = callPostNewTarget.DownloadString(new Uri(
-                "localhost:1234/ara-vws/vws/SampleSelector.php??select=PostNewTarget&targetName="+txtTargetName.Text+
+                "http://localhost:1234/ara-vws/vws/SampleSelector.php?select=PostNewTarget&targetName="+txtTargetName.Text+
                 "&imageLocation=" + fileName));
-            
+
+            var targetId=string.Empty;
+            var resultCodeIndex = result.IndexOf(@"""TargetCreated""", StringComparison.Ordinal);
+
+            if (resultCodeIndex > 0)
+            {
+                var resultTargetId = result.IndexOf(@"""target_id""", StringComparison.Ordinal);
+                var startIndex = result.IndexOf("\"", resultTargetId+12, StringComparison.Ordinal) + 1;
+                var endIndex = result.IndexOf("\"", startIndex, StringComparison.Ordinal)- 1;
+                targetId = result.Substring(startIndex, endIndex - startIndex + 1);
+            }
 
             var target = new Target()
             {
                 TargetName = txtTargetName.Text,
-                Url = "",
+                Url = targetId,
                 Latitude = m_latitude,
                 Longitude = m_longtitude,
                 Description = txtDescription.Text,
@@ -156,12 +163,13 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             };
             try
             {
+                ClientServiceFactory.TargetService.SaveNewTarget(target);
                 txtTargetName.Text = string.Empty;
                 txtDescription.Text = string.Empty;
                 txtFacebookUrl.Text = string.Empty;
                 txtYoutubeUrl.Text = string.Empty;
                 txtVideoUrl.Text = string.Empty;
-                lblCreateTarget.Text = "You have " + ++s_numberOfTarget;
+                lblCreateTarget.Text = "You have " + ++s_numberOfTarget + " target(s)";
             }
             catch (FaultException<TargetNameAlreadyExistException> ex)
             {

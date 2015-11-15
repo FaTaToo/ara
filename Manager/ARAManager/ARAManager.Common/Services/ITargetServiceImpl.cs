@@ -11,10 +11,19 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.ServiceModel;
+using ARAManager.Common.Dto;
+using ARAManager.Common.Exception.Generic;
+using ARAManager.Common.Exception.Target;
+using ARAManager.Common.Services.Behaviors;
 
 namespace ARAManager.Common.Services {
     [ServiceContract]
     public interface ITargetServiceImpl {
-       
+
+        [OperationContract]
+        [PreserveReferences]
+        [FaultContract(typeof(TargetNameAlreadyExistException))]
+        [FaultContract(typeof(ConcurrentUpdateException))]
+        void SaveNewTarget(Target target);
     }
 }
