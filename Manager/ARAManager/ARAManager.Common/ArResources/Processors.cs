@@ -1,23 +1,21 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="Subscription.cs" group="288-462">
+// <header file="Processors.cs" group="288-462">
 //
 // Last modified: 
 // Author: LE Sanh Phuc - 11520288
 //
 // </header>
 // <summary>
-// Implement Subscription services of presenter.
+//      ARResources - Processors
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using ARAManager.Common.Services.Presenter;
-
-namespace ARAManager.Business.Service.Services.Presenter
+namespace ARAManager.Common.ArResources
 {
-    public class Subscription : ISubscription
+    public class Processors
     {
-        public void DoWork()
-        {
-        }
+        #region IProperties
+        public Processor Processor { get; set; }
+        #endregion IProperties
     }
 }

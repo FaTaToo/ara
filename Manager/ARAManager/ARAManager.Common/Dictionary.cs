@@ -1,4 +1,16 @@
-﻿using System.Globalization;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <header file="Dictionary.cs" group="288-462">
+//
+// Last modified: 
+// Author: LE Sanh Phuc - 11520288
+//
+// </header>
+// <summary>
+//      Implement the Dictionary.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+using System.Globalization;
 
 namespace ARAManager.Common
 {

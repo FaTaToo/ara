@@ -1,23 +1,19 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="Subscription.cs" group="288-462">
+// <header file="ArResourcesHelper.cs" group="288-462">
 //
 // Last modified: 
 // Author: LE Sanh Phuc - 11520288
 //
 // </header>
 // <summary>
-// Implement Subscription services of presenter.
+//      Implement the ArResourcesHelper to convert AR data to xml format.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using ARAManager.Common.Services.Presenter;
-
-namespace ARAManager.Business.Service.Services.Presenter
+namespace ARAManager.Common.Helpers
 {
-    public class Subscription : ISubscription
+    public class ArResourcesHelper
     {
-        public void DoWork()
-        {
-        }
+        
     }
 }

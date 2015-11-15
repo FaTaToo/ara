@@ -1,23 +1,22 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="Subscription.cs" group="288-462">
+// <header file="Platform.cs" group="288-462">
 //
 // Last modified: 
 // Author: LE Sanh Phuc - 11520288
 //
 // </header>
 // <summary>
-// Implement Subscription services of presenter.
+//      ARResources - Platform
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using ARAManager.Common.Services.Presenter;
-
-namespace ARAManager.Business.Service.Services.Presenter
+namespace ARAManager.Common.ArResources
 {
-    public class Subscription : ISubscription
+    public class Platform
     {
-        public void DoWork()
-        {
-        }
+        #region IProperties
+        public string PlatformId { get; set; }
+        public Processors Processors { get; set; }
+        #endregion IProperties
     }
 }

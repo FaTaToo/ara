@@ -1,23 +1,23 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="Subscription.cs" group="288-462">
+// <header file="ArResources.cs" group="288-462">
 //
 // Last modified: 
 // Author: LE Sanh Phuc - 11520288
 //
 // </header>
 // <summary>
-// Implement Subscription services of presenter.
+//      ARResources - ArResources
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using ARAManager.Common.Services.Presenter;
+using System.Collections.Generic;
 
-namespace ARAManager.Business.Service.Services.Presenter
+namespace ARAManager.Common.ArResources
 {
-    public class Subscription : ISubscription
+    public class ArResources
     {
-        public void DoWork()
-        {
-        }
+        #region IProperties
+        public List<ArResource> ArResource { get; set; }
+        #endregion IProperties
     }
 }
