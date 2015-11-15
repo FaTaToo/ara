@@ -1,8 +1,23 @@
-﻿using System.Collections.Generic;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <header file="ControlExtension.cs" group="288-462">
+//
+// Last modified: 
+// Author: LE Sanh Phuc - 11520288
+//
+// </header>
+// <summary>
+//      Implement the ControlExtension.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+using System.Collections.Generic;
 using System.Web.UI;
 
 namespace ARAManager.Common.Extension
 {
+    /// <summary>
+    /// Extension to for control in asp.net
+    /// </summary>
     public static class ControlExtension
     {
         #region SMethods

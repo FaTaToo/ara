@@ -1,18 +1,22 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="TargetMissionCampaignCompany.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement logic for TargetMissionCampaignCompany page.
-// </summary>
+/* <header file="TargetMissionCampaignCompany.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement logic for TargetMissionCampaignCompany page.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
+
 using System;
+using System.IO;
+using System.Net;
 using System.ServiceModel;
 using System.Web.UI.WebControls;
+using ARAManager.Common;
 using ARAManager.Common.Dto;
 using ARAManager.Common.Exception.Mission;
 using ARAManager.Common.Exception.Target;
@@ -28,7 +32,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
         private double m_latitude;
         private double m_longtitude;
-        private int m_missionId;
         private readonly Validation m_validator = new Validation();
         private Mission m_mission;
 
@@ -43,14 +46,13 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         #region IMethods
         protected void Page_Load(object sender, EventArgs e)
         {
+            m_mission = ClientServiceFactory.MissionService.GetMissionTypeById(int.Parse(Request.QueryString["RequestId"]));
             if (!IsPostBack)
             {
-                m_missionId = int.Parse(Request.QueryString["RequestId"]);
-                m_mission = ClientServiceFactory.MissionService.GetMissionTypeById(m_missionId);
                 s_numberOfTarget = m_mission.NumTarget;
             }
             EnableValidator(false);
-            lblCreateMission.Text = "You have " + s_numberOfTarget + " left.";
+            lblCreateTarget.Text = "You have " + s_numberOfTarget;
             GridView_Target.DataSource = m_mission.Targets;
             GridView_Target.DataBind();
             InitializeDataForGMap();
@@ -62,22 +64,18 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         }
         protected void CustomValidator_Description_OnServerValidate(object source, ServerValidateEventArgs args)
         {
-            CustomValidator_Description.ErrorMessage = Validation.VALIDATOR_DESCRIPTION;
             args.IsValid = m_validator.ValidateChar500(txtDescription.Text);
         }
         protected void CustomValidator_Video_OnServerValidate(object source, ServerValidateEventArgs args)
         {
-            CustomValidator_Facebook.ErrorMessage = Validation.VALIDATOR_VIDEO;
             args.IsValid = m_validator.ValidateChar500(txtVideoUrl.Text);
         }
         protected void CustomValidator_Facebook_OnServerValidate(object source, ServerValidateEventArgs args)
         {
-            CustomValidator_Facebook.ErrorMessage = Validation.VALIDATOR_FACEBOOK;
             args.IsValid = m_validator.ValidateChar500(txtFacebookUrl.Text);
         }
         protected void CustomValidator_Youtube_OnServerValidate(object source, ServerValidateEventArgs args)
         {
-            CustomValidator_Youtube.ErrorMessage = Validation.VALIDATOR_YOUTUBE;
             args.IsValid = m_validator.ValidateChar500(txtYoutubeUrl.Text);
         }
         protected string GMAP_Target_OnClick(object s, GAjaxServerEventArgs e)
@@ -116,42 +114,69 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             RequiredFieldValidator_TargetName.Enabled = flag;
             RequiredFieldValidator_Description.Enabled = flag;
         }
+
+        private void SetErrorMessages()
+        {
+            CustomValidator_Description.ErrorMessage = Validation.VALIDATOR_DESCRIPTION;
+            CustomValidator_Facebook.ErrorMessage = Validation.VALIDATOR_VIDEO;
+            CustomValidator_Facebook.ErrorMessage = Validation.VALIDATOR_FACEBOOK;
+            CustomValidator_Youtube.ErrorMessage = Validation.VALIDATOR_YOUTUBE;
+        }
+        protected void btnCreateTarget_OnClick(object sender, EventArgs e)
+        {
+            SetErrorMessages();
+            EnableValidator(true);
+            Page.Validate();
+            if (!Page.IsValid)
+            {
+                return;
+            }
+            var extension = Path.GetExtension(FileUpload_Target.FileName);
+            var fileName = txtTargetName.Text + extension;
+            var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_TARGET + fileName);
+            FileUpload_Target.SaveAs(filePath);
+
+            var callPostNewTarget = new WebClient();
+            var result = callPostNewTarget.DownloadString(new Uri(
+                "localhost:1234/ara-vws/vws/SampleSelector.php??select=PostNewTarget&targetName="+txtTargetName.Text+
+                "&imageLocation=" + fileName));
+            
+
+            var target = new Target()
+            {
+                TargetName = txtTargetName.Text,
+                Url = "",
+                Latitude = m_latitude,
+                Longitude = m_longtitude,
+                Description = txtDescription.Text,
+                VideoUrl = txtVideoUrl.Text,
+                FacebookUrl = txtFacebookUrl.Text,
+                YoutubeUrl = txtYoutubeUrl.Text,
+                Mission = m_mission
+            };
+            try
+            {
+                txtTargetName.Text = string.Empty;
+                txtDescription.Text = string.Empty;
+                txtFacebookUrl.Text = string.Empty;
+                txtYoutubeUrl.Text = string.Empty;
+                txtVideoUrl.Text = string.Empty;
+                lblCreateTarget.Text = "You have " + ++s_numberOfTarget;
+            }
+            catch (FaultException<TargetNameAlreadyExistException> ex)
+            {
+                lblMessage.Text = ex.Detail.MessageError;
+            }
+            catch (FaultException<MissionAlreadyDeletedException> ex)
+            {
+                lblMessage.Text = ex.Detail.MessageError;
+            }
+
+        }
         protected void btnCancel_OnClick(object sender, EventArgs e)
         {
             Response.Redirect("CampaignCompany.aspx");
         }
-        protected void btnCreateTarget_OnClick(object sender, EventArgs e)
-        {
-            EnableValidator(true);
-            Page.Validate();
-            if (Page.IsValid)
-            {
-                var target = new Target()
-                {
-                    TargetName = txtTargetName.Text,
-                    Latitude = m_latitude,
-                    Longitude = m_longtitude,
-                    Description = txtDescription.Text,
-                    VideoUrl = txtVideoUrl.Text,
-                    FacebookUrl = txtFacebookUrl.Text,
-                    YoutubeUrl = txtYoutubeUrl.Text,
-                    Mission = m_mission
-                };
-                try
-                {
-
-                }
-                catch (FaultException<TargetNameAlreadyExistException> ex)
-                {
-                    lblMessage.Text = ex.Detail.MessageError;
-                }
-                catch (FaultException<MissionAlreadyDeletedException> ex)
-                {
-                    lblMessage.Text = ex.Detail.MessageError;
-                }
-            }
-        }
-
         #endregion IMethods
     }
 }

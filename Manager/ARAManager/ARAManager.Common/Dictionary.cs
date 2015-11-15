@@ -2,6 +2,9 @@
 
 namespace ARAManager.Common
 {
+    /// <summary>
+    /// Define const used for many cases in ARA
+    /// </summary>
     public class Dictionary
     {
         #region SFields
@@ -75,14 +78,10 @@ namespace ARAManager.Common
         //------------------------------------------------------------------------------------
 
         // Path
-        public const string PATH_UPLOADED_TARGET = 
-            @"D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Business\Images\Targets\";
-        public const string PATH_UPLOADED_CAMPAIGNS_AVATAR =
-            @"D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Business\Images\Campaigns\Avatars\";
-        public const string PATH_UPLOADED_CAMPAIGNS_BANNER =
-            @"D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Business\Images\Campaigns\Banners\";
-        public const string PATH_UPLOADED_MISSIONS_AVATAR =
-            @"D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Business\Images\Missions\Avatars\";
+        public const string PATH_UPLOADED_TARGET = @"~/Ara_Data/Targets/";
+        public const string PATH_UPLOADED_CAMPAIGNS_AVATAR = @"~/Ara_Data/Campaigns/Avatar/";
+        public const string PATH_UPLOADED_CAMPAIGNS_BANNER = @"~/Ara_Data/Campaigns/Banner/";
+        public const string PATH_UPLOADED_MISSIONS_AVATAR = @"~/Ara_Data/Missions/Avatar/";
         //------------------------------------------------------------------------------------
 
         #endregion IConstants

@@ -102,14 +102,11 @@
                                 HeaderText="Id"
                                 DataNavigateUrlFormatString="MissionCampaignCompany.aspx?RequestId={0}"
                                 DataTextField="CampaignId"
-                                ItemStyle-Width="5%" />
-                            <asp:BoundField DataField="CampaignName" HeaderText="Name" ItemStyle-Width="10%" />
-                            <asp:BoundField DataField="StartTime" HeaderText="StartTime" ItemStyle-Width="10%" />
-                            <asp:BoundField DataField="EndTime" HeaderText="EndTime" ItemStyle-Width="10%" />
+                                ItemStyle-Width="10%" />
+                            <asp:BoundField DataField="CampaignName" HeaderText="Name" ItemStyle-Width="20%" />
+                            <asp:BoundField DataField="StartTime" HeaderText="StartTime" ItemStyle-Width="20%" DataFormatString="{0:MM.dd.yy}" />
+                            <asp:BoundField DataField="EndTime" HeaderText="EndTime" ItemStyle-Width="20%" DataFormatString="{0:MM.dd.yy}"/>
                             <asp:BoundField DataField="Description" HeaderText="Description" ItemStyle-Width="20%" />
-                            <asp:BoundField DataField="Gift" HeaderText="Gift" ItemStyle-Width="20%" />
-                            <asp:BoundField DataField="NumMission" HeaderText="NumMission" ItemStyle-Width="10%" />
-                            <asp:BoundField DataField="CompanyName" HeaderText="CompanyName" ItemStyle-Width="10%" />
                         </Columns>
                     </asp:GridView>
                 </div>
