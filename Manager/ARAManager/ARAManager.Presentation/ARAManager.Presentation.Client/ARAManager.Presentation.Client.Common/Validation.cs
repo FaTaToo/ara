@@ -21,7 +21,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common
         public const string VALIDATOR_USEREMAIL_FORMAT = "Incorrect username format";
         public const string VALIDATOR_USERPASS_FORMAT = "Incorrect password format";
         public const string VALIDATOR_DATE_FORMAT = "Not correct datetime format";
-
+        public const string VALIDATOR_AVATAR = "Please upload avatar.";
         public const string VALIDATOR_COMPANY_NAME = "Please enter company name with length from 1 to 100.";
         public const string VALIDATOR_CUSTOMER_NAME = "Please enter customer name with length from 1 to 100.";
         public const string VALIDATOR_CAMPAIGN_NAME = "Please enter campaign name with length from 1 to 100.";

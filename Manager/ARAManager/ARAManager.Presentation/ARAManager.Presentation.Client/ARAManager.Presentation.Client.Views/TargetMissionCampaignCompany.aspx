@@ -26,7 +26,7 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" runat="server">
-    <asp:Panel ID="Panel_Result" runat="server" Visible="False">
+    <asp:Panel ID="Panel_Result" runat="server">
         <!--#region TARGET_INFORMATION-->
         <div class="container">
             <div class="row">
@@ -67,6 +67,15 @@
                             </td>
                         </tr>
                         <!--#endregion NAME-->
+
+                         <!--#region TARGET-->
+                        <tr>
+                            <td style="width: 30%">Target</td>
+                            <td style="width: 70%">
+                                <asp:FileUpload ID="FileUpload_Target" runat="server" />
+                            </td>
+                        </tr>
+                        <!--#endregion TARGET-->
 
                         <!--#region DESCRIPTION-->
                         <tr>
@@ -176,7 +185,7 @@
                     <!--#region BUTTON-->
                     <ul class="nav nav-pills pull-left">
                         <li role="presentation" style="margin-left: 20px">
-                            <asp:Label ID="lblCreateMission" runat="server" />
+                            <asp:Label ID="lblCreateTarget" runat="server" />
                         </li>
                         <li role="presentation" style="margin-left: 20px">
                             <asp:Button ID="btnCreateTarget" runat="server"

@@ -31,15 +31,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         protected global::System.Web.UI.WebControls.GridView GridView_Mission;
         
         /// <summary>
-        /// btnCreateMission control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCreateMission;
-        
-        /// <summary>
         /// Panel_Result control.
         /// </summary>
         /// <remarks>
@@ -67,15 +58,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         protected global::System.Web.UI.WebControls.TextBox txtMissionName;
         
         /// <summary>
-        /// RequiredFieldValidator_MissionName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_MissionName;
-        
-        /// <summary>
         /// CustomValidator_MissionName control.
         /// </summary>
         /// <remarks>
@@ -92,15 +74,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
-        
-        /// <summary>
-        /// RequiredFieldValidator_Description control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Description;
         
         /// <summary>
         /// CustomValidator_Description control.
@@ -139,15 +112,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         protected global::System.Web.UI.WebControls.TextBox txtNumTarget;
         
         /// <summary>
-        /// RequiredFieldValidator_txtNumTarget control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_txtNumTarget;
-        
-        /// <summary>
         /// RangeValidator_NumMission control.
         /// </summary>
         /// <remarks>
@@ -175,13 +139,13 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         protected global::System.Web.UI.WebControls.Label lblCreateMission;
         
         /// <summary>
-        /// btnCreateTarget control.
+        /// btnCreateMission control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCreateTarget;
+        protected global::System.Web.UI.WebControls.Button btnCreateMission;
         
         /// <summary>
         /// btnCancel control.

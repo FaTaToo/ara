@@ -8,31 +8,32 @@
                     ScrollBars="Vertical">
                     <asp:GridView ID="GridView_Mission" runat="server"
                         Width="100%"
+                        GridLines="None"
                         BorderStyle="None"
                         AutoGenerateColumns="False">
                         <Columns>
-                            <asp:BoundField DataField="Avatar" />
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:Image ID="Image1" runat="server" 
+                                        Width="50px"
+                                        Height="50px"
+                                        ImageUrl='<%# GetAvatar(Eval("Avatar")) %>'/>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:HyperLinkField
                                 DataNavigateUrlFields="MissionId"
-                                DataNavigateUrlFormatString="MissionCampaignCompany.aspx?RequestId={0}"
+                                DataNavigateUrlFormatString="TargetMissionCampaignCompany.aspx?RequestId={0}"
                                 DataTextField="MissionId" />
                         </Columns>
                     </asp:GridView>
                 </asp:Panel>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-2">
-                <asp:Button ID="btnCreateMission" runat="server"
-                    CssClass="btn btn-success"
-                    Text="Button" />
-            </div>
-        </div>
     </div>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" runat="server">
-    <asp:Panel ID="Panel_Result" runat="server" Visible="False">
+    <asp:Panel ID="Panel_Result" runat="server">
         <!--#region MISSION_INFORMATION-->
         <div class="container">
             <div class="row">
@@ -64,10 +65,9 @@
                         <tr>
                             <td style="width: 30%"></td>
                             <td style="width: 70%">
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator_MissionName" runat="server"
-                                    ControlToValidate="txtMissionName"
-                                    ForeColor="Red" />
                                 <asp:CustomValidator ID="CustomValidator_MissionName" runat="server"
+                                    ValidateEmptyText="True"
+                                    Display="Dynamic"
                                     ForeColor="Red"
                                     OnServerValidate="CustomValidator_MissionName_OnServerValidate" />
                             </td>
@@ -86,10 +86,9 @@
                         <tr>
                             <td style="width: 30%"></td>
                             <td style="width: 70%">
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator_Description" runat="server"
-                                    ControlToValidate="txtDescription"
-                                    ForeColor="Red" />
                                 <asp:CustomValidator ID="CustomValidator_Description" runat="server"
+                                    ValidateEmptyText="True"
+                                    Display="Dynamic"
                                     ForeColor="Red"
                                     OnServerValidate="CustomValidator_Description_OnServerValidate" />
                             </td>
@@ -107,6 +106,8 @@
                             <td style="width: 30%"></td>
                             <td style="width: 70%">
                                 <asp:CustomValidator ID="CustomValidator_Avatar" runat="server"
+                                    Display="Dynamic"
+                                    ValidateEmptyText="True"
                                     ForeColor="Red"
                                     OnServerValidate="CustomValidator_Avatar_OnServerValidate" />
                             </td>
@@ -125,10 +126,8 @@
                         <tr>
                             <td style="width: 30%"></td>
                             <td style="width: 70%">
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator_txtNumTarget" runat="server"
-                                    ControlToValidate="txtNumTarget"
-                                    ForeColor="Red" />
                                 <asp:RangeValidator ID="RangeValidator_NumMission" runat="server"
+                                    Display="Dynamic"
                                     ForeColor="Red"
                                     Type="Integer"
                                     MinimumValue="0"
@@ -152,15 +151,15 @@
                     <!--#endregion INFORMATION-->
 
                     <!--#region BUTTON-->
-                    <ul class="nav nav-pills pull-left">                       
+                    <ul class="nav nav-pills pull-left">
                         <li role="presentation" style="margin-left: 20px">
                             <asp:Label ID="lblCreateMission" runat="server" />
                         </li>
                         <li role="presentation" style="margin-left: 20px">
-                            <asp:Button ID="btnCreateTarget" runat="server"
+                            <asp:Button ID="btnCreateMission" runat="server"
                                 CssClass="btn btn-warning"
-                                Text="Upload target NOW"
-                                OnClick="btnCreateTarget_OnClick" />
+                                Text="Create mission"
+                                OnClick="btnCreateMission_OnClick" />
                         </li>
                         <li role="presentation" style="margin-left: 20px">
                             <asp:Button ID="btnCancel" runat="server"

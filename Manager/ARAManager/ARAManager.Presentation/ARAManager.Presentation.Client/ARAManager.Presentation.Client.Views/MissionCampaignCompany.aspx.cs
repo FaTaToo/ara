@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="MissionCampaignCompany.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement logic for MissionCampaignCompany page.
-// </summary>
+/* <header file="MissionCampaignCompany.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement logic for MissionCampaignCompany page.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
@@ -23,6 +23,9 @@ using ARAManager.Presentation.Connectivity;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 {
+    /// <summary>
+    /// Code-behind of MissionCampaignCompany.aspx - used to create new mission of a campaign
+    /// </summary>
     public partial class MissionCampaignCompany : System.Web.UI.Page
     {
         #region IFields
@@ -41,14 +44,13 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         #region IMethods
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            m_camnpaign = ClientServiceFactory.CampaignService.GetCampaignById(int.Parse(Request.QueryString["RequestId"]));
+            if (!Page.IsPostBack)
             {
-                string campaignName = Request.QueryString["RequestId"];
-                m_camnpaign = ClientServiceFactory.CampaignService.GetCampaignByName(campaignName);
-                s_numberOfMission = m_camnpaign.NumMission;
+                s_numberOfMission = m_camnpaign.Missions.Count;
             }
             EnableValidator(false);
-            lblCreateMission.Text = "You have " + s_numberOfMission + " left.";
+            lblCreateMission.Text = "You have " + s_numberOfMission;
             GridView_Mission.DataSource = m_camnpaign.Missions;
             GridView_Mission.DataBind();
         }
@@ -56,12 +58,10 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         // Validators
         protected void CustomValidator_MissionName_OnServerValidate(object source, ServerValidateEventArgs args)
         {
-            CustomValidator_MissionName.ErrorMessage = Validation.VALIDATOR_MISSION_NAME;
             args.IsValid = m_validator.ValidateChar100(txtMissionName.Text);
         }
         protected void CustomValidator_Description_OnServerValidate(object source, ServerValidateEventArgs args)
         {
-            CustomValidator_Description.ErrorMessage = Validation.VALIDATOR_DESCRIPTION;
             args.IsValid = m_validator.ValidateChar500(txtDescription.Text);
         }
         protected void CustomValidator_Avatar_OnServerValidate(object source, ServerValidateEventArgs args)
@@ -75,54 +75,60 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             CustomValidator_MissionName.Enabled = flag;
             CustomValidator_Description.Enabled = flag;
-            CustomValidator_MissionName.Enabled = flag;
             CustomValidator_Avatar.Enabled = flag;
             RangeValidator_NumMission.Enabled = flag;
-            RequiredFieldValidator_MissionName.Enabled = flag;
-            RequiredFieldValidator_Description.Enabled = flag;
-            RequiredFieldValidator_txtNumTarget.Enabled = flag;
+        }
+        private void SetErrorMessages()
+        {
+            CustomValidator_MissionName.ErrorMessage = Validation.VALIDATOR_MISSION_NAME;
+            CustomValidator_Description.ErrorMessage = Validation.VALIDATOR_DESCRIPTION;
+            CustomValidator_Avatar.ErrorMessage = Validation.VALIDATOR_AVATAR;
+            RangeValidator_NumMission.ErrorMessage = Validation.VALIDATOR_NUM_MISSION;
+        }
+        protected string GetAvatar(object eval)
+        {
+            return Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + eval;
         }
         //-----------------------------------------------------------------------------------------------------
 
         // Events
-        protected void btnCreateTarget_OnClick(object sender, EventArgs e)
+        protected void btnCreateMission_OnClick(object sender, EventArgs e)
         {
+            SetErrorMessages();
             EnableValidator(true);
             Page.Validate();
-            if (Page.IsValid)
+            if (!Page.IsValid)
             {
-                /* Modified by PhucLS - 20151114 - Change to accept new database with image urL, not byte[]
-                *  Notes: Have not fixed case "If the uploaded file is not image type"
-                */
-                string extension = Path.GetExtension(FileUpload_Avatar.FileName);
-                string filePath = Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + txtMissionName.Text + "Avatar" + extension;
-                FileUpload_Avatar.SaveAs(filePath);
-                // Ended by PhucLS
-                var mission = new Mission()
-                {
-                    Name = txtMissionName.Text,
-                    Description = txtDescription.Text,
-                    NumTarget = int.Parse(txtNumTarget.Text),
-                    Avatar = filePath,
-                    Campaign = m_camnpaign
-                };
-                try
-                {
-                    ClientServiceFactory.MissionService.SaveNewMission(mission);
-                    s_numberOfMission--;
-                    if (s_numberOfMission > 0)
-                    {
-                        Response.Redirect("MissionCampaignCompany.aspx");
-                    }
-                }
-                catch (FaultException<MissionNameAlreadyExistException> ex)
-                {
-                    lblMessage.Text = ex.Detail.MessageError;
-                }
-                catch (FaultException<CampaignAlreadyDeletedException> ex)
-                {
-                    lblMessage.Text = ex.Detail.MessageError;
-                }
+                return;
+            }
+            var extension = Path.GetExtension(FileUpload_Avatar.FileName);
+            var fileName = txtMissionName.Text + "Avatar" + extension;
+            var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + fileName);
+            FileUpload_Avatar.SaveAs(filePath);
+            var mission = new Mission()
+            {
+                Name = txtMissionName.Text,
+                Description = txtDescription.Text,
+                NumTarget = int.Parse(txtNumTarget.Text),
+                Avatar = fileName,
+                Campaign = m_camnpaign
+            };
+            try
+            {
+                ClientServiceFactory.MissionService.SaveNewMission(mission);
+                txtMissionName.Text = string.Empty;
+                txtDescription.Text = string.Empty;
+                txtNumTarget.Text = string.Empty;
+                lblCreateMission.Text = "You have " + ++s_numberOfMission;
+                
+            }
+            catch (FaultException<MissionNameAlreadyExistException> ex)
+            {
+                lblMessage.Text = ex.Detail.MessageError;
+            }
+            catch (FaultException<CampaignAlreadyDeletedException> ex)
+            {
+                lblMessage.Text = ex.Detail.MessageError;
             }
         }
         protected void btnCancel_OnClick(object sender, EventArgs e)

@@ -76,6 +76,15 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_TargetName;
         
         /// <summary>
+        /// FileUpload_Target control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload_Target;
+        
+        /// <summary>
         /// txtDescription control.
         /// </summary>
         /// <remarks>
@@ -175,13 +184,13 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         protected global::System.Web.UI.WebControls.Label lblMessage;
         
         /// <summary>
-        /// lblCreateMission control.
+        /// lblCreateTarget control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCreateMission;
+        protected global::System.Web.UI.WebControls.Label lblCreateTarget;
         
         /// <summary>
         /// btnCreateTarget control.

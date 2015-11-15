@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="NewCampaignCompany.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement logic for NewCampaignCompany page.
-// </summary>
+/* <header file="NewCampaignCompany.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement logic for NewCampaignCompany page.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
@@ -23,6 +23,9 @@ using ARAManager.Presentation.Connectivity;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 {
+    /// <summary>
+    /// Code-behind of NewCampaignCompany.aspx - used to create new campaign of a company
+    /// </summary>
     public partial class NewCampaignCompany : System.Web.UI.Page
     {
         #region IFields
@@ -37,7 +40,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             SetErrorMessages();
             EnableValidator(false);
-            string user = Page.User.Identity.Name;
+            var user = Page.User.Identity.Name;
             if (user != Dictionary.ADMIN_USERNAME)
             {
                 try
@@ -103,7 +106,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             RequiredFieldValidator_Description.Enabled = flag;
             RequiredFieldValidator_NumMission.Enabled = flag;
         }
-      
+
         private void RedirectToCampaignCompany()
         {
             Response.Redirect("CampaignCompany.aspx");
@@ -136,30 +139,36 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 Avatar = UploadImageAvatar(),
                 Gift = txtGift.Text,
                 NumMission = int.Parse(txtMission.Text),
-                Company= m_company
+                Company = m_company
             };
             return campaign;
         }
         private string UploadImageBanner()
         {
-            /* Modified by PhucLS - 20151114 - Change to accept new database with image urL, not byte[]
-             * Notes: Have not fixed case "If the uploaded file is not image type"
+            /* Modified by PhucLS - 20151115 - Change to accept new database with image urL, not byte[]
+             * Notes: _ Have not fixed case "If the uploaded file is not image type"
+             *        _ Check image resolution later
+             *        _ Validator if there is no file
             */
-            string extension= Path.GetExtension(FileUpload_Banner.FileName);
-            string filePath = Dictionary.PATH_UPLOADED_CAMPAIGNS_BANNER + txtCampaignName.Text + "Banner" + extension;
+            var extension = Path.GetExtension(FileUpload_Banner.FileName);
+            var fileName = txtCampaignName.Text + "Banner" + extension;
+            var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_CAMPAIGNS_BANNER + fileName);
             FileUpload_Banner.SaveAs(filePath);
-            return filePath;
+            return fileName;
             // Ended by PhucLS
         }
         private string UploadImageAvatar()
         {
-            /* Modified by PhucLS - 20151114 - Change to accept new database with image urL, not byte[]
-             * Notes: Have not fixed case "If the uploaded file is not image type"
+            /* Modified by PhucLS - 20151115 - Change to accept new database with image urL, not byte[]
+             * Notes: _ Have not fixed case "If the uploaded file is not image type"
+             *        _ Check image resolution later
+             *        _ Validator if there is no file
             */
-            string extension = Path.GetExtension(FileUpload_Banner.FileName);
-            string filePath = Dictionary.PATH_UPLOADED_CAMPAIGNS_AVATAR + txtCampaignName.Text + "Avatar" + extension;
-            FileUpload_Banner.SaveAs(filePath);
-            return filePath;
+            var extension = Path.GetExtension(FileUpload_Avatar.FileName);
+            var fileName = txtCampaignName.Text + "Avatar" + extension;
+            var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_CAMPAIGNS_AVATAR + fileName);
+            FileUpload_Avatar.SaveAs(filePath);
+            return fileName;
             // Ended by PhucLS
         }
         //-----------------------------------------------------------------------------------------------------
@@ -174,8 +183,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             try
             {
                 ClientServiceFactory.CampaignService.SaveNewCampaign(campaign);
-                Response.Redirect("MissionCampaignCompany.aspx?RequestId="+
-                    ClientServiceFactory.CampaignService.GetCampaignByName(txtCampaignName.Text).CampaignName);
+                Response.Redirect("MissionCampaignCompany.aspx?RequestId=" +
+                    ClientServiceFactory.CampaignService.GetCampaignByName(txtCampaignName.Text).CampaignId);
             }
             catch (FaultException<CampaignNameAlreadyExistException> ex)
             {
