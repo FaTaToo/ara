@@ -1,15 +1,3 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <header file="UpdateTarget.php" group="288-462">
-	//
-	// Last modified:
-	// Author: LE Sanh Phuc - 11520288
-	//
-	// </header>
-// <summary>
-	// Used to update the exist target in Vuforia Cloud database by providing the target id and JSON for updating.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
 <?php
 // --------------------------------------------------------------------------------------------------------------------
 // <header file="UpdateTarget.php" group="288-462">

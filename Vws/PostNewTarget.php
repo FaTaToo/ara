@@ -24,7 +24,7 @@ class PostNewTarget
     private $requestPath = "/targets";
     private $request;       // the HTTP_Request2 object
     private $jsonRequestObject;
-    private $imageUrl = "D:/Projects/ARA/1.0/src/Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/Target";
+    private $imageUrl = "D:/Projects/ARA/1.0/src/Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/Ara_Data/Targets";
 
     function PostNewTarget()
     {
