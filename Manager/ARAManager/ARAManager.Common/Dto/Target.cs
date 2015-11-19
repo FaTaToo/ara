@@ -41,14 +41,6 @@ namespace ARAManager.Common.Dto {
         public virtual double? Longitude { get; set; }
         
         [DataMember]
-        [Property(Column = "Description", Name = "Description", TypeType = typeof(string), Length = 500, NotNull = true)]
-        public virtual string Description { get; set; }
-
-        [DataMember]
-        [Property(Column = "VideoUrl", Name = "VideoUrl", TypeType = typeof(string), Length = 500, NotNull = false)]
-        public virtual string VideoUrl { get; set; }
-
-        [DataMember]
         [Property(Column = "FacebookUrl", Name = "FacebookUrl", TypeType = typeof(string), Length = 500, NotNull = false)]
         public virtual string FacebookUrl { get; set; }
 

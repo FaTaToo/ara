@@ -1,9 +1,39 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ARAManager.Presentation.Client.Views/Master_Pages/ManagementCompany.master" AutoEventWireup="true" CodeBehind="TargetMissionCampaignCompany.aspx.cs" Inherits="ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.TargetMissionCampaignCompany" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
 <%@ Register Assembly="GMaps" Namespace="Subgurim.Controles" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
-  
+    <asp:ScriptManager ID="ScriptManager1" runat="server"/>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="nav nav-pills nav-stacked pull-left">
+                    <li role="presentation">
+                        <asp:TextBox ID="txtArName" runat="server"
+                            placeholder="Name of movie" />
+                    </li>
+                    <li role="presentation">
+                        <asp:TextBox ID="txtDirector" runat="server"
+                            placeholder="Director of movie" />
+                    </li>
+                    <li role="presentation">
+                        <asp:TextBox ID="txtActor" runat="server"
+                            placeholder="Actor of movie" />
+                    </li>
+                    <li role="presentation">
+                        <asp:TextBox ID="txtDescription" runat="server"
+                            placeholder="Description of movie" />
+                    </li>
+                    <li role="presentation" style="margin-top: 20px;">
+                        <asp:FileUpload runat="server" ID="UploadPictures" AllowMultiple="true" />
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" runat="server">
     <asp:Panel ID="Panel_Result" runat="server">
@@ -57,28 +87,6 @@
                         </tr>
                         <!--#endregion TARGET-->
 
-                        <!--#region DESCRIPTION-->
-                        <tr>
-                            <td style="width: 30%">Description</td>
-                            <td style="width: 70%">
-                                <asp:TextBox ID="txtDescription" runat="server"
-                                    Width="100%"
-                                    placeholder="Description of target" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 30%"></td>
-                            <td style="width: 70%">
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator_Description" runat="server"
-                                    ControlToValidate="txtDescription"
-                                    ForeColor="Red" />
-                                <asp:CustomValidator ID="CustomValidator_Description" runat="server"
-                                    ForeColor="Red"
-                                    OnServerValidate="CustomValidator_Description_OnServerValidate" />
-                            </td>
-                        </tr>
-                        <!--#endregion DESCRIPTION-->
-
                         <!--#region GOOGLE_MAP-->
                         <tr>
                             <td style="width: 30%"></td>
@@ -90,25 +98,6 @@
                             </td>
                         </tr>
                         <!--#endregion GOOGLE_MAP-->
-
-                        <!--#region VIDEO_URL-->
-                        <tr>
-                            <td style="width: 30%">Video</td>
-                            <td style="width: 70%">
-                                <asp:TextBox ID="txtVideoUrl" runat="server"
-                                    Width="100%"
-                                    placeholder="Video URL" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 30%"></td>
-                            <td style="width: 70%">
-                                <asp:CustomValidator ID="CustomValidator_Video" runat="server"
-                                    ForeColor="Red"
-                                    OnServerValidate="CustomValidator_Video_OnServerValidate" />
-                            </td>
-                        </tr>
-                        <!--#endregion VIDEO_URL-->
 
                         <!--#region FACEBOOK_URL-->
                         <tr>

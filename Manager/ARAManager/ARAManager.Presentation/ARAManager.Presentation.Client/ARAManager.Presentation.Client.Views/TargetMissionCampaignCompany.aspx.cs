@@ -63,10 +63,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             args.IsValid = m_validator.ValidateChar500(txtDescription.Text);
         }
-        protected void CustomValidator_Video_OnServerValidate(object source, ServerValidateEventArgs args)
-        {
-            args.IsValid = m_validator.ValidateChar500(txtVideoUrl.Text);
-        }
         protected void CustomValidator_Facebook_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar500(txtFacebookUrl.Text);
@@ -104,17 +100,13 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         private void EnableValidator(bool flag)
         {
             CustomValidator_TargetName.Enabled = flag;
-            CustomValidator_Description.Enabled = flag;
-            CustomValidator_Video.Enabled = flag;
             CustomValidator_Facebook.Enabled = flag;
             CustomValidator_Youtube.Enabled = flag;
             RequiredFieldValidator_TargetName.Enabled = flag;
-            RequiredFieldValidator_Description.Enabled = flag;
         }
 
         private void SetErrorMessages()
         {
-            CustomValidator_Description.ErrorMessage = Validation.VALIDATOR_DESCRIPTION;
             CustomValidator_Facebook.ErrorMessage = Validation.VALIDATOR_VIDEO;
             CustomValidator_Facebook.ErrorMessage = Validation.VALIDATOR_FACEBOOK;
             CustomValidator_Youtube.ErrorMessage = Validation.VALIDATOR_YOUTUBE;
@@ -155,8 +147,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 Url = targetId,
                 Latitude = m_latitude,
                 Longitude = m_longtitude,
-                Description = txtDescription.Text,
-                VideoUrl = txtVideoUrl.Text,
                 FacebookUrl = txtFacebookUrl.Text,
                 YoutubeUrl = txtYoutubeUrl.Text,
                 Mission = m_mission
@@ -165,10 +155,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             {
                 ClientServiceFactory.TargetService.SaveNewTarget(target);
                 txtTargetName.Text = string.Empty;
-                txtDescription.Text = string.Empty;
                 txtFacebookUrl.Text = string.Empty;
                 txtYoutubeUrl.Text = string.Empty;
-                txtVideoUrl.Text = string.Empty;
                 lblCreateTarget.Text = "You have " + ++s_numberOfTarget + " target(s)";
             }
             catch (FaultException<TargetNameAlreadyExistException> ex)
@@ -179,7 +167,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             {
                 lblMessage.Text = ex.Detail.MessageError;
             }
-
         }
         protected void btnCancel_OnClick(object sender, EventArgs e)
         {
