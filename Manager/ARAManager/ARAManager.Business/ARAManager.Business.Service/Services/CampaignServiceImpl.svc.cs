@@ -29,10 +29,20 @@ using Ninject;
 namespace ARAManager.Business.Service.Services {
     public class CampaignServiceImpl : ICampaignServiceImpl {
         #region IMethods
+        /// <summary>
+        /// Get campaign by campaing id
+        /// </summary>
+        /// <param name="campaignId"></param>
+        /// <returns></returns>
         public Campaign GetCampaignById(int campaignId) {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
             return srvDao.GetById(campaignId);
         }
+        /// <summary>
+        /// Get campaign by name
+        /// </summary>
+        /// <param name="campaignName"></param>
+        /// <returns></returns>
         public Campaign GetCampaignByName(string campaignName)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
@@ -43,12 +53,20 @@ namespace ARAManager.Business.Service.Services {
             }
             return srvDao.FindByCriteria(criteria).FirstOrDefault();
         }
+        /// <summary>
+        /// Get all campaigns
+        /// </summary>
+        /// <returns></returns>
         public IList<Campaign> GetAllCampaigns()
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
             var criteria = DetachedCriteria.For<Campaign>();
             return srvDao.FindByCriteria(criteria);
         }
+        /// <summary>
+        /// Save new campaign 
+        /// </summary>
+        /// <param name="campaign"></param>
         public void SaveNewCampaign(Campaign campaign)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
@@ -79,15 +97,19 @@ namespace ARAManager.Business.Service.Services {
                 tr.Complete();
             }
         }
+        /// <summary>
+        /// Delete campaign by campaign id
+        /// </summary>
+        /// <param name="campaignId"></param>
         public void DeleteCampaign(int campaignId)
         {
-            var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
+            var srvDaoCampaign = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
             using (NhTransactionScope tr = TransactionsFactory.CreateTransactionScope())
             {
                 try
                 {
-                    var deleteCampaign = srvDao.GetById(campaignId);
-                    srvDao.Delete(deleteCampaign);
+                    var deleteCampaign = srvDaoCampaign.GetById(campaignId);
+                    srvDaoCampaign.Delete(deleteCampaign);
                 }
                 catch (Exception)
                 {
@@ -98,22 +120,31 @@ namespace ARAManager.Business.Service.Services {
                 tr.Complete();
             }
         }
+        /// <summary>
+        /// Delete campaigns by the list of campaigns id
+        /// </summary>
+        /// <param name="campaigns"></param>
         public void DeleteCampaigns(List<int> campaigns)
         {
             foreach (var campaign in campaigns)
             {
-                try
-                {
+                //try
+                //{
                     DeleteCampaign(campaign);
-                }
-                catch (Exception)
-                {
-                    throw new FaultException<CampaignAlreadyDeletedException>(
-                       new CampaignAlreadyDeletedException { MessageError = Dictionary.CAMPAIGN_DELETED_EXCEPTION_MSG },
-                       new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
-                }
+                //}
+                //catch (Exception)
+                //{
+                //    throw new FaultException<CampaignAlreadyDeletedException>(
+                //       new CampaignAlreadyDeletedException { MessageError = Dictionary.CAMPAIGN_DELETED_EXCEPTION_MSG },
+                //       new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
+                //}
             }
         }
+        /// <summary>
+        /// Search campaign by campaign name
+        /// </summary>
+        /// <param name="campaignname"></param>
+        /// <returns></returns>
         public IList<Campaign> SearchCampaign(string campaignname) {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
             var criteria = DetachedCriteria.For<Campaign>();
@@ -125,6 +156,14 @@ namespace ARAManager.Business.Service.Services {
             
             var result = srvDao.FindByCriteria(criteria);
             return result;
+        }
+        /// <summary>
+        /// Count the number of campaign
+        /// </summary>
+        /// <returns></returns>
+        public int CountCampaign()
+        {
+            return GetAllCampaigns().Count;
         }
         #endregion IMethods
     }

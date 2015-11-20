@@ -26,21 +26,35 @@ using NHibernate.Criterion;
 using Ninject;
 
 namespace ARAManager.Business.Service.Services {
+    /// <summary>
+    /// Services of Customers.
+    /// </summary>
     public class CustomerServiceImpl : ICustomerServiceImpl {
         #region IMethods
+        /// <summary>
+        /// Get customer by customer id
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         public Customer GetCustomerById(int customerId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICustomerDataAccess>();
             return srvDao.GetById(customerId);
         }
-
+        /// <summary>
+        /// Get all customers
+        /// </summary>
+        /// <returns></returns>
         public IList<Customer> GetAllCustomers()
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICustomerDataAccess>();
             var criteria = DetachedCriteria.For<Customer>();
             return srvDao.FindByCriteria(criteria);
         }
-
+        /// <summary>
+        /// Save new customer
+        /// </summary>
+        /// <param name="customer"></param>
         public void SaveNewCustomer(Customer customer)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICustomerDataAccess>();
@@ -65,7 +79,10 @@ namespace ARAManager.Business.Service.Services {
                 tr.Complete();
             }
         }
-
+        /// <summary>
+        /// Delete customer by customer id
+        /// </summary>
+        /// <param name="customerId"></param>
         public void DeleteCustomer(int customerId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICustomerDataAccess>();
@@ -85,6 +102,10 @@ namespace ARAManager.Business.Service.Services {
                 tr.Complete();
             }
         }
+        /// <summary>
+        /// Delete the list of customers by list of customers id
+        /// </summary>
+        /// <param name="customers"></param>
         public void DeleteCustomers(List<int> customers)
         {
             foreach (var customer in customers)
@@ -101,7 +122,15 @@ namespace ARAManager.Business.Service.Services {
                 }
             }
         }
-
+        /// <summary>
+        /// Search customers by firstname, lastname, email, phone and username
+        /// </summary>
+        /// <param name="firstname"></param>
+        /// <param name="lastname"></param>
+        /// <param name="email"></param>
+        /// <param name="phone"></param>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public IList<Customer> SearchCustomer(string firstname, string lastname, string email, string phone, string username) {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICustomerDataAccess>();
             var criteria = DetachedCriteria.For<Customer>();
@@ -129,6 +158,14 @@ namespace ARAManager.Business.Service.Services {
 
             var result = srvDao.FindByCriteria(criteria);
             return result;
+        }
+        /// <summary>
+        /// Count the number of customers
+        /// </summary>
+        /// <returns></returns>
+        public int CountCustomers()
+        {
+            return GetAllCustomers().Count;
         }
         #endregion IMethods
     }
