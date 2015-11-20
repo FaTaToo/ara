@@ -12,12 +12,12 @@
                         <asp:CustomValidator ID="CustomValidator_CampaignName" runat="server"
                             OnServerValidate="CustomValidator_CampaignName_OnServerValidate" />
                     </li>
-                     <li role="presentation">
+                    <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_RequireFileds" runat="server"
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_RequireFileds_OnServerValidate" />
                     </li>
-                    <li role="presentation" style="margin-top: 20px;margin-left: 35px">
+                    <li role="presentation" style="margin-top: 20px; margin-left: 35px">
                         <asp:Button ID="btnSearch" runat="server"
                             CssClass="btn btn-success"
                             Text="Search"
@@ -97,6 +97,11 @@
                                     <asp:CheckBox ID="cbSelect" runat="server" />
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:TemplateField Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblID" runat="server" Text='<%# Eval("CampaignId") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:HyperLinkField
                                 DataNavigateUrlFields="CampaignId"
                                 HeaderText="Id"
@@ -105,7 +110,7 @@
                                 ItemStyle-Width="10%" />
                             <asp:BoundField DataField="CampaignName" HeaderText="Name" ItemStyle-Width="20%" />
                             <asp:BoundField DataField="StartTime" HeaderText="StartTime" ItemStyle-Width="20%" DataFormatString="{0:MM.dd.yy}" />
-                            <asp:BoundField DataField="EndTime" HeaderText="EndTime" ItemStyle-Width="20%" DataFormatString="{0:MM.dd.yy}"/>
+                            <asp:BoundField DataField="EndTime" HeaderText="EndTime" ItemStyle-Width="20%" DataFormatString="{0:MM.dd.yy}" />
                             <asp:BoundField DataField="Description" HeaderText="Description" ItemStyle-Width="20%" />
                         </Columns>
                     </asp:GridView>

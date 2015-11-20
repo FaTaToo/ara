@@ -51,5 +51,9 @@ namespace ARAManager.Common.Services {
         [OperationContract]
         [PreserveReferences]
         Campaign GetCampaignByName(string campaignName);
+
+        [OperationContract]
+        [PreserveReferences]
+        int CountCampaign();
     }
 }

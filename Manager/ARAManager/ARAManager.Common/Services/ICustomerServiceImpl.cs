@@ -46,5 +46,9 @@ namespace ARAManager.Common.Services {
         [OperationContract]
         [PreserveReferences]
         IList<Customer> SearchCustomer(string firstname, string lastname, string email, string phone, string username);
+
+        [OperationContract]
+        [PreserveReferences]
+        int CountCustomers();
     }
 }

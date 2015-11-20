@@ -67,14 +67,15 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                                     where checkBox != null && checkBox.Checked
                                     select row.Cells[1].FindControl("lblId")).OfType<Label>().
                                       Select(label => int.Parse(label.Text)).ToList();
-            try
-            {
+            //try
+            //{
+            //    ClientServiceFactory.MissionService.GetAllMissionsOfTheCampaign();
                 ClientServiceFactory.CampaignService.DeleteCampaigns(deletedCampaigns);
-            }
-            catch (FaultException ex)
-            {
-                lblMessage.Text = ex.Message;
-            }
+            //}
+            //catch (FaultException ex)
+            //{
+            //    lblMessage.Text = ex.Message;
+            //}
             Search();
         }
         protected void btnClear_OnClick(object sender, EventArgs e)

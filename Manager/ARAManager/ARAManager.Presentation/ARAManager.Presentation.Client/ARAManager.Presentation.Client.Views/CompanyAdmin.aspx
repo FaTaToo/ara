@@ -4,9 +4,7 @@
     <!--#region SEARCH_FORMS-->
     <div class="container">
         <div class="row">
-            <!--Modified by PhucLS - 20151027 - Change md-2 to md-6 for fixing lack of space for validators-->
             <div class="col-md-6">
-                <!--Ended by PhucLS - 20151027 - Change md-2 to md-6 for fixing lack of space for validators-->
                 <ul class="nav nav-pills nav-stacked pull-left">
                     <li role="presentation">
                         <asp:TextBox ID="txtCompanyName" runat="server"

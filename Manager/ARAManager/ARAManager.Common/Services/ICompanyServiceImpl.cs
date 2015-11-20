@@ -55,5 +55,9 @@ namespace ARAManager.Common.Services {
         [OperationContract]
         [PreserveReferences]
         Company GetCompanyByUserName(string userName);
+
+        [OperationContract]
+        [PreserveReferences]
+        int CountCompany();
     }
 }
