@@ -1,14 +1,26 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ARAManager.Presentation.Client.Views/Master_Pages/ManagementAdmin.master" AutoEventWireup="true" CodeBehind="CompanyAdmin.aspx.cs" Inherits="ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.CompanyAdmin" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
+<!--
+ <header file="CompanyAdmin.aspx" group="288-462">
+    Author: LE Sanh Phuc - 11520288
+ </header>
+ <summary>
+    GUI of CompanyAdmin.
+ </summary>
+ <Problems>
+ </Problems>
+-->
     <!--#region SEARCH_FORMS-->
     <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <ul class="nav nav-pills nav-stacked pull-left">
+                    <!--Modified by PhucLS - 20151120 - src-manager-gui - Fix validator messages positions-->
                     <li role="presentation">
                         <asp:TextBox ID="txtCompanyName" runat="server"
                             placeholder="Name of company" />
+                    </li>
+                    <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_CompanyName" runat="server"
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_CompanyName_OnServerValidate" />
@@ -16,12 +28,16 @@
                     <li role="presentation">
                         <asp:TextBox ID="txtEmail" runat="server"
                             placeholder="Email address" />
+                    </li>
+                    <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_EmailAddress" runat="server"
                             ForeColor="Red" />
                     </li>
                     <li role="presentation">
                         <asp:TextBox ID="txtPhone" runat="server"
                             placeholder="Phone number" />
+                    </li>
+                    <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_PhoneNumber" runat="server"
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_PhoneNumber_OnServerValidate" />
@@ -29,6 +45,8 @@
                     <li role="presentation">
                         <asp:TextBox ID="txtUserName" runat="server"
                             placeholder="UserName" />
+                    </li>
+                    <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_UserName" runat="server"
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_UserName_OnServerValidate" />
@@ -38,6 +56,7 @@
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_RequireFileds_OnServerValidate" />
                     </li>
+                    <!--Ended by PhucLS - 20151120 -->
                     <li role="presentation" style="margin-top: 20px">
                         <asp:Button ID="btnSearch" runat="server"
                             CssClass="btn btn-success"
@@ -111,6 +130,8 @@
                     </div>
                 </div>
             </div>
+            <!--Modified by PhucLS - 20151120 - src-manager-gui - Fix header horizontal direction -->
+            <!--Headers center does not affect-->
             <div class="row">
                 <div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px">
                     <asp:GridView ID="GridViewResult" runat="server"
@@ -119,6 +140,7 @@
                         AllowSorting="True"
                         AutoGenerateColumns="False"
                         RowStyle-HorizontalAlign="Center">
+                        <headerstyle HorizontalAlign="Center"/>
                         <Columns>
                             <asp:TemplateField ItemStyle-Width="5%">
                                 <ItemTemplate>
@@ -127,7 +149,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField Visible="False">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblID" runat="server" Text='<%# Eval("CompanyId") %>'/>
+                                    <asp:Label ID="lblID" runat="server" Text='<%# Eval("CompanyId") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:HyperLinkField
@@ -145,6 +167,7 @@
                     </asp:GridView>
                 </div>
             </div>
+             <!--Ended by PhucLS - 20151120 -->
         </div>
     </asp:Panel>
     <!--#endregion SEARCH_RESULT-->

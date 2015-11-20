@@ -1,32 +1,45 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ARAManager.Presentation.Client.Views/Master_Pages/ManagementCompany.master" AutoEventWireup="true" CodeBehind="MissionCampaignCompany.aspx.cs" Inherits="ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.MissionCampaignCompany" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
+    <!--
+ <header file="MissionCampaignCompany.aspx" group="288-462">
+    Author: LE Sanh Phuc - 11520288
+ </header>
+ <summary>
+    GUI of MissionCampaignCompany.
+ </summary>
+ <Problems>
+ </Problems>
+-->
     <div class="container">
         <div class="row">
             <div class="col-md-2">
+                <!--Modified by PhucLS - 20151120 - src-manager-gui - Change display of missions-->
                 <asp:Panel ID="Panel_Mission" runat="server"
                     ScrollBars="Vertical">
                     <asp:GridView ID="GridView_Mission" runat="server"
                         Width="100%"
                         GridLines="None"
                         BorderStyle="None"
-                        AutoGenerateColumns="False">
+                        AutoGenerateColumns="False"
+                        RowStyle-HorizontalAlign="Center">
                         <Columns>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:Image ID="Image1" runat="server" 
-                                        Width="50px"
-                                        Height="50px"
-                                        ImageUrl='<%# GetAvatar(Eval("Avatar")) %>'/>
+                                    <asp:Image runat="server"
+                                        Width="140px"
+                                        Height="100px"
+                                        ImageUrl='<%# GetAvatar(Eval("Avatar")) %>' />
+                                    <asp:HyperLink runat="server" Text='<%# Eval("Name")%>' 
+                                        NavigateUrl='<%# GetNavigateUrl(Eval("MissionId")) %>' />
+                                    <asp:HyperLink runat="server" Text="Edit" 
+                                        NavigateUrl='<%# GetEditMissionUrl(Eval("MissionId")) %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:HyperLinkField
-                                DataNavigateUrlFields="MissionId"
-                                DataNavigateUrlFormatString="TargetMissionCampaignCompany.aspx?RequestId={0}"
-                                DataTextField="MissionId" />
                         </Columns>
                     </asp:GridView>
                 </asp:Panel>
+                <!--Ended by PhucLS - 20151120 -->
             </div>
         </div>
     </div>
@@ -65,6 +78,14 @@
                         <tr>
                             <td style="width: 30%"></td>
                             <td style="width: 70%">
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator_MissionName" runat="server"
+                                    ForeColor="Red"
+                                    ControlToValidate="txtMissionName" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 30%"></td>
+                            <td style="width: 70%">
                                 <asp:CustomValidator ID="CustomValidator_MissionName" runat="server"
                                     ValidateEmptyText="True"
                                     Display="Dynamic"
@@ -81,6 +102,14 @@
                                 <asp:TextBox ID="txtDescription" runat="server"
                                     Width="100%"
                                     placeholder="Description of mission" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 30%"></td>
+                            <td style="width: 70%">
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator_Description" runat="server"
+                                    ForeColor="Red"
+                                    ControlToValidate="txtDescription" />
                             </td>
                         </tr>
                         <tr>
@@ -121,6 +150,14 @@
                                 <asp:TextBox ID="txtNumTarget" runat="server"
                                     Width="100%"
                                     placeholder="Number of target" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 30%"></td>
+                            <td style="width: 70%">
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator_NumTarget" runat="server"
+                                    ForeColor="Red"
+                                    ControlToValidate="txtNumTarget" />
                             </td>
                         </tr>
                         <tr>

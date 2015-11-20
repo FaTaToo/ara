@@ -1,14 +1,26 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ARAManager.Presentation.Client.Views/Master_Pages/ManagementAdmin.master" AutoEventWireup="true" CodeBehind="CustomerAdmin.aspx.cs" Inherits="ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.CustomerAdmin" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
+<!--
+ <header file="CustomerAdmin.aspx" group="288-462">
+    Author: LE Sanh Phuc - 11520288
+ </header>
+ <summary>
+    GUI of CustomerAdmin.
+ </summary>
+ <Problems>
+ </Problems>
+-->
     <!--#region SEARCH_FORMS-->
     <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <ul class="nav nav-pills nav-stacked pull-left">
+                    <!--Modified by PhucLS - 20151120 - src-manager-gui - Fix validator messages positions-->
                     <li role="presentation">
                         <asp:TextBox ID="txtFirstName" runat="server"
                             placeholder="First name" />
+                    </li>
+                    <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_FirstName" runat="server"
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_FirstName_OnServerValidate" />
@@ -16,6 +28,8 @@
                     <li role="presentation">
                         <asp:TextBox ID="txtLastName" runat="server"
                             placeholder="Last name" />
+                    </li>
+                    <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_LastName" runat="server"
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_LastName_OnServerValidate" />
@@ -23,6 +37,8 @@
                     <li role="presentation">
                         <asp:TextBox ID="txtEmail" runat="server"
                             placeholder="Email address" />
+                    </li>
+                    <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_Email" runat="server"
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_Email_OnServerValidate" />
@@ -30,6 +46,8 @@
                     <li role="presentation">
                         <asp:TextBox ID="txtPhone" runat="server"
                             placeholder="Phone number" />
+                    </li>
+                    <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_Phone" runat="server"
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_Phone_OnServerValidate" />
@@ -37,6 +55,8 @@
                     <li role="presentation">
                         <asp:TextBox ID="txtUserName" runat="server"
                             placeholder="UserName" />
+                    </li>
+                    <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_UserName" runat="server"
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_UserName_OnServerValidate" />
@@ -46,6 +66,7 @@
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_RequireFileds_OnServerValidate" />
                     </li>
+                    <!--Ended by PhucLS - 20151120 -->
                     <li role="presentation" style="margin-top: 20px">
                         <asp:Button ID="btnSearch" runat="server"
                             CssClass="btn btn-success"
@@ -119,6 +140,8 @@
                     </div>
                 </div>
             </div>
+            <!--Modified by PhucLS - 20151120 - src-manager-gui - Fix header horizontal direction -->
+            <!--Headers center does not affect-->
             <div class="row">
                 <div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px">
                     <asp:GridView ID="GridViewResult" runat="server"
@@ -127,6 +150,7 @@
                         AllowSorting="True"
                         AutoGenerateColumns="False"
                         RowStyle-HorizontalAlign="Center">
+                        <headerstyle HorizontalAlign="Center"/>
                         <Columns>
                             <asp:TemplateField ItemStyle-Width="5%">
                                 <ItemTemplate>
@@ -155,6 +179,7 @@
                     </asp:GridView>
                 </div>
             </div>
+            <!--Ended by PhucLS - 20151120 -->
         </div>
     </asp:Panel>
     <!--#endregion SEARCH_RESULT-->

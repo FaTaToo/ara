@@ -1,11 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ARAManager.Presentation.Client.Views/Master_Pages/ManagementAdmin.master" AutoEventWireup="true" CodeBehind="EditCustomerAdmin.aspx.cs" Inherits="ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.EditCustomerAdmin" %>
-
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server"></asp:Content>
-
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
+    <!--
+ <header file="EditCustomerAdmin.aspx" group="288-462">
+    Author: LE Sanh Phuc - 11520288
+ </header>
+ <summary>
+    GUI of EditCustomerAdmin.
+ </summary>
+ <Problems>
+ </Problems>
+-->
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server"/>
+    <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <!--#region EDIT_INFORMATION-->
     <div class="container">
         <div class="row">
@@ -25,6 +33,7 @@
 
                 <!--#region INFORMATION-->
                 <table class="table" style="border-style: none">
+                    <!--Modified by PhucLS - 20151120 - src-manager-gui - Fix validator messages positions-->
                     <!--#region FIRST_NAME-->
                     <tr>
                         <td style="width: 30%">First name</td>
@@ -40,6 +49,11 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_FirstName" runat="server"
                                 ControlToValidate="txtFirstName"
                                 ForeColor="Red" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%"></td>
+                        <td style="width: 70%">
                             <asp:CustomValidator ID="CustomValidator_FirstName" runat="server"
                                 ForeColor="Red"
                                 OnServerValidate="CustomValidator_FirstName_OnServerValidate" />
@@ -62,9 +76,14 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_LastName" runat="server"
                                 ControlToValidate="txtLastName"
                                 ForeColor="Red" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%"></td>
+                        <td style="width: 70%">
                             <asp:CustomValidator ID="CustomValidator_LastName" runat="server"
                                 ForeColor="Red"
-                                OnServerValidate=CustomValidator_LastName_OnServerValidate />
+                                OnServerValidate="CustomValidator_LastName_OnServerValidate" />
                         </td>
                     </tr>
                     <!--#endregion LAST_NAME-->
@@ -74,8 +93,8 @@
                         <td style="width: 30%">Sex</td>
                         <td style="width: 70%">
                             <asp:DropDownList ID="DropDownList_Sex" runat="server">
-                                <asp:ListItem Enabled="True" Selected="True" Text="Male" Value="Male"/>
-                                <asp:ListItem Enabled="True" Text="Female" Value="Female"/>
+                                <asp:ListItem Enabled="True" Selected="True" Text="Male" Value="Male" />
+                                <asp:ListItem Enabled="True" Text="Female" Value="Female" />
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -88,10 +107,10 @@
                             <asp:TextBox ID="txtBirthday" runat="server"
                                 Width="30%"
                                 placeholder="Date of birth" />
-                            <ajaxToolkit:CalendarExtender ID="CalendarExtender_Birthday" runat="server" 
-                                Enabled="True" 
+                            <ajaxToolkit:CalendarExtender ID="CalendarExtender_Birthday" runat="server"
+                                Enabled="True"
                                 Format="MM.dd.yy"
-                                TargetControlID="txtBirthday"/>
+                                TargetControlID="txtBirthday" />
                         </td>
                     </tr>
                     <tr>
@@ -115,8 +134,8 @@
                     <tr>
                         <td style="width: 30%"></td>
                         <td style="width: 70%">
-                            <asp:CustomValidator ID="CustomValidator_Address" runat="server" 
-                                OnServerValidate="CustomValidator_Address_OnServerValidate"/>
+                            <asp:CustomValidator ID="CustomValidator_Address" runat="server"
+                                OnServerValidate="CustomValidator_Address_OnServerValidate" />
                         </td>
                     </tr>
                     <!--#endregion ADDRESS-->
@@ -136,6 +155,11 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_Email" runat="server"
                                 ControlToValidate="txtEmail"
                                 ForeColor="Red" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%"></td>
+                        <td style="width: 70%">
                             <asp:CustomValidator ID="CustomValidator_Email" runat="server"
                                 OnServerValidate="CustomValidator_Email_OnServerValidate" />
                         </td>
@@ -175,6 +199,11 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_Username" runat="server"
                                 ControlToValidate="txtUsername"
                                 ForeColor="Red" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%"></td>
+                        <td style="width: 70%">
                             <asp:CustomValidator ID="CustomValidator_Username" runat="server"
                                 ForeColor="Red"
                                 OnServerValidate="CustomValidator_Username_OnServerValidate" />
@@ -198,13 +227,18 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_Password" runat="server"
                                 ControlToValidate="txtPassword"
                                 ForeColor="Red" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%"></td>
+                        <td style="width: 70%">
                             <asp:CustomValidator ID="CustomValidator_Password" runat="server"
                                 ForeColor="Red"
                                 OnServerValidate="CustomValidator_Password_OnServerValidate" />
                         </td>
                     </tr>
                     <!--#endregion PASSWORD-->
-
+                    <!--Ended by PhucLS - 20151120 -->
                     <!--#region ERROR_MESSAGE-->
                     <tr>
                         <td style="width: 30%"></td>
@@ -223,14 +257,14 @@
                     <li role="presentation">
                         <asp:Button ID="btnSave" runat="server"
                             CssClass="btn btn-danger"
-                            Text="Save" 
-                            OnClick="btnSave_OnClick"/>
+                            Text="Save"
+                            OnClick="btnSave_OnClick" />
                     </li>
                     <li role="presentation" style="margin-left: 20px">
                         <asp:Button ID="btnCancel" runat="server"
                             CssClass="btn btn-warning"
                             Text="Cancel"
-                            OnClick="btnCancel_OnClick"/>
+                            OnClick="btnCancel_OnClick" />
                     </li>
                 </ul>
                 <!--#endregion BUTTON-->

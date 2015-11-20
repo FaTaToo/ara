@@ -51,12 +51,11 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 s_numberOfTarget = m_mission.NumTarget;
             }
             EnableValidator(false);
-            lblCreateTarget.Text = "You have " + s_numberOfTarget +" target(s)";
+            lblCreateTarget.Text = "You have " + s_numberOfTarget + " target(s)";
             InitializeDataForGMap();
         }
         protected void CustomValidator_TargetName_OnServerValidate(object source, ServerValidateEventArgs args)
         {
-            CustomValidator_TargetName.ErrorMessage = Validation.VALIDATOR_TARGET_NAME;
             args.IsValid = m_validator.ValidateChar100(txtTargetName.Text);
         }
         protected void CustomValidator_Description_OnServerValidate(object source, ServerValidateEventArgs args)
@@ -99,6 +98,9 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         }
         private void EnableValidator(bool flag)
         {
+            RequiredFieldValidator_TargetName.Enabled = flag;
+            RequiredFieldValidator_Facebook.Enabled = flag;
+            RequiredFieldValidator_Youtube.Enabled = flag;
             CustomValidator_TargetName.Enabled = flag;
             CustomValidator_Facebook.Enabled = flag;
             CustomValidator_Youtube.Enabled = flag;
@@ -107,6 +109,10 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
         private void SetErrorMessages()
         {
+            RequiredFieldValidator_TargetName.ErrorMessage = Validation.REQUIRE_TARGETMISSIONCAMPAIGNCOMPANY_NAME;
+            RequiredFieldValidator_Facebook.ErrorMessage = Validation.REQUIRE_TARGETMISSIONCAMPAIGNCOMPANY_FACEBOOK;
+            RequiredFieldValidator_Youtube.ErrorMessage = Validation.REQUIRE_TARGETMISSIONCAMPAIGNCOMPANY_YOUTUBE;
+            CustomValidator_TargetName.ErrorMessage = Validation.VALIDATOR_TARGET_NAME;
             CustomValidator_Facebook.ErrorMessage = Validation.VALIDATOR_VIDEO;
             CustomValidator_Facebook.ErrorMessage = Validation.VALIDATOR_FACEBOOK;
             CustomValidator_Youtube.ErrorMessage = Validation.VALIDATOR_YOUTUBE;

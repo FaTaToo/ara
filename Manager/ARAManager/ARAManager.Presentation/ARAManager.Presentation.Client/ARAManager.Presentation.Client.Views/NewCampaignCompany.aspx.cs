@@ -77,6 +77,10 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             args.IsValid = m_validator.ValidateChar500(txtGift.Text);
         }
+        protected void CustomValidator_Avatar_OnServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = FileUpload_Avatar.HasFile;
+        }
         //-----------------------------------------------------------------------------------------------------
 
         // Supported methods
@@ -86,6 +90,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             CustomValidator_EndTime.ErrorMessage = Validation.VALIDATOR_ENDTIME;
             CustomValidator_Description.ErrorMessage = Validation.VALIDATOR_DESCRIPTION;
             CustomValidator_Gift.ErrorMessage = Validation.VALIDATOR_GIFT;
+            CustomValidator_Avatar.ErrorMessage = Validation.VALIDATOR_AVATAR;
             RangeValidator_NumMission.ErrorMessage = Validation.VALIDATOR_NUM_MISSION;
             RequiredFieldValidator_CampaignName.ErrorMessage = Validation.REQUIRE_CAMPAIGNCOMPANY_NAME;
             RequiredFieldValidator_StartTime.ErrorMessage = Validation.REQUIRE_CAMPAIGNCOMPANY_STARTTIME;
@@ -106,12 +111,10 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             RequiredFieldValidator_Description.Enabled = flag;
             RequiredFieldValidator_NumMission.Enabled = flag;
         }
-
         private void RedirectToCampaignCompany()
         {
             Response.Redirect("CampaignCompany.aspx");
         }
-
         private Campaign SaveNewCampaignWithEndTime()
         {
             var campaign = new Campaign
@@ -172,13 +175,18 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             EnableValidator(true);
             Page.Validate();
-            var campaign = string.IsNullOrEmpty(txtEndTime.Text) ?
-                SaveNewCampaignWithEndTime() : SaveNewCampaignWithoutEndTime();
+            if (!Page.IsValid)
+            {
+                return;
+            }
+            var campaign = string.IsNullOrEmpty(txtEndTime.Text)
+                ? SaveNewCampaignWithEndTime()
+                : SaveNewCampaignWithoutEndTime();
             try
             {
                 ClientServiceFactory.CampaignService.SaveNewCampaign(campaign);
                 Response.Redirect("MissionCampaignCompany.aspx?RequestId=" +
-                    ClientServiceFactory.CampaignService.GetCampaignByName(txtCampaignName.Text).CampaignId);
+                                  ClientServiceFactory.CampaignService.GetCampaignByName(txtCampaignName.Text).CampaignId);
             }
             catch (FaultException<CampaignNameAlreadyExistException> ex)
             {

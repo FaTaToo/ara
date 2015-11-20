@@ -50,7 +50,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 s_numberOfMission = m_camnpaign.Missions.Count;
             }
             EnableValidator(false);
-            lblCreateMission.Text = "You have " + s_numberOfMission;
+            lblCreateMission.Text = "You have " + s_numberOfMission + " missions";
             GridView_Mission.DataSource = m_camnpaign.Missions;
             GridView_Mission.DataBind();
         }
@@ -73,6 +73,9 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         // Supported methods
         private void EnableValidator(bool flag)
         {
+            RequiredFieldValidator_MissionName.Enabled = flag;
+            RequiredFieldValidator_Description.Enabled = flag;
+            RequiredFieldValidator_NumTarget.Enabled = flag;
             CustomValidator_MissionName.Enabled = flag;
             CustomValidator_Description.Enabled = flag;
             CustomValidator_Avatar.Enabled = flag;
@@ -80,6 +83,9 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         }
         private void SetErrorMessages()
         {
+            RequiredFieldValidator_MissionName.ErrorMessage = Validation.REQUIRE_MISSIONCAMPAIGNCOMPANY_NAME;
+            RequiredFieldValidator_Description.ErrorMessage = Validation.REQUIRE_MISSIONCAMPAIGNCOMPANY_DESCRIPTION;
+            RequiredFieldValidator_NumTarget.ErrorMessage = Validation.REQUIRE_MISSIONCAMPAIGNCOMPANY_NUM_TARGET;
             CustomValidator_MissionName.ErrorMessage = Validation.VALIDATOR_MISSION_NAME;
             CustomValidator_Description.ErrorMessage = Validation.VALIDATOR_DESCRIPTION;
             CustomValidator_Avatar.ErrorMessage = Validation.VALIDATOR_AVATAR;
@@ -89,6 +95,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             return Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + eval;
         }
+
         //-----------------------------------------------------------------------------------------------------
 
         // Events
@@ -119,8 +126,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 txtMissionName.Text = string.Empty;
                 txtDescription.Text = string.Empty;
                 txtNumTarget.Text = string.Empty;
-                lblCreateMission.Text = "You have " + ++s_numberOfMission;
-                
+                lblCreateMission.Text = "You have " + ++s_numberOfMission + " missions";
             }
             catch (FaultException<MissionNameAlreadyExistException> ex)
             {
@@ -134,6 +140,15 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         protected void btnCancel_OnClick(object sender, EventArgs e)
         {
             Response.Redirect("CampaignCompany.aspx");
+        }
+        protected string GetNavigateUrl(object eval)
+        {
+            return "TargetMissionCampaignCompany.aspx?RequestId=" + eval;
+        }
+
+        protected string GetEditMissionUrl(object eval)
+        {
+            return "MissionCampaignCompany.aspx?Edit=1&RequestId=" + eval;
         }
         //-----------------------------------------------------------------------------------------------------
         #endregion IMethods

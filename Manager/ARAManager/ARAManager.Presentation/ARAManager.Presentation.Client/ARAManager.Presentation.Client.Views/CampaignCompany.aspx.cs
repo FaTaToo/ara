@@ -12,7 +12,6 @@
 
 using System;
 using System.Linq;
-using System.ServiceModel;
 using System.Web.UI.WebControls;
 using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
 using ARAManager.Presentation.Connectivity;

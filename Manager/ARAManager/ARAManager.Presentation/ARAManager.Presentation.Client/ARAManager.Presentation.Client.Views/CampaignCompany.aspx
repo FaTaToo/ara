@@ -1,15 +1,27 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ARAManager.Presentation.Client.Views/Master_Pages/ManagementCompany.master" AutoEventWireup="true" CodeBehind="CampaignCompany.aspx.cs" Inherits="ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.CampaignCompany" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
+<!--
+ <header file="CampaignCompany.aspx" group="288-462">
+    Author: LE Sanh Phuc - 11520288
+ </header>
+ <summary>
+    GUI of CampaignCompany.
+ </summary>
+ <Problems>
+ </Problems>
+-->
     <!--#region SEARCH_FORMS-->
     <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <ul class="nav nav-pills nav-stacked pull-left">
+                    <!--Modified by PhucLS - 20151120 - src-manager-gui - Fix validator messages positions-->
                     <li role="presentation">
                         <asp:TextBox ID="txtCampaignName" runat="server"
                             placeholder="Campaign name" />
-                        <asp:CustomValidator ID="CustomValidator_CampaignName" runat="server"
+                    </li>
+                    <li role="presentation">
+                          <asp:CustomValidator ID="CustomValidator_CampaignName" runat="server"
                             OnServerValidate="CustomValidator_CampaignName_OnServerValidate" />
                     </li>
                     <li role="presentation">
@@ -17,6 +29,7 @@
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_RequireFileds_OnServerValidate" />
                     </li>
+                    <!--Ended by PhucLS - 20151120 -->
                     <li role="presentation" style="margin-top: 20px; margin-left: 35px">
                         <asp:Button ID="btnSearch" runat="server"
                             CssClass="btn btn-success"
@@ -83,6 +96,8 @@
                     </div>
                 </div>
             </div>
+            <!--Modified by PhucLS - 20151120 - src-manager-gui - Fix header horizontal direction -->
+            <!--Headers center does not affect-->
             <div class="row">
                 <div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px">
                     <asp:GridView ID="GridViewResult" runat="server"
@@ -91,6 +106,7 @@
                         AllowSorting="True"
                         AutoGenerateColumns="False"
                         RowStyle-HorizontalAlign="Center">
+                        <headerstyle HorizontalAlign="Center"/>
                         <Columns>
                             <asp:TemplateField ItemStyle-Width="5%">
                                 <ItemTemplate>
@@ -116,6 +132,7 @@
                     </asp:GridView>
                 </div>
             </div>
+             <!--Ended by PhucLS - 20151120 -->
         </div>
     </asp:Panel>
     <!--#endregion SEARCH_RESULT-->
