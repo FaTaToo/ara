@@ -1,16 +1,16 @@
+<?php
 // --------------------------------------------------------------------------------------------------------------------
 // <header file="PostNewTarget.php" group="288-462">
-    //
-    // Last modified:
-    // Author: LE Sanh Phuc - 11520288
-    //
-    // </header>
+//
+// Last modified:
+// Author: LE Sanh Phuc - 11520288
+//
+// </header>
 // <summary>
-    // Used to post new target to Vuforia Cloud database.
+// Used to post new target to Vuforia Cloud database.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-<?php
 require_once 'HTTP/Request2.php';
 require_once 'SignatureBuilder.php';
 
@@ -24,7 +24,7 @@ class PostNewTarget
     private $requestPath = "/targets";
     private $request;       // the HTTP_Request2 object
     private $jsonRequestObject;
-    private $imageUrl = "D:/Projects/ARA/1.0/src/Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/Ara_Data/Targets/";
+    private $imageUrl = "D:/Projects/ARA/1.0/src-manager/Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/Ara_Data/Targets/";
 
     function PostNewTarget()
     {
