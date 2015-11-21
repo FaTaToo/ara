@@ -59,7 +59,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common
         public const string REQUIRE_PHONE = "Phone number with length from 1 to 20.";
         public const string REQUIRE_USERNAME = "User name can not be empty.";
         public const string REQUIRE_PASSWORD = "Password can not be empty.";
-        public const string VALIDATOR_ENDTIME = "End time can not larger than start time.";
+        public const string VALIDATOR_ENDTIME = "End time can not smaller than start time.";
         #endregion IFields
 
 

@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-/* <header file="NewCampaignCompany.cs" group="288-462">
+/* <header file="EditCampaignCompany.cs" group="288-462">
  * Author: LE Sanh Phuc - 11520288
  * </header>
  * <summary>
- *      Implement logic for NewCampaignCompany page.
+ *      Implement logic for EditCampaignCompany page.
  * </summary>
  * <Problems>
  * </Problems>
@@ -18,20 +18,28 @@ using ARAManager.Common;
 using ARAManager.Common.Dto;
 using ARAManager.Common.Exception.Campaign;
 using ARAManager.Common.Exception.Company;
+using ARAManager.Common.Exception.Generic;
 using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
 using ARAManager.Presentation.Connectivity;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 {
     /// <summary>
-    /// Code-behind of NewCampaignCompany.aspx - used to create new campaign of a company
+    /// Code-behind of EditCampaignCompany.aspx - used to create new campaign of a company
     /// </summary>
-    public partial class NewCampaignCompany : System.Web.UI.Page
+    public partial class EditCampaignCompany : System.Web.UI.Page
     {
+        #region SFields
+
+        private static byte[] s_rowVersion; 
+
+        #endregion SFields
+
         #region IFields
 
         private readonly Validation m_validator = new Validation();
         private Company m_company;
+        private Campaign m_campaign;
 
         #endregion IFields
 
@@ -45,7 +53,35 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             {
                 try
                 {
-                    m_company = ClientServiceFactory.CompanyService.GetCompanyByUserName(user);
+                    if (Request.QueryString["Method"] == "Edit")
+                    {
+                        m_company = ClientServiceFactory.CompanyService.GetCompanyByUserName(user);
+                        m_campaign = ClientServiceFactory.CampaignService.GetCampaignById
+                                                        (int.Parse(Request.QueryString["RequestId"]));
+                        if (m_company != null)
+                        {
+                            txtCampaignName.Text = m_campaign.CampaignName;
+                            txtDescription.Text = m_campaign.Description;
+                            txtStartTime.Text = m_campaign.StartTime.Date.ToString(Dictionary.DATE_FORMAT);
+                            if (m_campaign.EndTime != null)
+                            {
+                                var endDate = (DateTime) m_campaign.EndTime;
+                                txtEndTime.Text = endDate.Date.ToString(Dictionary.DATE_FORMAT);
+                            }
+                            txtGift.Text = m_campaign.Gift;
+                            txtMission.Text = m_campaign.NumMission.ToString();
+                            s_rowVersion = m_campaign.RowVersion;
+                        }
+                        else
+                        {
+                            lblMessage.Text = Dictionary.CAMPAIGN_DELETED_EXCEPTION_MSG;
+                        }
+                    }
+                    else
+                    {
+                        m_company = ClientServiceFactory.CompanyService.GetCompanyByUserName(user);
+                    }
+                   
                 }
                 catch (FaultException<CompanyAlreadyDeletedException> ex)
                 {
@@ -128,6 +164,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 NumMission = int.Parse(txtMission.Text),
                 Company = m_company
             };
+            MoveBackRowVersion(campaign);
             return campaign;
         }
         private Campaign SaveNewCampaignWithoutEndTime()
@@ -144,7 +181,15 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 NumMission = int.Parse(txtMission.Text),
                 Company = m_company
             };
+            MoveBackRowVersion(campaign);
             return campaign;
+        }
+        private static void MoveBackRowVersion(Campaign campaign)
+        {
+            if (s_rowVersion != null)
+            {
+                campaign.RowVersion = s_rowVersion;
+            }
         }
         private string UploadImageBanner()
         {
@@ -192,7 +237,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             {
                 lblMessage.Text = ex.Detail.MessageError;
             }
-            catch (FaultException<CampaignAlreadyDeletedException> ex)
+            catch (FaultException<ConcurrentUpdateException> ex)
             {
                 lblMessage.Text = ex.Detail.MessageError;
             }
@@ -204,6 +249,10 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         protected void btnCancel_OnClick(object sender, EventArgs e)
         {
             RedirectToCampaignCompany();
+        }
+        protected void btnCreateMission_OnClick(object sender, EventArgs e)
+        {
+            Response.Redirect("MissionCampaignCompany.aspx?Method=New&RequestId=" + m_company.CompanyId);
         }
         //-----------------------------------------------------------------------------------------------------
         #endregion IMethods

@@ -25,6 +25,9 @@ using Subgurim.Controles;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 {
+    /// <summary>
+    /// Code-behind of TargetMissionCampaignCompany.aspx - used to create new target of a mission
+    /// </summary>
     public partial class TargetMissionCampaignCompany : System.Web.UI.Page
     {
         #region IFields
@@ -45,7 +48,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         #region IMethods
         protected void Page_Load(object sender, EventArgs e)
         {
-            m_mission = ClientServiceFactory.MissionService.GetMissionTypeById(int.Parse(Request.QueryString["RequestId"]));
+            m_mission = ClientServiceFactory.MissionService.GetMissionById(int.Parse(Request.QueryString["RequestId"]));
             if (!IsPostBack)
             {
                 s_numberOfTarget = m_mission.NumTarget;
@@ -126,19 +129,22 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             {
                 return;
             }
+            // Modifed by PhucLS - 20151121 - Save target id to txt file
+            // Save image target to server
             var extension = Path.GetExtension(FileUpload_Target.FileName);
             var fileName = txtTargetName.Text + extension;
             var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_TARGET + fileName);
             FileUpload_Target.SaveAs(filePath);
 
+            // Call VWS
             var callPostNewTarget = new WebClient();
             var result = callPostNewTarget.DownloadString(new Uri(
                 "http://localhost:1234/ara-vws/vws/SampleSelector.php?select=PostNewTarget&targetName="+txtTargetName.Text+
                 "&imageLocation=" + fileName));
 
+            // Filter target id
             var targetId=string.Empty;
             var resultCodeIndex = result.IndexOf(@"""TargetCreated""", StringComparison.Ordinal);
-
             if (resultCodeIndex > 0)
             {
                 var resultTargetId = result.IndexOf(@"""target_id""", StringComparison.Ordinal);
@@ -146,7 +152,23 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 var endIndex = result.IndexOf("\"", startIndex, StringComparison.Ordinal)- 1;
                 targetId = result.Substring(startIndex, endIndex - startIndex + 1);
             }
+            if (!File.Exists(Dictionary.PATH_LIST_TARGET))
+            {
+                using (StreamWriter sw = File.CreateText(Dictionary.PATH_LIST_TARGET))
+                {
+                    sw.WriteLine(targetId);
+                }
+            }
+            else
+            {
+                using (StreamWriter sw = new StreamWriter(Dictionary.PATH_LIST_TARGET))
+                {
+                    sw.WriteLine(targetId);
+                }
+            }
+            // Ended by PhucLS - 20151121
 
+            // Save target to database
             var target = new Target()
             {
                 TargetName = txtTargetName.Text,
@@ -178,6 +200,14 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             Response.Redirect("CampaignCompany.aspx");
         }
+        // Added by PhucLS - 20151121 - Will be changed later
+        protected void btnBack_OnClick(object sender, EventArgs e)
+        {
+            Response.Redirect("CampaignCompany.aspx");
+        }
+        // Ended by PhucLS - 20151121
         #endregion IMethods
+
+      
     }
 }

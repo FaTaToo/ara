@@ -1,14 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ARAManager.Presentation.Client.Views/Master_Pages/ManagementCompany.master" AutoEventWireup="true" CodeBehind="NewCampaignCompany.aspx.cs" Inherits="ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.NewCampaignCompany" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ARAManager.Presentation.Client.Views/Master_Pages/ManagementCompany.master" AutoEventWireup="true" CodeBehind="EditCampaignCompany.aspx.cs" Inherits="ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.EditCampaignCompany" %>
 
 <%@ Register TagPrefix="ajaxToolkit" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit, Version=15.1.3.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
     <!--
- <header file="NewCampaignCompany.aspx" group="288-462">
+ <header file="EditCampaignCompany.aspx" group="288-462">
     Author: LE Sanh Phuc - 11520288
  </header>
  <summary>
-    GUI of NewCampaignCompany.
+    GUI of EditCampaignCompany.
  </summary>
  <Problems>
     1. Have not check case if users input wrong text instead of using datetime picker.
@@ -78,7 +78,7 @@
                             <asp:TextBox ID="txtStartTime" runat="server"
                                 Width="100%"
                                 placeholder="The time which the campaign starts" />
-                            <ajaxToolkit:CalendarExtender ID="CalendarExtender_txtStartTime" runat="server"
+                            <ajaxToolkit:CalendarExtender ID="CalendarExtender_StartTime" runat="server"
                                 Enabled="True"
                                 Format="MM.dd.yy"
                                 TargetControlID="txtStartTime" />
@@ -245,6 +245,12 @@
                             CssClass="btn btn-warning"
                             Text="Cancel"
                             OnClick="btnCancel_OnClick" />
+                    </li>
+                    <li role="presentation" style="margin-left: 20px">
+                        <asp:Button ID="btnCreateMission" runat="server"
+                            CssClass="btn btn-warning"
+                            Text="Create mission"
+                            OnClick="btnCreateMission_OnClick" />
                     </li>
                 </ul>
                 <!--#endregion BUTTON-->

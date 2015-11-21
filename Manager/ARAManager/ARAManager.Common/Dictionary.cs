@@ -93,6 +93,7 @@ namespace ARAManager.Common
 
         // Path
         public const string PATH_UPLOADED_TARGET = @"~/Ara_Data/Targets/";
+        public const string PATH_LIST_TARGET = @"~/Ara_Data/Targets/ListTargets.txt";
         public const string PATH_UPLOADED_CAMPAIGNS_AVATAR = @"~/Ara_Data/Campaigns/Avatar/";
         public const string PATH_UPLOADED_CAMPAIGNS_BANNER = @"~/Ara_Data/Campaigns/Banner/";
         public const string PATH_UPLOADED_MISSIONS_AVATAR = @"~/Ara_Data/Missions/Avatar/";

@@ -28,11 +28,17 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
     /// </summary>
     public partial class MissionCampaignCompany : System.Web.UI.Page
     {
+        #region SFields
+
+        private static byte[] s_rowVersion;
+
+        #endregion SFields
+
         #region IFields
 
         private readonly Validation m_validator = new Validation();
         private Campaign m_camnpaign;
-
+        private Mission m_mission;
         #endregion IFields
 
         #region SFields
@@ -53,6 +59,16 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             lblCreateMission.Text = "You have " + s_numberOfMission + " missions";
             GridView_Mission.DataSource = m_camnpaign.Missions;
             GridView_Mission.DataBind();
+
+            if ((Request.QueryString["Method"]) != "Edit")
+            {
+                return;
+            }
+            m_mission = ClientServiceFactory.MissionService.GetMissionById(int.Parse(Request.QueryString["MissionId"]));
+            txtMissionName.Text = m_mission.Name;
+            txtDescription.Text = m_mission.Description;
+            txtNumTarget.Text = m_mission.NumTarget.ToString();
+            s_rowVersion = m_mission.RowVersion;
         }
 
         // Validators
@@ -120,6 +136,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 Avatar = fileName,
                 Campaign = m_camnpaign
             };
+            mission.RowVersion = s_rowVersion;
             try
             {
                 ClientServiceFactory.MissionService.SaveNewMission(mission);
@@ -145,10 +162,9 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             return "TargetMissionCampaignCompany.aspx?RequestId=" + eval;
         }
-
         protected string GetEditMissionUrl(object eval)
         {
-            return "MissionCampaignCompany.aspx?Edit=1&RequestId=" + eval;
+            return "MissionCampaignCompany.aspx?Method=Edit&RequestId="+m_camnpaign.CampaignId+"&MissionId=" + eval;
         }
         //-----------------------------------------------------------------------------------------------------
         #endregion IMethods

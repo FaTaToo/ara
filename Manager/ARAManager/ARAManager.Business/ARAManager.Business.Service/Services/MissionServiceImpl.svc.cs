@@ -28,7 +28,7 @@ using Ninject;
 namespace ARAManager.Business.Service.Services {
     public class MissionServiceImpl : IMissionServiceImpl {
         #region IMethods
-        public Mission GetMissionTypeById(int missionId) {
+        public Mission GetMissionById(int missionId) {
             var srvDao = NinjectKernelFactory.Kernel.Get<IMissionDataAccess>();
             return srvDao.GetById(missionId);
         }

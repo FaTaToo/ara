@@ -220,6 +220,12 @@
                                 Text="Cancel"
                                 OnClick="btnCancel_OnClick" />
                         </li>
+                        <li role="presentation" style="margin-left: 20px">
+                            <asp:Button ID="btnBack" runat="server"
+                                CssClass="btn btn-warning"
+                                Text="Back to mission"
+                                OnClick="btnBack_OnClick" />
+                        </li>
                     </ul>
                     <!--#endregion BUTTON-->
                 </div>

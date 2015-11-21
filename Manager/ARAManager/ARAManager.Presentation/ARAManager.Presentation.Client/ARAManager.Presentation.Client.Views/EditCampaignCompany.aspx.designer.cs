@@ -10,7 +10,7 @@
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
     
     
-    public partial class NewCampaignCompany {
+    public partial class EditCampaignCompany {
         
         /// <summary>
         /// ScriptManager1 control.
@@ -76,13 +76,13 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         protected global::System.Web.UI.WebControls.TextBox txtStartTime;
         
         /// <summary>
-        /// CalendarExtender_txtStartTime control.
+        /// CalendarExtender_StartTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender_txtStartTime;
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender_StartTime;
         
         /// <summary>
         /// RequiredFieldValidator_StartTime control.
@@ -245,5 +245,14 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancel;
+        
+        /// <summary>
+        /// btnCreateMission control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCreateMission;
     }
 }

@@ -22,7 +22,7 @@ namespace ARAManager.Common.Services {
     public interface IMissionServiceImpl {
         [OperationContract]
         [PreserveReferences]
-        Mission GetMissionTypeById(int missionId);
+        Mission GetMissionById(int missionId);
 
         [OperationContract]
         [PreserveReferences]

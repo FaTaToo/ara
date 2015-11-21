@@ -100,6 +100,7 @@
             <!--Headers center does not affect-->
             <div class="row">
                 <div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px">
+                    <%-- Added by PhucLS - 20151121 - ReSharper disable once Asp.Entity --%>
                     <asp:GridView ID="GridViewResult" runat="server"
                         Width="100%"
                         AllowPaging="True"
@@ -121,7 +122,7 @@
                             <asp:HyperLinkField
                                 DataNavigateUrlFields="CampaignId"
                                 HeaderText="Id"
-                                DataNavigateUrlFormatString="MissionCampaignCompany.aspx?RequestId={0}"
+                                DataNavigateUrlFormatString="EditCampaignCompany.aspx?Method=Edit&RequestId={0}"
                                 DataTextField="CampaignId"
                                 ItemStyle-Width="10%" />
                             <asp:BoundField DataField="CampaignName" HeaderText="Name" ItemStyle-Width="20%" />
@@ -130,6 +131,7 @@
                             <asp:BoundField DataField="Description" HeaderText="Description" ItemStyle-Width="20%" />
                         </Columns>
                     </asp:GridView>
+                    <!--Ended by PhucLS - 20151121 -->
                 </div>
             </div>
              <!--Ended by PhucLS - 20151120 -->
