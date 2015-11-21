@@ -15,8 +15,7 @@
         <div class="row">
             <div class="col-md-2">
                 <!--Modified by PhucLS - 20151120 - src-manager-gui - Change display of missions-->
-                <asp:Panel ID="Panel_Mission" runat="server"
-                    ScrollBars="Vertical">
+                <asp:Panel ID="Panel_Mission" runat="server">
                     <asp:GridView ID="GridView_Mission" runat="server"
                         Width="100%"
                         GridLines="None"
@@ -194,7 +193,7 @@
                         </li>
                         <li role="presentation" style="margin-left: 20px">
                             <asp:Button ID="btnCreateMission" runat="server"
-                                CssClass="btn btn-warning"
+                                CssClass="btn btn-danger"
                                 Text="Create mission"
                                 OnClick="btnCreateMission_OnClick" />
                         </li>

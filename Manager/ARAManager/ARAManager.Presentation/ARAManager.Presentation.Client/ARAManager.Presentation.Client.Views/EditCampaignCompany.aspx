@@ -34,7 +34,7 @@
                     BorderColor="yellow"
                     Enabled="False"
                     Style="text-align: center"
-                    runat="server">New "CAMPAIGN" information</asp:TextBox>
+                    runat="server">"CAMPAIGN" information</asp:TextBox>
                 <!--#endregion TITLE-->
                 <div class="row">
                     <div class="col-md-6" style="margin-top: 20px; margin-left: 20px">

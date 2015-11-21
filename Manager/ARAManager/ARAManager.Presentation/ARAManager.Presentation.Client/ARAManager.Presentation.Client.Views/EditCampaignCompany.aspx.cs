@@ -80,6 +80,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                     else
                     {
                         m_company = ClientServiceFactory.CompanyService.GetCompanyByUserName(user);
+                        m_campaign= new Campaign();
                     }
                    
                 }
@@ -151,38 +152,22 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             Response.Redirect("CampaignCompany.aspx");
         }
-        private Campaign SaveNewCampaignWithEndTime()
+        private void SaveNewCampaignWithoutEndTime()
         {
-            var campaign = new Campaign
-            {
-                CampaignName = txtCampaignName.Text,
-                StartTime = DateTime.ParseExact(txtStartTime.Text, Dictionary.DATE_FORMAT, null),
-                Description = txtDescription.Text,
-                Banner = UploadImageBanner(),
-                Avatar = UploadImageAvatar(),
-                Gift = txtGift.Text,
-                NumMission = int.Parse(txtMission.Text),
-                Company = m_company
-            };
-            MoveBackRowVersion(campaign);
-            return campaign;
+            m_campaign.CampaignName = txtCampaignName.Text;
+            m_campaign.StartTime = DateTime.ParseExact(txtStartTime.Text, Dictionary.DATE_FORMAT, null);
+            m_campaign.Description = txtDescription.Text;
+            m_campaign.Banner = UploadImageBanner();
+            m_campaign.Avatar = UploadImageAvatar();
+            m_campaign.Gift = txtGift.Text;
+            m_campaign.NumMission = int.Parse(txtMission.Text);
+            m_campaign.Company = m_company;
+            MoveBackRowVersion(m_campaign);
         }
-        private Campaign SaveNewCampaignWithoutEndTime()
+        private void SaveNewCampaignWithEndTime()
         {
-            var campaign = new Campaign
-            {
-                CampaignName = txtCampaignName.Text,
-                StartTime = DateTime.ParseExact(txtStartTime.Text, Dictionary.DATE_FORMAT, null),
-                EndTime = DateTime.ParseExact(txtEndTime.Text, Dictionary.DATE_FORMAT, null),
-                Description = txtDescription.Text,
-                Banner = UploadImageBanner(),
-                Avatar = UploadImageAvatar(),
-                Gift = txtGift.Text,
-                NumMission = int.Parse(txtMission.Text),
-                Company = m_company
-            };
-            MoveBackRowVersion(campaign);
-            return campaign;
+            SaveNewCampaignWithoutEndTime();
+            m_campaign.EndTime = DateTime.ParseExact(txtEndTime.Text, Dictionary.DATE_FORMAT, null);
         }
         private static void MoveBackRowVersion(Campaign campaign)
         {
@@ -224,13 +209,18 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             {
                 return;
             }
-            var campaign = string.IsNullOrEmpty(txtEndTime.Text)
-                ? SaveNewCampaignWithEndTime()
-                : SaveNewCampaignWithoutEndTime();
+            if (string.IsNullOrEmpty(txtEndTime.Text))
+            {
+                SaveNewCampaignWithoutEndTime();
+            }
+            else
+            {
+                SaveNewCampaignWithEndTime();
+            }
             try
             {
-                ClientServiceFactory.CampaignService.SaveNewCampaign(campaign);
-                Response.Redirect("MissionCampaignCompany.aspx?RequestId=" +
+                ClientServiceFactory.CampaignService.SaveNewCampaign(m_campaign);
+                Response.Redirect("MissionCampaignCompany.aspx?Method=New&RequestId=" +
                                   ClientServiceFactory.CampaignService.GetCampaignByName(txtCampaignName.Text).CampaignId);
             }
             catch (FaultException<CampaignNameAlreadyExistException> ex)
@@ -252,7 +242,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         }
         protected void btnCreateMission_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect("MissionCampaignCompany.aspx?Method=New&RequestId=" + m_company.CompanyId);
+            Response.Redirect("MissionCampaignCompany.aspx?Method=New&RequestId=" + m_campaign.CampaignId);
         }
         //-----------------------------------------------------------------------------------------------------
         #endregion IMethods

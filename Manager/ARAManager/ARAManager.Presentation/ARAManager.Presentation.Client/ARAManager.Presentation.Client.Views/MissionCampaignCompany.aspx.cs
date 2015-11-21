@@ -6,6 +6,7 @@
  *      Implement logic for MissionCampaignCompany page.
  * </summary>
  * <Problems>
+ *      1. Does not implement "load avatar to FileUpload control"
  * </Problems>
 */
 // --------------------------------------------------------------------------------------------------------------------
@@ -62,6 +63,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
             if ((Request.QueryString["Method"]) != "Edit")
             {
+                m_mission= new Mission();
                 return;
             }
             m_mission = ClientServiceFactory.MissionService.GetMissionById(int.Parse(Request.QueryString["MissionId"]));
@@ -128,22 +130,16 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             var fileName = txtMissionName.Text + "Avatar" + extension;
             var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + fileName);
             FileUpload_Avatar.SaveAs(filePath);
-            var mission = new Mission()
-            {
-                Name = txtMissionName.Text,
-                Description = txtDescription.Text,
-                NumTarget = int.Parse(txtNumTarget.Text),
-                Avatar = fileName,
-                Campaign = m_camnpaign
-            };
-            mission.RowVersion = s_rowVersion;
+            m_mission.Name = txtMissionName.Text;
+            m_mission.Description = txtDescription.Text;
+            m_mission.NumTarget = int.Parse(txtNumTarget.Text);
+            m_mission.Avatar = fileName;
+            m_mission.Campaign = m_camnpaign;
+            m_mission.RowVersion = s_rowVersion;
             try
             {
-                ClientServiceFactory.MissionService.SaveNewMission(mission);
-                txtMissionName.Text = string.Empty;
-                txtDescription.Text = string.Empty;
-                txtNumTarget.Text = string.Empty;
-                lblCreateMission.Text = "You have " + ++s_numberOfMission + " missions";
+                ClientServiceFactory.MissionService.SaveNewMission(m_mission);
+                Response.Redirect("MissionCampaignCompany.aspx?Method=New&RequestId="+m_camnpaign.CampaignId);
             }
             catch (FaultException<MissionNameAlreadyExistException> ex)
             {
