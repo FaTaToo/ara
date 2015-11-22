@@ -4,5 +4,20 @@
     <string name="app_name">ARA</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+	<string name="hintUsername">Input your user name</string>
+	<string name="hintPassword">Input your password</string>
+	<string name="strLogin">Login</string>
+	<string name="strRegister">Register</string>
+	<string name="AR_for_advertising">AR for advertising</string>
+	<string name="txtUsername">User name: </string>
+	<string name="txtPassword">Password: </string>
+	<string name="hintEmail">Input your email</string>
+	<string name="hintFullname">Input your full name</string>
+	<string name="strCancel">Cancel</string>
+	<string name="txtRepassword">Re-password: </string>
+	<string name="hintRepassword">Input password again</string>
+	<string name="txtEmail">Email: </string>
+	<string name="txtFullname">Full name: </string>
+	<string name="txtYourEmail">Your email: </string>
+	<string name="strReset">Reset password</string>
 </resources>
