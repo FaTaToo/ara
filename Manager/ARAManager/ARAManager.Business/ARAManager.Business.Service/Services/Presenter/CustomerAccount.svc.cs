@@ -18,6 +18,7 @@ namespace ARAManager.Business.Service.Services.Presenter
     {
         public void DoWork()
         {
+
         }
     }
 }

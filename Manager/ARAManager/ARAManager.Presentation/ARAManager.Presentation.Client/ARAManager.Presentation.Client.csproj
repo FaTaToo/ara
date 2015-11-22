@@ -151,6 +151,8 @@
     <Content Include="ARAManager.Presentation.Client.Views\EditCompanyAdmin.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\EditCustomerAdmin.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\HomeAdmin.aspx" />
+    <Content Include="ARAManager.Presentation.Client.Views\StatisticsAdmin.aspx" />
+    <Content Include="ARAManager.Presentation.Client.Views\StatisticsCompany.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\TargetMissionCampaignCompany.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -375,6 +377,20 @@
     </Compile>
     <Compile Include="ARAManager.Presentation.Client.Views\HomeAdmin.aspx.designer.cs">
       <DependentUpon>HomeAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ARAManager.Presentation.Client.Views\StatisticsAdmin.aspx.cs">
+      <DependentUpon>StatisticsAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ARAManager.Presentation.Client.Views\StatisticsAdmin.aspx.designer.cs">
+      <DependentUpon>StatisticsAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ARAManager.Presentation.Client.Views\StatisticsCompany.aspx.cs">
+      <DependentUpon>StatisticsCompany.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ARAManager.Presentation.Client.Views\StatisticsCompany.aspx.designer.cs">
+      <DependentUpon>StatisticsCompany.aspx</DependentUpon>
     </Compile>
     <Compile Include="ARAManager.Presentation.Client.Views\TargetMissionCampaignCompany.aspx.cs">
       <DependentUpon>TargetMissionCampaignCompany.aspx</DependentUpon>
