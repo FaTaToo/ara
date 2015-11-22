@@ -194,7 +194,7 @@
                         <li role="presentation" style="margin-left: 20px">
                             <asp:Button ID="btnCreateMission" runat="server"
                                 CssClass="btn btn-danger"
-                                Text="Create mission"
+                                Text="Create / Save mission"
                                 OnClick="btnCreateMission_OnClick" />
                         </li>
                         <li role="presentation" style="margin-left: 20px">

@@ -11,6 +11,7 @@
  </summary>
  <Problems>
     1. Does not check whether uploaded target has any file.
+    2. Does not validate movie information (remember to check maximum 4 files in pictures gallery)
  </Problems>
 -->
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
@@ -46,7 +47,7 @@
                             placeholder="Description of movie" />
                     </li>
                     <li role="presentation" style="margin-top: 20px;">
-                        <asp:Label ID="lblPictureGallery" runat="server" Text="Picture gallery"
+                        <asp:Label ID="lblPicturesGallery" runat="server" Text="Picture gallery"
                             Width="60%"
                             BackColor="darkred"
                             Font-Bold="True"
@@ -56,7 +57,7 @@
                             Style="text-align: center" />
                     </li>
                     <li role="presentation" style="margin-top: 20px;">
-                        <asp:FileUpload runat="server" ID="UploadPictures" AllowMultiple="true" />
+                        <asp:FileUpload runat="server" ID="FileUpload_PicturesGallery" AllowMultiple="true" />
                     </li>
                     <!--Ended by PhucLS - 20151120 -->
                 </ul>
@@ -206,11 +207,8 @@
                     <!--#region BUTTON-->
                     <ul class="nav nav-pills pull-left">
                         <li role="presentation" style="margin-left: 20px">
-                            <asp:Label ID="lblCreateTarget" runat="server" />
-                        </li>
-                        <li role="presentation" style="margin-left: 20px">
                             <asp:Button ID="btnCreateTarget" runat="server"
-                                CssClass="btn btn-warning"
+                                CssClass="btn btn-danger"
                                 Text="Upload target NOW"
                                 OnClick="btnCreateTarget_OnClick" />
                         </li>
@@ -219,12 +217,6 @@
                                 CssClass="btn btn-warning"
                                 Text="Cancel"
                                 OnClick="btnCancel_OnClick" />
-                        </li>
-                        <li role="presentation" style="margin-left: 20px">
-                            <asp:Button ID="btnBack" runat="server"
-                                CssClass="btn btn-warning"
-                                Text="Back to mission"
-                                OnClick="btnBack_OnClick" />
                         </li>
                     </ul>
                     <!--#endregion BUTTON-->

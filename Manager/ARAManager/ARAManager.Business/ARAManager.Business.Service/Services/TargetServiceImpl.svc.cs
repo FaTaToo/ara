@@ -11,15 +11,19 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.IO;
 using System.ServiceModel;
+using System.Web.Hosting;
 using ARAManager.Business.Dao.DataAccess.Interfaces;
 using ARAManager.Business.Dao.NHibernate.Transaction;
 using ARAManager.Common;
+using ARAManager.Common.ArResources;
 using ARAManager.Common.Dto;
 using ARAManager.Common.Exception.Generic;
 using ARAManager.Common.Exception.Target;
 using ARAManager.Common.Factory;
 using ARAManager.Common.Services;
+using Newtonsoft.Json;
 using NHibernate;
 using Ninject;
 
@@ -27,19 +31,24 @@ namespace ARAManager.Business.Service.Services {
     public class TargetServiceImpl : ITargetServiceImpl
     {
         #region IMethods
-        public void SaveNewTarget(Target target)
+        public void SaveNewTarget(Target target, RootObject jsonArResources)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ITargetDataAccess>();
-            using (NhTransactionScope tr = TransactionsFactory.CreateTransactionScope())
+            using (var tr = TransactionsFactory.CreateTransactionScope())
             {
                 try
                 {
                     srvDao.Save(target);
+                    var arResourcesJson = JsonConvert.SerializeObject(jsonArResources);
+                    var jsonPath = Dictionary.PATH_AR_JSON + target.TargetName + ".json";
+                    File.Create(HostingEnvironment.MapPath(jsonPath)).Dispose();
+                    // ReSharper disable once AssignNullToNotNullAttribute
+                    File.WriteAllText(HostingEnvironment.MapPath(jsonPath), arResourcesJson);
                 }
                 catch (ADOException)
                 {
                     throw new FaultException<TargetNameAlreadyExistException>(
-                        new TargetNameAlreadyExistException { MessageError = Dictionary.CAMPAIGN_NAME_CONSTRAINT_EXCEPTION_MSG },
+                        new TargetNameAlreadyExistException { MessageError = Dictionary.TARGET_NAME_CONSTRAINT_EXCEPTION_MSG},
                         new FaultReason(Dictionary.UNIQUE_CONSTRAINT_EXCEPTION_REASON));
                 }
                 catch (StaleObjectStateException)

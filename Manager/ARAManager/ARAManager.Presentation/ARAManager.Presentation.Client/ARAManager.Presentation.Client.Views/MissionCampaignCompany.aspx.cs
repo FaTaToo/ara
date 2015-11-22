@@ -66,6 +66,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 m_mission= new Mission();
                 return;
             }
+            txtMissionName.Enabled = false;
             m_mission = ClientServiceFactory.MissionService.GetMissionById(int.Parse(Request.QueryString["MissionId"]));
             txtMissionName.Text = m_mission.Name;
             txtDescription.Text = m_mission.Description;

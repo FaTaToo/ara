@@ -67,22 +67,22 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
         
         /// <summary>
-        /// lblPictureGallery control.
+        /// lblPicturesGallery control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPictureGallery;
+        protected global::System.Web.UI.WebControls.Label lblPicturesGallery;
         
         /// <summary>
-        /// UploadPictures control.
+        /// FileUpload_PicturesGallery control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload UploadPictures;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload_PicturesGallery;
         
         /// <summary>
         /// Panel_Result control.
@@ -211,15 +211,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         protected global::System.Web.UI.WebControls.Label lblMessage;
         
         /// <summary>
-        /// lblCreateTarget control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCreateTarget;
-        
-        /// <summary>
         /// btnCreateTarget control.
         /// </summary>
         /// <remarks>
@@ -236,14 +227,5 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancel;
-        
-        /// <summary>
-        /// btnBack control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBack;
     }
 }

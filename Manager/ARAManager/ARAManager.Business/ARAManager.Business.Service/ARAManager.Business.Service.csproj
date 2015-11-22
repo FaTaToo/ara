@@ -168,9 +168,7 @@
       <DependentUpon>TargetServiceImpl.svc</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ArResources\ARSM-PicturesGallery\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\ARAManager.Common\ARAManager.Common.csproj">
       <Project>{D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2}</Project>

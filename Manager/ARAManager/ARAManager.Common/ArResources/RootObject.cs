@@ -14,8 +14,6 @@ namespace ARAManager.Common.ArResources
 {
     public class RootObject
     {
-        #region IProperties
         public ArResources ArResources { get; set; }
-        #endregion IProperties
     }
 }

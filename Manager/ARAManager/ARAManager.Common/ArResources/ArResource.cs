@@ -17,6 +17,8 @@ namespace ARAManager.Common.ArResources
         #region IProperties
         public string ArType { get; set; }
         public CommonAttributes CommonAttributes { get; set; }
+        public string SpecialAttributes { get; set; }
+        public string Tags { get; set; }
         public Platforms Platforms { get; set; }
         #endregion IProperties
     }

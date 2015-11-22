@@ -11,17 +11,20 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.ServiceModel;
 using System.Web.UI.WebControls;
 using ARAManager.Common;
+using ARAManager.Common.ArResources;
 using ARAManager.Common.Dto;
 using ARAManager.Common.Exception.Mission;
 using ARAManager.Common.Exception.Target;
 using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
 using ARAManager.Presentation.Connectivity;
 using Subgurim.Controles;
+using Attribute = ARAManager.Common.ArResources.Attribute;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 {
@@ -39,22 +42,11 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
         #endregion IFields
 
-        #region SFields
-
-        private static int s_numberOfTarget;
-
-        #endregion SFields
-
         #region IMethods
         protected void Page_Load(object sender, EventArgs e)
         {
             m_mission = ClientServiceFactory.MissionService.GetMissionById(int.Parse(Request.QueryString["RequestId"]));
-            if (!IsPostBack)
-            {
-                s_numberOfTarget = m_mission.NumTarget;
-            }
             EnableValidator(false);
-            lblCreateTarget.Text = "You have " + s_numberOfTarget + " target(s)";
             InitializeDataForGMap();
         }
         protected void CustomValidator_TargetName_OnServerValidate(object source, ServerValidateEventArgs args)
@@ -129,63 +121,209 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             {
                 return;
             }
-            // Modifed by PhucLS - 20151121 - Save target id to txt file
-            // Save image target to server
-            var extension = Path.GetExtension(FileUpload_Target.FileName);
-            var fileName = txtTargetName.Text + extension;
-            var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_TARGET + fileName);
-            FileUpload_Target.SaveAs(filePath);
-
-            // Call VWS
-            var callPostNewTarget = new WebClient();
-            var result = callPostNewTarget.DownloadString(new Uri(
-                "http://localhost:1234/ara-vws/vws/SampleSelector.php?select=PostNewTarget&targetName="+txtTargetName.Text+
-                "&imageLocation=" + fileName));
-
-            // Filter target id
-            var targetId=string.Empty;
-            var resultCodeIndex = result.IndexOf(@"""TargetCreated""", StringComparison.Ordinal);
-            if (resultCodeIndex > 0)
-            {
-                var resultTargetId = result.IndexOf(@"""target_id""", StringComparison.Ordinal);
-                var startIndex = result.IndexOf("\"", resultTargetId+12, StringComparison.Ordinal) + 1;
-                var endIndex = result.IndexOf("\"", startIndex, StringComparison.Ordinal)- 1;
-                targetId = result.Substring(startIndex, endIndex - startIndex + 1);
-            }
-            if (!File.Exists(Dictionary.PATH_LIST_TARGET))
-            {
-                using (StreamWriter sw = File.CreateText(Dictionary.PATH_LIST_TARGET))
-                {
-                    sw.WriteLine(targetId);
-                }
-            }
-            else
-            {
-                using (StreamWriter sw = new StreamWriter(Dictionary.PATH_LIST_TARGET))
-                {
-                    sw.WriteLine(targetId);
-                }
-            }
-            // Ended by PhucLS - 20151121
-
-            // Save target to database
-            var target = new Target()
-            {
-                TargetName = txtTargetName.Text,
-                Url = targetId,
-                Latitude = m_latitude,
-                Longitude = m_longtitude,
-                FacebookUrl = txtFacebookUrl.Text,
-                YoutubeUrl = txtYoutubeUrl.Text,
-                Mission = m_mission
-            };
             try
             {
-                ClientServiceFactory.TargetService.SaveNewTarget(target);
+                // Modifed by PhucLS - 20151121 - Save target id to txt file
+                // Save image target to server - just help debugging, it does not affect system.
+                var extension = Path.GetExtension(FileUpload_Target.FileName);
+                var fileName = txtTargetName.Text + extension;
+                var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_TARGET + fileName);
+                FileUpload_Target.SaveAs(filePath);
+
+                // Call VWS
+                var callPostNewTarget = new WebClient();
+                var result = callPostNewTarget.DownloadString(new Uri(
+                    "http://localhost:1234/ara-vws/vws/SampleSelector.php?select=PostNewTarget&targetName=" + txtTargetName.Text +
+                    "&imageLocation=" + fileName));
+
+                // Filter target id
+                var targetId = string.Empty;
+                var resultCodeIndex = result.IndexOf(@"""TargetCreated""", StringComparison.Ordinal);
+                if (resultCodeIndex > 0)
+                {
+                    var resultTargetId = result.IndexOf(@"""target_id""", StringComparison.Ordinal);
+                    var startIndex = result.IndexOf("\"", resultTargetId + 12, StringComparison.Ordinal) + 1;
+                    var endIndex = result.IndexOf("\"", startIndex, StringComparison.Ordinal) - 1;
+                    targetId = result.Substring(startIndex, endIndex - startIndex + 1);
+                }
+
+                // Save target id to ListTarget.txt
+                if (!File.Exists(Server.MapPath(Dictionary.PATH_LIST_TARGET)))
+                {
+                    using (var sw = File.CreateText(Server.MapPath(Dictionary.PATH_LIST_TARGET)))
+                    {
+                        sw.WriteLine(targetId);
+                    }
+                }
+                else
+                {
+                    using (var sw = new StreamWriter(Server.MapPath(Dictionary.PATH_LIST_TARGET), true))
+                    {
+                        sw.WriteLine(targetId);
+                    }
+                }
+                // Ended by PhucLS - 20151121
+
+                // Save target to database
+                var target = new Target()
+                {
+                    TargetName = txtTargetName.Text,
+                    Url = targetId,
+                    Latitude = m_latitude,
+                    Longitude = m_longtitude,
+                    FacebookUrl = txtFacebookUrl.Text,
+                    YoutubeUrl = txtYoutubeUrl.Text,
+                    Mission = m_mission
+                };
+                // Added by PhucLS - 20151122 - Create AR Resources
+                // Notes: Will be migrated into helper file
+
+                // Create ArResources
+                var arResources = new ArResources();
+
+                // Create ARSM-PicturesGallery
+                var commonAttributes = new CommonAttributes();
+                var platforms = new Platforms();
+                var platform = new Platform();
+                var processors = new Processors();
+
+                var uploadedPicturesGallery = FileUpload_PicturesGallery.PostedFiles;
+
+                if (FileUpload_PicturesGallery.HasFiles)
+                {
+                    // Create Attribute in CommonAttributes
+                    foreach (var uploadedPicture in uploadedPicturesGallery)
+                    {
+                        fileName = "Ar" + uploadedPicture.FileName;
+                        filePath = Server.MapPath(Dictionary.PATH_UPLOADED_TARGET + fileName);
+                        FileUpload_Target.SaveAs(filePath);
+
+                        var attribute = new Attribute()
+                        {
+                            Key = Dictionary.AR_KEY_URL,
+                            Value = filePath
+                        };
+                        commonAttributes.Attribute = new List<Attribute> {attribute};
+                    }
+                    // Create Platform with Processor in Platforms
+                    platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
+                    processors.Processor = new Processor() { ProcessorType = Dictionary.AR_PROCESSOR_TYPE_IMAGE_SWITCHER };
+                    platforms.Platform = platform;
+                    // Add ArResource to ArResources
+                    arResources.ArResource = new List<ArResource>
+                    {
+                        new ArResource()
+                        {
+                            CommonAttributes = commonAttributes,
+                            ArType = Dictionary.ARSM_PICTURES_GALLERY,
+                            Platforms = platforms
+                        }
+                    };
+                }
+                
+                // Create ARSM-Youtube
+                commonAttributes = new CommonAttributes();
+                platforms = new Platforms();
+                platform = new Platform();
+                processors = new Processors();
+                // Create Attribute in CommonAttributes
+                commonAttributes.Attribute = new List<Attribute>
+                {
+                    new Attribute()
+                    {
+                        Key = Dictionary.AR_KEY_URL,
+                        Value = txtYoutubeUrl.Text
+                    }
+                };
+                // Create Platform with Processor in Platforms
+                platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
+                processors.Processor = new Processor() { ProcessorType = Dictionary.AR_PROCESSOR_TYPE_YOUTUBE };
+                platforms.Platform = platform;
+                // Add ArResource to ArResources
+                arResources.ArResource.Add(new ArResource()
+                {
+                    CommonAttributes = commonAttributes,
+                    ArType = Dictionary.ARSM_YOUTUBE,
+                    Platforms = platforms
+                });
+
+                // Create ARSM-Facebook
+                commonAttributes = new CommonAttributes();
+                platforms = new Platforms();
+                platform = new Platform();
+                processors = new Processors();
+                // Create Attribute in CommonAttributes
+                commonAttributes.Attribute = new List<Attribute>
+                {
+                    new Attribute()
+                    {
+                        Key = Dictionary.AR_KEY_URL,
+                        Value = txtFacebookUrl.Text
+                    }
+                };
+                // Create Platform with Processor in Platforms
+                platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
+                processors.Processor = new Processor() { ProcessorType = Dictionary.AR_PROCESSOR_TYPE_FACEBOOK };
+                platforms.Platform = platform;
+                // Add ArResource to ArResources
+                arResources.ArResource.Add(new ArResource()
+                    {
+                        CommonAttributes = commonAttributes,
+                        ArType = Dictionary.ARSM_FACEBOOK,
+                        Platforms = platforms
+                    });
+
+                // Create ARSM-Text
+                commonAttributes = new CommonAttributes();
+                platforms = new Platforms();
+                platform = new Platform();
+                processors = new Processors();
+                // Create Attribute in CommonAttributes
+                commonAttributes.Attribute = new List<Attribute>
+                {
+                    new Attribute()
+                    {
+                        Key = Dictionary.AR_KEY_NAME,
+                        Value = txtArName.Text
+                    },
+                    new Attribute()
+                    {
+                        Key = Dictionary.AR_KEY_DIRECTOR,
+                        Value = txtDirector.Text
+                    },
+                    new Attribute()
+                    {
+                        Key = Dictionary.AR_KEY_ACTOR,
+                        Value = txtActor.Text
+                    },
+                    new Attribute()
+                    {
+                        Key = Dictionary.AR_KEY_DESCRIPTION,
+                        Value = txtDescription.Text
+                    }
+                };
+                // Create Platform with Processor in Platforms
+                platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
+                processors.Processor = new Processor() { ProcessorType = Dictionary.AR_PROCESSOR_TYPE_TEXTVIEW };
+                platforms.Platform = platform;
+                // Add ArResource to ArResources
+                arResources.ArResource.Add(new ArResource()
+                {
+                    CommonAttributes = commonAttributes,
+                    ArType = Dictionary.ARSM_TEXT,
+                    Platforms = platforms
+                });
+                var rootObject = new RootObject {ArResources = arResources};
+                ClientServiceFactory.TargetService.SaveNewTarget(target, rootObject);
+                // Ended by PhucLS - 20151122
+                
                 txtTargetName.Text = string.Empty;
                 txtFacebookUrl.Text = string.Empty;
                 txtYoutubeUrl.Text = string.Empty;
-                lblCreateTarget.Text = "You have " + ++s_numberOfTarget + " target(s)";
+                txtArName.Text = string.Empty;
+                txtDirector.Text = string.Empty;
+                txtActor.Text = string.Empty;
+                txtDescription.Text = string.Empty;
             }
             catch (FaultException<TargetNameAlreadyExistException> ex)
             {
@@ -195,19 +333,13 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             {
                 lblMessage.Text = ex.Detail.MessageError;
             }
+
+
         }
         protected void btnCancel_OnClick(object sender, EventArgs e)
         {
             Response.Redirect("CampaignCompany.aspx");
         }
-        // Added by PhucLS - 20151121 - Will be changed later
-        protected void btnBack_OnClick(object sender, EventArgs e)
-        {
-            Response.Redirect("CampaignCompany.aspx");
-        }
-        // Ended by PhucLS - 20151121
         #endregion IMethods
-
-      
     }
 }

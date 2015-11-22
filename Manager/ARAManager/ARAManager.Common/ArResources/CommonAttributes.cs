@@ -10,12 +10,15 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace ARAManager.Common.ArResources
 {
     public class CommonAttributes
     {
         #region IProperties
-        public object Attribute { get; set; }
+        public List<Attribute> Attribute { get; set; }
+
         #endregion IProperties
     }
 }
