@@ -103,7 +103,6 @@
     <Compile Include="Exception\Mission\MissionNameAlreadyExistException.cs" />
     <Compile Include="Exception\Mission\PreMissionAlreadyExistException.cs" />
     <Compile Include="Exception\Subscription\SubscriptionAlreadyDeletedException.cs" />
-    <Compile Include="Exception\Subscription\SubscriptionAlreadyExistException.cs" />
     <Compile Include="Exception\Target\PreTargetAlreadyExistException.cs" />
     <Compile Include="Exception\Target\TargetAlreadyDeletedException.cs" />
     <Compile Include="Exception\Target\TargetNameAlreadyExistException.cs" />
@@ -121,7 +120,7 @@
     <Compile Include="Services\ITargetServiceImpl.cs" />
     <Compile Include="Services\Presenter\ICampaign.cs" />
     <Compile Include="Services\Presenter\ICustomerAccount.cs" />
-    <Compile Include="Services\Presenter\ISubscription.cs" />
+    <Compile Include="Services\Presenter\ICustomerSubscription.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -128,16 +128,16 @@ namespace ARAManager.Business.Service.Services {
         {
             foreach (var campaign in campaigns)
             {
-                //try
-                //{
+                try
+                {
                     DeleteCampaign(campaign);
-                //}
-                //catch (Exception)
-                //{
-                //    throw new FaultException<CampaignAlreadyDeletedException>(
-                //       new CampaignAlreadyDeletedException { MessageError = Dictionary.CAMPAIGN_DELETED_EXCEPTION_MSG },
-                //       new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
-                //}
+                }
+                catch (Exception)
+                {
+                    throw new FaultException<CampaignAlreadyDeletedException>(
+                       new CampaignAlreadyDeletedException { MessageError = Dictionary.CAMPAIGN_DELETED_EXCEPTION_MSG },
+                       new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
+                }
             }
         }
         /// <summary>

@@ -1,9 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿// --------------------------------------------------------------------------------------------------------------------
+/* <header file="StatisticsCompany.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement logic for StatisticsCompany page.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
+// --------------------------------------------------------------------------------------------------------------------
+
+using System;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 {
