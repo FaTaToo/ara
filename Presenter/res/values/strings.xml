@@ -20,4 +20,6 @@
 	<string name="txtFullname">Full name: </string>
 	<string name="txtYourEmail">Your email: </string>
 	<string name="strReset">Reset password</string>
+	<string name="title_activity_register">Activity Register</string>
+	<string name="title_activity_reset_password">Reset password</string>
 </resources>
