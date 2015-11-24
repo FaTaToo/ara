@@ -23,5 +23,13 @@
     <string name="title_activity_register">Activity Register</string>
     <string name="title_activity_reset_password">Reset password</string>
     <string name="title_activity_program">ProgramActivity</string>
-
+    <string name="title_activity_mission">MissionActivity</string>
+	<string name="txtNamePrograme">Name Programe: </string>
+	<string name="txtStartDay">Start day: </string>
+	<string name="txtEndDay">End day: </string>
+	<string name="txtCompanyName">Company Name: </string>
+	<string name="txtDescribe">Describe: </string>
+	<string name="txtParticipate">Participate in: </string>
+	<string name="btnScan">Scan</string>
 </resources>
+
