@@ -46,6 +46,10 @@
             android:name=".MissionActivity"
             android:label="@string/title_activity_mission" >
         </activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:label="@string/title_activity_profile" >
+        </activity>
     </application>
 
 </manifest>
