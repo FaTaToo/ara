@@ -22,20 +22,18 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     //This method return the fragment for the every position in the View Pager
     @Override
     public Fragment getItem(int position) {
- 
-        if(position == 0) // if the position is 0 we are returning the First tab
-        {
-            ProgramTabAll tabAll = new ProgramTabAll();
+    	switch (position) {
+		case 0:
+			ProgramTabAll tabAll = new ProgramTabAll();
             return tabAll;
-        }
-        else             // As we are having 2 tabs if the position is now 0 it must be 1 so we are returning second tab
-        {
-            ProgramTabChecked tabChecked = new ProgramTabChecked();
+		case 1: 
+			ProgramTabChecked tabChecked = new ProgramTabChecked();
             return tabChecked;
-        }
- 
- 
-    }
+		default: 
+			ProgramTabUnchecked tabUnchecked = new ProgramTabUnchecked();
+            return tabUnchecked;
+		}
+	}
  
     // This method return the titles for the Tabs in the Tab Strip
  
