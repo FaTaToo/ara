@@ -16,7 +16,7 @@ import uit.aep06.phuctung.ara.CommonClass.CustomerAccount;
 import android.hardware.camera2.*;
 
 public class LoginActivity extends Activity implements OnClickListener {
-	Button btnLogin;
+	Button btnLogin, btnRegister ;
 	EditText etUserName, etPassword;
 	TextView tvError;
 	@Override
@@ -28,6 +28,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 		tvError = (TextView)findViewById(R.id.tvError);  
 		btnLogin = (Button)findViewById(R.id.btnLogin);
 		btnLogin.setOnClickListener(this);
+		btnRegister = (Button)findViewById(R.id.btnRegister);
+        btnRegister.setOnClickListener(this);			
 	}
 	@Override
 	public void onClick(View v) {
@@ -59,6 +61,11 @@ public class LoginActivity extends Activity implements OnClickListener {
 			}
 			
 		}
+		else if (v.getId() == R.id.btnRegister) {
+			Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);				
+			startActivity(intent);
+		}
+		
 	}
 	private void invalidLogin() {
 		etPassword.setText("");
