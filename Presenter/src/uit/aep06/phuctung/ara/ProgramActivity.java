@@ -1,5 +1,8 @@
 package uit.aep06.phuctung.ara;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -12,6 +15,7 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import uit.aep06.phuctung.ara.CommonClass.Program;
 import uit.aep06.phuctung.ara.Library.SlidingTabLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -23,6 +27,8 @@ public class ProgramActivity extends FragmentActivity {
     ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
     CharSequence Titles[]={"All","Checked", "Unchecked"};
+	List<Program> listProgram = new ArrayList<Program>();
+	
     int Numboftabs = 3;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +36,7 @@ public class ProgramActivity extends FragmentActivity {
 		setContentView(R.layout.activity_program);
 		
 		// Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
-        adapter =  new ViewPagerAdapter(getSupportFragmentManager(),Titles,Numboftabs);
+        adapter =  new ViewPagerAdapter(getSupportFragmentManager(),Titles,Numboftabs, listProgram);
 		
         // Assigning ViewPager View and setting the adapter
         pager = (ViewPager) findViewById(R.id.pager);
