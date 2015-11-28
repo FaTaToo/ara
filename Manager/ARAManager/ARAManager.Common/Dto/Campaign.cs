@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="Campaign.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the Campaign.
-// </summary>
+/* <header file="Campaign.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the Campaign.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
