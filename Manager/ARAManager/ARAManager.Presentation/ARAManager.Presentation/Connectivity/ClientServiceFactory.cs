@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="ClientServiceFactory.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the ClientServiceFactory.
-// </summary>
+/* <header file="ClientServiceFactory.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the ClientServiceFactory.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
@@ -21,7 +21,7 @@ using ARAManager.Common.Services;
 namespace ARAManager.Presentation.Connectivity
 {
     /// <summary> 
-    /// Class summary. 
+    /// Call services from web application
     /// </summary>
     public class ClientServiceFactory
     {
@@ -108,7 +108,9 @@ namespace ARAManager.Presentation.Connectivity
         #endregion IConstructors
 
         #region IProperties
-
+        /// <summary>
+        /// Campaign services
+        /// </summary>
         public static ICampaignServiceImpl CampaignService
         {
             get
@@ -116,7 +118,9 @@ namespace ARAManager.Presentation.Connectivity
                 return Get<ICampaignServiceImpl>(CAMPAIGN_SERVICE_NAME);
             }
         }
-
+        /// <summary>
+        /// Company services
+        /// </summary>
         public static ICompanyServiceImpl CompanyService
         {
             get
@@ -124,7 +128,9 @@ namespace ARAManager.Presentation.Connectivity
                 return Get<ICompanyServiceImpl>(COMPANY_SERVICE_NAME);
             }
         }
-
+        /// <summary>
+        /// Customer services
+        /// </summary>
         public static ICustomerServiceImpl CustomerService
         {
             get
@@ -132,6 +138,9 @@ namespace ARAManager.Presentation.Connectivity
                 return Get<ICustomerServiceImpl>(CUSTOMER_SERVICE_NAME);
             }
         }
+        /// <summary>
+        /// Mission services
+        /// </summary>
         public static IMissionServiceImpl MissionService
         {
             get
@@ -139,7 +148,9 @@ namespace ARAManager.Presentation.Connectivity
                 return Get<IMissionServiceImpl>(MISSION_SERVICE_NAME);
             }
         }
-
+        /// <summary>
+        /// Subscription services
+        /// </summary>
         public static ISubscriptionServiceImpl SubscriptionService
         {
             get
@@ -147,7 +158,9 @@ namespace ARAManager.Presentation.Connectivity
                 return Get<ISubscriptionServiceImpl>(SUBSCRIPTION_SERVICE_NAME);
             }
         }
-
+        /// <summary>
+        /// Target services
+        /// </summary>
         public static ITargetServiceImpl TargetService
         {
             get

@@ -142,6 +142,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ARAManager.Presentation.Client.Resources\Images\CampaignTypes\checkIn.jpg" />
+    <Content Include="ARAManager.Presentation.Client.Resources\Images\CampaignTypes\theater.jpg" />
+    <Content Include="ARAManager.Presentation.Client.Resources\Images\CampaignTypes\tour.jpg" />
     <Content Include="ARAManager.Presentation.Client.Views\CampaignCompany.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\CompanyAdmin.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\CustomerAdmin.aspx" />
@@ -151,6 +154,7 @@
     <Content Include="ARAManager.Presentation.Client.Views\EditCompanyAdmin.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\EditCustomerAdmin.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\HomeAdmin.aspx" />
+    <Content Include="ARAManager.Presentation.Client.Views\NewCampaignCompany.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\StatisticsAdmin.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\StatisticsCompany.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\TargetMissionCampaignCompany.aspx" />
@@ -377,6 +381,13 @@
     </Compile>
     <Compile Include="ARAManager.Presentation.Client.Views\HomeAdmin.aspx.designer.cs">
       <DependentUpon>HomeAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ARAManager.Presentation.Client.Views\NewCampaignCompany.aspx.cs">
+      <DependentUpon>NewCampaignCompany.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ARAManager.Presentation.Client.Views\NewCampaignCompany.aspx.designer.cs">
+      <DependentUpon>NewCampaignCompany.aspx</DependentUpon>
     </Compile>
     <Compile Include="ARAManager.Presentation.Client.Views\StatisticsAdmin.aspx.cs">
       <DependentUpon>StatisticsAdmin.aspx</DependentUpon>

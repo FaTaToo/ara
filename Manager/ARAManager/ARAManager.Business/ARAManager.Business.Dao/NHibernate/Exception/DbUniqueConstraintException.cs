@@ -1,13 +1,13 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <header file="DbUniqueConstraintException.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the Unique constraint exception.
-// </summary>
+/* <header file="DbUniqueConstraintException.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the Unique constraint exception.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;

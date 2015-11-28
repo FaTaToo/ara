@@ -10,11 +10,9 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using NHibernate.Mapping.Attributes;
-using NHibernate.Type;
 
 namespace ARAManager.Common.Dto {
     [DataContract]

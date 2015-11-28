@@ -1,10 +1,25 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------------------------------------------------
+/* <header file="Global.asax.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement logic for Global page.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
+// --------------------------------------------------------------------------------------------------------------------
+
+using System;
 using System.Web;
 using System.Web.Optimization;
 using System.Web.Routing;
 
 namespace ARAManager.Presentation.Client
 {
+    /// <summary>
+    /// Handle application life cycle
+    /// </summary>
     public class Global : HttpApplication
     {
         void Application_Start(object sender, EventArgs e)

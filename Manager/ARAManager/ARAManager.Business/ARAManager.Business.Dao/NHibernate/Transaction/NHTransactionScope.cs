@@ -1,13 +1,13 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <header file="NhTransactionScope.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the NhTransactionScope.
-// </summary>
+/* <header file="NhTransactionScope.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the NhTransactionScope.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;

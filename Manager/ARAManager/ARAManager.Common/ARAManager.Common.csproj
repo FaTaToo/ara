@@ -83,6 +83,7 @@
     <Compile Include="ArResources\Processors.cs" />
     <Compile Include="ArResources\RootObject.cs" />
     <Compile Include="Dto\Campaign.cs" />
+    <Compile Include="Dto\CampaignType.cs" />
     <Compile Include="Dto\Company.cs" />
     <Compile Include="Dto\Customer.cs" />
     <Compile Include="Dto\Mission.cs" />
@@ -118,8 +119,8 @@
     <Compile Include="Services\IMissionServiceImpl.cs" />
     <Compile Include="Services\ISubscriptionServiceImpl.cs" />
     <Compile Include="Services\ITargetServiceImpl.cs" />
-    <Compile Include="Services\Presenter\ICampaign.cs" />
     <Compile Include="Services\Presenter\ICustomerAccount.cs" />
+    <Compile Include="Services\Presenter\ICustomerCampaign.cs" />
     <Compile Include="Services\Presenter\ICustomerSubscription.cs" />
   </ItemGroup>
   <ItemGroup />
