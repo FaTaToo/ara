@@ -188,7 +188,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_CAMPAIGNS_BANNER + fileName);
             FileUpload_Banner.SaveAs(filePath);
             return fileName;
-            // Ended by PhucLS
+            // Ended by PhucLS - 20151115
         }
         private string UploadImageAvatar()
         {

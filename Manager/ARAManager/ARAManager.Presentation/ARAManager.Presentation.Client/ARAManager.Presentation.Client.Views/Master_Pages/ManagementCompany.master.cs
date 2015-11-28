@@ -25,13 +25,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Ma
 
         protected void btnCampaign_OnClick(object sender, EventArgs e)
         {
-            /* Modified by PhucLS - 20151128 - Release20151128
-             * Notes: _ Navigate to NewCampaignCompany.aspx instead of EditCampaignCompany.aspx
-             *          (divide into 3 campaign types)
-             */
-            // Response.Redirect(@"~\ARAManager.Presentation.Client.Views\EditCampaignCompany.aspx?Method=New");
-            Response.Redirect(@"~\ARAManager.Presentation.Client.Views\NewCampaignCompany.aspx");
-            // Ended by PhucLS
+            Response.Redirect(@"~\ARAManager.Presentation.Client.Views\EditCampaignCompany.aspx?Method=New");
         }
         #endregion IMethods
     }

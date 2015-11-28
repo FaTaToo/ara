@@ -15,34 +15,34 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <div class="container">
-        <div class="row">
-            <div class="col-md-2 center-block">
+        <div class="row" style="margin-top: 20px">
+            <div class="col-md-2">
                 <img src="../ARAManager.Presentation.Client.Resources/Images/CampaignTypes/checkIn.jpg" alt="Image is lost." />
             </div>
-            <div class="col-md-2 center-block">
+            <div class="col-md-2" style="margin-left: 20px">
                 <img src="../ARAManager.Presentation.Client.Resources/Images/CampaignTypes/tour.jpg" alt="Image is lost." />
             </div>
-            <div class="col-md-2 center-block">
+            <div class="col-md-2" style="margin-left: 20px">
                 <img src="../ARAManager.Presentation.Client.Resources/Images/CampaignTypes/theater.jpg" alt="Image is lost." />
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2 center-block">
+            <div class="col-md-2" style="margin-left: 100px">
                 <asp:RadioButton ID="rbCheckIn" runat="server" GroupName="CampaignTypes"/>
             </div>
-            <div class="col-md-2 center-block">
+            <div class="col-md-2" style="margin-left: 20px">
                 <asp:RadioButton ID="rbTour" runat="server" GroupName="CampaignTypes"/>
             </div>
-            <div class="col-md-2 center-block">
+            <div class="col-md-2" style="margin-left: 20px">
                 <asp:RadioButton ID="rbTheater" runat="server" GroupName="CampaignTypes"
                     Checked="True"/>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6 center-block">
+        <div class="row" style="margin-bottom: 20px">
+            <div class="col-md-6" style="margin-left: 220px">
                 <asp:Button ID="btnCreate" runat="server" 
                     class="btn btn-danger"
-                    Text="Create"
+                    Text="Create NEW CAMPAIGN"
                     OnClick="btnCreate_OnClick" />
             </div>
         </div>

@@ -22,7 +22,7 @@ namespace ARAManager.Common.Dto
         [DataMember]
         [Id(0, Column = "CampaignTypeId", Name = "CampaignTypeId", TypeType = typeof(int))]
         [Generator(1, Class = "identity")]
-        public virtual int CampaignTypesId { get; set; }
+        public virtual int CampaignTypeId { get; set; }
 
         [DataMember]
         [Property(Column = "CampaignTypeName", Name = "CampaignTypeName", TypeType = typeof(string), Length = 100, NotNull = true)]
