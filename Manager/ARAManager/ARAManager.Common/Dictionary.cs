@@ -119,6 +119,11 @@ namespace ARAManager.Common
         public const string AR_PROCESSOR_TYPE_YOUTUBE = "Youtube";
         public const string AR_PROCESSOR_TYPE_TEXTVIEW = "TextView";
 
+        // Campaign types
+        public const string CAMPAIGN_TYPE_CHECK_IN_URL = "checkin";
+        public const string CAMPAIGN_TYPE_TOUR_URL = "tour";
+        public const string CAMPAIGN_TYPE_THEATER_URL = "theater";
+
         //------------------------------------------------------------------------------------
 
         #endregion IConstants

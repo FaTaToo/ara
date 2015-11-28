@@ -119,8 +119,8 @@
     <Content Include="Services\CompanyServiceImpl.svc" />
     <Content Include="Services\CustomerServiceImpl.svc" />
     <Content Include="Services\MissionServiceImpl.svc" />
-    <Content Include="Services\Presenter\Campaign.svc" />
     <Content Include="Services\Presenter\CustomerAccount.svc" />
+    <Content Include="Services\Presenter\CustomerCampaign.svc" />
     <Content Include="Services\Presenter\CustomerSubscription.svc" />
     <Content Include="Services\SubscriptionServiceImpl.svc" />
     <Content Include="Services\TargetServiceImpl.svc" />
@@ -152,11 +152,11 @@
     <Compile Include="Services\MissionServiceImpl.svc.cs">
       <DependentUpon>MissionServiceImpl.svc</DependentUpon>
     </Compile>
-    <Compile Include="Services\Presenter\Campaign.svc.cs">
-      <DependentUpon>Campaign.svc</DependentUpon>
-    </Compile>
     <Compile Include="Services\Presenter\CustomerAccount.svc.cs">
       <DependentUpon>CustomerAccount.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Presenter\CustomerCampaign.svc.cs">
+      <DependentUpon>CustomerCampaign.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\Presenter\CustomerSubscription.svc.cs">
       <DependentUpon>CustomerSubscription.svc</DependentUpon>
@@ -168,7 +168,9 @@
       <DependentUpon>TargetServiceImpl.svc</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="JsonData\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ARAManager.Common\ARAManager.Common.csproj">
       <Project>{D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2}</Project>

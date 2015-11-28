@@ -1,4 +1,16 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------------------------------------------------
+/* <header file="ManagementCompany.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement logic for ManagementCompany MASTER page.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
+// --------------------------------------------------------------------------------------------------------------------
+
+using System;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Master_Pages {
     /// <summary>
@@ -13,7 +25,13 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Ma
 
         protected void btnCampaign_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect(@"~\ARAManager.Presentation.Client.Views\EditCampaignCompany.aspx?Method=New");
+            /* Modified by PhucLS - 20151128 - Release20151128
+             * Notes: _ Navigate to NewCampaignCompany.aspx instead of EditCampaignCompany.aspx
+             *          (divide into 3 campaign types)
+             */
+            // Response.Redirect(@"~\ARAManager.Presentation.Client.Views\EditCampaignCompany.aspx?Method=New");
+            Response.Redirect(@"~\ARAManager.Presentation.Client.Views\NewCampaignCompany.aspx");
+            // Ended by PhucLS
         }
         #endregion IMethods
     }

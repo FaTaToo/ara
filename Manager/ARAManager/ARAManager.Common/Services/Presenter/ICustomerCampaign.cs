@@ -1,21 +1,23 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-/* <header file="Processors.cs" group="288-462">
+/* <header file="ICustomerCampaign.cs" group="288-462">
  * Author: LE Sanh Phuc - 11520288
  * </header>
  * <summary>
- *      ARResources - Processors
+ *      Implement the ICustomerCampaign.
  * </summary>
  * <Problems>
  * </Problems>
 */
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ARAManager.Common.ArResources
+using System.ServiceModel;
+
+namespace ARAManager.Common.Services.Presenter
 {
-    public class Processors
+    [ServiceContract]
+    public interface ICustomerCampaign
     {
-        #region IProperties
-        public Processor Processor { get; set; }
-        #endregion IProperties
+        [OperationContract]
+        void DoWork();
     }
 }
