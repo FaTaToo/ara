@@ -20,7 +20,7 @@ namespace ARAManager.Common.Dto
     public class CampaignType : ModelBase
     {
         [DataMember]
-        [Id(0, Column = "CampaignTypesId", Name = "CampaignTypesId", TypeType = typeof(int))]
+        [Id(0, Column = "CampaignTypeId", Name = "CampaignTypeId", TypeType = typeof(int))]
         [Generator(1, Class = "identity")]
         public virtual int CampaignTypesId { get; set; }
 

@@ -78,9 +78,9 @@ namespace ARAManager.Common.Dto {
         [DataMember]
         public virtual Company Company { get; set; }
 
-        [ManyToOne(Name = "CampaignTypesId", Column = "CampaignTypesId", NotNull = false, Fetch = FetchMode.Select)]
+        [ManyToOne(Name = "CampaignTypeId", Column = "CampaignTypeId", NotNull = false, Fetch = FetchMode.Select)]
         [DataMember]
-        public virtual CampaignType CampaignTypesId { get; set; }
+        public virtual CampaignType CampaignTypeId { get; set; }
 
         [DataMember]
         [Set(0, Table = "ARA_Mission", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_missions")]
