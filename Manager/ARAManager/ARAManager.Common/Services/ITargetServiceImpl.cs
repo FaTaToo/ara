@@ -11,7 +11,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.ServiceModel;
-using ARAManager.Common.ArResources;
 using ARAManager.Common.Dto;
 using ARAManager.Common.Exception.Generic;
 using ARAManager.Common.Exception.Target;

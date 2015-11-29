@@ -30,7 +30,7 @@ namespace VwsCaller
         public static void Main(string[] args)
         {
             var callPostNewTarget = new WebClient();
-            using (var sr = File.OpenText(@"D:\Projects\ARA\1.0\src-manager\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\Ara_Data\Targets\ListTargets.txt"))
+            using (var sr = File.OpenText(@"D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\Ara_Data\Targets\ListTargets.txt"))
             {
                 string target;
                 while ((target = sr.ReadLine()) != null)
@@ -44,8 +44,8 @@ namespace VwsCaller
             {
                 StartInfo =
                 {
-                    FileName = @"D:\Projects\ARA\1.0\src-manager\Tools\Snapshots\src\EmptyArData.bat",
-                    WorkingDirectory = @"D:\Projects\ARA\1.0\src-manager\Tools\Snapshots\src"
+                    FileName = @"D:\Projects\ARA\1.0\src\Tools\Snapshots\src\EmptyArData.bat",
+                    WorkingDirectory = @"D:\Projects\ARA\1.0\src\Tools\Snapshots\src"
                 }
             };
             process.Start();
