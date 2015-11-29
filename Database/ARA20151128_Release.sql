@@ -1,4 +1,4 @@
-use ARA20151128_Releaase
+use ARA20151128_Release
 set dateformat dym
 
 --CREATE TABLE-------------------------------------------------------------------------------------------
@@ -46,14 +46,14 @@ create table ARA_Campaign
 	NumMission	int	not null,
 	--Foreign key
 	CompanyId	int not null,
-	CampaignTypesId int not null,
+	CampaignTypeId int not null,
 	---
 	RowVersion	RowVersion
 )
 
 create table ARA_CampaignType
 (
-	CampaignTypesId int not null primary key identity(1,1),
+	CampaignTypeId int not null primary key identity(1,1),
 	CampaignTypeName nvarchar(100) unique not null,	
 	RowVersion	RowVersion
 )
@@ -108,7 +108,7 @@ create table ARA_Subscription
 Alter table ARA_Campaign
 Add constraint FK_ARA_Campaign
 	foreign key (CompanyId) references ARA_Company(CompanyId),
-	foreign key (CampaignTypesId) references ARA_CampaignType(CampaignTypesId)
+	foreign key (CampaignTypeId) references ARA_CampaignType(CampaignTypeId)
 
 Alter table ARA_Mission
 Add constraint FK_ARA_Mission
@@ -173,4 +173,13 @@ insert into ARA_Company(CompanyName,Address,Email,Phone,UserName,Password)
 values ('LOTTE','Dimond plaza','lotte@lotte.com','12334561234453','lotte','lotte')
 insert into ARA_Company(CompanyName,Address,Email,Phone,UserName,Password) 
 values ('CGV','Vincom Thu Duc','cgv@cgv.com','12312343245342123453','cgv','cgv')
+------------------------------------------------------------------------------------------------------------
+
+--Campaign type
+insert into ARA_CampaignType(CampaignTypeName) 
+values ('checkin')
+insert into ARA_CampaignType(CampaignTypeName) 
+values ('tour')
+insert into ARA_CampaignType(CampaignTypeName) 
+values ('theater')
 ------------------------------------------------------------------------------------------------------------

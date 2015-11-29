@@ -31,7 +31,6 @@
 
                 <!--#region INFORMATION-->
                 <table class="table" style="border-style: none">
-                    <!--Modified by PhucLS - 20151120 - src-manager-gui - Fix validator messages positions-->
                     <!--#region NAME-->
                     <tr>
                         <td style="width: 30%">Name</td>
@@ -196,7 +195,7 @@
                         </td>
                     </tr>
                     <!--#endregion PASSWORD-->
-                    <!--Ended by PhucLS - 20151120 -->
+
                     <!--#region ERROR_MESSAGE-->
                     <tr>
                         <td style="width: 30%"></td>

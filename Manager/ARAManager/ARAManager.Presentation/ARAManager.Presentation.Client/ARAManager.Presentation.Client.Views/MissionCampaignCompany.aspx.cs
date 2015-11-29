@@ -6,7 +6,7 @@
  *      Implement logic for MissionCampaignCompany page.
  * </summary>
  * <Problems>
- *      1. Does not implement "load avatar to FileUpload control"
+ *      1. 
  * </Problems>
 */
 // --------------------------------------------------------------------------------------------------------------------
@@ -38,7 +38,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         #region IFields
 
         private readonly Validation m_validator = new Validation();
-        private Campaign m_camnpaign;
+        private Campaign m_campaign;
         private Mission m_mission;
         #endregion IFields
 
@@ -51,14 +51,14 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         #region IMethods
         protected void Page_Load(object sender, EventArgs e)
         {
-            m_camnpaign = ClientServiceFactory.CampaignService.GetCampaignById(int.Parse(Request.QueryString["RequestId"]));
+            m_campaign = ClientServiceFactory.CampaignService.GetCampaignById(int.Parse(Request.QueryString["RequestId"]));
             if (!Page.IsPostBack)
             {
-                s_numberOfMission = m_camnpaign.Missions.Count;
+                s_numberOfMission = m_campaign.Missions.Count;
             }
             EnableValidator(false);
             lblCreateMission.Text = "You have " + s_numberOfMission + " missions";
-            GridView_Mission.DataSource = m_camnpaign.Missions;
+            GridView_Mission.DataSource = m_campaign.Missions;
             GridView_Mission.DataBind();
 
             if ((Request.QueryString["Method"]) != "Edit")
@@ -127,6 +127,11 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             {
                 return;
             }
+            if (s_numberOfMission == m_campaign.NumMission)
+            {
+                lblMessage.Text = Dictionary.EXCEED_NUMBER_OF_MISSION;
+                return;
+            }
             var extension = Path.GetExtension(FileUpload_Avatar.FileName);
             var fileName = txtMissionName.Text + "Avatar" + extension;
             var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + fileName);
@@ -134,13 +139,13 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             m_mission.Name = txtMissionName.Text;
             m_mission.Description = txtDescription.Text;
             m_mission.NumTarget = int.Parse(txtNumTarget.Text);
-            m_mission.Avatar = fileName;
-            m_mission.Campaign = m_camnpaign;
+            m_mission.Avatar = Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + fileName;
+            m_mission.Campaign = m_campaign;
             m_mission.RowVersion = s_rowVersion;
             try
             {
                 ClientServiceFactory.MissionService.SaveNewMission(m_mission);
-                Response.Redirect("MissionCampaignCompany.aspx?Method=New&RequestId="+m_camnpaign.CampaignId);
+                Response.Redirect("MissionCampaignCompany.aspx?Method=New&RequestId="+m_campaign.CampaignId);
             }
             catch (FaultException<MissionNameAlreadyExistException> ex)
             {
@@ -161,7 +166,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         }
         protected string GetEditMissionUrl(object eval)
         {
-            return "MissionCampaignCompany.aspx?Method=Edit&RequestId="+m_camnpaign.CampaignId+"&MissionId=" + eval;
+            return "MissionCampaignCompany.aspx?Method=Edit&RequestId="+m_campaign.CampaignId+"&MissionId=" + eval;
         }
         //-----------------------------------------------------------------------------------------------------
         #endregion IMethods

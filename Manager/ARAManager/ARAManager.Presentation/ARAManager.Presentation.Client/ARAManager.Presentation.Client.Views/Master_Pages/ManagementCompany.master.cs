@@ -25,7 +25,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Ma
 
         protected void btnCampaign_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect(@"~\ARAManager.Presentation.Client.Views\EditCampaignCompany.aspx?Method=New");
+            Response.Redirect(@"~\ARAManager.Presentation.Client.Views\CampaignCompany.aspx");
         }
         #endregion IMethods
     }

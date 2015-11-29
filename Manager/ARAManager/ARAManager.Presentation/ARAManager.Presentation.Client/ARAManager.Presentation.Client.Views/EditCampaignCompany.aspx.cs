@@ -40,6 +40,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         private readonly Validation m_validator = new Validation();
         private Company m_company;
         private Campaign m_campaign;
+        private string m_campaignTypeName;
+        private CampaignType m_campaignType;
 
         #endregion IFields
 
@@ -81,6 +83,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                     {
                         m_company = ClientServiceFactory.CompanyService.GetCompanyByUserName(user);
                         m_campaign= new Campaign();
+                        m_campaignTypeName = Request.QueryString["Type"];
+                        SetCampaignType();
                     }
                    
                 }
@@ -162,6 +166,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             m_campaign.Gift = txtGift.Text;
             m_campaign.NumMission = int.Parse(txtMission.Text);
             m_campaign.Company = m_company;
+            m_campaign.CampaignTypeId = m_campaignType;
             MoveBackRowVersion(m_campaign);
         }
         private void SaveNewCampaignWithEndTime()
@@ -178,17 +183,11 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         }
         private string UploadImageBanner()
         {
-            /* Modified by PhucLS - 20151115 - Change to accept new database with image urL, not byte[]
-             * Notes: _ Have not fixed case "If the uploaded file is not image type"
-             *        _ Check image resolution later
-             *        _ Validator if there is no file
-            */
             var extension = Path.GetExtension(FileUpload_Banner.FileName);
             var fileName = txtCampaignName.Text + "Banner" + extension;
             var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_CAMPAIGNS_BANNER + fileName);
             FileUpload_Banner.SaveAs(filePath);
-            return fileName;
-            // Ended by PhucLS - 20151115
+            return Dictionary.PATH_UPLOADED_CAMPAIGNS_BANNER + fileName;
         }
         private string UploadImageAvatar()
         {
@@ -196,7 +195,16 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             var fileName = txtCampaignName.Text + "Avatar" + extension;
             var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_CAMPAIGNS_AVATAR + fileName);
             FileUpload_Avatar.SaveAs(filePath);
-            return fileName;
+            return Dictionary.PATH_UPLOADED_CAMPAIGNS_AVATAR + fileName;
+        }
+        private void SetCampaignType()
+        {
+            m_campaignType = ClientServiceFactory.CampaignTypeService.GetCampaignTypeByName(m_campaignTypeName);
+            if (m_campaignTypeName == Dictionary.CAMPAIGN_TYPE_CHECK_IN_URL)
+            {
+                txtMission.Text = "1";
+                txtMission.Enabled = false;
+            }
         }
         //-----------------------------------------------------------------------------------------------------
 
@@ -221,7 +229,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             {
                 ClientServiceFactory.CampaignService.SaveNewCampaign(m_campaign);
                 Response.Redirect("MissionCampaignCompany.aspx?Method=New&RequestId=" +
-                                  ClientServiceFactory.CampaignService.GetCampaignByName(txtCampaignName.Text).CampaignId);
+                    ClientServiceFactory.CampaignService.GetCampaignByName(txtCampaignName.Text).CampaignId);
             }
             catch (FaultException<CampaignNameAlreadyExistException> ex)
             {

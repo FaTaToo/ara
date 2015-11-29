@@ -40,9 +40,9 @@ namespace ARAManager.Business.Service.Services {
                 {
                     srvDao.Save(target);
                     var arResourcesJson = JsonConvert.SerializeObject(jsonArResources);
-                    var jsonPath = Dictionary.PATH_AR_JSON + target.TargetName + ".json";
+                    var jsonPath = Dictionary.PATH_AR_JSON + target.Url + ".json";
                     File.Create(HostingEnvironment.MapPath(jsonPath)).Dispose();
-                    // ReSharper disable once AssignNullToNotNullAttribute
+                    // ReSharper disable once AssignNullToNotNullAttribute - Added by PhucLS
                     File.WriteAllText(HostingEnvironment.MapPath(jsonPath), arResourcesJson);
                 }
                 catch (ADOException)

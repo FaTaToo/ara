@@ -28,6 +28,7 @@ namespace ARAManager.Presentation.Connectivity
         #region Constants
 
         private const string CAMPAIGN_SERVICE_NAME = "CampaignService";
+        private const string CAMPAIGN_TYPE_SERVICE_NAME = "CampaignTypeService";
         private const string COMPANY_SERVICE_NAME = "CompanyService";
         private const string CUSTOMER_SERVICE_NAME = "CustomerService";
         private const string MISSION_SERVICE_NAME = "MissionService";
@@ -57,9 +58,9 @@ namespace ARAManager.Presentation.Connectivity
         private ClientServiceFactory()
         {
             m_serviceFactories = new Dictionary<string, object>();
-            Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(new ExeConfigurationFileMap()
+            var configuration = ConfigurationManager.OpenMappedExeConfiguration(new ExeConfigurationFileMap()
             {
-                ExeConfigFilename = @"D:\Projects\ARA\1.0\src-manager\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\bin\Debug\ARAManager.Presentation.Client.exe.config",
+                ExeConfigFilename = @"D:\Projects\ARA\1.0\src-manager\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\bin\Debug\ARAManager.Presentation.exe.config",
             }, ConfigurationUserLevel.None);
 
             var serviceGroup = ServiceModelSectionGroup.GetSectionGroup(configuration);
@@ -74,6 +75,11 @@ namespace ARAManager.Presentation.Connectivity
                             var binding = new BasicHttpBinding();
                             var endpointAddress = new EndpointAddress(endpoint.Address);
                             m_serviceFactories[endpoint.Name] = new ChannelFactory<ICampaignServiceImpl>(binding, endpointAddress);
+                            break;
+                        case CAMPAIGN_TYPE_SERVICE_NAME:
+                            binding = new BasicHttpBinding();
+                            endpointAddress = new EndpointAddress(endpoint.Address);
+                            m_serviceFactories[endpoint.Name] = new ChannelFactory<ICampaignTypeServiceImpl>(binding, endpointAddress);
                             break;
                         case COMPANY_SERVICE_NAME:
                             binding = new BasicHttpBinding();
@@ -116,6 +122,16 @@ namespace ARAManager.Presentation.Connectivity
             get
             {
                 return Get<ICampaignServiceImpl>(CAMPAIGN_SERVICE_NAME);
+            }
+        }
+        /// <summary>
+        /// Campaign type services
+        /// </summary>
+        public static ICampaignTypeServiceImpl CampaignTypeService
+        {
+            get
+            {
+                return Get<ICampaignTypeServiceImpl>(CAMPAIGN_TYPE_SERVICE_NAME);
             }
         }
         /// <summary>

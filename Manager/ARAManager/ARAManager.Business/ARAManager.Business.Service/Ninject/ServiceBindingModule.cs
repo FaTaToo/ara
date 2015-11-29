@@ -33,6 +33,10 @@ namespace ARAManager.Business.Service.Ninject {
             Bind<ICampaignDataAccess>().To<CampaignDataAccessImpl>();
             Bind<ICampaignServiceImpl>().To<CampaignServiceImpl>().Intercept().With<ServiceInterceptor>();
 
+            // CampaignType
+            Bind<ICampaignTypeDataAccess>().To<CampaignTypeDataAccessImpl>();
+            Bind<ICampaignTypeServiceImpl>().To<CampaignTypeServiceImpl>().Intercept().With<ServiceInterceptor>();
+
             // Company
             Bind<ICompanyDataAccess>().To<CompanyDataAccessImpl>();
             Bind<ICompanyServiceImpl>().To<CompanyServiceImpl>().Intercept().With<ServiceInterceptor>();

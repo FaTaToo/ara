@@ -22,8 +22,6 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px">
-                <!--Modified by PhucLS - 20151120 - src-manager-gui - Fix validator messages positions-->
-                <!--Fix validators's color-->
                 <!--#region TITLE-->
                 <asp:TextBox ID="txtCampaign"
                     Width="100%"
@@ -228,7 +226,6 @@
                         </td>
                     </tr>
                     <!--#endregion NUM_MISSIONS-->
-                    <!--Ended by PhucLS - 20151120 -->
                 </table>
                 <!--#endregion INFORMATION-->
 

@@ -114,6 +114,7 @@
     <Compile Include="Services\Behaviors\PreserveReferencesAttribute.cs" />
     <Compile Include="Services\Behaviors\PreserveReferencesOperationBehavior.cs" />
     <Compile Include="Services\ICampaignServiceImpl.cs" />
+    <Compile Include="Services\ICampaignTypeServiceImpl.cs" />
     <Compile Include="Services\ICompanyServiceImpl.cs" />
     <Compile Include="Services\ICustomerServiceImpl.cs" />
     <Compile Include="Services\IMissionServiceImpl.cs" />

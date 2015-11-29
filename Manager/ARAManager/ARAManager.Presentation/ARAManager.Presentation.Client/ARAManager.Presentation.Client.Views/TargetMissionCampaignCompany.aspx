@@ -19,7 +19,6 @@
         <div class="row">
             <div class="col-md-6">
                 <ul class="nav nav-pills nav-stacked pull-left">
-                    <!--Modified by PhucLS - 20151120 - src-manager-gui - Fix validator messages positions-->
                     <li role="presentation">
                         <asp:Label ID="lblMovieInformation" runat="server" Text="Movie information"
                             Width="60%"
@@ -59,7 +58,6 @@
                     <li role="presentation" style="margin-top: 20px;">
                         <asp:FileUpload runat="server" ID="FileUpload_PicturesGallery" AllowMultiple="true" />
                     </li>
-                    <!--Ended by PhucLS - 20151120 -->
                 </ul>
 
             </div>
@@ -87,7 +85,6 @@
             <div class="row">
                 <div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px">
                     <table class="table" style="border-style: none">
-                        <!--Modified by PhucLS - 20151120 - src-manager-gui - Fix validator messages positions-->
                         <!--#region NAME-->
                         <tr>
                             <td style="width: 30%">Name</td>
@@ -201,7 +198,6 @@
                         </tr>
                         <!--#endregion ERROR_MESSAGE-->
                     </table>
-                    <!--Ended by PhucLS - 20151120 -->
                     <!--#endregion INFORMATION-->
 
                     <!--#region BUTTON-->

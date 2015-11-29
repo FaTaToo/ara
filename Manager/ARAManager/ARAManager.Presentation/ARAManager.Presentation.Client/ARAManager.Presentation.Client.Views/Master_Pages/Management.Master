@@ -89,7 +89,7 @@
                     <img src="../ARAManager.Presentation.Client.Resources/Images/Payment.png" class="pull-right" style="margin-right: 15px" alt="Image is lost." />
 
                     <!--Create new campaign-->
-                    <a href="../ARAManager.Presentation.Client.Views/EditCampaignCompany.aspx" class="pull-right" style="color: white; font-size: 20px; font-weight: bold; margin-right: 30px">CREATE NEW CAMPAIGN </a>
+                    <a href="../ARAManager.Presentation.Client.Views/NewCampaignCompany.aspx" class="pull-right" style="color: white; font-size: 20px; font-weight: bold; margin-right: 30px">CREATE NEW CAMPAIGN </a>
 
                     <img src="../ARAManager.Presentation.Client.Resources/Images/AddNew.png" class="pull-right" style="margin-right: 15px" alt="Image is lost." />
                 </div>

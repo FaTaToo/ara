@@ -38,6 +38,7 @@ namespace VwsCaller
                    "http://localhost:1234/ara-vws/vws/SampleSelector.php?select=DeleteTarget&targetId=" + target));
                 }
             }
+            System.Diagnostics.Process.Start(@"D:\Projects\ARA\1.0\src-manager\Tools\Snapshots\RestoreDb.bat");
         }
         #endregion SMethods
     }

@@ -1,9 +1,10 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/ARAManager.Presentation.Client.Views/Master_Pages/Management.Master" AutoEventWireup="true" CodeBehind="ManagementAdmin.master.cs" Inherits="ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Master_Pages.ManagementAdmin" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Menu" runat="server">
     <div class="btn-group btn-group-justified" role="group">
         <div class="btn-group" role="group">        
             <a class="btn btn-warning" href="HomeAdmin.aspx">
-                <img src="../ARAManager.Presentation.Client.Resources/Images/home.png" />
+                <img src="../ARAManager.Presentation.Client.Resources/Images/home.png" alt="Image is lost."/>
             </a>
         </div>
         <div class="btn-group" role="group">

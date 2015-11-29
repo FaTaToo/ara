@@ -22,8 +22,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
     {
         #region IConstants
 
-        private const string EDIT_CAMPAIGN_COMPANY_URL = 
-        @"~\ARAManager.Presentation.Client.Views\EditCampaignCompany.aspx?type=";
+        private const string EDIT_CAMPAIGN_COMPANY_URL =
+        @"~\ARAManager.Presentation.Client.Views\EditCampaignCompany.aspx?Method=New&Type=";
 
         #endregion IConstants
 

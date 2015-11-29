@@ -15,7 +15,6 @@
         <div class="row">
             <div class="col-md-6">
                 <ul class="nav nav-pills nav-stacked pull-left">
-                    <!--Modified by PhucLS - 20151120 - src-manager-gui - Fix validator messages positions-->
                     <li role="presentation">
                         <asp:TextBox ID="txtFirstName" runat="server"
                             placeholder="First name" />
@@ -66,7 +65,6 @@
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_RequireFileds_OnServerValidate" />
                     </li>
-                    <!--Ended by PhucLS - 20151120 -->
                     <li role="presentation" style="margin-top: 20px">
                         <asp:Button ID="btnSearch" runat="server"
                             CssClass="btn btn-success"
@@ -140,7 +138,6 @@
                     </div>
                 </div>
             </div>
-            <!--Modified by PhucLS - 20151120 - src-manager-gui - Fix header horizontal direction -->
             <!--Headers center does not affect-->
             <div class="row">
                 <div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px">
@@ -179,7 +176,6 @@
                     </asp:GridView>
                 </div>
             </div>
-            <!--Ended by PhucLS - 20151120 -->
         </div>
     </asp:Panel>
     <!--#endregion SEARCH_RESULT-->

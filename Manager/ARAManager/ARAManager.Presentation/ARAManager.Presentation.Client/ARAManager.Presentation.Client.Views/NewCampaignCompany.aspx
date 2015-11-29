@@ -30,10 +30,10 @@
             <div class="col-md-2" style="margin-left: 100px">
                 <asp:RadioButton ID="rbCheckIn" runat="server" GroupName="CampaignTypes"/>
             </div>
-            <div class="col-md-2" style="margin-left: 20px">
+            <div class="col-md-2" style="margin-left: 15px">
                 <asp:RadioButton ID="rbTour" runat="server" GroupName="CampaignTypes"/>
             </div>
-            <div class="col-md-2" style="margin-left: 20px">
+            <div class="col-md-2" style="margin-left: 15px">
                 <asp:RadioButton ID="rbTheater" runat="server" GroupName="CampaignTypes"
                     Checked="True"/>
             </div>

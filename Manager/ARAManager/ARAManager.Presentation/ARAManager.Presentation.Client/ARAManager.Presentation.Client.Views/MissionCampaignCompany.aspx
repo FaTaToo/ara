@@ -14,7 +14,6 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2">
-                <!--Modified by PhucLS - 20151120 - src-manager-gui - Change display of missions-->
                 <asp:Panel ID="Panel_Mission" runat="server">
                     <asp:GridView ID="GridView_Mission" runat="server"
                         Width="100%"
@@ -28,7 +27,7 @@
                                     <asp:Image runat="server"
                                         Width="140px"
                                         Height="100px"
-                                        ImageUrl='<%# GetAvatar(Eval("Avatar")) %>' />
+                                        ImageUrl='<%# Eval("Avatar") %>' />
                                     <asp:HyperLink runat="server" Text='<%# Eval("Name")%>' 
                                         NavigateUrl='<%# GetNavigateUrl(Eval("MissionId")) %>' />
                                     <asp:HyperLink runat="server" Text="Edit" 
@@ -38,7 +37,6 @@
                         </Columns>
                     </asp:GridView>
                 </asp:Panel>
-                <!--Ended by PhucLS - 20151120 -->
             </div>
         </div>
     </div>

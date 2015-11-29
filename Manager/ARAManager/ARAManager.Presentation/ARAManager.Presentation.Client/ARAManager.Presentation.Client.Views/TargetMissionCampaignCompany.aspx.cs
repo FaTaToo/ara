@@ -123,7 +123,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             }
             try
             {
-                // Modifed by PhucLS - 20151121 - Save target id to txt file
                 // Save image target to server - just help debugging, it does not affect system.
                 var extension = Path.GetExtension(FileUpload_Target.FileName);
                 var fileName = txtTargetName.Text + extension;
@@ -162,7 +161,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                         sw.WriteLine(targetId);
                     }
                 }
-                // Ended by PhucLS - 20151121
 
                 // Save target to database
                 var target = new Target()
@@ -175,7 +173,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                     YoutubeUrl = txtYoutubeUrl.Text,
                     Mission = m_mission
                 };
-                // Added by PhucLS - 20151122 - Create AR Resources
                 // Notes: Will be migrated into helper file
 
                 // Create ArResources
@@ -315,7 +312,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 });
                 var rootObject = new RootObject {ArResources = arResources};
                 ClientServiceFactory.TargetService.SaveNewTarget(target, rootObject);
-                // Ended by PhucLS - 20151122
                 
                 txtTargetName.Text = string.Empty;
                 txtFacebookUrl.Text = string.Empty;
