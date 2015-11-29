@@ -1,21 +1,30 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-/* <header file="Processor.cs" group="288-462">
+/* <header file="AuthenticationJson.cs" group="288-462">
  * Author: LE Sanh Phuc - 11520288
  * </header>
  * <summary>
- *       ARResources - Processor
+ *      Implement AuthenticationJson.
  * </summary>
  * <Problems>
  * </Problems>
 */
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ARAManager.Common.ArResources
+using System.Runtime.Serialization;
+
+namespace ARAManager.Common.PresenterJson
 {
-    public class Processor
+    [DataContract]
+    public class AuthenticationJsonRequest
     {
         #region IProperties
-        public string ProcessorType { get; set; }
+
+        [DataMember]
+        public string UserName { get; set; }
+
+        [DataMember]
+        public string Password { get; set; }
+
         #endregion IProperties
     }
 }

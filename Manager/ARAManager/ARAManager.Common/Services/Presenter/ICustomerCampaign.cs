@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using ARAManager.Common.Dto;
+using ARAManager.Common.PresenterJson.ArResources;
 
 namespace ARAManager.Common.Services.Presenter
 {
@@ -24,12 +25,18 @@ namespace ARAManager.Common.Services.Presenter
         [WebGet(UriTemplate = "/GetListOfCampaigns",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json)]
-        List<Campaign> GetListOfCampaigns();
+        IList<Campaign> GetListOfCampaigns();
 
         [OperationContract]
         [WebGet(UriTemplate = "/GetCampaignByName",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json)]
         Campaign GetCampaignByName(string campaignName);
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetArData",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json)]
+        RootObject GetArData(string targetUrl);
     }
 }

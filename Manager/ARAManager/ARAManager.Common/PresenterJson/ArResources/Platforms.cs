@@ -10,7 +10,7 @@
 */
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ARAManager.Common.ArResources
+namespace ARAManager.Common.PresenterJson.ArResources
 {
     public class Platforms
     {

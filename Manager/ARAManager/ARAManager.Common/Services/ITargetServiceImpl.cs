@@ -16,6 +16,7 @@ using ARAManager.Common.Dto;
 using ARAManager.Common.Exception.Generic;
 using ARAManager.Common.Exception.Target;
 using ARAManager.Common.Services.Behaviors;
+using RootObject = ARAManager.Common.PresenterJson.ArResources.RootObject;
 
 namespace ARAManager.Common.Services {
     [ServiceContract]

@@ -13,6 +13,7 @@
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using ARAManager.Common.Dto;
+using ARAManager.Common.PresenterJson;
 
 namespace ARAManager.Common.Services.Presenter
 {
@@ -23,12 +24,12 @@ namespace ARAManager.Common.Services.Presenter
         [WebInvoke(UriTemplate = "/Authenticate",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json, Method = "POST")]
-        bool Authenticate(Customer account);
+        JsonRespone Authenticate(AuthenticationJsonRequest account);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "/SignUp",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json, Method = "POST")]
-        void SignUp(Customer customer);
+        JsonRespone SignUp(Customer customer);
     }
 }

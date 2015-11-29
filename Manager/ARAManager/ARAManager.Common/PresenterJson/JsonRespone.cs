@@ -1,19 +1,27 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-/* <header file="RootObject.cs" group="288-462">
+/* <header file="AuthenticationJsonRespone.cs" group="288-462">
  * Author: LE Sanh Phuc - 11520288
  * </header>
  * <summary>
- *       ARResources - RootObject
+ *      Implement AuthenticationJsonRespone.
  * </summary>
  * <Problems>
  * </Problems>
 */
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ARAManager.Common.ArResources
+using System.Runtime.Serialization;
+
+namespace ARAManager.Common.PresenterJson
 {
-    public class RootObject
+    [DataContract]
+    public class JsonRespone
     {
-        public ArResources ArResources { get; set; }
+        #region IProperties
+
+        [DataMember]
+        public string Message { get; set; }
+
+        #endregion IProperties
     }
 }

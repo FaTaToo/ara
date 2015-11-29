@@ -74,15 +74,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArResources\ArResource.cs" />
-    <Compile Include="ArResources\ArResources.cs" />
-    <Compile Include="ArResources\Attribute.cs" />
-    <Compile Include="ArResources\CommonAttributes.cs" />
-    <Compile Include="ArResources\Platform.cs" />
-    <Compile Include="ArResources\Platforms.cs" />
-    <Compile Include="ArResources\Processor.cs" />
-    <Compile Include="ArResources\Processors.cs" />
-    <Compile Include="ArResources\RootObject.cs" />
     <Compile Include="Dto\Campaign.cs" />
     <Compile Include="Dto\CampaignType.cs" />
     <Compile Include="Dto\Company.cs" />
@@ -111,6 +102,17 @@
     <Compile Include="Extension\StringExtension.cs" />
     <Compile Include="Factory\NinjectKernelFactory.cs" />
     <Compile Include="Dictionary.cs" />
+    <Compile Include="PresenterJson\ArResources\ArResource.cs" />
+    <Compile Include="PresenterJson\ArResources\ArResources.cs" />
+    <Compile Include="PresenterJson\ArResources\Attribute.cs" />
+    <Compile Include="PresenterJson\ArResources\CommonAttributes.cs" />
+    <Compile Include="PresenterJson\ArResources\Platform.cs" />
+    <Compile Include="PresenterJson\ArResources\Platforms.cs" />
+    <Compile Include="PresenterJson\ArResources\Processor.cs" />
+    <Compile Include="PresenterJson\ArResources\Processors.cs" />
+    <Compile Include="PresenterJson\ArResources\RootObject.cs" />
+    <Compile Include="PresenterJson\AuthenticationJsonRequest.cs" />
+    <Compile Include="PresenterJson\JsonRespone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Behaviors\PreserveReferencesAttribute.cs" />
     <Compile Include="Services\Behaviors\PreserveReferencesOperationBehavior.cs" />

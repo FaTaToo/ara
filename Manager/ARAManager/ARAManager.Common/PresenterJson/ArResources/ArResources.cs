@@ -1,21 +1,23 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-/* <header file="Processors.cs" group="288-462">
+/* <header file="ArResources.cs" group="288-462">
  * Author: LE Sanh Phuc - 11520288
  * </header>
  * <summary>
- *      ARResources - Processors
+ *      ARResources - ArResources
  * </summary>
  * <Problems>
  * </Problems>
 */
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ARAManager.Common.ArResources
+using System.Collections.Generic;
+
+namespace ARAManager.Common.PresenterJson.ArResources
 {
-    public class Processors
+    public class ArResources
     {
         #region IProperties
-        public Processor Processor { get; set; }
+        public List<ArResource> ArResource { get; set; }
         #endregion IProperties
     }
 }

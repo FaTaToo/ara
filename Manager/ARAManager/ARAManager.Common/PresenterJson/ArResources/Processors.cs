@@ -1,25 +1,21 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-/* <header file="Attribute.cs" group="288-462">
+/* <header file="Processors.cs" group="288-462">
  * Author: LE Sanh Phuc - 11520288
  * </header>
  * <summary>
- *      ARResources - Attribute
+ *      ARResources - Processors
  * </summary>
  * <Problems>
  * </Problems>
 */
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ARAManager.Common.ArResources
+namespace ARAManager.Common.PresenterJson.ArResources
 {
-    public class Attribute
+    public class Processors
     {
         #region IProperties
-
-        public string Key { get; set; }
-        public string Value { get; set; }
-        public string Extras { get; set; }
-
+        public Processor Processor { get; set; }
         #endregion IProperties
     }
 }

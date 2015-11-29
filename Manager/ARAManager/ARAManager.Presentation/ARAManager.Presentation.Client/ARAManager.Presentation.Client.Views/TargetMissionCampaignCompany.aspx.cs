@@ -17,14 +17,14 @@ using System.Net;
 using System.ServiceModel;
 using System.Web.UI.WebControls;
 using ARAManager.Common;
-using ARAManager.Common.ArResources;
 using ARAManager.Common.Dto;
 using ARAManager.Common.Exception.Mission;
 using ARAManager.Common.Exception.Target;
+using ARAManager.Common.PresenterJson.ArResources;
 using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
 using ARAManager.Presentation.Connectivity;
 using Subgurim.Controles;
-using Attribute = ARAManager.Common.ArResources.Attribute;
+using Attribute = ARAManager.Common.PresenterJson.ArResources.Attribute;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 {
@@ -329,8 +329,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             {
                 lblMessage.Text = ex.Detail.MessageError;
             }
-
-
         }
         protected void btnCancel_OnClick(object sender, EventArgs e)
         {

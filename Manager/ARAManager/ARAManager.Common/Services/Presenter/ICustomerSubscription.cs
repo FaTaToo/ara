@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using ARAManager.Common.Dto;
+using ARAManager.Common.PresenterJson;
 
 namespace ARAManager.Common.Services.Presenter
 {
@@ -24,13 +25,7 @@ namespace ARAManager.Common.Services.Presenter
         [WebInvoke(UriTemplate = "/JoinCampaign",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json, Method = "POST")]
-        bool JoinCampaign(Subscription subscription);
-
-        [OperationContract]
-        [WebInvoke(UriTemplate = "/JoinCampaign",
-            RequestFormat = WebMessageFormat.Json,
-            ResponseFormat = WebMessageFormat.Json, Method = "POST")]
-        bool UpdateSubscription(Subscription subscription);
+        JsonRespone JoinCampaign(Subscription subscription);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "/GetListOfSubscriptions/{customer}")]

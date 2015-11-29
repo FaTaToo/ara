@@ -1,24 +1,22 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-/* <header file="CommonAttributes.cs" group="288-462">
+/* <header file="Platform.cs" group="288-462">
  * Author: LE Sanh Phuc - 11520288
  * </header>
  * <summary>
- *       ARResources - CommonAttributes
+ *      ARResources - Platform
  * </summary>
  * <Problems>
  * </Problems>
 */
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
-namespace ARAManager.Common.ArResources
+namespace ARAManager.Common.PresenterJson.ArResources
 {
-    public class CommonAttributes
+    public class Platform
     {
         #region IProperties
-        public List<Attribute> Attribute { get; set; }
-
+        public string PlatformId { get; set; }
+        public Processors Processors { get; set; }
         #endregion IProperties
     }
 }

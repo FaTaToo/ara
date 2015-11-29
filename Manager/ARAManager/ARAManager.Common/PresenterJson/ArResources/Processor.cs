@@ -1,22 +1,21 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-/* <header file="Platform.cs" group="288-462">
+/* <header file="Processor.cs" group="288-462">
  * Author: LE Sanh Phuc - 11520288
  * </header>
  * <summary>
- *      ARResources - Platform
+ *       ARResources - Processor
  * </summary>
  * <Problems>
  * </Problems>
 */
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ARAManager.Common.ArResources
+namespace ARAManager.Common.PresenterJson.ArResources
 {
-    public class Platform
+    public class Processor
     {
         #region IProperties
-        public string PlatformId { get; set; }
-        public Processors Processors { get; set; }
+        public string ProcessorType { get; set; }
         #endregion IProperties
     }
 }
