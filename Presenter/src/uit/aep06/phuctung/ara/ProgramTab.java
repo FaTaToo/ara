@@ -18,19 +18,19 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import uit.aep06.phuctung.ara.CommonClass.Program;
-import uit.aep06.phuctung.ara.custom_listview.ProgramAdapter;
+import uit.aep06.phuctung.ara.custom_adapter.ProgramAdapter;
 
-public class ProgramTabAll extends ListFragment {
-	List<Program> listProgram = new ArrayList<Program>();
+public class ProgramTab extends Fragment {
+	List<Program> listProgram;	;
 	ListView listView;
 	String CustomerID;
-	public ProgramTabAll(String userID,List<Program> list) {
+	public ProgramTab(String userID,List<Program> list) {
 		CustomerID = userID;
 		listProgram = list;
 	}
 	@Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.program_tab_all,container,false);
+        View view =inflater.inflate(R.layout.program_tab,container,false);
         listView = (ListView)view.findViewById(R.id.lvProgramAll);
         return view;
     }

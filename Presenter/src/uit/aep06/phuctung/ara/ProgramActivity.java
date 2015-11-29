@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import uit.aep06.phuctung.ara.CommonClass.Program;
 import uit.aep06.phuctung.ara.Library.SlidingTabLayout;
+import uit.aep06.phuctung.ara.custom_adapter.ViewPagerAdapter;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
@@ -36,7 +37,13 @@ public class ProgramActivity extends FragmentActivity {
 		setContentView(R.layout.activity_program);
 		
 		// Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
-        adapter =  new ViewPagerAdapter(getSupportFragmentManager(),Titles,Numboftabs, listProgram);
+		listProgram.add(new Program("1", "a", "content aa", "11/5/2015aaaaa", "11/6/2015sssss", "A", 1, 3, 0));
+		listProgram.add(new Program("1", "b", "content bb", "11/5/201aaaaa5", "11/6/2015sssss", "B", 0, 3, 0));
+		listProgram.add(new Program("1", "c", "content cc", "11/5/20aaaaaaa15", "11/6/2015sssss", "C", 0, 3, 0));
+		listProgram.add(new Program("1", "d", "content dd", "11/5/2015aaaaa", "11/6/2015sssss", "D", 1, 3, 0));
+		
+		
+        adapter =  new ViewPagerAdapter(getSupportFragmentManager(),Titles,Numboftabs,listProgram);
 		
         // Assigning ViewPager View and setting the adapter
         pager = (ViewPager) findViewById(R.id.pager);
