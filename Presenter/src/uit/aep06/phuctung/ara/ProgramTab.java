@@ -2,8 +2,6 @@ package uit.aep06.phuctung.ara;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
 import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -50,6 +48,26 @@ public class ProgramTab extends Fragment {
     {
     	ProgramAdapter da = new ProgramAdapter(getActivity(), R.layout.program_list_item, listProgram);		
     	da.notifyDataSetChanged();
-		listView.setAdapter(da);		
+		listView.setAdapter(da);
+		listView.setOnItemClickListener(new OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				// TODO Auto-generated method stub
+				Program program = listProgram.get(position);
+				Intent intent = new Intent(getActivity(),MissionActivity.class);
+				intent.putExtra("Name", program.getName());
+				intent.putExtra("Start", program.getDateStart());
+				intent.putExtra("End", program.getDateEnd());
+				intent.putExtra("Company", program.getCompany());
+				intent.putExtra("Description", program.getContent());
+				intent.putExtra("ID", program.getId());
+				intent.putExtra("CustomerID", CustomerID);
+				intent.putExtra("ProgramState", program.getState());
+				intent.putExtra("NumTarget",program.getNumTarget());
+				intent.putExtra("NumTargetFinish",program.getNumTargetFinish());
+				startActivity(intent);
+			}			
+		});
     }
 }
