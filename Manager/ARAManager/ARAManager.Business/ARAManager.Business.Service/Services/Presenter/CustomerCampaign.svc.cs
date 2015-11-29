@@ -10,15 +10,23 @@
 */
 // --------------------------------------------------------------------------------------------------------------------
 
-using ARAManager.Common.Services;
+using System;
+using System.Collections.Generic;
+using ARAManager.Common.Dto;
 using ARAManager.Common.Services.Presenter;
 
 namespace ARAManager.Business.Service.Services.Presenter
 {
     public class CustomerCampaign : ICustomerCampaign
     {
-        public void DoWork()
+        public List<Campaign> GetListOfCampaigns()
         {
+            throw new NotImplementedException();
+        }
+
+        public Campaign GetCampaignByName(string campaignName)
+        {
+            throw new NotImplementedException();
         }
     }
 }

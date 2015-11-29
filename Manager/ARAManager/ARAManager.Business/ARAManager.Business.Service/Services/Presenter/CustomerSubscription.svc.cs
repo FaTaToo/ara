@@ -10,14 +10,33 @@
 */
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using ARAManager.Common.Dto;
 using ARAManager.Common.Services.Presenter;
 
 namespace ARAManager.Business.Service.Services.Presenter
 {
     public class CustomerSubscription : ICustomerSubscription
     {
-        public void DoWork()
+        public bool JoinCampaign(Subscription subscription)
         {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateSubscription(Subscription subscription)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Subscription> GetListOfSubscriptions(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Subscription GetSubscription(int subscriptionId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

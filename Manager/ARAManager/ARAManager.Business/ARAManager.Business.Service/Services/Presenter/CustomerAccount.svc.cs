@@ -10,15 +10,26 @@
 */
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using ARAManager.Common.Dto;
 using ARAManager.Common.Services.Presenter;
 
 namespace ARAManager.Business.Service.Services.Presenter
 {
     public class CustomerAccount : ICustomerAccount
     {
-        public void DoWork()
-        {
+        #region IMethods
 
+        public bool Authenticate(Customer account)
+        {
+            throw new NotImplementedException();
         }
+
+        public void SignUp(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion IMethods
     }
 }

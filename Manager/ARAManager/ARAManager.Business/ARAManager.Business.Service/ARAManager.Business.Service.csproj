@@ -52,6 +52,10 @@
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="LinFu.DynamicProxy">
       <HintPath>..\..\Lib\Ninject\Ninject.Extensions.Interception.Linfu.3.0.0-rc3\lib\net35\LinFu.DynamicProxy.dll</HintPath>
     </Reference>
@@ -172,9 +176,7 @@
       <DependentUpon>TargetServiceImpl.svc</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="JsonData\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\ARAManager.Common\ARAManager.Common.csproj">
       <Project>{D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2}</Project>

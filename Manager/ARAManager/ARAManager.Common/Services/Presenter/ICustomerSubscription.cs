@@ -10,7 +10,10 @@
 */
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.ServiceModel;
+using System.ServiceModel.Web;
+using ARAManager.Common.Dto;
 
 namespace ARAManager.Common.Services.Presenter
 {
@@ -18,6 +21,23 @@ namespace ARAManager.Common.Services.Presenter
     public interface ICustomerSubscription
     {
         [OperationContract]
-        void DoWork();
+        [WebInvoke(UriTemplate = "/JoinCampaign",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json, Method = "POST")]
+        bool JoinCampaign(Subscription subscription);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "/JoinCampaign",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json, Method = "POST")]
+        bool UpdateSubscription(Subscription subscription);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "/GetListOfSubscriptions/{customer}")]
+        IList<Subscription> GetListOfSubscriptions(Customer customer);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "/GetListOfSubscriptions/{subscriptionId}")]
+        Subscription GetSubscription(int subscriptionId);
     }
 }
