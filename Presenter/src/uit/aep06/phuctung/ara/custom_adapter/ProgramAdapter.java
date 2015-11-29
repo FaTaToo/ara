@@ -91,7 +91,7 @@ public class ProgramAdapter extends BaseAdapter {
         	holder.tvName.setText("Program's name: " + program.getName());
         	holder.tvContent.setText("Description: " + program.getContent());
         	holder.tvDateStart.setText("Start date: " + program.getDateStart().substring(0, 10));
-        	holder.tvDateEnd.setText("   End date: " +program.getDateEnd().substring(0, 10));
+        	holder.tvDateEnd.setText("End date: " +program.getDateEnd().substring(0, 10));
         	holder.tvCompany.setText("Company: " +program.getCompany());
         	holder.tvNum.setText(Html.fromHtml("<b>"+program.getNumTargetFinish()+"/"+program.getNumTarget()+"</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" ));
         	holder.pBar.setMax(program.getNumTarget());
