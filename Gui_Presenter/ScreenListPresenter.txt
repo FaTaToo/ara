@@ -1,0 +1,11 @@
+Danh sách các màn hình cần có của phân hệ Presenter: 
+- Register
+- Login, logout
+- Forget password
+- About screen
+- List program: all program, checked and unchecked program.
+- Detail program
+- List mission, detail mission
+- Helper screen
+- Profile user
+- Review screen, comment
