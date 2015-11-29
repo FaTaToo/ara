@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="Company.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the Company.
-// </summary>
+/* <header file="Company.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the Company.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Collections.Generic;

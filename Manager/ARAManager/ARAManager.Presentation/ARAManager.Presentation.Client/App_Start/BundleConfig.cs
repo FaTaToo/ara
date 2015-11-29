@@ -1,4 +1,16 @@
-﻿using System.Web.Optimization;
+﻿// --------------------------------------------------------------------------------------------------------------------
+/* <header file="BundleConfig.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement BundleConfig.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
+// --------------------------------------------------------------------------------------------------------------------
+
+using System.Web.Optimization;
 
 namespace ARAManager.Presentation.Client
 {

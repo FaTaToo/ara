@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="Customer.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the Customer.
-// </summary>
+/* <header file="Customer.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the Customer.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;

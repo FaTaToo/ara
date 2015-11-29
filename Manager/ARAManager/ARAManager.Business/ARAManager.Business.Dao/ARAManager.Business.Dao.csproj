@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\Implementation\CampaignDataAccessImpl.cs" />
+    <Compile Include="DataAccess\Implementation\CampaignTypeDataAccessImpl.cs" />
     <Compile Include="DataAccess\Implementation\CompanyDataAccessImpl.cs" />
     <Compile Include="DataAccess\Implementation\CustomerDataAccessImpl.cs" />
     <Compile Include="DataAccess\Implementation\GenericDataAccessImpl.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="DataAccess\Implementation\SubscriptionDataAccessImpl.cs" />
     <Compile Include="DataAccess\Implementation\TargetDataAccessImpl.cs" />
     <Compile Include="DataAccess\Interfaces\ICampaignDataAccess.cs" />
+    <Compile Include="DataAccess\Interfaces\ICampaignTypeDataAccess.cs" />
     <Compile Include="DataAccess\Interfaces\ICompanyDataAccess.cs" />
     <Compile Include="DataAccess\Interfaces\ICustomerDataAccess.cs" />
     <Compile Include="DataAccess\Interfaces\IGenericDataAccess.cs" />

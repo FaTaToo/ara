@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="GenericDataAccessImpl.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the Generic data access class.
-// </summary>
+/* <header file="GenericDataAccessImpl.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the Generic data access class.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Collections.Generic;

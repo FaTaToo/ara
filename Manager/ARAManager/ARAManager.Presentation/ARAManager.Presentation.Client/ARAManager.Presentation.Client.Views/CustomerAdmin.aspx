@@ -1,6 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ARAManager.Presentation.Client.Views/Master_Pages/ManagementAdmin.master" AutoEventWireup="true" CodeBehind="CustomerAdmin.aspx.cs" Inherits="ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.CustomerAdmin" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
+<!--
+ <header file="CustomerAdmin.aspx" group="288-462">
+    Author: LE Sanh Phuc - 11520288
+ </header>
+ <summary>
+    GUI of CustomerAdmin.
+ </summary>
+ <Problems>
+ </Problems>
+-->
     <!--#region SEARCH_FORMS-->
     <div class="container">
         <div class="row">
@@ -9,6 +18,8 @@
                     <li role="presentation">
                         <asp:TextBox ID="txtFirstName" runat="server"
                             placeholder="First name" />
+                    </li>
+                    <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_FirstName" runat="server"
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_FirstName_OnServerValidate" />
@@ -16,6 +27,8 @@
                     <li role="presentation">
                         <asp:TextBox ID="txtLastName" runat="server"
                             placeholder="Last name" />
+                    </li>
+                    <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_LastName" runat="server"
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_LastName_OnServerValidate" />
@@ -23,6 +36,8 @@
                     <li role="presentation">
                         <asp:TextBox ID="txtEmail" runat="server"
                             placeholder="Email address" />
+                    </li>
+                    <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_Email" runat="server"
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_Email_OnServerValidate" />
@@ -30,6 +45,8 @@
                     <li role="presentation">
                         <asp:TextBox ID="txtPhone" runat="server"
                             placeholder="Phone number" />
+                    </li>
+                    <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_Phone" runat="server"
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_Phone_OnServerValidate" />
@@ -37,6 +54,8 @@
                     <li role="presentation">
                         <asp:TextBox ID="txtUserName" runat="server"
                             placeholder="UserName" />
+                    </li>
+                    <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_UserName" runat="server"
                             ForeColor="Red"
                             OnServerValidate="CustomValidator_UserName_OnServerValidate" />
@@ -119,6 +138,7 @@
                     </div>
                 </div>
             </div>
+            <!--Headers center does not affect-->
             <div class="row">
                 <div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px">
                     <asp:GridView ID="GridViewResult" runat="server"
@@ -127,6 +147,7 @@
                         AllowSorting="True"
                         AutoGenerateColumns="False"
                         RowStyle-HorizontalAlign="Center">
+                        <headerstyle HorizontalAlign="Center"/>
                         <Columns>
                             <asp:TemplateField ItemStyle-Width="5%">
                                 <ItemTemplate>

@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="ServiceBindingModule.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the ServiceBindingModule.
-// </summary>
+/* <header file="ServiceBindingModule.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the ServiceBindingModule.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using ARAManager.Business.Dao.DataAccess.Implementation;
@@ -32,6 +32,10 @@ namespace ARAManager.Business.Service.Ninject {
             // Campaign
             Bind<ICampaignDataAccess>().To<CampaignDataAccessImpl>();
             Bind<ICampaignServiceImpl>().To<CampaignServiceImpl>().Intercept().With<ServiceInterceptor>();
+
+            // CampaignType
+            Bind<ICampaignTypeDataAccess>().To<CampaignTypeDataAccessImpl>();
+            Bind<ICampaignTypeServiceImpl>().To<CampaignTypeServiceImpl>().Intercept().With<ServiceInterceptor>();
 
             // Company
             Bind<ICompanyDataAccess>().To<CompanyDataAccessImpl>();

@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="PreserveReferencesAttribute.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the PreserveReferencesAttribute.
-// </summary>
+/* <header file="PreserveReferencesAttribute.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the PreserveReferencesAttribute.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
@@ -17,9 +17,6 @@ using System.ServiceModel.Dispatcher;
 
 namespace ARAManager.Common.Services.Behaviors
 {
-    /// <summary> 
-    /// Class summary. 
-    /// </summary>
     /// <summary>
     /// Create Preservce reference attribute to solve problem circulation serialization
     /// http://msdn2.microsoft.com/en-us/library/aa730857(VS.80).aspx#netremotewcf_topic8

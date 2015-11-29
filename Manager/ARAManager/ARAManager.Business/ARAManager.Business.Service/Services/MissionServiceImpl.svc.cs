@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="MissionServiceImpl.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the service class for Mission.
-// </summary>
+/* <header file="MissionServiceImpl.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the service class for Mission.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
@@ -28,7 +28,7 @@ using Ninject;
 namespace ARAManager.Business.Service.Services {
     public class MissionServiceImpl : IMissionServiceImpl {
         #region IMethods
-        public Mission GetMissionTypeById(int missionId) {
+        public Mission GetMissionById(int missionId) {
             var srvDao = NinjectKernelFactory.Kernel.Get<IMissionDataAccess>();
             return srvDao.GetById(missionId);
         }

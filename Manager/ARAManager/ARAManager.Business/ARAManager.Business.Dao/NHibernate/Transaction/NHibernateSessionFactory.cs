@@ -1,13 +1,13 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <header file="NHibernateSessionFactory.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the NHibernateSessionFactory.
-// </summary>
+/* <header file="NHibernateSessionFactory.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the NHibernateSessionFactory.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Configuration;
@@ -150,16 +150,13 @@ namespace ARAManager.Business.Dao.NHibernate.Transaction {
         /// <param name="configuration">Nhibernate configuration</param>
         private void SerializeDomainObjects(Configuration configuration) {
             HbmSerializer.Default.Validate = true;
-            // Added by PhucLS - 20151025 - Fix Mapping in another way because assembly by ARAManager.Common is not corrected.
-            //                              Reason: Unknown
-            //configuration.AddInputStream(HbmSerializer.Default.Serialize(AssemblyLoadingHelper.GetOrLoadAssembly("ARAManager.Common")));
+            configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(CampaignType)));
             configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Customer)));
             configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Company)));
             configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Campaign)));
             configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Mission)));
             configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Subscription)));
             configuration.AddInputStream(HbmSerializer.Default.Serialize(typeof(Target)));
-            // Ended by PhucLS - 20151025
         }
 
         /// <summary>

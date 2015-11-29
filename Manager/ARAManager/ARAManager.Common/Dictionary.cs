@@ -82,6 +82,7 @@ namespace ARAManager.Common
 
         // Error messages
         public const string INVALID_LOGIN = "Invalid credentials. Please try again.";
+        public const string EXCEED_NUMBER_OF_MISSION = "Exceed the number of mission";
         //------------------------------------------------------------------------------------
         
         // Headers
@@ -93,9 +94,37 @@ namespace ARAManager.Common
 
         // Path
         public const string PATH_UPLOADED_TARGET = @"~/Ara_Data/Targets/";
+        public const string PATH_LIST_TARGET = @"~/Ara_Data/Targets/ListTargets.txt";
         public const string PATH_UPLOADED_CAMPAIGNS_AVATAR = @"~/Ara_Data/Campaigns/Avatar/";
         public const string PATH_UPLOADED_CAMPAIGNS_BANNER = @"~/Ara_Data/Campaigns/Banner/";
         public const string PATH_UPLOADED_MISSIONS_AVATAR = @"~/Ara_Data/Missions/Avatar/";
+        //------------------------------------------------------------------------------------
+
+        // Web services
+        public const string PATH_AR_JSON = "~/Ar_Data/";
+        //------------------------------------------------------------------------------------
+
+        // ArResources
+        public const string ARSM_PICTURES_GALLERY = "ARSM-PicturesGallery";
+        public const string ARSM_YOUTUBE = "ARSM-Youtube";
+        public const string ARSM_FACEBOOK = "ARSM-Facebook";
+        public const string ARSM_TEXT = "ARMM-Text";
+        public const string AR_KEY_URL = "URL";
+        public const string AR_KEY_NAME = "Name";
+        public const string AR_KEY_DIRECTOR = "Director";
+        public const string AR_KEY_ACTOR = "Actor";
+        public const string AR_KEY_DESCRIPTION = "Description";
+        public const string AR_PLATFORM_ID_ANDROID = "Android";
+        public const string AR_PROCESSOR_TYPE_IMAGE_SWITCHER = "ImageSwitcher";
+        public const string AR_PROCESSOR_TYPE_FACEBOOK = "Facebook";
+        public const string AR_PROCESSOR_TYPE_YOUTUBE = "Youtube";
+        public const string AR_PROCESSOR_TYPE_TEXTVIEW = "TextView";
+        //------------------------------------------------------------------------------------
+
+        // Campaign types
+        public const string CAMPAIGN_TYPE_CHECK_IN_URL = "checkin";
+        public const string CAMPAIGN_TYPE_TOUR_URL = "tour";
+        public const string CAMPAIGN_TYPE_THEATER_URL = "theater";
         //------------------------------------------------------------------------------------
 
         #endregion IConstants

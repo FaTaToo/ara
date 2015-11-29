@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="ClientServiceFactory.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the ClientServiceFactory.
-// </summary>
+/* <header file="ClientServiceFactory.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the ClientServiceFactory.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
@@ -21,13 +21,14 @@ using ARAManager.Common.Services;
 namespace ARAManager.Presentation.Connectivity
 {
     /// <summary> 
-    /// Class summary. 
+    /// Call services from web application
     /// </summary>
     public class ClientServiceFactory
     {
         #region Constants
 
         private const string CAMPAIGN_SERVICE_NAME = "CampaignService";
+        private const string CAMPAIGN_TYPE_SERVICE_NAME = "CampaignTypeService";
         private const string COMPANY_SERVICE_NAME = "CompanyService";
         private const string CUSTOMER_SERVICE_NAME = "CustomerService";
         private const string MISSION_SERVICE_NAME = "MissionService";
@@ -57,9 +58,9 @@ namespace ARAManager.Presentation.Connectivity
         private ClientServiceFactory()
         {
             m_serviceFactories = new Dictionary<string, object>();
-            Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(new ExeConfigurationFileMap()
+            var configuration = ConfigurationManager.OpenMappedExeConfiguration(new ExeConfigurationFileMap()
             {
-                ExeConfigFilename = @"D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\bin\Debug\ARAManager.Presentation.Client.exe.config",
+                ExeConfigFilename = @"D:\Projects\ARA\1.0\src-manager\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\bin\Debug\ARAManager.Presentation.exe.config",
             }, ConfigurationUserLevel.None);
 
             var serviceGroup = ServiceModelSectionGroup.GetSectionGroup(configuration);
@@ -74,6 +75,11 @@ namespace ARAManager.Presentation.Connectivity
                             var binding = new BasicHttpBinding();
                             var endpointAddress = new EndpointAddress(endpoint.Address);
                             m_serviceFactories[endpoint.Name] = new ChannelFactory<ICampaignServiceImpl>(binding, endpointAddress);
+                            break;
+                        case CAMPAIGN_TYPE_SERVICE_NAME:
+                            binding = new BasicHttpBinding();
+                            endpointAddress = new EndpointAddress(endpoint.Address);
+                            m_serviceFactories[endpoint.Name] = new ChannelFactory<ICampaignTypeServiceImpl>(binding, endpointAddress);
                             break;
                         case COMPANY_SERVICE_NAME:
                             binding = new BasicHttpBinding();
@@ -108,7 +114,9 @@ namespace ARAManager.Presentation.Connectivity
         #endregion IConstructors
 
         #region IProperties
-
+        /// <summary>
+        /// Campaign services
+        /// </summary>
         public static ICampaignServiceImpl CampaignService
         {
             get
@@ -116,7 +124,19 @@ namespace ARAManager.Presentation.Connectivity
                 return Get<ICampaignServiceImpl>(CAMPAIGN_SERVICE_NAME);
             }
         }
-
+        /// <summary>
+        /// Campaign type services
+        /// </summary>
+        public static ICampaignTypeServiceImpl CampaignTypeService
+        {
+            get
+            {
+                return Get<ICampaignTypeServiceImpl>(CAMPAIGN_TYPE_SERVICE_NAME);
+            }
+        }
+        /// <summary>
+        /// Company services
+        /// </summary>
         public static ICompanyServiceImpl CompanyService
         {
             get
@@ -124,7 +144,9 @@ namespace ARAManager.Presentation.Connectivity
                 return Get<ICompanyServiceImpl>(COMPANY_SERVICE_NAME);
             }
         }
-
+        /// <summary>
+        /// Customer services
+        /// </summary>
         public static ICustomerServiceImpl CustomerService
         {
             get
@@ -132,6 +154,9 @@ namespace ARAManager.Presentation.Connectivity
                 return Get<ICustomerServiceImpl>(CUSTOMER_SERVICE_NAME);
             }
         }
+        /// <summary>
+        /// Mission services
+        /// </summary>
         public static IMissionServiceImpl MissionService
         {
             get
@@ -139,7 +164,9 @@ namespace ARAManager.Presentation.Connectivity
                 return Get<IMissionServiceImpl>(MISSION_SERVICE_NAME);
             }
         }
-
+        /// <summary>
+        /// Subscription services
+        /// </summary>
         public static ISubscriptionServiceImpl SubscriptionService
         {
             get
@@ -147,7 +174,9 @@ namespace ARAManager.Presentation.Connectivity
                 return Get<ISubscriptionServiceImpl>(SUBSCRIPTION_SERVICE_NAME);
             }
         }
-
+        /// <summary>
+        /// Target services
+        /// </summary>
         public static ITargetServiceImpl TargetService
         {
             get

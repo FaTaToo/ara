@@ -1,33 +1,62 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ARAManager.Presentation.Client.Views/Master_Pages/ManagementCompany.master" AutoEventWireup="true" CodeBehind="TargetMissionCampaignCompany.aspx.cs" Inherits="ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.TargetMissionCampaignCompany" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
-
 <%@ Register Assembly="GMaps" Namespace="Subgurim.Controles" TagPrefix="cc1" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server"/>
+    <!--
+ <header file="TargetMissionCampaignCompany.aspx" group="288-462">
+    Author: LE Sanh Phuc - 11520288
+ </header>
+ <summary>
+    GUI of TargetMissionCampaignCompany.
+ </summary>
+ <Problems>
+    1. Does not check whether uploaded target has any file.
+    2. Does not validate movie information (remember to check maximum 4 files in pictures gallery)
+ </Problems>
+-->
+    <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <ul class="nav nav-pills nav-stacked pull-left">
                     <li role="presentation">
+                        <asp:Label ID="lblMovieInformation" runat="server" Text="Movie information"
+                            Width="60%"
+                            BackColor="darkred"
+                            Font-Bold="True"
+                            ForeColor="white"
+                            BorderColor="yellow"
+                            Enabled="False"
+                            Style="text-align: center" />
+                    </li>
+                    <li role="presentation" style="margin-top: 20px; margin-left: 20px">
                         <asp:TextBox ID="txtArName" runat="server"
                             placeholder="Name of movie" />
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" style="margin-top: 20px; margin-left: 20px">
                         <asp:TextBox ID="txtDirector" runat="server"
                             placeholder="Director of movie" />
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" style="margin-top: 20px; margin-left: 20px">
                         <asp:TextBox ID="txtActor" runat="server"
                             placeholder="Actor of movie" />
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" style="margin-top: 20px; margin-left: 20px">
                         <asp:TextBox ID="txtDescription" runat="server"
                             placeholder="Description of movie" />
                     </li>
                     <li role="presentation" style="margin-top: 20px;">
-                        <asp:FileUpload runat="server" ID="UploadPictures" AllowMultiple="true" />
+                        <asp:Label ID="lblPicturesGallery" runat="server" Text="Picture gallery"
+                            Width="60%"
+                            BackColor="darkred"
+                            Font-Bold="True"
+                            ForeColor="white"
+                            BorderColor="yellow"
+                            Enabled="False"
+                            Style="text-align: center" />
+                    </li>
+                    <li role="presentation" style="margin-top: 20px;">
+                        <asp:FileUpload runat="server" ID="FileUpload_PicturesGallery" AllowMultiple="true" />
                     </li>
                 </ul>
 
@@ -71,6 +100,11 @@
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator_TargetName" runat="server"
                                     ControlToValidate="txtTargetName"
                                     ForeColor="Red" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 30%"></td>
+                            <td style="width: 70%">
                                 <asp:CustomValidator ID="CustomValidator_TargetName" runat="server"
                                     ForeColor="Red"
                                     OnServerValidate="CustomValidator_TargetName_OnServerValidate" />
@@ -111,6 +145,14 @@
                         <tr>
                             <td style="width: 30%"></td>
                             <td style="width: 70%">
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator_Facebook" runat="server"
+                                    ControlToValidate="txtFacebookUrl"
+                                    ForeColor="Red" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 30%"></td>
+                            <td style="width: 70%">
                                 <asp:CustomValidator ID="CustomValidator_Facebook" runat="server"
                                     ForeColor="Red"
                                     OnServerValidate="CustomValidator_Facebook_OnServerValidate" />
@@ -125,6 +167,14 @@
                                 <asp:TextBox ID="txtYoutubeUrl" runat="server"
                                     Width="100%"
                                     placeholder="Youtube URL" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 30%"></td>
+                            <td style="width: 70%">
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator_Youtube" runat="server"
+                                    ControlToValidate="txtYoutubeUrl"
+                                    ForeColor="Red" />
                             </td>
                         </tr>
                         <tr>
@@ -153,11 +203,8 @@
                     <!--#region BUTTON-->
                     <ul class="nav nav-pills pull-left">
                         <li role="presentation" style="margin-left: 20px">
-                            <asp:Label ID="lblCreateTarget" runat="server" />
-                        </li>
-                        <li role="presentation" style="margin-left: 20px">
                             <asp:Button ID="btnCreateTarget" runat="server"
-                                CssClass="btn btn-warning"
+                                CssClass="btn btn-danger"
                                 Text="Upload target NOW"
                                 OnClick="btnCreateTarget_OnClick" />
                         </li>

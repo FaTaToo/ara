@@ -1,20 +1,19 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="Campaign.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the Campaign.
-// </summary>
+/* <header file="Campaign.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the Campaign.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using NHibernate.Mapping.Attributes;
-using NHibernate.Type;
 using FetchMode = NHibernate.Mapping.Attributes.FetchMode;
 
 namespace ARAManager.Common.Dto {
@@ -78,6 +77,10 @@ namespace ARAManager.Common.Dto {
         [ManyToOne(Name = "Company", Column = "CompanyId", NotNull = true, Fetch = FetchMode.Select)]
         [DataMember]
         public virtual Company Company { get; set; }
+
+        [ManyToOne(Name = "CampaignTypeId", Column = "CampaignTypeId", NotNull = false, Fetch = FetchMode.Select)]
+        [DataMember]
+        public virtual CampaignType CampaignTypeId { get; set; }
 
         [DataMember]
         [Set(0, Table = "ARA_Mission", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_missions")]

@@ -44,6 +44,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="LinFu.DynamicProxy">
       <HintPath>..\..\Lib\Ninject\Ninject.Extensions.Interception.Linfu.3.0.0-rc3\lib\net35\LinFu.DynamicProxy.dll</HintPath>
     </Reference>
@@ -76,7 +88,7 @@
     <Reference Include="Ninject.Web.Common">
       <HintPath>..\..\Lib\Ninject\Ninject.Web.Common.3.0.0-rc3\lib\net40-full\Ninject.Web.Common.dll</HintPath>
     </Reference>
-    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data.Services" />
     <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Transactions" />
@@ -94,6 +106,10 @@
     <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -104,12 +120,13 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Services\CampaignServiceImpl.svc" />
+    <Content Include="Services\CampaignTypeServiceImpl.svc" />
     <Content Include="Services\CompanyServiceImpl.svc" />
     <Content Include="Services\CustomerServiceImpl.svc" />
     <Content Include="Services\MissionServiceImpl.svc" />
-    <Content Include="Services\Presenter\Campaign.svc" />
     <Content Include="Services\Presenter\CustomerAccount.svc" />
-    <Content Include="Services\Presenter\Subscription.svc" />
+    <Content Include="Services\Presenter\CustomerCampaign.svc" />
+    <Content Include="Services\Presenter\CustomerSubscription.svc" />
     <Content Include="Services\SubscriptionServiceImpl.svc" />
     <Content Include="Services\TargetServiceImpl.svc" />
     <Content Include="Web.config">
@@ -131,6 +148,9 @@
     <Compile Include="Services\CampaignServiceImpl.svc.cs">
       <DependentUpon>CampaignServiceImpl.svc</DependentUpon>
     </Compile>
+    <Compile Include="Services\CampaignTypeServiceImpl.svc.cs">
+      <DependentUpon>CampaignTypeServiceImpl.svc</DependentUpon>
+    </Compile>
     <Compile Include="Services\CompanyServiceImpl.svc.cs">
       <DependentUpon>CompanyServiceImpl.svc</DependentUpon>
     </Compile>
@@ -140,14 +160,14 @@
     <Compile Include="Services\MissionServiceImpl.svc.cs">
       <DependentUpon>MissionServiceImpl.svc</DependentUpon>
     </Compile>
-    <Compile Include="Services\Presenter\Campaign.svc.cs">
-      <DependentUpon>Campaign.svc</DependentUpon>
-    </Compile>
     <Compile Include="Services\Presenter\CustomerAccount.svc.cs">
       <DependentUpon>CustomerAccount.svc</DependentUpon>
     </Compile>
-    <Compile Include="Services\Presenter\Subscription.svc.cs">
-      <DependentUpon>Subscription.svc</DependentUpon>
+    <Compile Include="Services\Presenter\CustomerCampaign.svc.cs">
+      <DependentUpon>CustomerCampaign.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Presenter\CustomerSubscription.svc.cs">
+      <DependentUpon>CustomerSubscription.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\SubscriptionServiceImpl.svc.cs">
       <DependentUpon>SubscriptionServiceImpl.svc</DependentUpon>
@@ -156,9 +176,7 @@
       <DependentUpon>TargetServiceImpl.svc</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ArResources\ARSM-PicturesGallery\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\ARAManager.Common\ARAManager.Common.csproj">
       <Project>{D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2}</Project>

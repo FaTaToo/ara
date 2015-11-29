@@ -12,8 +12,7 @@
 <body>
     <!--------------------------------------------------------------------------------------------------------->
     <form runat="server">
-        s
-        <div class=".container-fluid" style="background: linear-gradient(to right, darkred,red, black, darkred); width: 100%">
+        <div class=".container-fluid" style="background: linear-gradient(to right, darkred,red, black, darkred); width: 100%; height: 100%">
             <!--Header-->
             <!--Top-->
             <div class="row" style="padding-top: 20px">

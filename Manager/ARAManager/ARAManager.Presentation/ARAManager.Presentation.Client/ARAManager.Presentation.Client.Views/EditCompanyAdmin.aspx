@@ -1,7 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ARAManager.Presentation.Client.Views/Master_Pages/ManagementAdmin.master" AutoEventWireup="true" CodeBehind="EditCompanyAdmin.aspx.cs" Inherits="ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.EditCompanyAdmin" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server"></asp:Content>
-
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
+<!--
+ <header file="EditCompanyAdmin.aspx" group="288-462">
+    Author: LE Sanh Phuc - 11520288
+ </header>
+ <summary>
+    GUI of EditCompanyAdmin.
+ </summary>
+ <Problems>
+ </Problems>
+-->    
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" runat="server">
     <!--#region EDIT_INFORMATION-->
     <div class="container">
@@ -37,10 +46,14 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_Name" runat="server"
                                 ControlToValidate="txtCompanyName"
                                 ForeColor="Red" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%"></td>
+                        <td style="width: 70%">
                             <asp:CustomValidator ID="CustomValidator_CompanyName" runat="server"
                                 ForeColor="Red"
                                 OnServerValidate="CustomValidator_CompanyName_OnServerValidate" />
-
                         </td>
                     </tr>
                     <!--#endregion NAME-->
@@ -60,6 +73,11 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_Address" runat="server"
                                 ControlToValidate="txtAddress"
                                 ForeColor="Red" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%"></td>
+                        <td style="width: 70%">
                             <asp:CustomValidator ID="CustomValidator_Address" runat="server"
                                 ForeColor="Red"
                                 OnServerValidate="CustomValidator_Address_OnServerValidate" />
@@ -82,6 +100,11 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_Email" runat="server"
                                 ControlToValidate="txtEmail"
                                 ForeColor="Red" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%"></td>
+                        <td style="width: 70%">
                             <asp:CustomValidator ID="CustomValidator_Email" runat="server"
                                 ForeColor="Red"
                                 OnServerValidate="CustomValidator_Email_OnServerValidate" />
@@ -104,6 +127,11 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_Phone" runat="server"
                                 ControlToValidate="txtPhone"
                                 ForeColor="Red" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%"></td>
+                        <td style="width: 70%">
                             <asp:CustomValidator ID="CustomValidator_Phone" runat="server"
                                 ForeColor="Red"
                                 OnServerValidate="CustomValidator_Phone_OnServerValidate" />
@@ -128,6 +156,11 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_Username" runat="server"
                                 ControlToValidate="txtUsername"
                                 ForeColor="Red" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%"></td>
+                        <td style="width: 70%">
                             <asp:CustomValidator ID="CustomValidator_Username" runat="server"
                                 ForeColor="Red"
                                 OnServerValidate="CustomValidator_Username_OnServerValidate" />
@@ -151,20 +184,25 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_Password" runat="server"
                                 ControlToValidate="txtPassword"
                                 ForeColor="Red" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%"></td>
+                        <td style="width: 70%">
                             <asp:CustomValidator ID="CustomValidator_Password" runat="server"
                                 ForeColor="Red"
                                 OnServerValidate="CustomValidator_Password_OnServerValidate" />
                         </td>
                     </tr>
                     <!--#endregion PASSWORD-->
-                    
+
                     <!--#region ERROR_MESSAGE-->
                     <tr>
                         <td style="width: 30%"></td>
                         <td style="width: 70%">
-                            <asp:Label ID="lblMessage" runat="server" 
+                            <asp:Label ID="lblMessage" runat="server"
                                 ForeColor="Red"
-                                Width="100%"/>
+                                Width="100%" />
                         </td>
                     </tr>
                     <!--#endregion ERROR_MESSAGE-->
@@ -176,8 +214,8 @@
                     <li role="presentation">
                         <asp:Button ID="btnSave" runat="server"
                             CssClass="btn btn-danger"
-                            Text="Save" 
-                            OnClick="btnSave_OnClick"/>
+                            Text="Save"
+                            OnClick="btnSave_OnClick" />
                     </li>
                     <li role="presentation" style="margin-left: 20px">
                         <asp:Button ID="btnCancel" runat="server"

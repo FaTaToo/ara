@@ -1,7 +1,15 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Default" %>
-
 <!DOCTYPE html>
-
+<!--
+ <header file="Default.aspx" group="288-462">
+    Author: LE Sanh Phuc - 11520288
+ </header>
+ <summary>
+    GUI of Default.
+ </summary>
+ <Problems>
+ </Problems>
+-->
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head runat="server">
     <title>ARA - AR advertisement on mobile - Dashboard</title>

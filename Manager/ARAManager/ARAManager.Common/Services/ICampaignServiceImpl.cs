@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="ICampaignServiceImpl.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the ICampaignServiceImpl.
-// </summary>
+/* <header file="ICampaignServiceImpl.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the ICampaignServiceImpl.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Collections.Generic;
@@ -51,5 +51,9 @@ namespace ARAManager.Common.Services {
         [OperationContract]
         [PreserveReferences]
         Campaign GetCampaignByName(string campaignName);
+
+        [OperationContract]
+        [PreserveReferences]
+        int CountCampaign();
     }
 }

@@ -1,20 +1,18 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="Mission.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the Mission.
-// </summary>
+/* <header file="Mission.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the Mission.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using NHibernate.Mapping.Attributes;
-using NHibernate.Type;
 
 namespace ARAManager.Common.Dto {
     [DataContract]
@@ -57,7 +55,7 @@ namespace ARAManager.Common.Dto {
         [Property(Column = "NumTarget", Name = "NumTarget", TypeType = typeof(int), NotNull = true)]
         public virtual int NumTarget { get; set; }
 
-        [ManyToOne(Name = "Campaign", Column = "CampaignId", NotNull = false, Fetch = FetchMode.Select)]
+        [ManyToOne(Name = "Campaign", Column = "CampaignId", NotNull = true, Fetch = FetchMode.Select)]
         [DataMember]
         public virtual Campaign Campaign { get; set; }
 

@@ -51,6 +51,10 @@
       <HintPath>..\..\packages\Subgurim.Maps.4.1.0.6\lib\net20\GMaps.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -142,15 +146,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ARAManager.Presentation.Client.Resources\Images\CampaignTypes\checkIn.jpg" />
+    <Content Include="ARAManager.Presentation.Client.Resources\Images\CampaignTypes\theater.jpg" />
+    <Content Include="ARAManager.Presentation.Client.Resources\Images\CampaignTypes\tour.jpg" />
     <Content Include="ARAManager.Presentation.Client.Views\CampaignCompany.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\CompanyAdmin.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\CustomerAdmin.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\Default.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\MissionCampaignCompany.aspx" />
-    <Content Include="ARAManager.Presentation.Client.Views\NewCampaignCompany.aspx" />
+    <Content Include="ARAManager.Presentation.Client.Views\EditCampaignCompany.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\EditCompanyAdmin.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\EditCustomerAdmin.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\HomeAdmin.aspx" />
+    <Content Include="ARAManager.Presentation.Client.Views\NewCampaignCompany.aspx" />
+    <Content Include="ARAManager.Presentation.Client.Views\StatisticsAdmin.aspx" />
+    <Content Include="ARAManager.Presentation.Client.Views\StatisticsCompany.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\TargetMissionCampaignCompany.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -214,12 +224,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
     <Content Include="ARAManager.Presentation.Client.Resources\Images\AddNew.png" />
     <Content Include="ARAManager.Presentation.Client.Resources\Images\atm.png" />
     <Content Include="ARAManager.Presentation.Client.Resources\Images\facebook.png" />
@@ -241,17 +245,24 @@
     <Content Include="ARAManager.Presentation.Client.Resources\Images\visa.png" />
     <Content Include="ARAManager.Presentation.Client.Resources\Images\youtube.png" />
     <Content Include="ARAManager.Presentation.Client.Resources\Images\zingme.png" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ARAManager.Presentation.Client.Views\Master_Pages\ManagementAdmin.master" />
     <Content Include="ARAManager.Presentation.Client.Views\Master_Pages\ManagementCompany.master" />
     <Content Include="ARAManager.Presentation.Client.Views\Master_Pages\Management.Master" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-2.1.4-vsdoc.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
     <Content Include="Scripts\WebForms\GridView.js" />
@@ -348,12 +359,12 @@
     <Compile Include="ARAManager.Presentation.Client.Views\MissionCampaignCompany.aspx.designer.cs">
       <DependentUpon>MissionCampaignCompany.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ARAManager.Presentation.Client.Views\NewCampaignCompany.aspx.cs">
-      <DependentUpon>NewCampaignCompany.aspx</DependentUpon>
+    <Compile Include="ARAManager.Presentation.Client.Views\EditCampaignCompany.aspx.cs">
+      <DependentUpon>EditCampaignCompany.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ARAManager.Presentation.Client.Views\NewCampaignCompany.aspx.designer.cs">
-      <DependentUpon>NewCampaignCompany.aspx</DependentUpon>
+    <Compile Include="ARAManager.Presentation.Client.Views\EditCampaignCompany.aspx.designer.cs">
+      <DependentUpon>EditCampaignCompany.aspx</DependentUpon>
     </Compile>
     <Compile Include="ARAManager.Presentation.Client.Views\EditCompanyAdmin.aspx.cs">
       <DependentUpon>EditCompanyAdmin.aspx</DependentUpon>
@@ -375,6 +386,27 @@
     </Compile>
     <Compile Include="ARAManager.Presentation.Client.Views\HomeAdmin.aspx.designer.cs">
       <DependentUpon>HomeAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ARAManager.Presentation.Client.Views\NewCampaignCompany.aspx.cs">
+      <DependentUpon>NewCampaignCompany.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ARAManager.Presentation.Client.Views\NewCampaignCompany.aspx.designer.cs">
+      <DependentUpon>NewCampaignCompany.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ARAManager.Presentation.Client.Views\StatisticsAdmin.aspx.cs">
+      <DependentUpon>StatisticsAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ARAManager.Presentation.Client.Views\StatisticsAdmin.aspx.designer.cs">
+      <DependentUpon>StatisticsAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ARAManager.Presentation.Client.Views\StatisticsCompany.aspx.cs">
+      <DependentUpon>StatisticsCompany.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ARAManager.Presentation.Client.Views\StatisticsCompany.aspx.designer.cs">
+      <DependentUpon>StatisticsCompany.aspx</DependentUpon>
     </Compile>
     <Compile Include="ARAManager.Presentation.Client.Views\TargetMissionCampaignCompany.aspx.cs">
       <DependentUpon>TargetMissionCampaignCompany.aspx</DependentUpon>

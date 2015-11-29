@@ -1,13 +1,13 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <header file="SqlServerExceptionConverter.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the SqlServerExceptionConverter.
-// </summary>
+/* <header file="SqlServerExceptionConverter.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the SqlServerExceptionConverter.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Data.SqlClient;

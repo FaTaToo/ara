@@ -1,0 +1,7 @@
+D:\Projects\ARA\1.0\src-manager\Tools\Snapshots\VwsCaller\VwsCaller\bin\Debug\VwsCaller.exe.config
+D:\Projects\ARA\1.0\src-manager\Tools\Snapshots\src\VwsCaller\VwsCaller\bin\Debug\VwsCaller.exe.config
+D:\Projects\ARA\1.0\src-manager\Tools\Snapshots\src\VwsCaller\VwsCaller\bin\Debug\VwsCaller.exe
+D:\Projects\ARA\1.0\src-manager\Tools\Snapshots\src\VwsCaller\VwsCaller\bin\Debug\VwsCaller.pdb
+D:\Projects\ARA\1.0\src-manager\Tools\Snapshots\src\VwsCaller\VwsCaller\obj\Debug\VwsCaller.csprojResolveAssemblyReference.cache
+D:\Projects\ARA\1.0\src-manager\Tools\Snapshots\src\VwsCaller\VwsCaller\obj\Debug\VwsCaller.exe
+D:\Projects\ARA\1.0\src-manager\Tools\Snapshots\src\VwsCaller\VwsCaller\obj\Debug\VwsCaller.pdb

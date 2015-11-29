@@ -34,11 +34,9 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         #region IMethods
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Commented by PhucLS: Will be fixed with new services
-            m_numberofCustomers = ClientServiceFactory.CustomerService.GetAllCustomers().Count;
-            m_numberofCompanies = ClientServiceFactory.CompanyService.GetAllCompanies().Count;
-            m_numberofCampaigns = ClientServiceFactory.CampaignService.GetAllCampaigns().Count;
-            // Ended by PhucLS
+            m_numberofCustomers = ClientServiceFactory.CustomerService.CountCustomers();
+            m_numberofCompanies = ClientServiceFactory.CompanyService.CountCompany();
+            m_numberofCampaigns = ClientServiceFactory.CampaignService.CountCampaign();
         }
 
         #endregion IMethods

@@ -1,6 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ARAManager.Presentation.Client.Views/Master_Pages/ManagementAdmin.master" AutoEventWireup="true" CodeBehind="HomeAdmin.aspx.cs" Inherits="ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.HomeAdmin" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Search" runat="server">
+<!--
+ <header file="HomeAdmin.aspx" group="288-462">
+    Author: LE Sanh Phuc - 11520288
+ </header>
+ <summary>
+    GUI of HomeAdmin.
+ </summary>
+ <Problems>
+ </Problems>
+-->
     <div class="container">
         <div class="row">
             <div class="col-md-12">

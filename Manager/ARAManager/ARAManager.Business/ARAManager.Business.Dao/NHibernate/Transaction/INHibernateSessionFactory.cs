@@ -1,13 +1,13 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <header file="INHibernateSessionFactory.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the INHibernateSessionFactory.
-// </summary>
+/* <header file="INHibernateSessionFactory.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the INHibernateSessionFactory.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using NHibernate;

@@ -6,6 +6,7 @@
  *      Implement logic for MissionCampaignCompany page.
  * </summary>
  * <Problems>
+ *      1. 
  * </Problems>
 */
 // --------------------------------------------------------------------------------------------------------------------
@@ -28,11 +29,17 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
     /// </summary>
     public partial class MissionCampaignCompany : System.Web.UI.Page
     {
+        #region SFields
+
+        private static byte[] s_rowVersion;
+
+        #endregion SFields
+
         #region IFields
 
         private readonly Validation m_validator = new Validation();
-        private Campaign m_camnpaign;
-
+        private Campaign m_campaign;
+        private Mission m_mission;
         #endregion IFields
 
         #region SFields
@@ -44,15 +51,27 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         #region IMethods
         protected void Page_Load(object sender, EventArgs e)
         {
-            m_camnpaign = ClientServiceFactory.CampaignService.GetCampaignById(int.Parse(Request.QueryString["RequestId"]));
+            m_campaign = ClientServiceFactory.CampaignService.GetCampaignById(int.Parse(Request.QueryString["RequestId"]));
             if (!Page.IsPostBack)
             {
-                s_numberOfMission = m_camnpaign.Missions.Count;
+                s_numberOfMission = m_campaign.Missions.Count;
             }
             EnableValidator(false);
-            lblCreateMission.Text = "You have " + s_numberOfMission;
-            GridView_Mission.DataSource = m_camnpaign.Missions;
+            lblCreateMission.Text = "You have " + s_numberOfMission + " missions";
+            GridView_Mission.DataSource = m_campaign.Missions;
             GridView_Mission.DataBind();
+
+            if ((Request.QueryString["Method"]) != "Edit")
+            {
+                m_mission= new Mission();
+                return;
+            }
+            txtMissionName.Enabled = false;
+            m_mission = ClientServiceFactory.MissionService.GetMissionById(int.Parse(Request.QueryString["MissionId"]));
+            txtMissionName.Text = m_mission.Name;
+            txtDescription.Text = m_mission.Description;
+            txtNumTarget.Text = m_mission.NumTarget.ToString();
+            s_rowVersion = m_mission.RowVersion;
         }
 
         // Validators
@@ -73,6 +92,9 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         // Supported methods
         private void EnableValidator(bool flag)
         {
+            RequiredFieldValidator_MissionName.Enabled = flag;
+            RequiredFieldValidator_Description.Enabled = flag;
+            RequiredFieldValidator_NumTarget.Enabled = flag;
             CustomValidator_MissionName.Enabled = flag;
             CustomValidator_Description.Enabled = flag;
             CustomValidator_Avatar.Enabled = flag;
@@ -80,6 +102,9 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         }
         private void SetErrorMessages()
         {
+            RequiredFieldValidator_MissionName.ErrorMessage = Validation.REQUIRE_MISSIONCAMPAIGNCOMPANY_NAME;
+            RequiredFieldValidator_Description.ErrorMessage = Validation.REQUIRE_MISSIONCAMPAIGNCOMPANY_DESCRIPTION;
+            RequiredFieldValidator_NumTarget.ErrorMessage = Validation.REQUIRE_MISSIONCAMPAIGNCOMPANY_NUM_TARGET;
             CustomValidator_MissionName.ErrorMessage = Validation.VALIDATOR_MISSION_NAME;
             CustomValidator_Description.ErrorMessage = Validation.VALIDATOR_DESCRIPTION;
             CustomValidator_Avatar.ErrorMessage = Validation.VALIDATOR_AVATAR;
@@ -89,6 +114,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             return Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + eval;
         }
+
         //-----------------------------------------------------------------------------------------------------
 
         // Events
@@ -101,26 +127,25 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             {
                 return;
             }
+            if (s_numberOfMission == m_campaign.NumMission)
+            {
+                lblMessage.Text = Dictionary.EXCEED_NUMBER_OF_MISSION;
+                return;
+            }
             var extension = Path.GetExtension(FileUpload_Avatar.FileName);
             var fileName = txtMissionName.Text + "Avatar" + extension;
             var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + fileName);
             FileUpload_Avatar.SaveAs(filePath);
-            var mission = new Mission()
-            {
-                Name = txtMissionName.Text,
-                Description = txtDescription.Text,
-                NumTarget = int.Parse(txtNumTarget.Text),
-                Avatar = fileName,
-                Campaign = m_camnpaign
-            };
+            m_mission.Name = txtMissionName.Text;
+            m_mission.Description = txtDescription.Text;
+            m_mission.NumTarget = int.Parse(txtNumTarget.Text);
+            m_mission.Avatar = Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + fileName;
+            m_mission.Campaign = m_campaign;
+            m_mission.RowVersion = s_rowVersion;
             try
             {
-                ClientServiceFactory.MissionService.SaveNewMission(mission);
-                txtMissionName.Text = string.Empty;
-                txtDescription.Text = string.Empty;
-                txtNumTarget.Text = string.Empty;
-                lblCreateMission.Text = "You have " + ++s_numberOfMission;
-                
+                ClientServiceFactory.MissionService.SaveNewMission(m_mission);
+                Response.Redirect("MissionCampaignCompany.aspx?Method=New&RequestId="+m_campaign.CampaignId);
             }
             catch (FaultException<MissionNameAlreadyExistException> ex)
             {
@@ -134,6 +159,14 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         protected void btnCancel_OnClick(object sender, EventArgs e)
         {
             Response.Redirect("CampaignCompany.aspx");
+        }
+        protected string GetNavigateUrl(object eval)
+        {
+            return "TargetMissionCampaignCompany.aspx?RequestId=" + eval;
+        }
+        protected string GetEditMissionUrl(object eval)
+        {
+            return "MissionCampaignCompany.aspx?Method=Edit&RequestId="+m_campaign.CampaignId+"&MissionId=" + eval;
         }
         //-----------------------------------------------------------------------------------------------------
         #endregion IMethods

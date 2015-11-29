@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="CompanyServiceImpl.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the service class for Company.
-// </summary>
+/* <header file="CompanyServiceImpl.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the service class for Company.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
@@ -30,10 +30,20 @@ namespace ARAManager.Business.Service.Services {
    public class CompanyServiceImpl : ICompanyServiceImpl {
 
        #region IMethods
+       /// <summary>
+       /// Get company by company id
+       /// </summary>
+       /// <param name="companyId"></param>
+       /// <returns></returns>
        public Company GetCompanyById(int companyId) {
            var srvDao = NinjectKernelFactory.Kernel.Get<ICompanyDataAccess>();
            return srvDao.GetById(companyId);
        }
+       /// <summary>
+       /// Get company by user name
+       /// </summary>
+       /// <param name="userName"></param>
+       /// <returns></returns>
        public Company GetCompanyByUserName(string userName)
        {
            var srvDao = NinjectKernelFactory.Kernel.Get<ICompanyDataAccess>();
@@ -45,12 +55,19 @@ namespace ARAManager.Business.Service.Services {
            var result = srvDao.FindByCriteria(criteria);
            return result != null ? result.FirstOrDefault() : null;
        }
+       /// <summary>
+       /// Get all companies
+       /// </summary>
+       /// <returns></returns>
        public IList<Company> GetAllCompanies() {
            var srvDao = NinjectKernelFactory.Kernel.Get<ICompanyDataAccess>();
            var criteria = DetachedCriteria.For<Company>();
            return srvDao.FindByCriteria(criteria);
        }
-
+       /// <summary>
+       /// Save new company
+       /// </summary>
+       /// <param name="company"></param>
        public void SaveNewCompany(Company company) {
            var srvDao = NinjectKernelFactory.Kernel.Get<ICompanyDataAccess>();
            using (NhTransactionScope tr = TransactionsFactory.CreateTransactionScope()) {
@@ -72,7 +89,10 @@ namespace ARAManager.Business.Service.Services {
                tr.Complete();
            }
        }
-
+       /// <summary>
+       /// Delete company by company id
+       /// </summary>
+       /// <param name="companyId"></param>
        public void DeleteCompany(int companyId) {
            var srvDao = NinjectKernelFactory.Kernel.Get<ICompanyDataAccess>();
            using (NhTransactionScope tr = TransactionsFactory.CreateTransactionScope()) {
@@ -87,7 +107,10 @@ namespace ARAManager.Business.Service.Services {
                tr.Complete();
            }
        }
-
+       /// <summary>
+       /// Delete companies by the list of companies id
+       /// </summary>
+       /// <param name="companies"></param>
        public void DeleteCompanies(List<int> companies) {
            foreach (var company in companies) {
                try {
@@ -99,7 +122,14 @@ namespace ARAManager.Business.Service.Services {
                }
            }
        }
-
+       /// <summary>
+       /// Search company by name, email, phone, and user name
+       /// </summary>
+       /// <param name="name"></param>
+       /// <param name="email"></param>
+       /// <param name="phone"></param>
+       /// <param name="username"></param>
+       /// <returns></returns>
        public IList<Company> SearchCompany(string name, string email, string phone, string username) {
            var srvDao = NinjectKernelFactory.Kernel.Get<ICompanyDataAccess>();
            var criteria = DetachedCriteria.For<Company>();
@@ -119,7 +149,12 @@ namespace ARAManager.Business.Service.Services {
            var result = srvDao.FindByCriteria(criteria);
            return result;
        }
-
+       /// <summary>
+       /// Check user name and password of company
+       /// </summary>
+       /// <param name="username"></param>
+       /// <param name="password"></param>
+       /// <returns></returns>
        public int AuthenticateUser(string username, string password) {
            if (String.CompareOrdinal(username, Dictionary.ADMIN_USERNAME) == 0 ||
                String.CompareOrdinal(password, Dictionary.ADMIN_PASSWORD) == 0) {
@@ -137,7 +172,14 @@ namespace ARAManager.Business.Service.Services {
            }
            return -1;
        }
-
+       /// <summary>
+       /// Count the number of companies
+       /// </summary>
+       /// <returns></returns>
+       public int CountCompany()
+       {
+           return GetAllCompanies().Count;
+       }
        #endregion IMethods
     }
 }

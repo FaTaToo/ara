@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <header file="IMissionServiceImpl.cs" group="288-462">
-//
-// Last modified: 
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement the IMissionServiceImpl.
-// </summary>
+/* <header file="IMissionServiceImpl.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement the IMissionServiceImpl.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Collections.Generic;
@@ -22,7 +22,7 @@ namespace ARAManager.Common.Services {
     public interface IMissionServiceImpl {
         [OperationContract]
         [PreserveReferences]
-        Mission GetMissionTypeById(int missionId);
+        Mission GetMissionById(int missionId);
 
         [OperationContract]
         [PreserveReferences]

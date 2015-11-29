@@ -58,6 +58,15 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         protected global::System.Web.UI.WebControls.TextBox txtMissionName;
         
         /// <summary>
+        /// RequiredFieldValidator_MissionName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_MissionName;
+        
+        /// <summary>
         /// CustomValidator_MissionName control.
         /// </summary>
         /// <remarks>
@@ -74,6 +83,15 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
+        
+        /// <summary>
+        /// RequiredFieldValidator_Description control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Description;
         
         /// <summary>
         /// CustomValidator_Description control.
@@ -110,6 +128,15 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNumTarget;
+        
+        /// <summary>
+        /// RequiredFieldValidator_NumTarget control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_NumTarget;
         
         /// <summary>
         /// RangeValidator_NumMission control.
