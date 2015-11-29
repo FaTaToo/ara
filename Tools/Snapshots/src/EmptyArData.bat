@@ -1,4 +1,3 @@
-D:\Projects\ARA\1.0\src-manager\Tools\Snapshots\src\VwsCaller\VwsCaller\bin\Debug\VwsCaller.exe
 del /Q "D:\Projects\ARA\1.0\src-manager\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\Ara_Data\Campaigns\Avatar\*"
 del /Q "D:\Projects\ARA\1.0\src-manager\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\Ara_Data\Campaigns\Banner\*"
 del /Q "D:\Projects\ARA\1.0\src-manager\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation.Client\Ara_Data\Missions\Avatar\*"

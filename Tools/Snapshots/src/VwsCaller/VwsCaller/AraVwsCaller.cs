@@ -11,6 +11,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 
@@ -38,7 +39,16 @@ namespace VwsCaller
                    "http://localhost:1234/ara-vws/vws/SampleSelector.php?select=DeleteTarget&targetId=" + target));
                 }
             }
-            System.Diagnostics.Process.Start(@"D:\Projects\ARA\1.0\src-manager\Tools\Snapshots\RestoreDb.bat");
+
+            var process = new Process
+            {
+                StartInfo =
+                {
+                    FileName = @"D:\Projects\ARA\1.0\src-manager\Tools\Snapshots\src\EmptyArData.bat",
+                    WorkingDirectory = @"D:\Projects\ARA\1.0\src-manager\Tools\Snapshots\src"
+                }
+            };
+            process.Start();
         }
         #endregion SMethods
     }
