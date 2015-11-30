@@ -27,7 +27,8 @@
         </div>
         <div class="col-md-1 col-xs-1 col-sm-1">
             <!--ARA name-->
-            <p style="color: black; font-family: fantasy; font-size: 36px;"><strong>A</strong>r<strong style="color: gold">Advertisement</strong>
+            <p style="color: black; font-family: fantasy; font-size: 36px;">
+                <strong>A</strong>r<strong style="color: gold">Advertisement</strong>
             </p>
         </div>
         <div class="col-md-1 col-xs-1 col-sm-1"></div>

@@ -227,7 +227,8 @@
     </div>
     <div class="col-md-2"></div>
     <div class="col-md-4">
-        <p class="pull-right" style="color: white; margin-right: 20px">0933.111.975 (<strong style="color: gold">Phuc</strong>)
+        <p class="pull-right" style="color: white; margin-right: 20px">
+            0933.111.975 (<strong style="color: gold">Phuc</strong>)
         </p>
         <img class="pull-right" style="margin-right: 20px" src="../ARAManager.Presentation.Client.Resources/Images/phone.png" alt="Image is lost."/>
         <p class="pull-right" style="color: white; margin-right: 20px">phucls288@gmail.com </p>
