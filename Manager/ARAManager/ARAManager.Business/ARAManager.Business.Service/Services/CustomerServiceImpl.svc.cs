@@ -25,14 +25,17 @@ using NHibernate;
 using NHibernate.Criterion;
 using Ninject;
 
-namespace ARAManager.Business.Service.Services {
+namespace ARAManager.Business.Service.Services
+{
     /// <summary>
-    /// Services of Customers.
+    ///     Services of Customers.
     /// </summary>
-    public class CustomerServiceImpl : ICustomerServiceImpl {
+    public class CustomerServiceImpl : ICustomerServiceImpl
+    {
         #region IMethods
+
         /// <summary>
-        /// Get customer by customer id
+        ///     Get customer by customer id
         /// </summary>
         /// <param name="customerId"></param>
         /// <returns></returns>
@@ -41,8 +44,9 @@ namespace ARAManager.Business.Service.Services {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICustomerDataAccess>();
             return srvDao.GetById(customerId);
         }
+
         /// <summary>
-        /// Get all customers
+        ///     Get all customers
         /// </summary>
         /// <returns></returns>
         public IList<Customer> GetAllCustomers()
@@ -51,14 +55,15 @@ namespace ARAManager.Business.Service.Services {
             var criteria = DetachedCriteria.For<Customer>();
             return srvDao.FindByCriteria(criteria);
         }
+
         /// <summary>
-        /// Save new customer
+        ///     Save new customer
         /// </summary>
         /// <param name="customer"></param>
         public void SaveNewCustomer(Customer customer)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICustomerDataAccess>();
-            using (NhTransactionScope tr = TransactionsFactory.CreateTransactionScope())
+            using (var tr = TransactionsFactory.CreateTransactionScope())
             {
                 try
                 {
@@ -67,26 +72,30 @@ namespace ARAManager.Business.Service.Services {
                 catch (StaleObjectStateException)
                 {
                     throw new FaultException<ConcurrentUpdateException>(
-                        new ConcurrentUpdateException { MessageError = Dictionary.CUSTOMER_CONCURRENT_UPDATE_EXCEPTION_MSG },
+                        new ConcurrentUpdateException
+                        {
+                            MessageError = Dictionary.CUSTOMER_CONCURRENT_UPDATE_EXCEPTION_MSG
+                        },
                         new FaultReason(Dictionary.CONCURRENT_UPDATE_EXCEPTION_REASON));
                 }
                 catch (Exception ex)
                 {
                     throw new FaultException<Exception>(
-                       new Exception(ex.Message),
-                       new FaultReason(Dictionary.UNKNOWN_REASON));
+                        new Exception(ex.Message),
+                        new FaultReason(Dictionary.UNKNOWN_REASON));
                 }
                 tr.Complete();
             }
         }
+
         /// <summary>
-        /// Delete customer by customer id
+        ///     Delete customer by customer id
         /// </summary>
         /// <param name="customerId"></param>
         public void DeleteCustomer(int customerId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICustomerDataAccess>();
-            using (NhTransactionScope tr = TransactionsFactory.CreateTransactionScope())
+            using (var tr = TransactionsFactory.CreateTransactionScope())
             {
                 try
                 {
@@ -96,14 +105,15 @@ namespace ARAManager.Business.Service.Services {
                 catch (Exception)
                 {
                     throw new FaultException<CustomerAlreadyDeletedException>(
-                       new CustomerAlreadyDeletedException { MessageError = Dictionary.CUSTOMER_DELETED_EXCEPTION_MSG },
-                       new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
+                        new CustomerAlreadyDeletedException {MessageError = Dictionary.CUSTOMER_DELETED_EXCEPTION_MSG},
+                        new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
                 }
                 tr.Complete();
             }
         }
+
         /// <summary>
-        /// Delete the list of customers by list of customers id
+        ///     Delete the list of customers by list of customers id
         /// </summary>
         /// <param name="customers"></param>
         public void DeleteCustomers(List<int> customers)
@@ -117,13 +127,14 @@ namespace ARAManager.Business.Service.Services {
                 catch (Exception)
                 {
                     throw new FaultException<CustomerAlreadyDeletedException>(
-                       new CustomerAlreadyDeletedException { MessageError = Dictionary.CUSTOMER_DELETED_EXCEPTION_MSG },
-                       new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
+                        new CustomerAlreadyDeletedException {MessageError = Dictionary.CUSTOMER_DELETED_EXCEPTION_MSG},
+                        new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
                 }
             }
         }
+
         /// <summary>
-        /// Search customers by firstname, lastname, email, phone and username
+        ///     Search customers by firstname, lastname, email, phone and username
         /// </summary>
         /// <param name="firstname"></param>
         /// <param name="lastname"></param>
@@ -131,23 +142,29 @@ namespace ARAManager.Business.Service.Services {
         /// <param name="phone"></param>
         /// <param name="username"></param>
         /// <returns></returns>
-        public IList<Customer> SearchCustomer(string firstname, string lastname, string email, string phone, string username) {
+        public IList<Customer> SearchCustomer(string firstname, string lastname, string email, string phone,
+            string username)
+        {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICustomerDataAccess>();
             var criteria = DetachedCriteria.For<Customer>();
 
-            if (!string.IsNullOrEmpty(firstname)) {
+            if (!string.IsNullOrEmpty(firstname))
+            {
                 criteria.Add(Restrictions.Where<Customer>(c => c.FirstName == firstname));
             }
 
-            if (!string.IsNullOrEmpty(lastname)) {
+            if (!string.IsNullOrEmpty(lastname))
+            {
                 criteria.Add(Restrictions.Where<Customer>(c => c.LastName == lastname));
             }
 
-            if (!string.IsNullOrEmpty(email)) {
+            if (!string.IsNullOrEmpty(email))
+            {
                 criteria.Add(Restrictions.Where<Customer>(c => c.Email == email));
             }
 
-            if (!string.IsNullOrEmpty(phone)) {
+            if (!string.IsNullOrEmpty(phone))
+            {
                 criteria.Add(Restrictions.Where<Customer>(c => c.Phone == phone));
             }
 
@@ -159,14 +176,16 @@ namespace ARAManager.Business.Service.Services {
             var result = srvDao.FindByCriteria(criteria);
             return result;
         }
+
         /// <summary>
-        /// Count the number of customers
+        ///     Count the number of customers
         /// </summary>
         /// <returns></returns>
         public int CountCustomers()
         {
             return GetAllCustomers().Count;
         }
+
         #endregion IMethods
     }
 }

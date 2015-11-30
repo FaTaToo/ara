@@ -25,7 +25,8 @@ using NHibernate;
 using NHibernate.Criterion;
 using Ninject;
 
-namespace ARAManager.Business.Service.Services {
+namespace ARAManager.Business.Service.Services
+{
     public class SubscriptionServiceImpl : ISubscriptionServiceImpl
     {
         #region IMethods
@@ -35,6 +36,7 @@ namespace ARAManager.Business.Service.Services {
             var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
             return srvDao.GetById(subscriptionId);
         }
+
         public IList<Subscription> GetSubcriptionListByCampaignId(int campaignId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
@@ -42,6 +44,7 @@ namespace ARAManager.Business.Service.Services {
             criteria.Add(Restrictions.Where<Subscription>(c => c.Campaign.CampaignId == campaignId));
             return srvDao.FindByCriteria(criteria);
         }
+
         public IList<Subscription> GetSubcriptionListByCustomerId(int customerId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
@@ -49,10 +52,11 @@ namespace ARAManager.Business.Service.Services {
             criteria.Add(Restrictions.Where<Subscription>(c => c.Customer.CustomerId == customerId));
             return srvDao.FindByCriteria(criteria);
         }
+
         public void SaveNewSubscription(Subscription subscription)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
-            using (NhTransactionScope tr = TransactionsFactory.CreateTransactionScope())
+            using (var tr = TransactionsFactory.CreateTransactionScope())
             {
                 try
                 {
@@ -80,7 +84,7 @@ namespace ARAManager.Business.Service.Services {
         public void DeleteSubscription(int subscriptionId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
-            using (NhTransactionScope tr = TransactionsFactory.CreateTransactionScope())
+            using (var tr = TransactionsFactory.CreateTransactionScope())
             {
                 try
                 {
@@ -90,8 +94,11 @@ namespace ARAManager.Business.Service.Services {
                 catch (Exception)
                 {
                     throw new FaultException<SubscriptionAlreadyDeletedException>(
-                       new SubscriptionAlreadyDeletedException { MessageError = Dictionary.SUBSCRIPTION_DELETED_EXCEPTION_MSG },
-                       new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
+                        new SubscriptionAlreadyDeletedException
+                        {
+                            MessageError = Dictionary.SUBSCRIPTION_DELETED_EXCEPTION_MSG
+                        },
+                        new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
                 }
                 tr.Complete();
             }
@@ -108,12 +115,15 @@ namespace ARAManager.Business.Service.Services {
                 catch (Exception)
                 {
                     throw new FaultException<SubscriptionAlreadyDeletedException>(
-                       new SubscriptionAlreadyDeletedException { MessageError = Dictionary.SUBSCRIPTION_DELETED_EXCEPTION_MSG },
-                       new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
+                        new SubscriptionAlreadyDeletedException
+                        {
+                            MessageError = Dictionary.SUBSCRIPTION_DELETED_EXCEPTION_MSG
+                        },
+                        new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
                 }
             }
         }
 
-    #endregion IMethods
+        #endregion IMethods
     }
 }

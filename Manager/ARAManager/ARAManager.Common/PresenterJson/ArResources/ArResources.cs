@@ -17,7 +17,9 @@ namespace ARAManager.Common.PresenterJson.ArResources
     public class ArResources
     {
         #region IProperties
+
         public List<ArResource> ArResource { get; set; }
+
         #endregion IProperties
     }
 }

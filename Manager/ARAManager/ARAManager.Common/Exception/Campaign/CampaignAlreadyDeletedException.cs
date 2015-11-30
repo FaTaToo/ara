@@ -12,12 +12,14 @@
 
 using System.Runtime.Serialization;
 
-namespace ARAManager.Common.Exception.Campaign {
+namespace ARAManager.Common.Exception.Campaign
+{
     /// <summary>
-    /// The campaign has been already deleted.
+    ///     The campaign has been already deleted.
     /// </summary>
     [DataContract]
-    public class CampaignAlreadyDeletedException {
+    public class CampaignAlreadyDeletedException
+    {
         [DataMember]
         public string MessageError { get; set; }
     }

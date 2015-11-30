@@ -15,7 +15,7 @@ using ARAManager.Common.Dto;
 
 namespace ARAManager.Business.Dao.DataAccess.Implementation
 {
-    public class CampaignTypeDataAccessImpl: GenericDataAccessImpl<CampaignType, int>, ICampaignTypeDataAccess
+    public class CampaignTypeDataAccessImpl : GenericDataAccessImpl<CampaignType, int>, ICampaignTypeDataAccess
     {
         #region Constants
 

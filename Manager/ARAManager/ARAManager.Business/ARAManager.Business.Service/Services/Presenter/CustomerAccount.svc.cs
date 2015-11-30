@@ -32,7 +32,7 @@ namespace ARAManager.Business.Service.Services.Presenter
 
         #region IConstructors
 
-        CustomerAccount()
+        private CustomerAccount()
         {
             m_authenticationJsonRespone = new JsonRespone();
         }

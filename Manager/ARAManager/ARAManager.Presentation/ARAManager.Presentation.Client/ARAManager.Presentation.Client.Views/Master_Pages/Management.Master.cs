@@ -12,18 +12,25 @@
 
 using System;
 using System.Web.Security;
+using System.Web.UI;
 
-namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Master_Pages {
-    public partial class Management : System.Web.UI.MasterPage {
+namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Master_Pages
+{
+    public partial class Management : MasterPage
+    {
         #region IMethods
-        protected void Page_Load(object sender, EventArgs e) {
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
             lblUser.Text = Page.User.Identity.Name;
         }
 
-        protected void lbLogout_OnClick(object sender, EventArgs e) {
+        protected void lbLogout_OnClick(object sender, EventArgs e)
+        {
             FormsAuthentication.SignOut();
             Response.Redirect("Default.aspx");
         }
+
         #endregion IMethods
     }
 }

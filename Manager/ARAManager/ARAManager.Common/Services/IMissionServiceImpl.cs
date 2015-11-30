@@ -17,9 +17,11 @@ using ARAManager.Common.Exception.Generic;
 using ARAManager.Common.Exception.Mission;
 using ARAManager.Common.Services.Behaviors;
 
-namespace ARAManager.Common.Services {
+namespace ARAManager.Common.Services
+{
     [ServiceContract]
-    public interface IMissionServiceImpl {
+    public interface IMissionServiceImpl
+    {
         [OperationContract]
         [PreserveReferences]
         Mission GetMissionById(int missionId);
@@ -30,18 +32,18 @@ namespace ARAManager.Common.Services {
 
         [OperationContract]
         [PreserveReferences]
-        [FaultContract(typeof(MissionNameAlreadyExistException))]
-        [FaultContract(typeof(ConcurrentUpdateException))]
+        [FaultContract(typeof (MissionNameAlreadyExistException))]
+        [FaultContract(typeof (ConcurrentUpdateException))]
         void SaveNewMission(Mission mission);
 
         [OperationContract]
         [PreserveReferences]
-        [FaultContract(typeof(MissionAlreadyDeletedException))]
+        [FaultContract(typeof (MissionAlreadyDeletedException))]
         void DeleteMission(int missionId);
 
         [OperationContract]
         [PreserveReferences]
-        [FaultContract(typeof(MissionAlreadyDeletedException))]
+        [FaultContract(typeof (MissionAlreadyDeletedException))]
         void DeleteMissions(List<int> missions);
     }
 }

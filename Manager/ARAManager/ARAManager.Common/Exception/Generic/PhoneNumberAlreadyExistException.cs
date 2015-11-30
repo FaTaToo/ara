@@ -15,9 +15,10 @@ using System.Runtime.Serialization;
 namespace ARAManager.Common.Exception.Generic
 {
     /// <summary>
-    /// The phone number has already existed.
+    ///     The phone number has already existed.
     /// </summary>
-    public class PhoneNumberAlreadyExistException {
+    public class PhoneNumberAlreadyExistException
+    {
         [DataMember]
         public string MessageError { get; set; }
     }

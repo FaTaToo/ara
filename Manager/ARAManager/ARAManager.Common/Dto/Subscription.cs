@@ -13,14 +13,16 @@
 using System.Runtime.Serialization;
 using NHibernate.Mapping.Attributes;
 
-namespace ARAManager.Common.Dto {
+namespace ARAManager.Common.Dto
+{
     [DataContract]
-    [Class(Table = "ARA_Subscription", NameType = typeof(Subscription), Lazy = false)]
-    public class Subscription: ModelBase {
+    [Class(Table = "ARA_Subscription", NameType = typeof (Subscription), Lazy = false)]
+    public class Subscription : ModelBase
+    {
         #region IProperties
 
         [DataMember]
-        [Id(0, Column = "SubscriptionId", Name = "SubscriptionId", TypeType = typeof(string))]
+        [Id(0, Column = "SubscriptionId", Name = "SubscriptionId", TypeType = typeof (string))]
         public virtual string SubscriptionId { get; set; }
 
         [ManyToOne(Name = "Customer", Column = "CustomerId", NotNull = false, Fetch = FetchMode.Select)]
@@ -36,19 +38,20 @@ namespace ARAManager.Common.Dto {
         public virtual Mission CurrentMission { get; set; }
 
         [DataMember]
-        [Property(Column = "NumOfCompletedMission", Name = "NumOfCompletedMission", TypeType = typeof(int), NotNull = true)]
+        [Property(Column = "NumOfCompletedMission", Name = "NumOfCompletedMission", TypeType = typeof (int),
+            NotNull = true)]
         public virtual int NumOfCompletedMission { get; set; }
 
         [DataMember]
-        [Property(Column = "IsComplete", Name = "IsComplete", TypeType = typeof(bool), NotNull = true)]
+        [Property(Column = "IsComplete", Name = "IsComplete", TypeType = typeof (bool), NotNull = true)]
         public virtual bool IsComplete { get; set; }
 
         [DataMember]
-        [Property(Column = "Comment", Name = "Comment", TypeType = typeof(string), Length = 500, NotNull = true)]
+        [Property(Column = "Comment", Name = "Comment", TypeType = typeof (string), Length = 500, NotNull = true)]
         public virtual string Comment { get; set; }
 
         [DataMember]
-        [Property(Column = "Rating", Name = "Rating", TypeType = typeof(int), NotNull = true)]
+        [Property(Column = "Rating", Name = "Rating", TypeType = typeof (int), NotNull = true)]
         public virtual int Rating { get; set; }
 
         #endregion IProperties

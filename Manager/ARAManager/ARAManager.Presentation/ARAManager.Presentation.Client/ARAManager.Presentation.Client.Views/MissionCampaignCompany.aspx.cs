@@ -14,6 +14,7 @@
 using System;
 using System.IO;
 using System.ServiceModel;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using ARAManager.Common;
 using ARAManager.Common.Dto;
@@ -25,13 +26,19 @@ using ARAManager.Presentation.Connectivity;
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 {
     /// <summary>
-    /// Code-behind of MissionCampaignCompany.aspx - used to create new mission of a campaign
+    ///     Code-behind of MissionCampaignCompany.aspx - used to create new mission of a campaign
     /// </summary>
-    public partial class MissionCampaignCompany : System.Web.UI.Page
+    public partial class MissionCampaignCompany : Page
     {
         #region SFields
 
         private static byte[] s_rowVersion;
+
+        #endregion SFields
+
+        #region SFields
+
+        private static int s_numberOfMission;
 
         #endregion SFields
 
@@ -40,18 +47,15 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         private readonly Validation m_validator = new Validation();
         private Campaign m_campaign;
         private Mission m_mission;
+
         #endregion IFields
 
-        #region SFields
-
-        private static int s_numberOfMission;
-
-        #endregion SFields
-
         #region IMethods
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            m_campaign = ClientServiceFactory.CampaignService.GetCampaignById(int.Parse(Request.QueryString["RequestId"]));
+            m_campaign =
+                ClientServiceFactory.CampaignService.GetCampaignById(int.Parse(Request.QueryString["RequestId"]));
             if (!Page.IsPostBack)
             {
                 s_numberOfMission = m_campaign.Missions.Count;
@@ -63,7 +67,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
             if ((Request.QueryString["Method"]) != "Edit")
             {
-                m_mission= new Mission();
+                m_mission = new Mission();
                 return;
             }
             txtMissionName.Enabled = false;
@@ -79,14 +83,17 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             args.IsValid = m_validator.ValidateChar100(txtMissionName.Text);
         }
+
         protected void CustomValidator_Description_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar500(txtDescription.Text);
         }
+
         protected void CustomValidator_Avatar_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = FileUpload_Avatar.HasFile;
         }
+
         //-----------------------------------------------------------------------------------------------------
 
         // Supported methods
@@ -100,6 +107,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             CustomValidator_Avatar.Enabled = flag;
             RangeValidator_NumMission.Enabled = flag;
         }
+
         private void SetErrorMessages()
         {
             RequiredFieldValidator_MissionName.ErrorMessage = Validation.REQUIRE_MISSIONCAMPAIGNCOMPANY_NAME;
@@ -110,6 +118,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             CustomValidator_Avatar.ErrorMessage = Validation.VALIDATOR_AVATAR;
             RangeValidator_NumMission.ErrorMessage = Validation.VALIDATOR_NUM_MISSION;
         }
+
         protected string GetAvatar(object eval)
         {
             return Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + eval;
@@ -145,7 +154,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             try
             {
                 ClientServiceFactory.MissionService.SaveNewMission(m_mission);
-                Response.Redirect("MissionCampaignCompany.aspx?Method=New&RequestId="+m_campaign.CampaignId);
+                Response.Redirect("MissionCampaignCompany.aspx?Method=New&RequestId=" + m_campaign.CampaignId);
             }
             catch (FaultException<MissionNameAlreadyExistException> ex)
             {
@@ -156,19 +165,24 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 lblMessage.Text = ex.Detail.MessageError;
             }
         }
+
         protected void btnCancel_OnClick(object sender, EventArgs e)
         {
             Response.Redirect("CampaignCompany.aspx");
         }
+
         protected string GetNavigateUrl(object eval)
         {
             return "TargetMissionCampaignCompany.aspx?RequestId=" + eval;
         }
+
         protected string GetEditMissionUrl(object eval)
         {
-            return "MissionCampaignCompany.aspx?Method=Edit&RequestId="+m_campaign.CampaignId+"&MissionId=" + eval;
+            return "MissionCampaignCompany.aspx?Method=Edit&RequestId=" + m_campaign.CampaignId + "&MissionId=" + eval;
         }
+
         //-----------------------------------------------------------------------------------------------------
+
         #endregion IMethods
     }
 }

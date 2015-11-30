@@ -2,25 +2,25 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_Menu" runat="server">
     <div class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" role="group">        
+        <div class="btn-group" role="group">
             <a class="btn btn-warning" href="HomeAdmin.aspx">
                 <img src="../ARAManager.Presentation.Client.Resources/Images/home.png" alt="Image is lost."/>
             </a>
         </div>
         <div class="btn-group" role="group">
-            <asp:Button ID="btnCompany" ForeColor="Black" CssClass="btn btn-warning" runat="server"  
-                Text="COMPANY" 
-                OnClick="btnCompany_OnClick"/>
+            <asp:Button ID="btnCompany" ForeColor="Black" CssClass="btn btn-warning" runat="server"
+                        Text="COMPANY"
+                        OnClick="btnCompany_OnClick"/>
         </div>
         <div class="btn-group" role="group">
-            <asp:Button ID="btnCustomer" ForeColor="Black" CssClass="btn btn-warning" runat="server"  
-                Text="CUSTOMER"
-                OnClick="btnCustomer_OnClick" />
+            <asp:Button ID="btnCustomer" ForeColor="Black" CssClass="btn btn-warning" runat="server"
+                        Text="CUSTOMER"
+                        OnClick="btnCustomer_OnClick"/>
         </div>
         <div class="btn-group" role="group">
-             <asp:Button ID="btnStatistics" ForeColor="Black" CssClass="btn btn-warning" runat="server"  
-                 Enabled="false"
-                 Text="STATISTICS" />
+            <asp:Button ID="btnStatistics" ForeColor="Black" CssClass="btn btn-warning" runat="server"
+                        Enabled="false"
+                        Text="STATISTICS"/>
         </div>
     </div>
 </asp:Content>

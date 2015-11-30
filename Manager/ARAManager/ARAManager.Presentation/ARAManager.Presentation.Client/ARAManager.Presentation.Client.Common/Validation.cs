@@ -38,7 +38,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common
         public const string VALIDATOR_USERNAME = "Please enter user name with length from 1 to 100.";
         public const string VALIDATOR_VIDEO = "Please enter Video url with length from 1 to 500.";
         public const string VALIDATOR_YOUTUBE = "Please enter Youtube url with length from 1 to 500.";
-        
+
         public const string REQUIRE_COMPANYADMIN_NAME = "Company name can not be empty.";
         public const string REQUIRE_CUSTOMER_NAME = "Customer name can not be empty.";
         public const string REQUIRE_CUSTOMER_SEX = "Sex can not be empty.";
@@ -60,13 +60,13 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common
         public const string REQUIRE_USERNAME = "User name can not be empty.";
         public const string REQUIRE_PASSWORD = "Password can not be empty.";
         public const string VALIDATOR_ENDTIME = "End time can not smaller than start time.";
-        #endregion IFields
 
+        #endregion IFields
 
         #region IMethods
 
         /// <summary>
-        /// Validate input fields with length from 1 to 20
+        ///     Validate input fields with length from 1 to 20
         /// </summary>
         /// <param name="inp"></param>
         /// <returns></returns>
@@ -80,7 +80,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common
         }
 
         /// <summary>
-        ///  Validate input fields with length from 1 to 100
+        ///     Validate input fields with length from 1 to 100
         /// </summary>
         /// <param name="inp"></param>
         /// <returns></returns>
@@ -94,7 +94,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common
         }
 
         /// <summary>
-        /// Validate input fields with length from 1 to 500
+        ///     Validate input fields with length from 1 to 500
         /// </summary>
         /// <param name="inp"></param>
         /// <returns></returns>

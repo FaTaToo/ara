@@ -17,9 +17,11 @@ using ARAManager.Common.Exception.Customer;
 using ARAManager.Common.Exception.Generic;
 using ARAManager.Common.Services.Behaviors;
 
-namespace ARAManager.Common.Services {
+namespace ARAManager.Common.Services
+{
     [ServiceContract]
-    public interface ICustomerServiceImpl {
+    public interface ICustomerServiceImpl
+    {
         [OperationContract]
         [PreserveReferences]
         Customer GetCustomerById(int customerId);
@@ -30,17 +32,17 @@ namespace ARAManager.Common.Services {
 
         [OperationContract]
         [PreserveReferences]
-        [FaultContract(typeof(ConcurrentUpdateException))]
+        [FaultContract(typeof (ConcurrentUpdateException))]
         void SaveNewCustomer(Customer customer);
 
         [OperationContract]
         [PreserveReferences]
-        [FaultContract(typeof(CustomerAlreadyDeletedException))]
+        [FaultContract(typeof (CustomerAlreadyDeletedException))]
         void DeleteCustomer(int customerId);
 
         [OperationContract]
         [PreserveReferences]
-        [FaultContract(typeof(CustomerAlreadyDeletedException))]
+        [FaultContract(typeof (CustomerAlreadyDeletedException))]
         void DeleteCustomers(List<int> customers);
 
         [OperationContract]

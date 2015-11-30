@@ -17,9 +17,11 @@ using ARAManager.Common.Exception.Company;
 using ARAManager.Common.Exception.Generic;
 using ARAManager.Common.Services.Behaviors;
 
-namespace ARAManager.Common.Services {
+namespace ARAManager.Common.Services
+{
     [ServiceContract]
-    public interface ICompanyServiceImpl {
+    public interface ICompanyServiceImpl
+    {
         [OperationContract]
         [PreserveReferences]
         Company GetCompanyById(int companyId);
@@ -30,18 +32,18 @@ namespace ARAManager.Common.Services {
 
         [OperationContract]
         [PreserveReferences]
-        [FaultContract(typeof(CompanyNameAlreadyExistException))]
-        [FaultContract(typeof(ConcurrentUpdateException))]
+        [FaultContract(typeof (CompanyNameAlreadyExistException))]
+        [FaultContract(typeof (ConcurrentUpdateException))]
         void SaveNewCompany(Company company);
 
         [OperationContract]
         [PreserveReferences]
-        [FaultContract(typeof(CompanyAlreadyDeletedException))]
+        [FaultContract(typeof (CompanyAlreadyDeletedException))]
         void DeleteCompany(int companyId);
 
         [OperationContract]
         [PreserveReferences]
-        [FaultContract(typeof(CompanyAlreadyDeletedException))]
+        [FaultContract(typeof (CompanyAlreadyDeletedException))]
         void DeleteCompanies(List<int> companies);
 
         [OperationContract]

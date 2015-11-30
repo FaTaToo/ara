@@ -15,7 +15,7 @@ using System.Runtime.Serialization;
 namespace ARAManager.Common.Exception.Generic
 {
     /// <summary>
-    /// The email has already existed.
+    ///     The email has already existed.
     /// </summary>
     [DataContract]
     public class EmailAlreadyExistException

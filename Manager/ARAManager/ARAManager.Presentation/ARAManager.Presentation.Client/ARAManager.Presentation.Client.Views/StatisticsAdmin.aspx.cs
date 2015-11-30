@@ -11,14 +11,14 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.Web.UI;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 {
-    public partial class StatisticsAdmin : System.Web.UI.Page
+    public partial class StatisticsAdmin : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

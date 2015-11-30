@@ -11,11 +11,12 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.Web.UI;
 using ARAManager.Presentation.Connectivity;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 {
-    public partial class HomeAdmin : System.Web.UI.Page
+    public partial class HomeAdmin : Page
     {
         #region IConstants
 
@@ -23,15 +24,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
         #endregion IConstants
 
-        #region IFields
-
-        private int m_numberofCustomers;
-        private int m_numberofCompanies;
-        private int m_numberofCampaigns;
-
-        #endregion IFields
-
         #region IMethods
+
         protected void Page_Load(object sender, EventArgs e)
         {
             m_numberofCustomers = ClientServiceFactory.CustomerService.CountCustomers();
@@ -40,5 +34,13 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         }
 
         #endregion IMethods
+
+        #region IFields
+
+        private int m_numberofCustomers;
+        private int m_numberofCompanies;
+        private int m_numberofCampaigns;
+
+        #endregion IFields
     }
 }

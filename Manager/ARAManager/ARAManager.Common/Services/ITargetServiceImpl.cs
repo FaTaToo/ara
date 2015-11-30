@@ -14,17 +14,18 @@ using System.ServiceModel;
 using ARAManager.Common.Dto;
 using ARAManager.Common.Exception.Generic;
 using ARAManager.Common.Exception.Target;
+using ARAManager.Common.PresenterJson.ArResources;
 using ARAManager.Common.Services.Behaviors;
-using RootObject = ARAManager.Common.PresenterJson.ArResources.RootObject;
 
-namespace ARAManager.Common.Services {
+namespace ARAManager.Common.Services
+{
     [ServiceContract]
-    public interface ITargetServiceImpl {
-
+    public interface ITargetServiceImpl
+    {
         [OperationContract]
         [PreserveReferences]
-        [FaultContract(typeof(TargetNameAlreadyExistException))]
-        [FaultContract(typeof(ConcurrentUpdateException))]
+        [FaultContract(typeof (TargetNameAlreadyExistException))]
+        [FaultContract(typeof (ConcurrentUpdateException))]
         void SaveNewTarget(Target target, RootObject jsonArResources);
     }
 }

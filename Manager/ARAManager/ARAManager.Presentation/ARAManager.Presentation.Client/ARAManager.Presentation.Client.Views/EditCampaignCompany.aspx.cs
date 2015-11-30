@@ -13,6 +13,7 @@
 using System;
 using System.IO;
 using System.ServiceModel;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using ARAManager.Common;
 using ARAManager.Common.Dto;
@@ -25,13 +26,13 @@ using ARAManager.Presentation.Connectivity;
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 {
     /// <summary>
-    /// Code-behind of EditCampaignCompany.aspx - used to create new campaign of a company
+    ///     Code-behind of EditCampaignCompany.aspx - used to create new campaign of a company
     /// </summary>
-    public partial class EditCampaignCompany : System.Web.UI.Page
+    public partial class EditCampaignCompany : Page
     {
         #region SFields
 
-        private static byte[] s_rowVersion; 
+        private static byte[] s_rowVersion;
 
         #endregion SFields
 
@@ -46,6 +47,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         #endregion IFields
 
         #region IMethods
+
         protected void Page_Load(object sender, EventArgs e)
         {
             SetErrorMessages();
@@ -59,7 +61,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                     {
                         m_company = ClientServiceFactory.CompanyService.GetCompanyByUserName(user);
                         m_campaign = ClientServiceFactory.CampaignService.GetCampaignById
-                                                        (int.Parse(Request.QueryString["RequestId"]));
+                            (int.Parse(Request.QueryString["RequestId"]));
                         if (m_company != null)
                         {
                             txtCampaignName.Text = m_campaign.CampaignName;
@@ -82,11 +84,10 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                     else
                     {
                         m_company = ClientServiceFactory.CompanyService.GetCompanyByUserName(user);
-                        m_campaign= new Campaign();
+                        m_campaign = new Campaign();
                         m_campaignTypeName = Request.QueryString["Type"];
                         SetCampaignType();
                     }
-                   
                 }
                 catch (FaultException<CompanyAlreadyDeletedException> ex)
                 {
@@ -104,24 +105,29 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             args.IsValid = m_validator.ValidateChar100(txtCampaignName.Text);
         }
+
         protected void CustomValidator_EndTime_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             if (string.IsNullOrEmpty(txtEndTime.Text)) return;
             args.IsValid = DateTime.ParseExact(txtEndTime.Text, Dictionary.DATE_FORMAT, null).
                 CompareTo(DateTime.ParseExact(txtStartTime.Text, Dictionary.DATE_FORMAT, null)) > 0;
         }
+
         protected void CustomValidator_Description_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar500(txtDescription.Text);
         }
+
         protected void CustomValidator_Gift_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar500(txtGift.Text);
         }
+
         protected void CustomValidator_Avatar_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = FileUpload_Avatar.HasFile;
         }
+
         //-----------------------------------------------------------------------------------------------------
 
         // Supported methods
@@ -139,6 +145,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             RequiredFieldValidator_Gift.ErrorMessage = Validation.REQUIRE_CAMPAIGNCOMPANY_GIFT;
             RequiredFieldValidator_NumMission.ErrorMessage = Validation.REQUIRE_CAMPAIGNCOMPANY_NUM_MISSION;
         }
+
         private void EnableValidator(bool flag)
         {
             CustomValidator_CampaignName.Enabled = flag;
@@ -152,10 +159,12 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             RequiredFieldValidator_Description.Enabled = flag;
             RequiredFieldValidator_NumMission.Enabled = flag;
         }
+
         private void RedirectToCampaignCompany()
         {
             Response.Redirect("CampaignCompany.aspx");
         }
+
         private void SaveNewCampaignWithoutEndTime()
         {
             m_campaign.CampaignName = txtCampaignName.Text;
@@ -169,11 +178,13 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             m_campaign.CampaignTypeId = m_campaignType;
             MoveBackRowVersion(m_campaign);
         }
+
         private void SaveNewCampaignWithEndTime()
         {
             SaveNewCampaignWithoutEndTime();
             m_campaign.EndTime = DateTime.ParseExact(txtEndTime.Text, Dictionary.DATE_FORMAT, null);
         }
+
         private static void MoveBackRowVersion(Campaign campaign)
         {
             if (s_rowVersion != null)
@@ -181,6 +192,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 campaign.RowVersion = s_rowVersion;
             }
         }
+
         private string UploadImageBanner()
         {
             var extension = Path.GetExtension(FileUpload_Banner.FileName);
@@ -189,6 +201,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             FileUpload_Banner.SaveAs(filePath);
             return Dictionary.PATH_UPLOADED_CAMPAIGNS_BANNER + fileName;
         }
+
         private string UploadImageAvatar()
         {
             var extension = Path.GetExtension(FileUpload_Avatar.FileName);
@@ -197,6 +210,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             FileUpload_Avatar.SaveAs(filePath);
             return Dictionary.PATH_UPLOADED_CAMPAIGNS_AVATAR + fileName;
         }
+
         private void SetCampaignType()
         {
             m_campaignType = ClientServiceFactory.CampaignTypeService.GetCampaignTypeByName(m_campaignTypeName);
@@ -206,6 +220,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 txtMission.Enabled = false;
             }
         }
+
         //-----------------------------------------------------------------------------------------------------
 
         // Events
@@ -229,7 +244,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             {
                 ClientServiceFactory.CampaignService.SaveNewCampaign(m_campaign);
                 Response.Redirect("MissionCampaignCompany.aspx?Method=New&RequestId=" +
-                    ClientServiceFactory.CampaignService.GetCampaignByName(txtCampaignName.Text).CampaignId);
+                                  ClientServiceFactory.CampaignService.GetCampaignByName(txtCampaignName.Text)
+                                      .CampaignId);
             }
             catch (FaultException<CampaignNameAlreadyExistException> ex)
             {
@@ -244,15 +260,19 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 lblMessage.Text = ex.Detail.Message;
             }
         }
+
         protected void btnCancel_OnClick(object sender, EventArgs e)
         {
             RedirectToCampaignCompany();
         }
+
         protected void btnCreateMission_OnClick(object sender, EventArgs e)
         {
             Response.Redirect("MissionCampaignCompany.aspx?Method=New&RequestId=" + m_campaign.CampaignId);
         }
+
         //-----------------------------------------------------------------------------------------------------
+
         #endregion IMethods
     }
 }

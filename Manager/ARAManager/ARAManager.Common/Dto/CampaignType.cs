@@ -16,16 +16,17 @@ using NHibernate.Mapping.Attributes;
 namespace ARAManager.Common.Dto
 {
     [DataContract]
-    [Class(Table = "ARA_CampaignType", NameType = typeof(CampaignType), Lazy = false)]
+    [Class(Table = "ARA_CampaignType", NameType = typeof (CampaignType), Lazy = false)]
     public class CampaignType : ModelBase
     {
         [DataMember]
-        [Id(0, Column = "CampaignTypeId", Name = "CampaignTypeId", TypeType = typeof(int))]
+        [Id(0, Column = "CampaignTypeId", Name = "CampaignTypeId", TypeType = typeof (int))]
         [Generator(1, Class = "identity")]
         public virtual int CampaignTypeId { get; set; }
 
         [DataMember]
-        [Property(Column = "CampaignTypeName", Name = "CampaignTypeName", TypeType = typeof(string), Length = 100, NotNull = true)]
+        [Property(Column = "CampaignTypeName", Name = "CampaignTypeName", TypeType = typeof (string), Length = 100,
+            NotNull = true)]
         public virtual string CampaignTypeName { get; set; }
     }
 }

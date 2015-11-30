@@ -12,12 +12,14 @@
 
 using System.Runtime.Serialization;
 
-namespace ARAManager.Common.Exception.Customer {
+namespace ARAManager.Common.Exception.Customer
+{
     /// <summary>
-    /// The customer has been already deleted.
+    ///     The customer has been already deleted.
     /// </summary>
     [DataContract]
-    public class CustomerAlreadyDeletedException {
+    public class CustomerAlreadyDeletedException
+    {
         [DataMember]
         public string MessageError { get; set; }
     }

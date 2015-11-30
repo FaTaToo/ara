@@ -15,7 +15,9 @@ namespace ARAManager.Common.PresenterJson.ArResources
     public class Processors
     {
         #region IProperties
+
         public Processor Processor { get; set; }
+
         #endregion IProperties
     }
 }

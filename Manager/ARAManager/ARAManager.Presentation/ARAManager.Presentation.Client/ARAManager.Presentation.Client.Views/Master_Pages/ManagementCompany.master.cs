@@ -11,22 +11,26 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.Web.UI;
 
-namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Master_Pages {
+namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Master_Pages
+{
     /// <summary>
-    /// Master page of company's pages.
+    ///     Master page of company's pages.
     /// </summary>
-    public partial class ManagementCompany : System.Web.UI.MasterPage
+    public partial class ManagementCompany : MasterPage
     {
         #region IMethods
-        protected void Page_Load(object sender, EventArgs e) {
 
+        protected void Page_Load(object sender, EventArgs e)
+        {
         }
 
         protected void btnCampaign_OnClick(object sender, EventArgs e)
         {
             Response.Redirect(@"~\ARAManager.Presentation.Client.Views\CampaignCompany.aspx");
         }
+
         #endregion IMethods
     }
 }

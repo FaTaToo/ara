@@ -12,12 +12,14 @@
 
 using System.Runtime.Serialization;
 
-namespace ARAManager.Common.Exception.Mission {
+namespace ARAManager.Common.Exception.Mission
+{
     /// <summary>
-    /// The pre mission has already existed.
+    ///     The pre mission has already existed.
     /// </summary>
     [DataContract]
-    public class PreMissionAlreadyExistException {
+    public class PreMissionAlreadyExistException
+    {
         [DataMember]
         public string MessageError { get; set; }
     }

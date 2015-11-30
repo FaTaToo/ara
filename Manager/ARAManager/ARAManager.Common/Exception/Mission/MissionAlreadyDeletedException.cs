@@ -12,12 +12,14 @@
 
 using System.Runtime.Serialization;
 
-namespace ARAManager.Common.Exception.Mission {
+namespace ARAManager.Common.Exception.Mission
+{
     /// <summary>
-    /// The mission has been already deleted.
+    ///     The mission has been already deleted.
     /// </summary>
     [DataContract]
-    public class MissionAlreadyDeletedException {
+    public class MissionAlreadyDeletedException
+    {
         [DataMember]
         public string MessageError { get; set; }
     }

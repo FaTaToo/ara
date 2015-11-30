@@ -13,22 +13,20 @@
 using System.Runtime.Serialization;
 using NHibernate.Mapping.Attributes;
 
-namespace ARAManager.Common.Dto {
+namespace ARAManager.Common.Dto
+{
     [DataContract]
-    public class ModelBase {
-
+    public class ModelBase
+    {
         #region IProperties
 
         /// <summary>
-        /// Gets the row version.
+        ///     Gets the row version.
         /// </summary>
         /// <value>The row version.</value>
         [Version(Name = "RowVersion", Column = "RowVersion", Generated = VersionGeneration.Always, Type = "BinaryBlob")]
         [DataMember]
-        public virtual byte[] RowVersion {
-            get;
-            set;
-        }
+        public virtual byte[] RowVersion { get; set; }
 
         #endregion IProperties
     }

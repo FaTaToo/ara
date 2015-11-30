@@ -13,24 +13,29 @@
 using System;
 using System.Reflection;
 
-namespace ARAManager.Business.Dao.NHibernate.Helper {
+namespace ARAManager.Business.Dao.NHibernate.Helper
+{
     /// <summary>
-    /// Assembly loading helper class
+    ///     Assembly loading helper class
     /// </summary>
-    public static class AssemblyLoadingHelper {
+    public static class AssemblyLoadingHelper
+    {
         /// <summary>
-        /// Gets an already loaded assembly or loads it if necessary.
+        ///     Gets an already loaded assembly or loads it if necessary.
         /// </summary>
         /// <param name="assemblyName">Name of the assembly.</param>
         /// <returns>The loaded assembly.</returns>
-        public static Assembly GetOrLoadAssembly(string assemblyName) {
+        public static Assembly GetOrLoadAssembly(string assemblyName)
+        {
             // Is assembly already loaded?
-            Assembly[] asms = AppDomain.CurrentDomain.GetAssemblies();
-            foreach (Assembly t in asms) {
-                AssemblyName name = t.GetName();
+            var asms = AppDomain.CurrentDomain.GetAssemblies();
+            foreach (var t in asms)
+            {
+                var name = t.GetName();
 
                 // Check for short and full name
-                if (name.FullName == assemblyName || name.Name == assemblyName) {
+                if (name.FullName == assemblyName || name.Name == assemblyName)
+                {
                     return t;
                 }
             }

@@ -33,7 +33,7 @@ namespace ARAManager.Business.Service.Services.Presenter
 
         #region IConstructors
 
-        CustomerSubscription()
+        private CustomerSubscription()
         {
             m_authenticationJsonRespone = new JsonRespone();
         }
@@ -41,10 +41,11 @@ namespace ARAManager.Business.Service.Services.Presenter
         #endregion IConstructors
 
         #region IMethods
+
         public JsonRespone JoinCampaign(Subscription subscription)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
-            using (NhTransactionScope tr = TransactionsFactory.CreateTransactionScope())
+            using (var tr = TransactionsFactory.CreateTransactionScope())
             {
                 try
                 {

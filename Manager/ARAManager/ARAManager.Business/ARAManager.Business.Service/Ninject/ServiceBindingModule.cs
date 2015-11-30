@@ -18,17 +18,20 @@ using ARAManager.Common.Services;
 using Ninject.Extensions.Interception.Infrastructure.Language;
 using Ninject.Modules;
 
-namespace ARAManager.Business.Service.Ninject {
-    /// <summary> 
-    /// Class summary. 
+namespace ARAManager.Business.Service.Ninject
+{
+    /// <summary>
+    ///     Class summary.
     /// </summary>
-    public class ServiceBindingModule : NinjectModule {
+    public class ServiceBindingModule : NinjectModule
+    {
         #region IMethods
 
         /// <summary>
-        /// Loads the module into the kernel.
+        ///     Loads the module into the kernel.
         /// </summary>
-        public override void Load() {
+        public override void Load()
+        {
             // Campaign
             Bind<ICampaignDataAccess>().To<CampaignDataAccessImpl>();
             Bind<ICampaignServiceImpl>().To<CampaignServiceImpl>().Intercept().With<ServiceInterceptor>();
@@ -40,11 +43,11 @@ namespace ARAManager.Business.Service.Ninject {
             // Company
             Bind<ICompanyDataAccess>().To<CompanyDataAccessImpl>();
             Bind<ICompanyServiceImpl>().To<CompanyServiceImpl>().Intercept().With<ServiceInterceptor>();
-            
+
             // Customer
             Bind<ICustomerDataAccess>().To<CustomerDataAccessImpl>();
             Bind<ICustomerServiceImpl>().To<CustomerServiceImpl>().Intercept().With<ServiceInterceptor>();
-                
+
             // Mission
             Bind<IMissionDataAccess>().To<MissionDataAccessImpl>();
             Bind<IMissionServiceImpl>().To<MissionServiceImpl>().Intercept().With<ServiceInterceptor>();

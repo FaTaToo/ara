@@ -16,7 +16,6 @@ namespace ARAManager.Presentation.Client
     {
         public static void RegisterOpenAuth()
         {
-
         }
     }
 }

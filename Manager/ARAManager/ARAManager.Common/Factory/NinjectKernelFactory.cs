@@ -14,15 +14,15 @@ using Ninject;
 
 namespace ARAManager.Common.Factory
 {
-    /// <summary> 
-    /// Class summary. 
+    /// <summary>
+    ///     Class summary.
     /// </summary>
     public class NinjectKernelFactory
     {
         #region S_Fields
 
         /// <summary>
-        /// The cached kernel instance.
+        ///     The cached kernel instance.
         /// </summary>
         private static readonly IKernel s_kernel = new StandardKernel();
 
@@ -31,15 +31,12 @@ namespace ARAManager.Common.Factory
         #region IProperties
 
         /// <summary>
-        /// Gets the kernel. One application only has one kernel instance.
+        ///     Gets the kernel. One application only has one kernel instance.
         /// </summary>
         /// <returns>The singlton Kernerl instance.</returns>
         public static IKernel Kernel
         {
-            get
-            {
-                return s_kernel;
-            }
+            get { return s_kernel; }
         }
 
         #endregion

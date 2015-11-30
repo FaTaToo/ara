@@ -15,8 +15,10 @@ namespace ARAManager.Common.PresenterJson.ArResources
     public class Platform
     {
         #region IProperties
+
         public string PlatformId { get; set; }
         public Processors Processors { get; set; }
+
         #endregion IProperties
     }
 }

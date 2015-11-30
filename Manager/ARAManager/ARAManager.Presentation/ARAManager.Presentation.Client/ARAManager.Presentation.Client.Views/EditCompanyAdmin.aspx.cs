@@ -12,6 +12,7 @@
 
 using System;
 using System.ServiceModel;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using ARAManager.Common;
 using ARAManager.Common.Dto;
@@ -22,8 +23,14 @@ using ARAManager.Presentation.Connectivity;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 {
-    public partial class EditCompanyAdmin : System.Web.UI.Page
+    public partial class EditCompanyAdmin : Page
     {
+        #region SFields
+
+        private static byte[] s_rowVersion;
+
+        #endregion SFields
+
         #region IFields
 
         private int m_companyId;
@@ -32,13 +39,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
         #endregion IFields
 
-        #region SFields
-        
-        private static byte[] s_rowVersion;
-
-        #endregion SFields
-
         #region IMethods
+
         protected void Page_Load(object sender, EventArgs e)
         {
             SetErrorMessages();
@@ -66,32 +68,37 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 txtCompany.Text = Dictionary.COMPANY_DELETED_EXCEPTION_MSG;
             }
         }
+
         protected void CustomValidator_CompanyName_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar100(txtCompanyName.Text);
         }
+
         protected void CustomValidator_Address_OnServerValidate(object source, ServerValidateEventArgs args)
         {
-
             args.IsValid = m_validator.ValidateChar500(txtAddress.Text);
         }
+
         protected void CustomValidator_Email_OnServerValidate(object source, ServerValidateEventArgs args)
         {
-
             args.IsValid = m_validator.ValidateChar100(txtEmail.Text);
         }
+
         protected void CustomValidator_Phone_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar20(txtPhone.Text);
         }
+
         protected void CustomValidator_Username_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar100(txtUsername.Text);
         }
+
         protected void CustomValidator_Password_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar100(txtPassword.Text);
         }
+
         protected void btnSave_OnClick(object sender, EventArgs e)
         {
             EnableValidator(true);
@@ -141,12 +148,13 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 }
                 RedirectToCompanyAdmin();
             }
-           
         }
+
         protected void btnCancel_OnClick(object sender, EventArgs e)
         {
             RedirectToCompanyAdmin();
         }
+
         private void SetErrorMessages()
         {
             CustomValidator_CompanyName.ErrorMessage = Validation.VALIDATOR_COMPANY_NAME;
@@ -162,6 +170,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             RequiredFieldValidator_Username.ErrorMessage = Validation.REQUIRE_USERNAME;
             RequiredFieldValidator_Password.ErrorMessage = Validation.REQUIRE_PASSWORD;
         }
+
         private void EnableValidator(bool flag)
         {
             CustomValidator_CompanyName.Enabled = flag;
@@ -175,6 +184,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             RequiredFieldValidator_Phone.Enabled = flag;
             RequiredFieldValidator_Username.Enabled = flag;
         }
+
         private void RedirectToCompanyAdmin()
         {
             Response.Redirect("CompanyAdmin.aspx");

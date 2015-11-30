@@ -13,6 +13,7 @@
 using System;
 using System.Globalization;
 using System.ServiceModel;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using ARAManager.Common;
 using ARAManager.Common.Dto;
@@ -22,7 +23,7 @@ using ARAManager.Presentation.Connectivity;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 {
-    public partial class EditCustomerAdmin : System.Web.UI.Page
+    public partial class EditCustomerAdmin : Page
     {
         #region SFields
 
@@ -39,6 +40,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         #endregion IFields
 
         #region IMethods
+
         protected void Page_Load(object sender, EventArgs e)
         {
             SetErrorMessages();
@@ -69,16 +71,18 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 txtCustomer.Text = Dictionary.CUSTOMER_DELETED_EXCEPTION_MSG;
             }
         }
+
         protected void CustomValidator_LastName_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar100(txtLastName.Text);
         }
+
         protected void CustomValidator_Birthday_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             if (!string.IsNullOrEmpty(txtBirthday.Text))
             {
                 DateTime birthday;
-                bool checkBirthday = DateTime.TryParseExact(txtBirthday.Text,
+                var checkBirthday = DateTime.TryParseExact(txtBirthday.Text,
                     Dictionary.DATE_FORMAT,
                     Dictionary.EnUs,
                     DateTimeStyles.None,
@@ -95,26 +99,32 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 }
             }
         }
+
         protected void CustomValidator_Address_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar500(txtAddress.Text);
         }
+
         protected void CustomValidator_Email_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar100(txtEmail.Text);
         }
+
         protected void CustomValidator_Phone_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar20(txtPhone.Text);
         }
+
         protected void CustomValidator_Username_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar100(txtUsername.Text);
         }
+
         protected void CustomValidator_Password_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar100(txtPassword.Text);
         }
+
         protected void btnSave_OnClick(object sender, EventArgs e)
         {
             EnableValidator(true);
@@ -170,10 +180,12 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 RedirectToCustomerAdmin();
             }
         }
+
         protected void btnCancel_OnClick(object sender, EventArgs e)
         {
             RedirectToCustomerAdmin();
         }
+
         private void SetErrorMessages()
         {
             CustomValidator_FirstName.ErrorMessage = Validation.VALIDATOR_CUSTOMER_NAME;
@@ -190,10 +202,12 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             RequiredFieldValidator_Username.ErrorMessage = Validation.REQUIRE_USERNAME;
             RequiredFieldValidator_Password.ErrorMessage = Validation.REQUIRE_PASSWORD;
         }
+
         protected void CustomValidator_FirstName_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar100(txtFirstName.Text);
         }
+
         private void EnableValidator(bool flag)
         {
             CustomValidator_FirstName.Enabled = flag;
@@ -210,6 +224,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             RequiredFieldValidator_Username.Enabled = flag;
             RequiredFieldValidator_Password.Enabled = flag;
         }
+
         private void RedirectToCustomerAdmin()
         {
             Response.Redirect("CustomerAdmin.aspx");

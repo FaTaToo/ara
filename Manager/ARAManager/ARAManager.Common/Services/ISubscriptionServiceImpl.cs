@@ -15,9 +15,11 @@ using System.ServiceModel;
 using ARAManager.Common.Dto;
 using ARAManager.Common.Services.Behaviors;
 
-namespace ARAManager.Common.Services {
+namespace ARAManager.Common.Services
+{
     [ServiceContract]
-    public interface ISubscriptionServiceImpl {
+    public interface ISubscriptionServiceImpl
+    {
         [OperationContract]
         [PreserveReferences]
         Subscription GetSubcriptionById(int subscriptionId);

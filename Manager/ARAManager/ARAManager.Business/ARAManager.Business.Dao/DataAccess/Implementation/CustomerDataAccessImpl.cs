@@ -13,8 +13,10 @@
 using ARAManager.Business.Dao.DataAccess.Interfaces;
 using ARAManager.Common.Dto;
 
-namespace ARAManager.Business.Dao.DataAccess.Implementation {
-    public class CustomerDataAccessImpl:GenericDataAccessImpl<Customer, int>, ICustomerDataAccess { 
+namespace ARAManager.Business.Dao.DataAccess.Implementation
+{
+    public class CustomerDataAccessImpl : GenericDataAccessImpl<Customer, int>, ICustomerDataAccess
+    {
         #region Constants
 
         #endregion Constants

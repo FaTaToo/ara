@@ -12,12 +12,14 @@
 
 using System.Runtime.Serialization;
 
-namespace ARAManager.Common.Exception.Company {
+namespace ARAManager.Common.Exception.Company
+{
     /// <summary>
-    /// The company name has already existed.
+    ///     The company name has already existed.
     /// </summary>
     [DataContract]
-    public class CompanyNameAlreadyExistException {
+    public class CompanyNameAlreadyExistException
+    {
         [DataMember]
         public string MessageError { get; set; }
     }

@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.ServiceModel;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using ARAManager.Common;
 using ARAManager.Common.Dto;
@@ -29,9 +30,9 @@ using Attribute = ARAManager.Common.PresenterJson.ArResources.Attribute;
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 {
     /// <summary>
-    /// Code-behind of TargetMissionCampaignCompany.aspx - used to create new target of a mission
+    ///     Code-behind of TargetMissionCampaignCompany.aspx - used to create new target of a mission
     /// </summary>
-    public partial class TargetMissionCampaignCompany : System.Web.UI.Page
+    public partial class TargetMissionCampaignCompany : Page
     {
         #region IFields
 
@@ -43,54 +44,62 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         #endregion IFields
 
         #region IMethods
+
         protected void Page_Load(object sender, EventArgs e)
         {
             m_mission = ClientServiceFactory.MissionService.GetMissionById(int.Parse(Request.QueryString["RequestId"]));
             EnableValidator(false);
             InitializeDataForGMap();
         }
+
         protected void CustomValidator_TargetName_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar100(txtTargetName.Text);
         }
+
         protected void CustomValidator_Description_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar500(txtDescription.Text);
         }
+
         protected void CustomValidator_Facebook_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar500(txtFacebookUrl.Text);
         }
+
         protected void CustomValidator_Youtube_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar500(txtYoutubeUrl.Text);
         }
+
         protected string GMAP_Target_OnClick(object s, GAjaxServerEventArgs e)
         {
             var marker = new GMarker(e.point);
             var window = new GInfoWindow(marker,
-                                                 string.Format(
-                                                     @"<b>GLatLngBounds</b><br />SW = {0}<br/>NE = {1}",
-                                                     e.bounds.getSouthWest(),
-                                                     e.bounds.getNorthEast()),
-                                        true);
+                string.Format(
+                    @"<b>GLatLngBounds</b><br />SW = {0}<br/>NE = {1}",
+                    e.bounds.getSouthWest(),
+                    e.bounds.getNorthEast()),
+                true);
             return window.ToString(e.map);
         }
+
         protected string GMAP_Target_OnMarkerClick(object s, GAjaxServerEventArgs e)
         {
             m_latitude = e.point.lat;
             m_longtitude = e.point.lng;
             return string.Format("alert('MarkerClick: {0} - {2} - {1}')", e.point, DateTime.Now, e.map);
         }
+
         private void InitializeDataForGMap()
         {
             GMAP_Target.Add(new GControl(GControl.preBuilt.GOverviewMapControl));
             GMAP_Target.Add(new GControl(GControl.preBuilt.LargeMapControl));
-            GMarker marker = new GMarker(new GLatLng(5, 5));
-            GInfoWindow window = new GInfoWindow(marker, "<center><b>Target location</b></center>", true);
+            var marker = new GMarker(new GLatLng(5, 5));
+            var window = new GInfoWindow(marker, "<center><b>Target location</b></center>", true);
             GMAP_Target.Add(window);
-
         }
+
         private void EnableValidator(bool flag)
         {
             RequiredFieldValidator_TargetName.Enabled = flag;
@@ -112,6 +121,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             CustomValidator_Facebook.ErrorMessage = Validation.VALIDATOR_FACEBOOK;
             CustomValidator_Youtube.ErrorMessage = Validation.VALIDATOR_YOUTUBE;
         }
+
         protected void btnCreateTarget_OnClick(object sender, EventArgs e)
         {
             SetErrorMessages();
@@ -132,7 +142,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 // Call VWS
                 var callPostNewTarget = new WebClient();
                 var result = callPostNewTarget.DownloadString(new Uri(
-                    "http://localhost:1234/ara-vws/vws/SampleSelector.php?select=PostNewTarget&targetName=" + txtTargetName.Text +
+                    "http://localhost:1234/ara-vws/vws/SampleSelector.php?select=PostNewTarget&targetName=" +
+                    txtTargetName.Text +
                     "&imageLocation=" + fileName));
 
                 // Filter target id
@@ -163,7 +174,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 }
 
                 // Save target to database
-                var target = new Target()
+                var target = new Target
                 {
                     TargetName = txtTargetName.Text,
                     Url = targetId,
@@ -195,7 +206,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                         filePath = Server.MapPath(Dictionary.PATH_UPLOADED_TARGET + fileName);
                         FileUpload_Target.SaveAs(filePath);
 
-                        var attribute = new Attribute()
+                        var attribute = new Attribute
                         {
                             Key = Dictionary.AR_KEY_URL,
                             Value = filePath
@@ -204,12 +215,12 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                     }
                     // Create Platform with Processor in Platforms
                     platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
-                    processors.Processor = new Processor() { ProcessorType = Dictionary.AR_PROCESSOR_TYPE_IMAGE_SWITCHER };
+                    processors.Processor = new Processor {ProcessorType = Dictionary.AR_PROCESSOR_TYPE_IMAGE_SWITCHER};
                     platforms.Platform = platform;
                     // Add ArResource to ArResources
                     arResources.ArResource = new List<ArResource>
                     {
-                        new ArResource()
+                        new ArResource
                         {
                             CommonAttributes = commonAttributes,
                             ArType = Dictionary.ARSM_PICTURES_GALLERY,
@@ -217,7 +228,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                         }
                     };
                 }
-                
+
                 // Create ARSM-Youtube
                 commonAttributes = new CommonAttributes();
                 platforms = new Platforms();
@@ -226,7 +237,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 // Create Attribute in CommonAttributes
                 commonAttributes.Attribute = new List<Attribute>
                 {
-                    new Attribute()
+                    new Attribute
                     {
                         Key = Dictionary.AR_KEY_URL,
                         Value = txtYoutubeUrl.Text
@@ -234,10 +245,10 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 };
                 // Create Platform with Processor in Platforms
                 platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
-                processors.Processor = new Processor() { ProcessorType = Dictionary.AR_PROCESSOR_TYPE_YOUTUBE };
+                processors.Processor = new Processor {ProcessorType = Dictionary.AR_PROCESSOR_TYPE_YOUTUBE};
                 platforms.Platform = platform;
                 // Add ArResource to ArResources
-                arResources.ArResource.Add(new ArResource()
+                arResources.ArResource.Add(new ArResource
                 {
                     CommonAttributes = commonAttributes,
                     ArType = Dictionary.ARSM_YOUTUBE,
@@ -252,7 +263,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 // Create Attribute in CommonAttributes
                 commonAttributes.Attribute = new List<Attribute>
                 {
-                    new Attribute()
+                    new Attribute
                     {
                         Key = Dictionary.AR_KEY_URL,
                         Value = txtFacebookUrl.Text
@@ -260,15 +271,15 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 };
                 // Create Platform with Processor in Platforms
                 platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
-                processors.Processor = new Processor() { ProcessorType = Dictionary.AR_PROCESSOR_TYPE_FACEBOOK };
+                processors.Processor = new Processor {ProcessorType = Dictionary.AR_PROCESSOR_TYPE_FACEBOOK};
                 platforms.Platform = platform;
                 // Add ArResource to ArResources
-                arResources.ArResource.Add(new ArResource()
-                    {
-                        CommonAttributes = commonAttributes,
-                        ArType = Dictionary.ARSM_FACEBOOK,
-                        Platforms = platforms
-                    });
+                arResources.ArResource.Add(new ArResource
+                {
+                    CommonAttributes = commonAttributes,
+                    ArType = Dictionary.ARSM_FACEBOOK,
+                    Platforms = platforms
+                });
 
                 // Create ARSM-Text
                 commonAttributes = new CommonAttributes();
@@ -278,22 +289,22 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 // Create Attribute in CommonAttributes
                 commonAttributes.Attribute = new List<Attribute>
                 {
-                    new Attribute()
+                    new Attribute
                     {
                         Key = Dictionary.AR_KEY_NAME,
                         Value = txtArName.Text
                     },
-                    new Attribute()
+                    new Attribute
                     {
                         Key = Dictionary.AR_KEY_DIRECTOR,
                         Value = txtDirector.Text
                     },
-                    new Attribute()
+                    new Attribute
                     {
                         Key = Dictionary.AR_KEY_ACTOR,
                         Value = txtActor.Text
                     },
-                    new Attribute()
+                    new Attribute
                     {
                         Key = Dictionary.AR_KEY_DESCRIPTION,
                         Value = txtDescription.Text
@@ -301,10 +312,10 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 };
                 // Create Platform with Processor in Platforms
                 platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
-                processors.Processor = new Processor() { ProcessorType = Dictionary.AR_PROCESSOR_TYPE_TEXTVIEW };
+                processors.Processor = new Processor {ProcessorType = Dictionary.AR_PROCESSOR_TYPE_TEXTVIEW};
                 platforms.Platform = platform;
                 // Add ArResource to ArResources
-                arResources.ArResource.Add(new ArResource()
+                arResources.ArResource.Add(new ArResource
                 {
                     CommonAttributes = commonAttributes,
                     ArType = Dictionary.ARSM_TEXT,
@@ -312,7 +323,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 });
                 var rootObject = new RootObject {ArResources = arResources};
                 ClientServiceFactory.TargetService.SaveNewTarget(target, rootObject);
-                
+
                 txtTargetName.Text = string.Empty;
                 txtFacebookUrl.Text = string.Empty;
                 txtYoutubeUrl.Text = string.Empty;
@@ -330,10 +341,12 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 lblMessage.Text = ex.Detail.MessageError;
             }
         }
+
         protected void btnCancel_OnClick(object sender, EventArgs e)
         {
             Response.Redirect("CampaignCompany.aspx");
         }
+
         #endregion IMethods
     }
 }

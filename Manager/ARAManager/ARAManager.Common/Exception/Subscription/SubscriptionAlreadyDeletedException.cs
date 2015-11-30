@@ -12,12 +12,14 @@
 
 using System.Runtime.Serialization;
 
-namespace ARAManager.Common.Exception.Subscription {
+namespace ARAManager.Common.Exception.Subscription
+{
     /// <summary>
-    /// The subscription has been already deleted.
+    ///     The subscription has been already deleted.
     /// </summary>
     [DataContract]
-    public class SubscriptionAlreadyDeletedException {
+    public class SubscriptionAlreadyDeletedException
+    {
         [DataMember]
         public string MessageError { get; set; }
     }

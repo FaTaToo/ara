@@ -29,10 +29,11 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         #endregion IFields
 
         #region IMethods
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
+
         protected void btnLogin_OnClick(object sender, EventArgs e)
         {
             CustomValidator_UserEmail.Validate();
@@ -55,11 +56,13 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 UserPass.Text = string.Empty;
             }
         }
+
         protected void CustomValidator_UserEmail_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             CustomValidator_UserEmail.ErrorMessage = Validation.VALIDATOR_USEREMAIL_FORMAT;
             args.IsValid = m_validator.ValidateChar100(UserEmail.Text);
         }
+
         protected void CustomValidator_UserPass_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             CustomValidator_UserPass.ErrorMessage = Validation.VALIDATOR_USERPASS_FORMAT;

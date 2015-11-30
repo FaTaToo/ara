@@ -12,12 +12,14 @@
 
 using System.Runtime.Serialization;
 
-namespace ARAManager.Common.Exception.Campaign {
+namespace ARAManager.Common.Exception.Campaign
+{
     /// <summary>
-    /// The campaign name has already existed.
+    ///     The campaign name has already existed.
     /// </summary>
     [DataContract]
-    public class CampaignNameAlreadyExistException {
+    public class CampaignNameAlreadyExistException
+    {
         [DataMember]
         public string MessageError { get; set; }
     }

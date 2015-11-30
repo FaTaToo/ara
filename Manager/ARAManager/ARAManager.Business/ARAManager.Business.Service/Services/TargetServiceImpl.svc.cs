@@ -27,10 +27,12 @@ using Newtonsoft.Json;
 using NHibernate;
 using Ninject;
 
-namespace ARAManager.Business.Service.Services {
+namespace ARAManager.Business.Service.Services
+{
     public class TargetServiceImpl : ITargetServiceImpl
     {
         #region IMethods
+
         public void SaveNewTarget(Target target, RootObject jsonArResources)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ITargetDataAccess>();
@@ -48,24 +50,28 @@ namespace ARAManager.Business.Service.Services {
                 catch (ADOException)
                 {
                     throw new FaultException<TargetNameAlreadyExistException>(
-                        new TargetNameAlreadyExistException { MessageError = Dictionary.TARGET_NAME_CONSTRAINT_EXCEPTION_MSG},
+                        new TargetNameAlreadyExistException
+                        {
+                            MessageError = Dictionary.TARGET_NAME_CONSTRAINT_EXCEPTION_MSG
+                        },
                         new FaultReason(Dictionary.UNIQUE_CONSTRAINT_EXCEPTION_REASON));
                 }
                 catch (StaleObjectStateException)
                 {
                     throw new FaultException<ConcurrentUpdateException>(
-                        new ConcurrentUpdateException { MessageError = Dictionary.TARGET_CONCURRENT_UPDATE_EXCEPTION_MSG },
+                        new ConcurrentUpdateException {MessageError = Dictionary.TARGET_CONCURRENT_UPDATE_EXCEPTION_MSG},
                         new FaultReason(Dictionary.TARGET_NAME_CONSTRAINT_EXCEPTION_MSG));
                 }
                 catch (Exception ex)
                 {
                     throw new FaultException<Exception>(
-                       new Exception(ex.Message),
-                       new FaultReason(Dictionary.UNKNOWN_REASON));
+                        new Exception(ex.Message),
+                        new FaultReason(Dictionary.UNKNOWN_REASON));
                 }
                 tr.Complete();
             }
         }
+
         #endregion IMethods
     }
 }

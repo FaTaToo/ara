@@ -14,31 +14,32 @@ using ARAManager.Business.Dao.NHibernate.Transaction;
 using log4net;
 using Ninject.Extensions.Interception;
 
-namespace ARAManager.Business.Dao.Interceptors {
-    /// <summary> 
-    /// Class summary. 
+namespace ARAManager.Business.Dao.Interceptors
+{
+    /// <summary>
+    ///     Class summary.
     /// </summary>
-    public class ServiceInterceptor : IInterceptor {
-
+    public class ServiceInterceptor : IInterceptor
+    {
         #region SFields
 
         /// <summary>
-        /// Logger object.
+        ///     Logger object.
         /// </summary>
         private static readonly ILog s_classTracer = LogManager.GetLogger(
-            typeof(ServiceInterceptor));
+            typeof (ServiceInterceptor));
 
         #endregion SFields
 
         #region IMethods
 
         /// <summary>
-        /// Intercepts the specified invocation.
+        ///     Intercepts the specified invocation.
         /// </summary>
         /// <param name="invocation">The invocation to intercept.</param>
         public void Intercept(IInvocation invocation)
         {
-            using (NhTransactionScope tr = TransactionsFactory.CreateTransactionScope())
+            using (var tr = TransactionsFactory.CreateTransactionScope())
             {
                 s_classTracer.Info("Enter method " + invocation.Request.Target + "." + invocation.Request.Method.Name);
                 invocation.Proceed();

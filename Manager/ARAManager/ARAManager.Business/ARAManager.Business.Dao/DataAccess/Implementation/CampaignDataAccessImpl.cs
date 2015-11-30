@@ -13,8 +13,10 @@
 using ARAManager.Business.Dao.DataAccess.Interfaces;
 using ARAManager.Common.Dto;
 
-namespace ARAManager.Business.Dao.DataAccess.Implementation {
-    public class CampaignDataAccessImpl: GenericDataAccessImpl<Campaign, int>, ICampaignDataAccess { 
+namespace ARAManager.Business.Dao.DataAccess.Implementation
+{
+    public class CampaignDataAccessImpl : GenericDataAccessImpl<Campaign, int>, ICampaignDataAccess
+    {
         #region Constants
 
         #endregion Constants

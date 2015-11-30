@@ -23,8 +23,9 @@ namespace ARAManager.Business.Service.Services
     public class CampaignTypeServiceImpl : ICampaignTypeServiceImpl
     {
         #region IMethods
+
         /// <summary>
-        /// Get campaign type by campaing id
+        ///     Get campaign type by campaing id
         /// </summary>
         /// <param name="campaignTypeId"></param>
         /// <returns></returns>
@@ -33,8 +34,9 @@ namespace ARAManager.Business.Service.Services
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignTypeDataAccess>();
             return srvDao.GetById(campaignTypeId);
         }
+
         /// <summary>
-        /// Get campaign type by name
+        ///     Get campaign type by name
         /// </summary>
         /// <param name="campaignTypeName"></param>
         /// <returns></returns>
@@ -48,6 +50,7 @@ namespace ARAManager.Business.Service.Services
             }
             return srvDao.FindByCriteria(criteria).FirstOrDefault();
         }
+
         #endregion IMethods
     }
 }

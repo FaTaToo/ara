@@ -12,12 +12,14 @@
 
 using System.Runtime.Serialization;
 
-namespace ARAManager.Common.Exception.Generic {
+namespace ARAManager.Common.Exception.Generic
+{
     /// <summary>
-    /// Invalid input data
+    ///     Invalid input data
     /// </summary>
     [DataContract]
-    public class InvalidDataException {
+    public class InvalidDataException
+    {
         [DataMember]
         public string MessageError { get; set; }
     }

@@ -28,6 +28,7 @@ namespace ARAManager.Business.Service.Services.Presenter
     public class CustomerCampaign : ICustomerCampaign
     {
         #region IMethods
+
         public IList<Campaign> GetListOfCampaigns()
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
@@ -48,7 +49,7 @@ namespace ARAManager.Business.Service.Services.Presenter
 
         public RootObject GetArData(string targetUrl)
         {
-            using (StreamReader streamReader = new StreamReader(Dictionary.PATH_AR_JSON + targetUrl + ".json"))
+            using (var streamReader = new StreamReader(Dictionary.PATH_AR_JSON + targetUrl + ".json"))
             {
                 var jsonFile = streamReader.ReadToEnd();
                 return JsonConvert.DeserializeObject<RootObject>(jsonFile);

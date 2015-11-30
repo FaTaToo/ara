@@ -26,20 +26,25 @@ using NHibernate;
 using NHibernate.Criterion;
 using Ninject;
 
-namespace ARAManager.Business.Service.Services {
-    public class CampaignServiceImpl : ICampaignServiceImpl {
+namespace ARAManager.Business.Service.Services
+{
+    public class CampaignServiceImpl : ICampaignServiceImpl
+    {
         #region IMethods
+
         /// <summary>
-        /// Get campaign by campaing id
+        ///     Get campaign by campaing id
         /// </summary>
         /// <param name="campaignId"></param>
         /// <returns></returns>
-        public Campaign GetCampaignById(int campaignId) {
+        public Campaign GetCampaignById(int campaignId)
+        {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
             return srvDao.GetById(campaignId);
         }
+
         /// <summary>
-        /// Get campaign by name
+        ///     Get campaign by name
         /// </summary>
         /// <param name="campaignName"></param>
         /// <returns></returns>
@@ -53,8 +58,9 @@ namespace ARAManager.Business.Service.Services {
             }
             return srvDao.FindByCriteria(criteria).FirstOrDefault();
         }
+
         /// <summary>
-        /// Get all campaigns
+        ///     Get all campaigns
         /// </summary>
         /// <returns></returns>
         public IList<Campaign> GetAllCampaigns()
@@ -63,14 +69,15 @@ namespace ARAManager.Business.Service.Services {
             var criteria = DetachedCriteria.For<Campaign>();
             return srvDao.FindByCriteria(criteria);
         }
+
         /// <summary>
-        /// Save new campaign 
+        ///     Save new campaign
         /// </summary>
         /// <param name="campaign"></param>
         public void SaveNewCampaign(Campaign campaign)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
-            using (NhTransactionScope tr = TransactionsFactory.CreateTransactionScope())
+            using (var tr = TransactionsFactory.CreateTransactionScope())
             {
                 try
                 {
@@ -79,32 +86,39 @@ namespace ARAManager.Business.Service.Services {
                 catch (ADOException)
                 {
                     throw new FaultException<CampaignNameAlreadyExistException>(
-                        new CampaignNameAlreadyExistException { MessageError = Dictionary.CAMPAIGN_NAME_CONSTRAINT_EXCEPTION_MSG },
+                        new CampaignNameAlreadyExistException
+                        {
+                            MessageError = Dictionary.CAMPAIGN_NAME_CONSTRAINT_EXCEPTION_MSG
+                        },
                         new FaultReason(Dictionary.UNIQUE_CONSTRAINT_EXCEPTION_REASON));
                 }
                 catch (StaleObjectStateException)
                 {
                     throw new FaultException<ConcurrentUpdateException>(
-                        new ConcurrentUpdateException { MessageError = Dictionary.CAMPAIGN_CONCURRENT_UPDATE_EXCEPTION_MSG },
+                        new ConcurrentUpdateException
+                        {
+                            MessageError = Dictionary.CAMPAIGN_CONCURRENT_UPDATE_EXCEPTION_MSG
+                        },
                         new FaultReason(Dictionary.CAMPAIGN_CONCURRENT_UPDATE_EXCEPTION_MSG));
                 }
                 catch (Exception ex)
                 {
                     throw new FaultException<Exception>(
-                       new Exception(ex.Message),
-                       new FaultReason(Dictionary.UNKNOWN_REASON));
+                        new Exception(ex.Message),
+                        new FaultReason(Dictionary.UNKNOWN_REASON));
                 }
                 tr.Complete();
             }
         }
+
         /// <summary>
-        /// Delete campaign by campaign id
+        ///     Delete campaign by campaign id
         /// </summary>
         /// <param name="campaignId"></param>
         public void DeleteCampaign(int campaignId)
         {
             var srvDaoCampaign = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
-            using (NhTransactionScope tr = TransactionsFactory.CreateTransactionScope())
+            using (var tr = TransactionsFactory.CreateTransactionScope())
             {
                 try
                 {
@@ -114,14 +128,15 @@ namespace ARAManager.Business.Service.Services {
                 catch (Exception)
                 {
                     throw new FaultException<CampaignAlreadyDeletedException>(
-                       new CampaignAlreadyDeletedException { MessageError = Dictionary.CAMPAIGN_DELETED_EXCEPTION_MSG },
-                       new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
+                        new CampaignAlreadyDeletedException {MessageError = Dictionary.CAMPAIGN_DELETED_EXCEPTION_MSG},
+                        new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
                 }
                 tr.Complete();
             }
         }
+
         /// <summary>
-        /// Delete campaigns by the list of campaigns id
+        ///     Delete campaigns by the list of campaigns id
         /// </summary>
         /// <param name="campaigns"></param>
         public void DeleteCampaigns(List<int> campaigns)
@@ -135,17 +150,19 @@ namespace ARAManager.Business.Service.Services {
                 catch (Exception)
                 {
                     throw new FaultException<CampaignAlreadyDeletedException>(
-                       new CampaignAlreadyDeletedException { MessageError = Dictionary.CAMPAIGN_DELETED_EXCEPTION_MSG },
-                       new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
+                        new CampaignAlreadyDeletedException {MessageError = Dictionary.CAMPAIGN_DELETED_EXCEPTION_MSG},
+                        new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
                 }
             }
         }
+
         /// <summary>
-        /// Search campaign by campaign name
+        ///     Search campaign by campaign name
         /// </summary>
         /// <param name="campaignname"></param>
         /// <returns></returns>
-        public IList<Campaign> SearchCampaign(string campaignname) {
+        public IList<Campaign> SearchCampaign(string campaignname)
+        {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
             var criteria = DetachedCriteria.For<Campaign>();
 
@@ -153,18 +170,20 @@ namespace ARAManager.Business.Service.Services {
             {
                 criteria.Add(Restrictions.Where<Campaign>(c => c.CampaignName == campaignname));
             }
-            
+
             var result = srvDao.FindByCriteria(criteria);
             return result;
         }
+
         /// <summary>
-        /// Count the number of campaign
+        ///     Count the number of campaign
         /// </summary>
         /// <returns></returns>
         public int CountCampaign()
         {
             return GetAllCampaigns().Count;
         }
+
         #endregion IMethods
     }
 }

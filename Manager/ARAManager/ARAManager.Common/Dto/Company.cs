@@ -14,58 +14,68 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using NHibernate.Mapping.Attributes;
 
-namespace ARAManager.Common.Dto {
+namespace ARAManager.Common.Dto
+{
     [DataContract]
-    [Class(Table = "ARA_Company", NameType = typeof(Company), Lazy = false)]
-    public class Company: ModelBase {
+    [Class(Table = "ARA_Company", NameType = typeof (Company), Lazy = false)]
+    public class Company : ModelBase
+    {
         #region IFields
 
         private ICollection<Campaign> m_campaigns;
 
         #endregion IFields
+
         #region IConstructors
-        public Company() {
+
+        public Company()
+        {
             m_campaigns = new HashSet<Campaign>();
         }
+
         #endregion IConstructors
 
         #region IProperties
 
         [DataMember]
-        [Id(0, Column = "CompanyId", Name = "CompanyId", TypeType = typeof(int))]
+        [Id(0, Column = "CompanyId", Name = "CompanyId", TypeType = typeof (int))]
         [Generator(1, Class = "identity")]
         public virtual int CompanyId { get; set; }
 
         [DataMember]
-        [Property(Column = "CompanyName", Name = "CompanyName", TypeType = typeof(string), Length = 100, NotNull = true)]
+        [Property(Column = "CompanyName", Name = "CompanyName", TypeType = typeof (string), Length = 100, NotNull = true
+            )]
         public virtual string CompanyName { get; set; }
 
         [DataMember]
-        [Property(Column = "Address", Name = "Address", TypeType = typeof(string), Length = 500, NotNull = true)]
+        [Property(Column = "Address", Name = "Address", TypeType = typeof (string), Length = 500, NotNull = true)]
         public virtual string Address { get; set; }
 
         [DataMember]
-        [Property(Column = "Email", Name = "Email", TypeType = typeof(string), Length = 100, NotNull = true)]
+        [Property(Column = "Email", Name = "Email", TypeType = typeof (string), Length = 100, NotNull = true)]
         public virtual string Email { get; set; }
 
         [DataMember]
-        [Property(Column = "Phone", Name = "Phone", TypeType = typeof(string), Length = 20, NotNull = true)]
+        [Property(Column = "Phone", Name = "Phone", TypeType = typeof (string), Length = 20, NotNull = true)]
         public virtual string Phone { get; set; }
 
         [DataMember]
-        [Property(Column = "UserName", Name = "UserName", TypeType = typeof(string), Length = 100, NotNull = true)]
+        [Property(Column = "UserName", Name = "UserName", TypeType = typeof (string), Length = 100, NotNull = true)]
         public virtual string UserName { get; set; }
 
         [DataMember]
-        [Property(Column = "Password", Name = "Password", TypeType = typeof(string), Length = 100, NotNull = true)]
+        [Property(Column = "Password", Name = "Password", TypeType = typeof (string), Length = 100, NotNull = true)]
         public virtual string Password { get; set; }
 
         [DataMember]
-        [Set(0, Table = "ARA_Campaign", Inverse = true, Cascade = "all-delete-orphan", Access = "field", Lazy = CollectionLazy.False, Name = "m_campaigns")]
+        [Set(0, Table = "ARA_Campaign", Inverse = true, Cascade = "all-delete-orphan", Access = "field",
+            Lazy = CollectionLazy.False, Name = "m_campaigns")]
         [Key(1, Column = "CompanyId")]
-        [OneToMany(2, ClassType = typeof(Campaign))]
-        public virtual ICollection<Campaign> Campaigns {
-            get {
+        [OneToMany(2, ClassType = typeof (Campaign))]
+        public virtual ICollection<Campaign> Campaigns
+        {
+            get
+            {
                 m_campaigns = m_campaigns ?? new HashSet<Campaign>();
                 return m_campaigns;
             }

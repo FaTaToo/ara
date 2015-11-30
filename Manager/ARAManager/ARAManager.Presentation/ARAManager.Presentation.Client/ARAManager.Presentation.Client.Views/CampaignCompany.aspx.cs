@@ -12,13 +12,14 @@
 
 using System;
 using System.Linq;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
 using ARAManager.Presentation.Connectivity;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 {
-    public partial class CampaignCompany : System.Web.UI.Page
+    public partial class CampaignCompany : Page
     {
         #region IFields
 
@@ -27,20 +28,24 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         #endregion IFields
 
         #region IMethods
+
         protected void Page_Load(object sender, EventArgs e)
         {
             EnableValidator(false);
         }
+
         protected void CustomValidator_CampaignName_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             CustomValidator_CampaignName.ErrorMessage = Validation.VALIDATOR_CAMPAIGN_NAME;
             args.IsValid = m_validator.ValidateChar100(txtCampaignName.Text);
         }
+
         protected void CustomValidator_RequireFileds_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             CustomValidator_RequireFileds.ErrorMessage = Validation.VALIDATOR_REQUIRED_CRITERION_SEARCH;
             args.IsValid = !string.IsNullOrEmpty(txtCampaignName.Text);
         }
+
         protected void btnSearch_OnClick(object sender, EventArgs e)
         {
             EnableValidator(true);
@@ -51,25 +56,28 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 Search();
             }
         }
+
         protected void btnSelectAll_OnClick(object sender, EventArgs e)
         {
             SelectDeselectGridView(true);
         }
+
         protected void btnDeselectAll_OnClick(object sender, EventArgs e)
         {
             SelectDeselectGridView(false);
         }
+
         protected void btnDelete_OnClick(object sender, EventArgs e)
         {
             var deletedCampaigns = (from GridViewRow row in GridViewResult.Rows
-                                    let checkBox = row.Cells[0].FindControl("cbSelect") as CheckBox
-                                    where checkBox != null && checkBox.Checked
-                                    select row.Cells[1].FindControl("lblId")).OfType<Label>().
-                                      Select(label => int.Parse(label.Text)).ToList();
+                let checkBox = row.Cells[0].FindControl("cbSelect") as CheckBox
+                where checkBox != null && checkBox.Checked
+                select row.Cells[1].FindControl("lblId")).OfType<Label>().
+                Select(label => int.Parse(label.Text)).ToList();
             //try
             //{
             //    ClientServiceFactory.MissionService.GetAllMissionsOfTheCampaign();
-                ClientServiceFactory.CampaignService.DeleteCampaigns(deletedCampaigns);
+            ClientServiceFactory.CampaignService.DeleteCampaigns(deletedCampaigns);
             //}
             //catch (FaultException ex)
             //{
@@ -77,6 +85,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             //}
             Search();
         }
+
         protected void btnClear_OnClick(object sender, EventArgs e)
         {
             txtCampaignName.Text = string.Empty;
@@ -84,16 +93,19 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             GridViewResult.DataBind();
             Panel_Result.Visible = false;
         }
+
         private void Search()
         {
             Panel_Result.Visible = false;
             var result = ClientServiceFactory.CampaignService.SearchCampaign(txtCampaignName.Text);
-            if (result != null) { 
+            if (result != null)
+            {
                 GridViewResult.DataSource = result;
                 GridViewResult.DataBind();
                 Panel_Result.Visible = true;
             }
         }
+
         private void SelectDeselectGridView(bool flag)
         {
             foreach (GridViewRow row in GridViewResult.Rows)
@@ -105,6 +117,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 }
             }
         }
+
         private void EnableValidator(bool flag)
         {
             CustomValidator_CampaignName.Enabled = flag;

@@ -1,8 +1,0 @@
-<Modules>
-  <Module PersistentId="CEF9566D-F135-4099-B821-5B3F89D42D28" ModuleId="NHibernateProjectExample" />
-  <Module PersistentId="D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2" ModuleId="NHibernateExampleCommon" />
-  <Module PersistentId="8C0B34C0-E1B1-4DDC-B609-D100E5C30436" ModuleId="NHibernateExampleService" />
-  <Module PersistentId="System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="System.Data" />
-  <Module PersistentId="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4" ModuleId="Iesi.Collections" />
-  <Module PersistentId="NHibernate, Version=3.2.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4" ModuleId="NHibernate" />
-</Modules>

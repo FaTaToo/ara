@@ -18,26 +18,27 @@ using System.ServiceModel.Dispatcher;
 namespace ARAManager.Common.Services.Behaviors
 {
     /// <summary>
-    /// Create Preservce reference attribute to solve problem circulation serialization
-    /// http://msdn2.microsoft.com/en-us/library/aa730857(VS.80).aspx#netremotewcf_topic8
-    /// http://blogs.msdn.com/b/drnick/archive/2007/05/15/replacing-the-serializer-part-1.aspx
+    ///     Create Preservce reference attribute to solve problem circulation serialization
+    ///     http://msdn2.microsoft.com/en-us/library/aa730857(VS.80).aspx#netremotewcf_topic8
+    ///     http://blogs.msdn.com/b/drnick/archive/2007/05/15/replacing-the-serializer-part-1.aspx
     /// </summary>
     [AttributeUsage(AttributeTargets.All)]
     public sealed class PreserveReferencesAttribute : Attribute, IOperationBehavior
     {
-       #region IMethods
+        #region IMethods
 
         /// <summary>
-        /// Adding bindingParameters.
+        ///     Adding bindingParameters.
         /// </summary>
         /// <param name="operationDescription">operationDescription of operation</param>
         /// <param name="bindingParameters">collection od bindingParameters</param>
-        public void AddBindingParameters(OperationDescription operationDescription, BindingParameterCollection bindingParameters)
+        public void AddBindingParameters(OperationDescription operationDescription,
+            BindingParameterCollection bindingParameters)
         {
         }
 
         /// <summary>
-        /// Add client behavior.
+        ///     Add client behavior.
         /// </summary>
         /// <param name="operationDescription">Description of operation</param>
         /// <param name="clientOperation">Proxy of client</param>
@@ -47,7 +48,7 @@ namespace ARAManager.Common.Services.Behaviors
         }
 
         /// <summary>
-        /// Apply behavior.
+        ///     Apply behavior.
         /// </summary>
         /// <param name="operationDescription">operationDescription of operation</param>
         /// <param name="dispatchOperation">Dispatch behavior</param>
@@ -57,7 +58,7 @@ namespace ARAManager.Common.Services.Behaviors
         }
 
         /// <summary>
-        /// Validate operation operationDescription
+        ///     Validate operation operationDescription
         /// </summary>
         /// <param name="operationDescription">operationDescription of operation</param>
         public void Validate(OperationDescription operationDescription)
@@ -65,7 +66,7 @@ namespace ARAManager.Common.Services.Behaviors
         }
 
         /// <summary>
-        /// Replaces the data contract serializer operation behavior.
+        ///     Replaces the data contract serializer operation behavior.
         /// </summary>
         /// <param name="description">The description.</param>
         private static void ReplaceDataContractSerializerOperationBehavior(OperationDescription description)

@@ -25,67 +25,100 @@ using NHibernate;
 using NHibernate.Criterion;
 using Ninject;
 
-namespace ARAManager.Business.Service.Services {
-    public class MissionServiceImpl : IMissionServiceImpl {
+namespace ARAManager.Business.Service.Services
+{
+    public class MissionServiceImpl : IMissionServiceImpl
+    {
         #region IMethods
-        public Mission GetMissionById(int missionId) {
+
+        public Mission GetMissionById(int missionId)
+        {
             var srvDao = NinjectKernelFactory.Kernel.Get<IMissionDataAccess>();
             return srvDao.GetById(missionId);
         }
-        public IList<Mission> GetAllMissionsOfTheCampaign(Campaign campaign) {
+
+        public IList<Mission> GetAllMissionsOfTheCampaign(Campaign campaign)
+        {
             // Fix query later
             var srvDao = NinjectKernelFactory.Kernel.Get<IMissionDataAccess>();
             var criteria = DetachedCriteria.For<Mission>();
             return srvDao.FindByCriteria(criteria);
         }
-        public void SaveNewMission(Mission mission) {
+
+        public void SaveNewMission(Mission mission)
+        {
             var srvDao = NinjectKernelFactory.Kernel.Get<IMissionDataAccess>();
-            using (NhTransactionScope tr = TransactionsFactory.CreateTransactionScope()) {
-                try {
+            using (var tr = TransactionsFactory.CreateTransactionScope())
+            {
+                try
+                {
                     srvDao.Save(mission);
-                } catch (ADOException) {
+                }
+                catch (ADOException)
+                {
                     throw new FaultException<MissionNameAlreadyExistException>(
-                        new MissionNameAlreadyExistException { MessageError = Dictionary.MISSION_NAME_CONSTRAINT_EXCEPTION_MSG },
+                        new MissionNameAlreadyExistException
+                        {
+                            MessageError = Dictionary.MISSION_NAME_CONSTRAINT_EXCEPTION_MSG
+                        },
                         new FaultReason(Dictionary.UNIQUE_CONSTRAINT_EXCEPTION_REASON));
                 }
-                catch (StaleObjectStateException) {
+                catch (StaleObjectStateException)
+                {
                     throw new FaultException<ConcurrentUpdateException>(
-                        new ConcurrentUpdateException { MessageError = Dictionary.MISSION_CONCURRENT_UPDATE_EXCEPTION_MSG },
+                        new ConcurrentUpdateException
+                        {
+                            MessageError = Dictionary.MISSION_CONCURRENT_UPDATE_EXCEPTION_MSG
+                        },
                         new FaultReason(Dictionary.CONCURRENT_UPDATE_EXCEPTION_REASON));
-                } catch (Exception ex) {
+                }
+                catch (Exception ex)
+                {
                     throw new FaultException<Exception>(
-                       new Exception(ex.Message),
-                       new FaultReason(Dictionary.UNKNOWN_REASON));
+                        new Exception(ex.Message),
+                        new FaultReason(Dictionary.UNKNOWN_REASON));
                 }
                 tr.Complete();
             }
         }
 
-        public void DeleteMission(int missionId) {
+        public void DeleteMission(int missionId)
+        {
             var srvDao = NinjectKernelFactory.Kernel.Get<IMissionDataAccess>();
-            using (NhTransactionScope tr = TransactionsFactory.CreateTransactionScope()) {
-                try {
+            using (var tr = TransactionsFactory.CreateTransactionScope())
+            {
+                try
+                {
                     var deleteMission = srvDao.GetById(missionId);
                     srvDao.Delete(deleteMission);
-                } catch (Exception) {
+                }
+                catch (Exception)
+                {
                     throw new FaultException<MissionAlreadyDeletedException>(
-                       new MissionAlreadyDeletedException { MessageError = Dictionary.MISSION_DELETED_EXCEPTION_MSG },
-                       new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
+                        new MissionAlreadyDeletedException {MessageError = Dictionary.MISSION_DELETED_EXCEPTION_MSG},
+                        new FaultReason(Dictionary.DELETED_EXCEPTION_REASON));
                 }
                 tr.Complete();
             }
         }
-        public void DeleteMissions(List<int> missions) {
-            foreach (var mission in missions) {
-                try {
+
+        public void DeleteMissions(List<int> missions)
+        {
+            foreach (var mission in missions)
+            {
+                try
+                {
                     DeleteMission(mission);
-                } catch (Exception) {
+                }
+                catch (Exception)
+                {
                     throw new FaultException<MissionAlreadyDeletedException>(
-                       new MissionAlreadyDeletedException { MessageError = Dictionary.MISSION_DELETED_EXCEPTION_MSG },
-                       new FaultReason(Dictionary.MISSION_DELETED_EXCEPTION_MSG));
+                        new MissionAlreadyDeletedException {MessageError = Dictionary.MISSION_DELETED_EXCEPTION_MSG},
+                        new FaultReason(Dictionary.MISSION_DELETED_EXCEPTION_MSG));
                 }
             }
         }
+
         #endregion IMethods
     }
 }
