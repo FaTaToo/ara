@@ -22,15 +22,14 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 {
     public partial class StatisticsAdmin : Page
     {
+        #region IMethods
         protected void Page_Load(object sender, EventArgs e)
         {
             var customersList = ClientServiceFactory.CustomerService.GetAllCustomers();
             LoadSexPieChart(customersList);
             LoadAgeChart(GetAgeRanges(customersList));
         }
-        /// <summary>
-        /// Load the values for customer sex pie chart
-        /// </summary>
+
         private void LoadSexPieChart(IList<Customer> customers)
         {
             SexPieChart.PieChartClientValues.Add(new PieChartValue()
@@ -90,5 +89,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
             return (a - b) / 10000;
         }
+
+        #endregion IMethods
     }
 }

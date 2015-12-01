@@ -11,7 +11,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
-using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Web.UI;
@@ -30,6 +29,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
         #endregion IFields
 
+        #region IMethods
         protected void Page_Load(object sender, EventArgs e)
         {
             LoadGeneralStatistic();
@@ -84,7 +84,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             {
                 lblCampaignName.Text = campaign.CampaignName;
                 lblTotalSub.Text = string.Format("{0} subcriptions", campaign.Subscriptions.Count());
-                lblCompleteSub.Text = campaign.Subscriptions.Count(c => c.IsComplete == true).ToString();
+                lblCompleteSub.Text = campaign.Subscriptions.Count(c => c.IsComplete).ToString();
                 if (campaign.Subscriptions.Count > 0)
                 {
                     lblAveRating.Text =
@@ -92,5 +92,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 }
             }
         }
+
+        #endregion IMethods
     }
 }

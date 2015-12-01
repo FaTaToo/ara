@@ -10,22 +10,22 @@
                 <ul class="nav nav-pills nav-stacked pull-left">
                     <li role="presentation">
                         <asp:TextBox ID="txtCampaignName" runat="server"
-                            placeholder="Campaign name" />
+                                     placeholder="Campaign name"/>
                     </li>
                     <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_CampaignName" runat="server"
-                            OnServerValidate="CustomValidator_CampaignName_OnServerValidate" />
+                                             OnServerValidate="CustomValidator_CampaignName_OnServerValidate"/>
                     </li>
                     <li role="presentation">
                         <asp:CustomValidator ID="CustomValidator_RequireFileds" runat="server"
-                            ForeColor="Red"
-                            OnServerValidate="CustomValidator_RequireFileds_OnServerValidate" />
+                                             ForeColor="Red"
+                                             OnServerValidate="CustomValidator_RequireFileds_OnServerValidate"/>
                     </li>
                     <li role="presentation" style="margin-left: 35px; margin-top: 20px;">
                         <asp:Button ID="btnSearch" runat="server"
-                            CssClass="btn btn-success"
-                            Text="Search"
-                            OnClick="btnSearch_OnClick" />
+                                    CssClass="btn btn-success"
+                                    Text="Search"
+                                    OnClick="btnSearch_OnClick"/>
                     </li>
                 </ul>
             </div>
@@ -42,8 +42,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <asp:BarChart ID="campaignChart" runat="server" ChartHeight="300" ChartWidth="450"
-                        ChartTitle="Campaign statistics" ChartType="Column" ChartTitleColor="#0E426C" Visible="True"
-                        CategoryAxisLineColor="#D08AD9" ValueAxisLineColor="#D08AD9" BaseLineColor="#A156AB">
+                                  ChartTitle="Campaign statistics" ChartType="Column" ChartTitleColor="#0E426C" Visible="True"
+                                  CategoryAxisLineColor="#D08AD9" ValueAxisLineColor="#D08AD9" BaseLineColor="#A156AB">
                     </asp:BarChart>
                 </div>
             </div>
@@ -54,15 +54,15 @@
             <div class="col-md-6" style="margin-bottom: 20px; margin-left: 20px; margin-top: 20px;">
                 <!--#region TITLE-->
                 <asp:TextBox ID="txtCampaignDetail"
-                    Width="100%"
-                    BackColor="darkred"
-                    Font-Size="large"
-                    Font-Bold="True"
-                    ForeColor="white"
-                    BorderColor="yellow"
-                    Enabled="False"
-                    Style="text-align: center"
-                    runat="server">
+                             Width="100%"
+                             BackColor="darkred"
+                             Font-Size="large"
+                             Font-Bold="True"
+                             ForeColor="white"
+                             BorderColor="yellow"
+                             Enabled="False"
+                             Style="text-align: center"
+                             runat="server">
                     Campaign Information
                 </asp:TextBox>
                 <!--#endregion TITLE-->
@@ -73,28 +73,28 @@
                         <td style="width: 30%">Campaign Name: </td>
                         <td style="width: 70%">
                             <asp:Label ID="lblCampaignName" runat="server"
-                                Width="100%" />
+                                       Width="100%"/>
                         </td>
                     </tr>
                     <tr>
                         <td style="width: 30%">Total Subcription: </td>
                         <td style="width: 70%">
                             <asp:Label ID="lblTotalSub" runat="server"
-                                Width="100%" />
+                                       Width="100%"/>
                         </td>
                     </tr>
                     <tr>
                         <td style="width: 30%">Total Complete Subcription: </td>
                         <td style="width: 70%">
                             <asp:Label ID="lblCompleteSub" runat="server"
-                                Width="100%" />
+                                       Width="100%"/>
                         </td>
                     </tr>
                     <tr>
                         <td style="width: 30%">Average Rating: </td>
                         <td style="width: 70%">
                             <asp:Label ID="lblAveRating" runat="server"
-                                Width="100%" />
+                                       Width="100%"/>
                         </td>
                     </tr>
 
