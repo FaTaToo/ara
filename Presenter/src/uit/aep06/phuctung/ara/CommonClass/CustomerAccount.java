@@ -2,33 +2,33 @@ package uit.aep06.phuctung.ara.CommonClass;
 
 public class CustomerAccount {
     public int ID;
-	public String Fullname;
-	public String Email;
+	public String fullName;
+	public String email;
 	public String getFullname() {
-		return Fullname;
+		return this.fullName;
 	}
 	public void setFullname(String fullname) {
-		Fullname = fullname;
+		this.fullName = fullname;
 	}
 	public String getEmail() {
-		return Email;
+		return this.email;
 	}
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
-	public String Username;
-	public String Pass;
+	public String userName;
+	public String pass;
 	public String getUsername() {
-		return Username;
+		return this.userName;
 	}
 	public void setUsername(String username) {
-		Username = username;
+		this.userName = username;
 	}
 	public String getPass() {
-		return Pass;
+		return this.pass;
 	}
 	public void setPass(String pass) {
-		Pass = pass;
+		this.pass = pass;
 	}
 	public int getID() {
 		return ID;

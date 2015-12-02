@@ -1,20 +1,26 @@
 package uit.aep06.phuctung.ara.Service;
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.protocol.HttpContext;
 import org.json.JSONException;
 import org.json.JSONObject;
-import android.R;
+
+
+
 import android.provider.Telephony.Sms.Conversations;
 import android.util.Log;
 import uit.aep06.phuctung.ara.CommonClass.CustomerAccount;
@@ -22,92 +28,111 @@ import uit.aep06.phuctung.ara.CommonClass.CustomerAccount;
 public class CustomerAccountService extends Service {
 
 
-	public  int AddNewCustomerAccount(CustomerAccount acc) throws JSONException, ClientProtocolException, IOException
+	public  int addNewCustomerAccount(CustomerAccount acc)
 	{
-		httpPost = new HttpPost("link to service");
-		httpPost.setHeader("Content-type", "application/json");
-
-		//Tao du lieu truyen di
-		JSONObject newAccount = new JSONObject();
-		newAccount.put("Username", acc.getUsername());
-		newAccount.put("Password", acc.getPass());
-		newAccount.put("Email", acc.getEmail());
-		newAccount.put("Fullname", acc.getFullname());
-		
-		//Chuyen sang kieu String entity
-		StringEntity postData = new StringEntity(newAccount.toString(),"UTF-8");
-		httpPost.setEntity(postData);
-		
-		response = httpClient.execute(httpPost);
-		HttpEntity entity = response.getEntity();
-		String content = Service.ConvertFromEntityToString(entity);
-		content = content.replace("\"", "").replace("\"", "");
-		if (content.equals("0"))
-			return 0;
-		return Integer.parseInt(content);
-		
+		return 0;
 	}
 	
-	public  int CheckExists(CustomerAccount acc){
-		httpGet = new HttpGet("link to service" + acc.Username + "-" + acc.Pass);
-		try {
-			response = httpClient.execute(httpGet,localContext);
-		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-			entity = response.getEntity();
-			String content;
-			try {
-				content = Service.ConvertFromEntityToString(entity);
-				content = content.replace("\"", "").replace("\"", "");
+	@SuppressWarnings("deprecation")
+	public  int authenticate(CustomerAccount account)  throws IOException, JSONException{
+		String targetURL = "http://localhost:52396/Services/Presenter/CustomerAccount.svc/Authenticate";
+			
+		URL url;
+	    HttpURLConnection connection = null;  
+	    
+    	//Create JSONObject here
+		JSONObject jsonParam = new JSONObject();
+		jsonParam.put("userName", account.getUsername());
+		jsonParam.put("pass", account.getPass());
+	    
+	    try {
+	      //Create connection
+	      url = new URL(targetURL);
+	      connection = (HttpURLConnection)url.openConnection();
+	      connection.setRequestMethod("POST");
+	      connection.setRequestProperty("Content-Type", 
+	           "application/x-www-form-urlencoded");
+				
+	      connection.setRequestProperty("Content-Length", "" + 
+	               Integer.toString(jsonParam.toString().getBytes().length));
+	      connection.setRequestProperty("Content-Language", "en-US");  
+				
+	      connection.setUseCaches (false);
+	      connection.setDoInput(true);
+	      connection.setDoOutput(true);
 
-				if (content.equals("0"))
-					return 0;
-				return Integer.parseInt(content);
-			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-		return 0;
-		
+	      //Send request
+	      DataOutputStream wr = new DataOutputStream (connection.getOutputStream ());
+	      wr.writeBytes (jsonParam.toString());
+	      wr.flush ();
+	      wr.close ();
+
+	      //Get Response	
+	      InputStream is = connection.getInputStream();
+	      BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+	      String line;
+	      StringBuffer response = new StringBuffer(); 
+	      while((line = rd.readLine()) != null) {
+	        response.append(line);
+	        response.append('\r');
+	      }
+	      rd.close();
+	      Log.d("JSON POST", response.toString());
+	      return 1 ;
+
+	    } catch (Exception e) {
+
+	      e.printStackTrace();
+	      return 0;
+
+	    } finally {
+
+	      if(connection != null) {
+	        connection.disconnect(); 
+	      }
+	    }		
+
+//		HttpPost httppost = new HttpPost(targetURL);
+//		
+//		JSONObject accValue = new JSONObject();
+//		JSONObject acc = new JSONObject();
+//		accValue.put("UserName", account.getUsername());
+//		accValue.put("Password", account.getPass());
+//		
+//		acc.put("account", accValue.toString());
+//		
+//	    httppost.setEntity(new StringEntity(acc.toString(), "UTF-8"));
+//		
+//	    response = httpClient.execute(httppost);
+//		HttpEntity entity = response.getEntity();
+//		String content = Service.ConvertFromEntityToString(entity);
+//		return 1;
+		//way 1;
+//		URL url;
+//		URLConnection urlConn;
+//		DataOutputStream printout;
+//				
+//		url = new URL("");;
+//		urlConn = url.openConnection();
+//		urlConn.setDoInput (true);
+//		urlConn.setDoOutput (true);
+//		urlConn.setUseCaches (false);
+//		urlConn.setRequestProperty("Content-Type","application/json");   
+//		urlConn.setRequestProperty("Host", "android.schoolportal.gr");//eo hieu, can sua
+//		urlConn.connect();  
+//		//Create JSONObject here
+//		JSONObject jsonParam = new JSONObject();
+//		jsonParam.put("userName", account.getUsername());
+//		jsonParam.put("pass", account.getPass());
+//		//Send POST output
+//		printout = new DataOutputStream(urlConn.getOutputStream());
+//		printout.writeChars(URLEncoder.encode(jsonParam.toString(), "UTF-8"));
+//		printout.flush();
+//		printout.close();
 	}
 	public String getName(String id)
 	{
-		httpGet = new HttpGet("link to server" + id);
-		try {
-			response = httpClient.execute(httpGet,localContext);
-		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-			entity = response.getEntity();
-			String content;
-			try {
-				content = Service.ConvertFromEntityToString(entity);
-				content = content.replace("\"", "").replace("\"", "");
-				return content;
-				
-			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-		return "Null";
-		
+		return "";
 	}
 }
 

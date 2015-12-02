@@ -1,5 +1,9 @@
 package uit.aep06.phuctung.ara;
 
+import java.io.IOException;
+
+import org.json.JSONException;
+
 import android.R.bool;
 import android.app.Activity;
 import android.content.Intent;
@@ -13,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import uit.aep06.phuctung.ara.CommonClass.CustomerAccount;
+import uit.aep06.phuctung.ara.Service.CustomerAccountService;
 import android.hardware.camera2.*;
 
 public class LoginActivity extends Activity implements OnClickListener {
@@ -72,8 +77,9 @@ public class LoginActivity extends Activity implements OnClickListener {
 		etUserName.setFocusable(true);
 		tvError.setText("Username or Password can not be null");
 	}
-	private int checkExists(CustomerAccount customer) {
+	private int checkExists(CustomerAccount customer) throws IOException, JSONException {
 		// Implement code call service to check
-		return 1;
+		CustomerAccountService cusAccService = new CustomerAccountService();
+		return cusAccService.authenticate(customer);		
 	}	
 }
