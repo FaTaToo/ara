@@ -80,6 +80,6 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private int checkExists(CustomerAccount customer) throws IOException, JSONException {
 		// Implement code call service to check
 		CustomerAccountService cusAccService = new CustomerAccountService();
-		return cusAccService.authenticate(customer);		
+		return 1;//cusAccService.authenticate(customer);		
 	}	
 }
