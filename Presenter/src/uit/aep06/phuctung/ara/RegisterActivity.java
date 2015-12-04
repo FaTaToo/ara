@@ -55,7 +55,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 				customerAccount.setFullname(etFullname.getText().toString());
 				CustomerAccountService service = new CustomerAccountService();
 				try {
-					int result = service.AddNewCustomerAccount(customerAccount);
+					int result = 0;//service.AddNewCustomerAccount(customerAccount);
 					if (result == 0){
 						etUser.setText("");
 						etUser.setFocusable(true);
