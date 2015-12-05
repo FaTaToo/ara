@@ -1,14 +1,14 @@
 <?php
 // --------------------------------------------------------------------------------------------------------------------
-// <header file="CheckPHPEnvironment.php" group="288-462">
-    //
-    // Last modified:
-    // Author: LE Sanh Phuc - 11520288
-    //
-    // </header>
-// <summary>
-    // Implement Check PHP Environment.
-// </summary>
+/* <header file="CheckPHPEnvironment.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement Check PHP Environment.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
     phpinfo();
 ?>

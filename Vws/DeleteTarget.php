@@ -1,14 +1,14 @@
 <?php
 // --------------------------------------------------------------------------------------------------------------------
-// <header file="DeleteTarget.php" group="288-462">
-    //
-    // Last modified:
-    // Author: LE Sanh Phuc - 11520288
-    //
-    // </header>
-// <summary>
-    // Used to delete target in Vuforia Cloud database by providing the target id.
-// </summary>
+/* <header file="DeleteTarget.cs" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *       Used to delete target in Vuforia Cloud database by providing the target id.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 require_once 'HTTP/Request2.php';

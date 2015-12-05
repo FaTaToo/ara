@@ -1,13 +1,16 @@
 <?php
 // --------------------------------------------------------------------------------------------------------------------
-// <header file="UpdateTarget.php" group="288-462">
-// Last modified:
-// Author: LE Sanh Phuc - 11520288
-// </header>
-// <summary>
-// Implement UpdateTarget class for Manager Module updating existing target to Cloud database.
-// </summary>
+/* <header file="UpdateTarget.php" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement UpdateTarget class for Manager Module updating existing target to Cloud database.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
+
 require_once 'HTTP/Request2.php';
 require_once 'SignatureBuilder.php';
 

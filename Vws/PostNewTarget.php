@@ -1,14 +1,14 @@
 <?php
 // --------------------------------------------------------------------------------------------------------------------
-// <header file="PostNewTarget.php" group="288-462">
-//
-// Last modified:
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Used to post new target to Vuforia Cloud database.
-// </summary>
+/* <header file="PostNewTarget.php" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Used to post new target to Vuforia Cloud database.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 require_once 'HTTP/Request2.php';

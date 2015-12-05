@@ -1,16 +1,16 @@
 <?php
 // --------------------------------------------------------------------------------------------------------------------
-// <header file="GetAllTargets.php" group="288-462">
-//
-// Last modified:
-// Author: LE Sanh Phuc - 11520288
-//
-// </header>
-// <summary>
-// Implement GetAllTargets class for Manager and Presenter Module getting all uploaded targets
-// in Cloud database.
-// </summary>
+/* <header file="GetAllTargets.php" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Implement GetAllTargets class for Manager and Presenter Module getting all uploaded targets.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
+
 require_once 'HTTP/Request2.php';
 require_once 'SignatureBuilder.php';
 

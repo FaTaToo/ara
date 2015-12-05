@@ -1,14 +1,14 @@
 <?php
 // --------------------------------------------------------------------------------------------------------------------
-// <header file="GetTarget.php" group="288-462">
-    //
-    // Last modified:
-    // Author: LE Sanh Phuc - 11520288
-    //
-    // </header>
-// <summary>
-    // Used to get target in Vuforia Cloud database by providing the target id.
-// </summary>
+/* <header file="GetTarget.php" group="288-462">
+ * Author: LE Sanh Phuc - 11520288
+ * </header>
+ * <summary>
+ *      Used to get target in Vuforia Cloud database by providing the target id.
+ * </summary>
+ * <Problems>
+ * </Problems>
+*/
 // --------------------------------------------------------------------------------------------------------------------
 
 require_once 'HTTP/Request2.php';
