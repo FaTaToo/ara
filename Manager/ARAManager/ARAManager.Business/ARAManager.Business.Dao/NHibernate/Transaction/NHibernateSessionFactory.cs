@@ -276,7 +276,7 @@ namespace ARAManager.Business.Dao.NHibernate.Transaction
             }
             catch (SqlException ex)
             {
-                throw (new SqlServerExceptionConverter()).WrapConnectionSqlException(ex);
+                throw new SqlServerExceptionConverter().WrapConnectionSqlException(ex);
             }
 
             return connection;

@@ -15,6 +15,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using AjaxControlToolkit;
 using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
 using ARAManager.Presentation.Connectivity;
 
@@ -22,7 +23,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 {
     public partial class StatisticsCompany : Page
     {
-
         #region IFields
 
         private readonly Validation m_validator = new Validation();
@@ -30,6 +30,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         #endregion IFields
 
         #region IMethods
+
         protected void Page_Load(object sender, EventArgs e)
         {
             LoadGeneralStatistic();
@@ -42,17 +43,17 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                     .Where(c => c.Company.UserName == Page.User.Identity.Name).ToList();
             var campaignNumbers = campaignList.Count();
 
-            string[] x = new string[campaignNumbers];
-            decimal[] y = new decimal[campaignNumbers];
-            int totalSubcription = 0;
-            for (int i = 0; i < campaignNumbers; i++)
+            var x = new string[campaignNumbers];
+            var y = new decimal[campaignNumbers];
+            var totalSubcription = 0;
+            for (var i = 0; i < campaignNumbers; i++)
             {
                 x[i] = campaignList[i].CampaignName;
                 y[i] = campaignList[i].Subscriptions.Count;
                 totalSubcription += campaignList[i].Subscriptions.Count;
             }
 
-            campaignChart.Series.Add(new AjaxControlToolkit.BarChartSeries { Data = y });
+            campaignChart.Series.Add(new BarChartSeries {Data = y});
             campaignChart.CategoriesAxis = string.Join(",", x);
 
             lblSubcriptionNum.Text = string.Format("Total Subcriptions: {0}", totalSubcription);
@@ -79,7 +80,9 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         private void LoadCampaignDetails()
         {
             var campaign = ClientServiceFactory.CampaignService
-                    .GetAllCampaigns().FirstOrDefault(c => c.Company.UserName == Page.User.Identity.Name && c.CampaignName == txtCampaignName.Text);
+                .GetAllCampaigns()
+                .FirstOrDefault(
+                    c => c.Company.UserName == Page.User.Identity.Name && c.CampaignName == txtCampaignName.Text);
             if (campaign != null)
             {
                 lblCampaignName.Text = campaign.CampaignName;

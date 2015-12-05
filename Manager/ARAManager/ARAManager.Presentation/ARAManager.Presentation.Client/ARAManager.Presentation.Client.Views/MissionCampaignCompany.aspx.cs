@@ -65,7 +65,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             GridView_Mission.DataSource = m_campaign.Missions;
             GridView_Mission.DataBind();
 
-            if ((Request.QueryString["Method"]) != "Edit")
+            if (Request.QueryString["Method"] != "Edit")
             {
                 m_mission = new Mission();
                 return;
