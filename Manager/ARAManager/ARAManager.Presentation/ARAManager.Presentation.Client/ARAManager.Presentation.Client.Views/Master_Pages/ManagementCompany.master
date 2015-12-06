@@ -12,7 +12,7 @@
         </div>
         <div class="btn-group" role="group">
             <asp:Button ID="btnStatistics" ForeColor="Black" CssClass="btn btn-warning" runat="server" Text="STATISTICS"
-                        Enabled="False"/>
+                        OnClick="btnStatistics_OnClick"/>
         </div>
     </div>
 </asp:Content>

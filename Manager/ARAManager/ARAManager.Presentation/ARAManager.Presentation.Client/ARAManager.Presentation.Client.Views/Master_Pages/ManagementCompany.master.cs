@@ -31,6 +31,11 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Ma
             Response.Redirect(@"~\ARAManager.Presentation.Client.Views\CampaignCompany.aspx");
         }
 
+        protected void btnStatistics_OnClick(object sender, EventArgs e)
+        {
+            Response.Redirect(@"~\ARAManager.Presentation.Client.Views\StatisticsCompany.aspx");
+        }
+
         #endregion IMethods
     }
 }
