@@ -757,41 +757,24 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle item selection
-		// switch (item.getItemId()) {
-		// case R.id.profile:
-		// Intent intent = new
-		// Intent(getApplicationContext(),ProfileActivity.class);
-		// intent.putExtra("customerID",mUserID );
-		// startActivity(intent);
-		// return true;
-		//
-		// case R.id.about:
-		// intent = new Intent(getApplicationContext(),AboutActivity.class);
-		// startActivity(intent);
-		// return true;
-		// case R.id.true_gps:
-		// myPosition = myPosition_temp;
-		// return true;
-		// case R.id.gps1:
-		// myPosition = gps1;
-		// return true;
-		// case R.id.gps2:
-		// Toast.makeText(getApplicationContext(), "2",
-		// Toast.LENGTH_LONG).show();
-		// myPosition = gps2;
-		// return true;
-		// case R.id.gps3:
-		// Toast.makeText(getApplicationContext(), "3",
-		// Toast.LENGTH_LONG).show();
-		// myPosition = gps3;
-		// return true;
-		// default:
-		// return super.onOptionsItemSelected(item);
-		// }
-		return false;
+		Intent intent;
+	    // Handle item selection
+	    switch (item.getItemId()) {      
+	        case R.id.profile:
+	        	intent = new Intent(getApplicationContext(),ProfileActivity.class);
+	    		intent.putExtra("customerID",mUserID );
+	    		startActivity(intent);
+	            return true;    
+	        case R.id.about:
+	        	intent = new Intent(getApplicationContext(),AboutActivity.class);
+	    		startActivity(intent);
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
 	}
-
+	
+	
 	public void MessengerBox(String mes) {
 		AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
 		dlgAlert.setMessage(mes);

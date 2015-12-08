@@ -82,4 +82,18 @@ public class LoginActivity extends Activity implements OnClickListener {
 		CustomerAccountService cusAccService = new CustomerAccountService();
 		return 1;//cusAccService.authenticate(customer);		
 	}	
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	       	case R.id.about:
+	        	Intent intent = new Intent(getApplicationContext(),AboutActivity.class);
+	    		startActivity(intent);
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+	
 }

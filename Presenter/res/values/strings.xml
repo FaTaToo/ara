@@ -33,5 +33,8 @@
     <string name="txtParticipate">Participate in: </string>
     <string name="btnScan">Scan</string>
     <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="title_activity_helper_target_default">HelperTargetDefaultActivity</string>
+    <string name="title_activity_helper_target_gps">HelperTargetGPSActivity</string>
 
 </resources>

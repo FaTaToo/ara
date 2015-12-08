@@ -47,8 +47,24 @@
             android:label="@string/title_activity_mission" >
         </activity>
         <activity
+            android:name=".CameraActivity"
+            android:label="@string/title_activity_camera" >
+        </activity>
+        <activity
             android:name=".ProfileActivity"
             android:label="@string/title_activity_profile" >
+        </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/title_activity_about" >
+        </activity>
+        <activity
+            android:name=".HelperTargetDefaultActivity"
+            android:label="@string/title_activity_helper_target_default" >
+        </activity>
+        <activity
+            android:name=".HelperTargetGPSActivity"
+            android:label="@string/title_activity_helper_target_gps" >
         </activity>
     </application>
 

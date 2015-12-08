@@ -71,5 +71,18 @@ public class RegisterActivity extends Activity implements OnClickListener {
 				}
 			}			
 		}
-	}	
+	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		Intent intent;
+	    // Handle item selection
+	    switch (item.getItemId()) {	    	
+	        case R.id.about:
+	        	intent = new Intent(getApplicationContext(),AboutActivity.class);
+	    		startActivity(intent);
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
 }
