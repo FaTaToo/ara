@@ -59,8 +59,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             {
                 /*
                  * 1 campaign
-                 * n mission
-                 * 1 mission - 1 target 
+                 * 1 mission
+                 * 1 target 
                  */
                 NavigateToEditCampaignCompanyPage(Dictionary.CAMPAIGN_TYPE_THEATER_URL);
             }

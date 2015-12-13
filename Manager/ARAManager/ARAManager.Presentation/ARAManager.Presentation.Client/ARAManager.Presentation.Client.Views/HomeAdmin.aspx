@@ -187,16 +187,6 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" runat="server">
     <div class="container" style="margin-left: 30px; margin-top: 20px;">
-        <div class="row">
-
-        </div>
-        <div class="row">
-
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <hr>
-            </div>
-        </div>
+       
     </div>
 </asp:Content>

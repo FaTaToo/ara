@@ -12,6 +12,7 @@
 
 using System;
 using System.Linq;
+using System.ServiceModel;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
@@ -74,15 +75,14 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 where checkBox != null && checkBox.Checked
                 select row.Cells[1].FindControl("lblId")).OfType<Label>().
                 Select(label => int.Parse(label.Text)).ToList();
-            //try
-            //{
-            //    ClientServiceFactory.MissionService.GetAllMissionsOfTheCampaign();
+            try
+            {
             ClientServiceFactory.CampaignService.DeleteCampaigns(deletedCampaigns);
-            //}
-            //catch (FaultException ex)
-            //{
-            //    lblMessage.Text = ex.Message;
-            //}
+            }
+            catch (FaultException ex)
+            {
+                lblMessage.Text = ex.Message;
+            }
             Search();
         }
 

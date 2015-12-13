@@ -22,21 +22,18 @@ namespace ARAManager.Common.Services.Presenter
     public interface ICustomerCampaign
     {
         [OperationContract]
-        [WebInvoke(UriTemplate = "/GetListOfCampaigns",
-            RequestFormat = WebMessageFormat.Json,
-            ResponseFormat = WebMessageFormat.Json, Method = "POST")]
+        [WebGet(UriTemplate = "/GetListOfCampaigns",
+            ResponseFormat = WebMessageFormat.Json)]
         IList<Campaign> GetListOfCampaigns();
 
         [OperationContract]
-        [WebInvoke(UriTemplate = "/GetCampaignByName",
-            RequestFormat = WebMessageFormat.Json,
-            ResponseFormat = WebMessageFormat.Json, Method = "POST")]
+        [WebInvoke(UriTemplate = "/GetCampaignByName/{campaignName}",
+            ResponseFormat = WebMessageFormat.Json)]
         Campaign GetCampaignByName(string campaignName);
 
         [OperationContract]
-        [WebInvoke(UriTemplate = "/GetArData",
-            RequestFormat = WebMessageFormat.Json,
-            ResponseFormat = WebMessageFormat.Json, Method = "POST")]
+        [WebInvoke(UriTemplate = "/GetArData/{targetUrl}",
+            ResponseFormat = WebMessageFormat.Json)]
         RootObject GetArData(string targetUrl);
     }
 }

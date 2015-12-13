@@ -118,6 +118,7 @@
                                     <asp:Label ID="lblID" runat="server" Text='<%# Eval("CampaignId") %>'/>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <%--ReSharper disable once Asp.Entity --%>
                             <asp:HyperLinkField
                                 DataNavigateUrlFields="CampaignId"
                                 HeaderText="Id"
