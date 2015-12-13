@@ -62,18 +62,18 @@ namespace ARAManager.Business.Service.Services.Presenter
             }
         }
 
-        public IList<Subscription> GetListOfSubscriptions(Customer customer)
+        public IList<Subscription> GetListOfSubscriptions(string customerId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
             var criteria = DetachedCriteria.For<Subscription>();
-            criteria.Add(Restrictions.Where<Subscription>(c => c.Customer.CustomerId == customer.CustomerId));
+            criteria.Add(Restrictions.Where<Subscription>(c => c.Customer.CustomerId == int.Parse(customerId)));
             return srvDao.FindByCriteria(criteria);
         }
 
-        public Subscription GetSubscription(int subscriptionId)
+        public Subscription GetSubscription(string subscriptionId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
-            return srvDao.GetById(subscriptionId);
+            return srvDao.GetById(int.Parse(subscriptionId));
         }
 
         #endregion IMethods

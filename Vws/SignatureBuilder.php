@@ -61,5 +61,4 @@ class SignatureBuilder
         return base64_encode($return);
     }
 }
-
 ?>

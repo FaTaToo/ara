@@ -40,6 +40,16 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ARAManager.Common\ARAManager.Common.csproj">
+      <Project>{d7f2b050-df7e-4a06-ae02-4fc6a64de4b2}</Project>
+      <Name>ARAManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ARAManager.Presentation\ARAManager.Presentation\ARAManager.Presentation.csproj">
+      <Project>{cef9566d-f135-4099-b821-5b3f89d42d28}</Project>
+      <Name>ARAManager.Presentation</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

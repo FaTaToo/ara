@@ -28,11 +28,13 @@ namespace ARAManager.Common.Services.Presenter
         JsonRespone JoinCampaign(Subscription subscription);
 
         [OperationContract]
-        [WebInvoke(UriTemplate = "/GetListOfSubscriptions/{customer}")]
-        IList<Subscription> GetListOfSubscriptions(Customer customer);
+        [WebGet(UriTemplate = "/GetListOfSubscriptions/{customerId}",
+            ResponseFormat = WebMessageFormat.Json)]
+        IList<Subscription> GetListOfSubscriptions(string customerId);
 
         [OperationContract]
-        [WebInvoke(UriTemplate = "/GetListOfSubscriptions/{subscriptionId}")]
-        Subscription GetSubscription(int subscriptionId);
+        [WebGet(UriTemplate = "/GetSubscription/{subscriptionId}",
+            ResponseFormat = WebMessageFormat.Json)]
+        Subscription GetSubscription(string subscriptionId);
     }
 }

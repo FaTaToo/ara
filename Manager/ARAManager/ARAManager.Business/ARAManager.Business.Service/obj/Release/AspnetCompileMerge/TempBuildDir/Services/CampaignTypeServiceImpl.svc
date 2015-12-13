@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="ARAManager.Business.Service.Services.CampaignTypeServiceImpl" CodeBehind="CampaignTypeServiceImpl.svc.cs" %>

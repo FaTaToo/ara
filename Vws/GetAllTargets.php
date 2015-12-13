@@ -63,5 +63,4 @@ class GetAllTargets{
 		$this->request->setHeader("Authorization" , "VWS " . $this->access_key . ":" . $sb->tmsSignature( $this->request , $this->secret_key ));
 	}
 }
-
 ?>

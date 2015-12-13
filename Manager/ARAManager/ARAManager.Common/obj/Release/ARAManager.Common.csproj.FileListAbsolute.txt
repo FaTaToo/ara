@@ -1,0 +1,10 @@
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Common\bin\Release\ARAManager.Common.dll.config
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Common\bin\Release\ARAManager.Common.dll
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Common\bin\Release\ARAManager.Common.pdb
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Common\bin\Release\NHibernate.Mapping.Attributes.dll
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Common\bin\Release\Ninject.dll
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Common\bin\Release\Ninject.pdb
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Common\bin\Release\Ninject.xml
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Common\obj\Release\ARAManager.Common.csprojResolveAssemblyReference.cache
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Common\obj\Release\ARAManager.Common.dll
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Common\obj\Release\ARAManager.Common.pdb
