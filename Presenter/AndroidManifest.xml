@@ -66,6 +66,10 @@
             android:name=".HelperTargetGPSActivity"
             android:label="@string/title_activity_helper_target_gps" >
         </activity>
+        <activity
+            android:name=".CommentActivity"
+            android:label="@string/title_activity_comment" >
+        </activity>
     </application>
 
 </manifest>
