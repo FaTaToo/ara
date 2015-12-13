@@ -44,7 +44,7 @@ namespace VwsCaller
             {
                 StartInfo =
                 {
-                    FileName = @"D:\Projects\ARA\1.0\src\Tools\Snapshots\src\EmptyArData.bat",
+                    FileName = @"D:\Projects\ARA\1.0\src\Tools\Snapshots\EmptyArData_ARARelease.bat",
                     WorkingDirectory = @"D:\Projects\ARA\1.0\src\Tools\Snapshots\src"
                 }
             };
