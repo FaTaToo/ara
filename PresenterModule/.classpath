@@ -4,9 +4,9 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry exported="true" kind="var" path="QCAR_SDK_ROOT"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="gen"/>
 	<classpathentry exported="true" kind="lib" path="/AboutActivity/libs/YouTubeAndroidPlayerApi.jar"/>
 	<classpathentry exported="true" kind="lib" path="D:/HocTap/senior/LuanVan/Src base/git-base (sample) (1)/presenter-android/projectx_final/projectx/google-play-services_lib/libs/google-play-services.jar"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
