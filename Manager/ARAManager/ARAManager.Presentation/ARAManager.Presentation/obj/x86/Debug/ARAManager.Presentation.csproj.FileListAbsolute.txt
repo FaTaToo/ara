@@ -39,3 +39,15 @@ D:\Projects\ARA\1.0\src-manager\Manager\ARAManager\ARAManager.Presentation\ARAMa
 D:\Projects\ARA\1.0\src-manager\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\obj\x86\Debug\ARAManager.Presentation.csprojResolveAssemblyReference.cache
 D:\Projects\ARA\1.0\src-manager\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\obj\x86\Debug\ARAManager.Presentation.exe
 D:\Projects\ARA\1.0\src-manager\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\obj\x86\Debug\ARAManager.Presentation.pdb
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\bin\Debug\ARAManager.Presentation.exe.config
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\bin\Debug\ARAManager.Presentation.exe
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\bin\Debug\ARAManager.Presentation.pdb
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\bin\Debug\ARAManager.Common.dll
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\bin\Debug\Ninject.dll
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\bin\Debug\NHibernate.Mapping.Attributes.dll
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\bin\Debug\ARAManager.Common.pdb
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\bin\Debug\Ninject.pdb
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\bin\Debug\Ninject.xml
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\obj\x86\Debug\ARAManager.Presentation.csprojResolveAssemblyReference.cache
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\obj\x86\Debug\ARAManager.Presentation.exe
+D:\Projects\ARA\1.0\src\Manager\ARAManager\ARAManager.Presentation\ARAManager.Presentation\obj\x86\Debug\ARAManager.Presentation.pdb
