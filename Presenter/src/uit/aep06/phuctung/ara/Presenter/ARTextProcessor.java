@@ -8,8 +8,7 @@ import android.widget.TextView;
 public class ARTextProcessor extends ARPresenterProcessor {
 	
 	public ARTextProcessor(Context _context) {
-		super(_context);
-		// TODO Auto-generated constructor stub
+		super(_context);		
 	}
 	public  String text;
 	public  int color;
@@ -34,12 +33,10 @@ public class ARTextProcessor extends ARPresenterProcessor {
 	}
 	@Override
 	public Button createButton() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public View onPlay() {
-		// TODO Auto-generated method stub
+	public View onPlay() {		
 		TextView tv = new TextView(getContext());
 		tv.setText(text);
 		tv.setTextColor(color);

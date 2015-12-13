@@ -36,5 +36,6 @@
     <string name="title_activity_about">AboutActivity</string>
     <string name="title_activity_helper_target_default">HelperTargetDefaultActivity</string>
     <string name="title_activity_helper_target_gps">HelperTargetGPSActivity</string>
+    <string name="title_activity_comment">CommentActivity</string>
 
 </resources>

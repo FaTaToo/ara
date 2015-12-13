@@ -9,6 +9,7 @@ import com.google.android.youtube.player.YouTubePlayerView;
 import com.google.android.youtube.player.YouTubePlayer.OnInitializedListener;
 import com.google.android.youtube.player.YouTubePlayer.Provider;
 
+import android.R;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
@@ -19,8 +20,7 @@ import uit.aep06.phuctung.ara.ARResource.ARSM_Youtube;
 public class ARYoutubeProcessor extends ARPresenterProcessor implements OnInitializedListener {
 
 	public ARYoutubeProcessor(Context context) {
-		super(context);
-		// TODO Auto-generated constructor stub
+		super(context);		
 	}
 
 	public ARSM_Youtube data = new ARSM_Youtube();
@@ -43,12 +43,10 @@ public class ARYoutubeProcessor extends ARPresenterProcessor implements OnInitia
 	}
 
 	@Override
-	public Button createButton() {
-		// TODO Auto-generated method stub
+	public Button createButton() {		
 		Button btn = new Button(getContext());
-		btn.setText("Y");
+		btn.setBackgroundResource(uit.aep06.phuctung.ara.R.drawable.icon_youtube);
 		btn.setLayoutParams(new LinearLayout.LayoutParams(50, 50));
-
 		return btn;
 	}
 
@@ -56,8 +54,8 @@ public class ARYoutubeProcessor extends ARPresenterProcessor implements OnInitia
 	public View onPlay() {
 		playerview = new YouTubePlayerView(getContext());
 		playerview.initialize("AIzaSyAmvY-XRQTEo_-0bgDL7LzCH94YHTs5SjM", this);
-		LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,
-				LinearLayout.LayoutParams.FILL_PARENT);
+		LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+				LinearLayout.LayoutParams.MATCH_PARENT);
 		layoutParams.setMargins(50, 50, 50, 50);
 		playerview.setLayoutParams(layoutParams);
 		playerview.setBackgroundColor(Color.BLACK);

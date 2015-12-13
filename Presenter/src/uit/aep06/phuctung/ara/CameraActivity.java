@@ -35,6 +35,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 
@@ -70,9 +71,11 @@ import uit.aep06.phuctung.ara.ARResource.ARContainer;
 import uit.aep06.phuctung.ara.ARResource.ARMM_Text;
 import uit.aep06.phuctung.ara.ARResource.ARSM_PictureGallery;
 import uit.aep06.phuctung.ara.ARResource.ARSM_Youtube;
+import uit.aep06.phuctung.ara.Presenter.ARCommentProcessor;
 import uit.aep06.phuctung.ara.Presenter.ARDetailProcessor;
 import uit.aep06.phuctung.ara.Presenter.ARPictureProcessor;
 import uit.aep06.phuctung.ara.Presenter.ARYoutubeProcessor;
+import uit.aep06.phuctung.ara.Service.TargetService;
 import uit.aep06.phuctung.ara.VuforiaImplement.ApplicationControl;
 import uit.aep06.phuctung.ara.VuforiaImplement.ApplicationException;
 import uit.aep06.phuctung.ara.VuforiaImplement.ApplicationSession;
@@ -85,8 +88,8 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 
 	ApplicationSession vuforiaAppSession;
 
-	private static final String kAccessKey = "eb7ff5713833cc7e75f2b3075a41fa1ac4895936";
-	private static final String kSecretKey = "eb2e4fb8320ec7e83b8a6512a4763e905663352d";
+	private static final String kAccessKey = "79ac5763947f81ef78daadcd2d826c9166afd24e";
+	private static final String kSecretKey = "41b96ac31e0c0a9b8962c1cc5f7c0123e0634ae3";
 
 	// Our OpenGL view:
 	private GLView mGlView;
@@ -123,11 +126,11 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 
 		if (android.os.Build.VERSION.SDK_INT > 8) {
 			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-			StrictMode.setThreadPolicy(policy);
+			StrictMode.setThreadPolicy(policy); 
 		}
 		vuforiaAppSession = new ApplicationSession(this);
 
-		// Khoi tao camera layout
+		// Create camera layout
 		startLoadingAnimation();
 
 		vuforiaAppSession.initAR(this, ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -136,20 +139,7 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		Criteria criteria = new Criteria();
-		provider = locationManager.getBestProvider(criteria, true);
-		// Location location =
-		// locationManager.getLastKnownLocation(locationManager.NETWORK_PROVIDER);
-		// if (location != null && location.getTime() >
-		// Calendar.getInstance().getTimeInMillis() - 2 * 60 * 1000) {
-		// onLocationChanged(location);
-		//
-		// }
-		// else {
-		// locationManager.requestLocationUpdates(locationManager.NETWORK_PROVIDER,400,
-		// 1, this);
-		//
-		// }
-
+		provider = locationManager.getBestProvider(criteria, true);		
 	}
 
 	// Process Single Tap event to trigger autofocus
@@ -228,13 +218,12 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 		System.gc();
 	}
 
-	public Document ConvertToXmlFromString(String xml) throws ParserConfigurationException, SAXException, IOException {
+	public Document convertStringToXml(String xml) throws ParserConfigurationException, SAXException, IOException {
 
 		xml = "<?xml version='1.0' encoding='utf-8'?>" + xml;
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		return builder.parse(new InputSource(new StringReader(xml)));
-
 	}
 
 	public void LoadXML(String data) throws ParserConfigurationException, SAXException, IOException {
@@ -243,7 +232,7 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
 
-		Document doc = ConvertToXmlFromString(data);
+		Document doc = convertStringToXml(data);
 		// normalize text representation
 		doc.getDocumentElement().normalize();
 
@@ -251,170 +240,187 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 		NodeList nlARResources = doc.getElementsByTagName("ARResource");
 		int temp = nlARResources.getLength();
 		for (int i = 0; i < temp; i++) {
-
+			// ARType
 			Element eArresource = (Element) nlARResources.item(i);
 			String type = ((Element) eArresource.getElementsByTagName("ARType").item(0)).getTextContent();
 			Log.i("Type ", type);
-
+			// CommonAttributes
 			NodeList nlCommonAttributes = eArresource.getElementsByTagName("CommonAttributes");
 			NodeList nlAttributes = ((Element) nlCommonAttributes.item(0)).getElementsByTagName("Attribute");
 			int numAttributes = nlAttributes.getLength();
-
+			// Process for each type of information	
 			if (type.equals("ARSM-Youtube")) {
-
-				ARSM_Youtube arsmYoutube = new ARSM_Youtube();
-				for (int j = 0; j < numAttributes; j++) {
-					Element eAttribute = (Element) nlAttributes.item(j);
-					String key = eAttribute.getElementsByTagName("Key").item(0).getTextContent();
-					String value = eAttribute.getElementsByTagName("Value").item(0).getTextContent();
-					Log.i(type, "Key: " + key);
-					Log.i(type, "Value : " + value);
-
-					if (key.equals("Title")) {
-						arsmYoutube.setTitle(value);
-					} else if (key.equals("Length")) {
-						arsmYoutube.setLength(value);
-					} else if (key.equals("URL")) {
-						arsmYoutube.setUrl(value);
-					} else if (key.equals("Uploader")) {
-						arsmYoutube.setUploader(value);
-					}
-				}
-				final ARYoutubeProcessor youtubeProcessor = new ARYoutubeProcessor(this);
-				youtubeProcessor.setData(arsmYoutube);
-				Button btnYoutube = youtubeProcessor.createButton();
-				ARResourceButtonLayout.addView(btnYoutube,
-						new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-
-				btnYoutube.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View arg0) {
-						// TODO Auto-generated method stub
-						doStopTrackers();
-						if (ARResourceLayout.getChildCount() > 1)
-							ARResourceLayout.removeViewAt(ARResourceLayout.getChildCount() - 1);
-						ARResourceLayout.addView(youtubeProcessor.onPlay());
-					}
-				});
-
+				processARSMYoutubeType(type, nlAttributes, numAttributes);
 			} else if (type.equals("ARSM-PicturesGallery")) {
-
-				ARSM_PictureGallery arsmGallery = new ARSM_PictureGallery();
-				List<String> lstURL = new ArrayList<String>();
-				for (int j = 0; j < numAttributes; j++) {
-					Element eAttribute = (Element) nlAttributes.item(j);
-					String key = eAttribute.getElementsByTagName("Key").item(0).getTextContent();
-					String url = eAttribute.getElementsByTagName("Value").item(0).getTextContent();
-					Log.i(type, "Key: " + key);
-					Log.i(type, "Image URL : " + url);
-					lstURL.add(url);
-				}
-				arsmGallery.setListUrl(lstURL);
-				final ARPictureProcessor picturesProcessor = new ARPictureProcessor(this);
-				picturesProcessor.setData(arsmGallery);
-				Button btn = picturesProcessor.createButton();
-				ARResourceButtonLayout.addView(btn,
-						new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-
-				btn.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View arg0) {
-						// TODO Auto-generated method stub
-						doStopTrackers();
-						if (ARResourceLayout.getChildCount() > 1)
-							ARResourceLayout.removeViewAt(ARResourceLayout.getChildCount() - 1);
-						ARResourceLayout.addView(picturesProcessor.onPlay());
-					}
-				});
+				processARSMPictureGalleryType(type, nlAttributes, numAttributes);
 			} else if (type.equals("ARSM-Facebook")) {
-				for (int j = 0; j < numAttributes; j++) {
-					Element eAttribute = (Element) nlAttributes.item(j);
-					String value = eAttribute.getElementsByTagName("Value").item(0).getTextContent();
-					urlShare = value;
-				}
+				processARSMFacebookType(nlAttributes, numAttributes);
 			} else if (type.equals("ARMM-Text")) {
-				final ARMM_Text detail = new ARMM_Text();
-				for (int j = 0; j < numAttributes; j++) {
-					Element eAttribute = (Element) nlAttributes.item(j);
-					String key = eAttribute.getElementsByTagName("Key").item(0).getTextContent();
-					String value = eAttribute.getElementsByTagName("Value").item(0).getTextContent();
-					if (key.equals("Name")) {
-						detail.setName(value);
-					} else if (key.equals("Year")) {
-						detail.setYear(value);
-					} else if (key.equals("Director")) {
-						detail.setDirector(value);
-					} else if (key.equals("Actor")) {
-						detail.setActor(value);
-					} else if (key.equals("Description")) {
-						detail.setDescription(value);
-					} else if (key.equals("URL")) {
-						detail.setImageUrl(value);
-					} else if (key.equals("TargetType")) {
-						detail.setTargetType(Integer.parseInt(value));
-					} else if (key.equals("Address")) {
-						detail.setAddress(value);
-					}
-				}
-				final ARDetailProcessor detailProcessor = new ARDetailProcessor(this);
-				detailProcessor.setData(detail);
-				Button btnText = detailProcessor.createButton();
-				ARResourceButtonLayout.addView(btnText,
-						new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-
-				btnText.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View arg0) {
-						// TODO Auto-generated method stub
-						doStopTrackers();
-						if (detail.getTargetType() == 2) {
-							String[] lstAddress = detail.getAddress().split(";");
-							String nearestAddress = lstAddress[0];
-							int numAddress = lstAddress.length;
-							double distance = 99999;
-							for (int k = 0; k < numAddress; k++) {
-
-								Geocoder geo = new Geocoder(CameraActivity.this);
-								try {
-									List<Address> temp = geo.getFromLocationName(lstAddress[k], 1);
-									end = new LatLng(temp.get(0).getLatitude(), temp.get(0).getLongitude());
-									if (myPosition == null) {
-										Address add = (geo.getFromLocationName(
-												"227 Nguyễn Văn Cừ phường 4, Quận 5 Hồ Chí Minh, Vietnam", 6)).get(0);
-										myPosition = new LatLng(add.getLatitude(), add.getLongitude());
-									} else {
-										Log.e("Hien", myPosition.latitude + " " + myPosition.longitude);
-									}
-									double myDistance = distance(myPosition.latitude, myPosition.longitude,
-											end.latitude, end.longitude, 'K');
-									Log.e("Hien error ", "myDistance" + myDistance);
-
-									if (myDistance < distance) {
-										distance = myDistance;
-										nearestAddress = lstAddress[k];
-									}
-								} catch (Exception e) {
-									// TODO Auto-generated catch block
-									Log.e("Hien error ", e.getMessage());
-								}
-							}
-							if (distance >= 0.1) {
-								MessengerBox("Bạn còn cách khu vực gần nhất là : " + nearestAddress + " "
-										+ distance + " Km");
-								return;
-							}
-						}
-
-						if (ARResourceLayout.getChildCount() > 1)
-							ARResourceLayout.removeViewAt(ARResourceLayout.getChildCount() - 1);
-						ARResourceLayout.addView(detailProcessor.onPlay());
-					}
-				});
+				processARMMTextType(nlAttributes, numAttributes);
 			}
 		}
+		// Add comment function
+		ARCommentProcessor comment = new ARCommentProcessor(this);
+        comment.setUserID(mUserID);
+        comment.setTargetID(mTargetID);
+        comment.setUrlShare(urlShare);
+        ARResourceButtonLayout.addView(comment.createButton(), new LayoutParams(LayoutParams.WRAP_CONTENT,
+ 	            LayoutParams.WRAP_CONTENT));
+	}
+
+	private void processARMMTextType(NodeList nlAttributes, int numAttributes) {
+		final ARMM_Text detail = new ARMM_Text();
+		for (int j = 0; j < numAttributes; j++) {
+			Element eAttribute = (Element) nlAttributes.item(j);
+			String key = eAttribute.getElementsByTagName("Key").item(0).getTextContent();
+			String value = eAttribute.getElementsByTagName("Value").item(0).getTextContent();
+			if (key.equals("Name")) {
+				detail.setName(value);
+			} else if (key.equals("Year")) {
+				detail.setYear(value);
+			} else if (key.equals("Director")) {
+				detail.setDirector(value);
+			} else if (key.equals("Actor")) {
+				detail.setActor(value);
+			} else if (key.equals("Description")) {
+				detail.setDescription(value);
+			} else if (key.equals("URL")) {
+				detail.setImageUrl(value);
+			} else if (key.equals("TargetType")) {
+				detail.setTargetType(Integer.parseInt(value));
+			} else if (key.equals("Address")) {
+				detail.setAddress(value);
+			}
+		}
+		final ARDetailProcessor detailProcessor = new ARDetailProcessor(this);
+		detailProcessor.setData(detail);
+		Button btnText = detailProcessor.createButton();
+		ARResourceButtonLayout.addView(btnText,
+				new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+
+		btnText.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {				
+				doStopTrackers();
+				if (detail.getTargetType() == 2) { // type address
+					String[] lstAddress = detail.getAddress().split(";");
+					String nearestAddress = lstAddress[0];
+					int numAddress = lstAddress.length;
+					double distance = 99999;
+					for (int k = 0; k < numAddress; k++) {
+
+						Geocoder geo = new Geocoder(CameraActivity.this);
+						try {
+							List<Address> temp = geo.getFromLocationName(lstAddress[k], 1);
+							end = new LatLng(temp.get(0).getLatitude(), temp.get(0).getLongitude());
+							if (myPosition == null) {
+								Address add = (geo.getFromLocationName(
+										"227 Nguyễn Văn Cừ phường 4, Quận 5 Hồ Chí Minh, Vietnam", 6)).get(0);
+								myPosition = new LatLng(add.getLatitude(), add.getLongitude());
+							} else {
+								Log.e("ARMMText-display", myPosition.latitude + " " + myPosition.longitude);
+							}
+							double myDistance = distance(myPosition.latitude, myPosition.longitude,
+									end.latitude, end.longitude, 'K');
+							Log.e("ARMMText-displayError ", "myDistance" + myDistance);
+
+							if (myDistance < distance) {
+								distance = myDistance;
+								nearestAddress = lstAddress[k];
+							}
+						} catch (Exception e) {							
+							Log.e("ARMMText-displayError ", e.getMessage());
+						}
+					}
+					if (distance >= 0.1) {
+						MessengerBox("Bạn còn cách khu vực gần nhất là : " + nearestAddress + " "
+								+ distance + " Km");
+						return;
+					}
+				}
+
+				if (ARResourceLayout.getChildCount() > 1)
+					ARResourceLayout.removeViewAt(ARResourceLayout.getChildCount() - 1);
+				ARResourceLayout.addView(detailProcessor.onPlay());
+			}
+		});
+	}
+
+	private void processARSMFacebookType(NodeList nlAttributes, int numAttributes) {
+		for (int j = 0; j < numAttributes; j++) {
+			Element eAttribute = (Element) nlAttributes.item(j);
+			String value = eAttribute.getElementsByTagName("Value").item(0).getTextContent();
+			urlShare = value;
+		}
+	}
+
+	private void processARSMPictureGalleryType(String type, NodeList nlAttributes, int numAttributes) {
+		ARSM_PictureGallery arsmGallery = new ARSM_PictureGallery();
+		List<String> lstURL = new ArrayList<String>();
+		for (int j = 0; j < numAttributes; j++) {
+			Element eAttribute = (Element) nlAttributes.item(j);
+			String key = eAttribute.getElementsByTagName("Key").item(0).getTextContent();
+			String url = eAttribute.getElementsByTagName("Value").item(0).getTextContent();
+			Log.i(type, "PictureGallery-key: " + key);
+			Log.i(type, "PictureGallery-imageURL : " + url);
+			lstURL.add(url);
+		}
+		arsmGallery.setListUrl(lstURL);
+		final ARPictureProcessor picturesProcessor = new ARPictureProcessor(this);
+		picturesProcessor.setData(arsmGallery);
+		Button btn = picturesProcessor.createButton();
+		ARResourceButtonLayout.addView(btn,
+				new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+
+		btn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {				
+				doStopTrackers();
+				if (ARResourceLayout.getChildCount() > 1)
+					ARResourceLayout.removeViewAt(ARResourceLayout.getChildCount() - 1);
+				ARResourceLayout.addView(picturesProcessor.onPlay());
+			}
+		});
+	}
+
+	private void processARSMYoutubeType(String type, NodeList nlAttributes, int numAttributes) {
+		ARSM_Youtube arsmYoutube = new ARSM_Youtube();
+		for (int j = 0; j < numAttributes; j++) {
+			Element eAttribute = (Element) nlAttributes.item(j);
+			String key = eAttribute.getElementsByTagName("Key").item(0).getTextContent();
+			String value = eAttribute.getElementsByTagName("Value").item(0).getTextContent();
+			Log.i(type, "Youtube-key: " + key);
+			Log.i(type, "Youtube-value : " + value);
+
+			if (key.equals("Title")) {
+				arsmYoutube.setTitle(value);
+			} else if (key.equals("Length")) {
+				arsmYoutube.setLength(value);
+			} else if (key.equals("URL")) {
+				arsmYoutube.setUrl(value);
+			} else if (key.equals("Uploader")) {
+				arsmYoutube.setUploader(value);
+			}
+		}
+		
+		final ARYoutubeProcessor youtubeProcessor = new ARYoutubeProcessor(this);
+		youtubeProcessor.setData(arsmYoutube);
+		Button btnYoutube = youtubeProcessor.createButton();
+		ARResourceButtonLayout.addView(btnYoutube,
+				new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+
+		btnYoutube.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				doStopTrackers();
+				if (ARResourceLayout.getChildCount() > 1)
+					ARResourceLayout.removeViewAt(ARResourceLayout.getChildCount() - 1);
+				ARResourceLayout.addView(youtubeProcessor.onPlay());
+			}
+		});
 	}
 
 	@Override
@@ -427,15 +433,11 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 	private void LoadButton() {
 
 		Button btn = new Button(this);
-		// btn.setBackgroundResource(R.drawable.btn_rescan);
+		btn.setBackgroundResource(uit.aep06.phuctung.ara.R.drawable.icon_rescan);
 		btn.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				// Intent intent = new
-				// Intent(getApplication(),CameraActivity.class);
-				// startActivity(intent);
 				ARResourceButtonLayout.removeAllViews();
 				if (ARResourceLayout.getChildCount() > 1)
 					ARResourceLayout.removeViewAt(ARResourceLayout.getChildCount() - 1);
@@ -458,7 +460,6 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 
 		ARResourceButtonLayout = (LinearLayout) findViewById(R.id.ARResourceButtonLayout);
 		ARResourceLayout = (LinearLayout) findViewById(R.id.ARResourceLayout);
-
 	}
 
 	// Initializes AR application components.
@@ -475,7 +476,6 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 		// Setups the Renderer of the GLView
 		mRenderer = new MissionRenderer(vuforiaAppSession);
 		mGlView.setRenderer(mRenderer);
-
 	}
 
 	@Override
@@ -512,7 +512,7 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 		if (targetFinder.startInit(kAccessKey, kSecretKey)) {
 			targetFinder.waitUntilInitFinished();
 		}
-		
+
 		int resultCode = targetFinder.getInitState();
 		if (resultCode != TargetFinder.INIT_SUCCESS) {
 
@@ -677,28 +677,23 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 					Trackable trackable = finder.enableTracking(result);
 
 					if (trackable != null) {
-						// Lay ra ID cua doi tuong
+						// Get target ID
 						doStopTrackers();
 						mTargetID = result.getUniqueTargetId();
-						showToast(mTargetID);
-						// TargetService ts = new TargetService();
-						// String dataTarget= ts.GetDataTarget(mTargetID);
-						// try {
-						// // Sau khi lay duoc du lieu tu service thi bat dau
-						// gui sang cho XML doc
-						// LoadXML(dataTarget);
-						// } catch (ParserConfigurationException e) {
-						// // TODO Auto-generated catch block
-						// e.printStackTrace();
-						// } catch (SAXException e) {
-						// // TODO Auto-generated catch block
-						// Log.e("Hien", e.getMessage());
-						// e.printStackTrace();
-						// } catch (IOException e) {
-						// // TODO Auto-generated catch block
-						// e.printStackTrace();
-						// }
-
+						TargetService ts = new TargetService();
+						String dataTarget = ts.GetDataTarget(mTargetID);
+						
+						// Read XML data
+						try {							
+							LoadXML(dataTarget);
+						} catch (ParserConfigurationException e) {
+							e.printStackTrace();
+						} catch (SAXException e) {
+							Log.e("Display", e.getMessage());
+							e.printStackTrace();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
 					}
 				}
 			}
@@ -758,23 +753,22 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent intent;
-	    // Handle item selection
-	    switch (item.getItemId()) {      
-	        case R.id.profile:
-	        	intent = new Intent(getApplicationContext(),ProfileActivity.class);
-	    		intent.putExtra("customerID",mUserID );
-	    		startActivity(intent);
-	            return true;    
-	        case R.id.about:
-	        	intent = new Intent(getApplicationContext(),AboutActivity.class);
-	    		startActivity(intent);
-	            return true;
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
+		// Handle item selection
+		switch (item.getItemId()) {
+		case R.id.profile:
+			intent = new Intent(getApplicationContext(), ProfileActivity.class);
+			intent.putExtra("customerID", mUserID);
+			startActivity(intent);
+			return true;
+		case R.id.about:
+			intent = new Intent(getApplicationContext(), AboutActivity.class);
+			startActivity(intent);
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
-	
-	
+
 	public void MessengerBox(String mes) {
 		AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
 		dlgAlert.setMessage(mes);

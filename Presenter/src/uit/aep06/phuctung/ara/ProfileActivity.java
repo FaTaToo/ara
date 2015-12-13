@@ -1,6 +1,7 @@
 package uit.aep06.phuctung.ara;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,13 +23,19 @@ public class ProfileActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		// Handle item selection
+		Intent intent;
+		switch (item.getItemId()) {
+		case R.id.scan:
+			intent = new Intent(getApplicationContext(), CameraActivity.class);
+			startActivity(intent);
 			return true;
+		case R.id.about:
+			intent = new Intent(getApplicationContext(), AboutActivity.class);
+			startActivity(intent);
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
 		}
-		return super.onOptionsItemSelected(item);
 	}
 }
