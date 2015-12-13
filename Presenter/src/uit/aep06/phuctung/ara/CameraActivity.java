@@ -36,7 +36,6 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 
 import org.apache.http.client.ClientProtocolException;
@@ -113,9 +112,6 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 	private String urlShare = "";
 	LocationManager locationManager;
 	String provider;
-	public LatLng myPosition;
-	public LatLng myPosition_temp;
-	public LatLng end;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -303,42 +299,7 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 			@Override
 			public void onClick(View arg0) {				
 				doStopTrackers();
-				if (detail.getTargetType() == 2) { // type address
-					String[] lstAddress = detail.getAddress().split(";");
-					String nearestAddress = lstAddress[0];
-					int numAddress = lstAddress.length;
-					double distance = 99999;
-					for (int k = 0; k < numAddress; k++) {
-
-						Geocoder geo = new Geocoder(CameraActivity.this);
-						try {
-							List<Address> temp = geo.getFromLocationName(lstAddress[k], 1);
-							end = new LatLng(temp.get(0).getLatitude(), temp.get(0).getLongitude());
-							if (myPosition == null) {
-								Address add = (geo.getFromLocationName(
-										"227 Nguyễn Văn Cừ phường 4, Quận 5 Hồ Chí Minh, Vietnam", 6)).get(0);
-								myPosition = new LatLng(add.getLatitude(), add.getLongitude());
-							} else {
-								Log.e("ARMMText-display", myPosition.latitude + " " + myPosition.longitude);
-							}
-							double myDistance = distance(myPosition.latitude, myPosition.longitude,
-									end.latitude, end.longitude, 'K');
-							Log.e("ARMMText-displayError ", "myDistance" + myDistance);
-
-							if (myDistance < distance) {
-								distance = myDistance;
-								nearestAddress = lstAddress[k];
-							}
-						} catch (Exception e) {							
-							Log.e("ARMMText-displayError ", e.getMessage());
-						}
-					}
-					if (distance >= 0.1) {
-						MessengerBox("Bạn còn cách khu vực gần nhất là : " + nearestAddress + " "
-								+ distance + " Km");
-						return;
-					}
-				}
+				// Implement code for process type address
 
 				if (ARResourceLayout.getChildCount() > 1)
 					ARResourceLayout.removeViewAt(ARResourceLayout.getChildCount() - 1);
@@ -772,7 +733,7 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 	public void MessengerBox(String mes) {
 		AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
 		dlgAlert.setMessage(mes);
-		dlgAlert.setTitle("Thông báo");
+		dlgAlert.setTitle("ThÃ´ng bÃ¡o");
 		dlgAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				// call your code here
