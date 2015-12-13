@@ -27,7 +27,7 @@ public class ProgramAdapter extends BaseAdapter {
 	
 	public ProgramAdapter(Context context, int resource, List<Program> listPrograms) {
 		super();
-		// TODO Auto-generated constructor stub
+		
 		this.context = context;
 		this.resource = resource;
 		this.listPrograms = listPrograms;

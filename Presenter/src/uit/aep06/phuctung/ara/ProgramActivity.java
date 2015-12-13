@@ -23,76 +23,108 @@ import android.support.v4.app.FragmentManager;
 
 public class ProgramActivity extends FragmentActivity {
 	String CustomerID;
-	
+
 	ViewPager pager;
-    ViewPagerAdapter adapter;
-    SlidingTabLayout tabs;
-    CharSequence Titles[]={"All","Checked", "Unchecked"};
+	ViewPagerAdapter adapter;
+	SlidingTabLayout tabs;
+	CharSequence Titles[] = { "All", "Checked", "Unchecked" };
 	List<Program> listProgram = new ArrayList<Program>();
-	
-    int Numboftabs = 3;
+
+	int Numboftabs = 3;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_program);
-		
-		// Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
+
+		// Creating The ViewPagerAdapter and Passing Fragment Manager, Titles
+		// fot the Tabs and Number Of Tabs.
 		listProgram.add(new Program("1", "a", "content aa", "11/5/2015aaaaa", "11/6/2015sssss", "A", 1, 3, 0));
 		listProgram.add(new Program("1", "b", "content bb", "11/5/201aaaaa5", "11/6/2015sssss", "B", 0, 3, 0));
 		listProgram.add(new Program("1", "c", "content cc", "11/5/20aaaaaaa15", "11/6/2015sssss", "C", 0, 3, 0));
 		listProgram.add(new Program("1", "d", "content dd", "11/5/2015aaaaa", "11/6/2015sssss", "D", 1, 3, 0));
-		
-		
-        adapter =  new ViewPagerAdapter(getSupportFragmentManager(),Titles,Numboftabs,listProgram);
-		
-        // Assigning ViewPager View and setting the adapter
-        pager = (ViewPager) findViewById(R.id.pager);
-        pager.setAdapter(adapter);
- 
-        // Assiging the Sliding Tab Layout View
-        tabs = (SlidingTabLayout) findViewById(R.id.tabs);
-        tabs.setDistributeEvenly(true); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
- 
-        // Setting Custom Color for the Scroll bar indicator of the Tab View
-        tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
-            @Override
-            public int getIndicatorColor(int position) {
-                return getResources().getColor(R.color.tabsScrollColor);
-            }
-        });
- 
-        // Setting the ViewPager For the SlidingTabsLayout
-        tabs.setViewPager(pager);
-		
-		
-//		Intent intent = getIntent();
-//		CustomerID = intent.getStringExtra("customerID");
-//		BackgroundTask task = new BackgroundTask();
-//		task.execute();
+
+		adapter = new ViewPagerAdapter(getSupportFragmentManager(), Titles, Numboftabs, listProgram);
+
+		// Assigning ViewPager View and setting the adapter
+		pager = (ViewPager) findViewById(R.id.pager);
+		pager.setAdapter(adapter);
+
+		// Assiging the Sliding Tab Layout View
+		tabs = (SlidingTabLayout) findViewById(R.id.tabs);
+		tabs.setDistributeEvenly(true); // To make the Tabs Fixed set this true,
+										// This makes the tabs Space Evenly in
+										// Available width
+
+		// Setting Custom Color for the Scroll bar indicator of the Tab View
+		tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
+			@Override
+			public int getIndicatorColor(int position) {
+				return getResources().getColor(R.color.tabsScrollColor);
+			}
+		});
+
+		// Setting the ViewPager For the SlidingTabsLayout
+		tabs.setViewPager(pager);
+
+		// Intent intent = getIntent();
+		// CustomerID = intent.getStringExtra("customerID");
+		// BackgroundTask task = new BackgroundTask();
+		// task.execute();
 	}
+
 	private class BackgroundTask extends AsyncTask<Void, Void, Void> {
 		private ProgressDialog dialog;
-		
+
 		@Override
-	    protected void onPreExecute() {
-	    	dialog = new ProgressDialog(ProgramActivity.this);
-	    	dialog.setCancelable(false);
-	        dialog.setMessage("Waiting for loading....");
-	        dialog.show();
-	    }
-		
+		protected void onPreExecute() {
+			dialog = new ProgressDialog(ProgramActivity.this);
+			dialog.setCancelable(false);
+			dialog.setMessage("Waiting for loading....");
+			dialog.show();
+		}
+
 		@Override
-	    protected void onPostExecute(Void result) {
-	        if (dialog.isShowing()) {
-	            dialog.dismiss();
-	        }
-	    }
-		
+		protected void onPostExecute(Void result) {
+			if (dialog.isShowing()) {
+				dialog.dismiss();
+			}
+		}
+
 		@Override
 		protected Void doInBackground(Void... params) {
 			// TODO Auto-generated method stub
 			return null;
 		}
-		
+
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle item selection
+		switch (item.getItemId()) {
+		case R.id.profile:
+			Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+			intent.putExtra("customerID", CustomerID);
+			startActivity(intent);
+			return true;
+		case R.id.scan:
+			intent = new Intent(getApplicationContext(), CameraActivity.class);
+			startActivity(intent);
+			return true;
+		case R.id.about:
+			intent = new Intent(getApplicationContext(), AboutActivity.class);
+			startActivity(intent);
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 }
