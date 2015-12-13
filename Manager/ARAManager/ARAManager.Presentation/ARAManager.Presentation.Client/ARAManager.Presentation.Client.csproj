@@ -302,6 +302,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ARAManager.Presentation.Client.Common\Authentication.cs" />
     <Compile Include="ARAManager.Presentation.Client.Common\Validation.cs" />
     <Compile Include="ARAManager.Presentation.Client.Views\CampaignCompany.aspx.cs">
       <DependentUpon>CampaignCompany.aspx</DependentUpon>
