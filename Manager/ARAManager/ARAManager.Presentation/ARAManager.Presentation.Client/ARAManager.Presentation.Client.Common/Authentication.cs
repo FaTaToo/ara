@@ -13,7 +13,7 @@
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common
 {
     /// <summary>
-    /// Define data of Username, Password in Client
+    ///     Define data of Username, Password in Client
     /// </summary>
     public class Authentication
     {
@@ -23,6 +23,5 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common
         public const string FPT_PASSWORD = "Levantam9434";
 
         #endregion IFields
-
     }
 }

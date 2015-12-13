@@ -77,7 +77,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 Select(label => int.Parse(label.Text)).ToList();
             try
             {
-            ClientServiceFactory.CampaignService.DeleteCampaigns(deletedCampaigns);
+                ClientServiceFactory.CampaignService.DeleteCampaigns(deletedCampaigns);
             }
             catch (FaultException ex)
             {

@@ -53,6 +53,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         #endregion IFields
 
         #region IMethods
+
         protected void Page_Load(object sender, EventArgs e)
         {
             m_campaign =
@@ -78,20 +79,23 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             txtNumTarget.Text = m_mission.NumTarget.ToString();
             s_rowVersion = m_mission.RowVersion;
         }
-        
+
         // Validators
         protected void CustomValidator_MissionName_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar100(txtMissionName.Text);
         }
+
         protected void CustomValidator_Description_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = m_validator.ValidateChar500(txtDescription.Text);
         }
+
         protected void CustomValidator_Avatar_OnServerValidate(object source, ServerValidateEventArgs args)
         {
             args.IsValid = FileUpload_Avatar.HasFile;
         }
+
         //-----------------------------------------------------------------------------------------------------
 
         // Supported methods
@@ -105,6 +109,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             CustomValidator_Avatar.Enabled = flag;
             RangeValidator_NumMission.Enabled = flag;
         }
+
         private void SetErrorMessages()
         {
             RequiredFieldValidator_MissionName.ErrorMessage = Validation.REQUIRE_MISSIONCAMPAIGNCOMPANY_NAME;
@@ -115,33 +120,36 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             CustomValidator_Avatar.ErrorMessage = Validation.VALIDATOR_AVATAR;
             RangeValidator_NumMission.ErrorMessage = Validation.VALIDATOR_NUM_MISSION;
         }
+
         protected string GetAvatar(object eval)
         {
             return Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + eval;
         }
+
         private void UploadFileToFtpServer(string fileName, string filePath)
         {
             // Get the object used to communicate with the server.
-            string uri = "ftp://phucls11520288@www.ara288.somee.com/www.ara288.somee.com/Ara_Data/Missions/Avatar/";
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(uri + fileName);
+            var uri = "ftp://phucls11520288@www.ara288.somee.com/www.ara288.somee.com/Ara_Data/Missions/Avatar/";
+            var request = (FtpWebRequest) WebRequest.Create(uri + fileName);
             request.Method = WebRequestMethods.Ftp.UploadFile;
             // FTP site logon.
             request.Credentials = new NetworkCredential(Authentication.FPT_USER, Authentication.FPT_PASSWORD);
             // Copy the entire contents of the file to the request stream.
-            StreamReader sourceStream = new StreamReader(Server.MapPath(filePath));
-            byte[] fileContents = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd());
+            var sourceStream = new StreamReader(Server.MapPath(filePath));
+            var fileContents = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd());
             sourceStream.Close();
             request.ContentLength = fileContents.Length;
             // Upload the file stream to the server.
-            Stream requestStream = request.GetRequestStream();
+            var requestStream = request.GetRequestStream();
             requestStream.Write(fileContents, 0, fileContents.Length);
             requestStream.Close();
             // Get the response from the FTP server.
-            FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+            var response = (FtpWebResponse) request.GetResponse();
             // Close the connection = Happy a FTP server.
             response.Close();
             lblMessage.Text = request.GetResponse().ToString();
         }
+
         //-----------------------------------------------------------------------------------------------------
 
         // Events
@@ -184,19 +192,24 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 lblMessage.Text = ex.Detail.MessageError;
             }
         }
+
         protected void btnCancel_OnClick(object sender, EventArgs e)
         {
             Response.Redirect("CampaignCompany.aspx");
         }
+
         protected string GetNavigateUrl(object eval)
         {
             return "TargetMissionCampaignCompany.aspx?RequestId=" + eval;
         }
+
         protected string GetEditMissionUrl(object eval)
         {
             return "MissionCampaignCompany.aspx?Method=Edit&RequestId=" + m_campaign.CampaignId + "&MissionId=" + eval;
         }
+
         //-----------------------------------------------------------------------------------------------------
+
         #endregion IMethods
     }
 }

@@ -212,44 +212,47 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             var fileName = txtCampaignName.Text + "Avatar" + extension;
             var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_CAMPAIGNS_AVATAR + fileName);
             FileUpload_Avatar.SaveAs(filePath);
-            UploadFileToFtpServer(fileName,Dictionary.PATH_UPLOADED_CAMPAIGNS_AVATAR + fileName,true);
+            UploadFileToFtpServer(fileName, Dictionary.PATH_UPLOADED_CAMPAIGNS_AVATAR + fileName, true);
             return Dictionary.PATH_UPLOADED_CAMPAIGNS_AVATAR + fileName;
         }
 
         private void SetCampaignType()
         {
             m_campaignType = ClientServiceFactory.CampaignTypeService.GetCampaignTypeByName(m_campaignTypeName);
-            if (m_campaignTypeName == Dictionary.CAMPAIGN_TYPE_CHECK_IN_URL || m_campaignTypeName == Dictionary.CAMPAIGN_TYPE_THEATER_URL)
+            if (m_campaignTypeName == Dictionary.CAMPAIGN_TYPE_CHECK_IN_URL ||
+                m_campaignTypeName == Dictionary.CAMPAIGN_TYPE_THEATER_URL)
             {
                 txtMission.Text = "1";
                 txtMission.Enabled = false;
             }
         }
 
-        private void UploadFileToFtpServer(string fileName,string filePath,bool isAvatar)
+        private void UploadFileToFtpServer(string fileName, string filePath, bool isAvatar)
         {
             // Get the object used to communicate with the server.
-            string uri = isAvatar ? "ftp://phucls11520288@www.ara288.somee.com/www.ara288.somee.com/Ara_Data/Campaigns/Avatar/" : 
-                                    "ftp://phucls11520288@www.ara288.somee.com/www.ara288.somee.com/Ara_Data/Campaigns/Banner/";
-            FtpWebRequest request =(FtpWebRequest) WebRequest.Create(uri +fileName);
+            var uri = isAvatar
+                ? "ftp://phucls11520288@www.ara288.somee.com/www.ara288.somee.com/Ara_Data/Campaigns/Avatar/"
+                : "ftp://phucls11520288@www.ara288.somee.com/www.ara288.somee.com/Ara_Data/Campaigns/Banner/";
+            var request = (FtpWebRequest) WebRequest.Create(uri + fileName);
             request.Method = WebRequestMethods.Ftp.UploadFile;
             // FTP site logon.
             request.Credentials = new NetworkCredential(Authentication.FPT_USER, Authentication.FPT_PASSWORD);
             // Copy the entire contents of the file to the request stream.
-            StreamReader sourceStream = new StreamReader(Server.MapPath(filePath));
-            byte[] fileContents = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd());
+            var sourceStream = new StreamReader(Server.MapPath(filePath));
+            var fileContents = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd());
             sourceStream.Close();
             request.ContentLength = fileContents.Length;
             // Upload the file stream to the server.
-            Stream requestStream = request.GetRequestStream();
+            var requestStream = request.GetRequestStream();
             requestStream.Write(fileContents, 0, fileContents.Length);
             requestStream.Close();
             // Get the response from the FTP server.
-            FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+            var response = (FtpWebResponse) request.GetResponse();
             // Close the connection = Happy a FTP server.
             response.Close();
             lblMessage.Text = request.GetResponse().ToString();
         }
+
         //-----------------------------------------------------------------------------------------------------
 
         // Events
@@ -273,7 +276,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             {
                 ClientServiceFactory.CampaignService.SaveNewCampaign(m_campaign);
                 Response.Redirect("MissionCampaignCompany.aspx?Method=New&RequestId=" +
-                                  ClientServiceFactory.CampaignService.GetCampaignByName(txtCampaignName.Text).CampaignId);
+                                  ClientServiceFactory.CampaignService.GetCampaignByName(txtCampaignName.Text)
+                                      .CampaignId);
             }
             catch (FaultException<CampaignNameAlreadyExistException> ex)
             {
