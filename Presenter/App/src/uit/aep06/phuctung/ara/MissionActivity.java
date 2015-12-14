@@ -3,6 +3,8 @@ package uit.aep06.phuctung.ara;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONException;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -20,12 +22,15 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import uit.aep06.phuctung.ara.CommonClass.Target;
+import uit.aep06.phuctung.ara.Service.ProgramService;
+import uit.aep06.phuctung.ara.Service.TargetService;
+import uit.aep06.phuctung.ara.custom_adapter.MissionAdapter;
 
 public class MissionActivity extends Activity {
 	String CustomerID;
 	String ProgramID;
 	int ProgramState;
-	List<Target> listTarget = new ArrayList<Target>();
+	List<Target> listTargets = new ArrayList<Target>();
 	ListView listView;
 
 	@Override
@@ -77,12 +82,35 @@ public class MissionActivity extends Activity {
 		});
 
 		listView = (ListView) findViewById(R.id.lvMission);
-
+		BackgroundTask task = new BackgroundTask();
+		task.execute();
 	}
+
+	private void loadMission() {
+		ProgramService service = new ProgramService();
+		try {
+			listTargets = service.getListTarget(ProgramID);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void loadListViewMission() {
+		MissionAdapter missionAdapter = new MissionAdapter(this, R.layout.mission_list_item, listTargets);
+		for (Target t : listTargets) {
+			// implement code to process TargetGPS
+			TargetService targetService = new TargetService();
+			t.setState(targetService.checkTargetState(t.getTargetID(), CustomerID));
+			t.setContext(this);
+		}
+
+		missionAdapter.notifyDataSetChanged();
+		listView.setAdapter(missionAdapter);
+	}	
 
 	private class BackgroundTask extends AsyncTask<Void, Void, Void> {
 		private ProgressDialog dialog;
-		
+
 		@Override
 		protected void onPreExecute() {
 			dialog = new ProgressDialog(MissionActivity.this);
@@ -90,22 +118,22 @@ public class MissionActivity extends Activity {
 			dialog.setMessage("Downloading mission data. Please wait!");
 			dialog.show();
 		};
-		
+
 		@Override
 		protected void onPostExecute(Void result) {
-			if(dialog.isShowing()){
+			if (dialog.isShowing()) {
 				dialog.dismiss();
 			}
 		};
-		
+
 		@Override
 		protected Void doInBackground(Void... params) {
+			loadMission();
 			runOnUiThread(new Runnable() {
-				
+
 				@Override
 				public void run() {
-					// TODO Auto-generated method stub
-					
+					loadListViewMission();
 				}
 			});
 			return null;
