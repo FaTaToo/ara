@@ -40,29 +40,14 @@ public class MissionActivity extends Activity {
 		Intent intent = getIntent();
 
 		TextView tvName = (TextView) findViewById(R.id.txtName);
-		tvName.setTextColor(Color.RED);
+		tvName.setTextColor(Color.BLUE);
 		tvName.setTextSize(20);
 
-		TextView tvDateStart = (TextView) findViewById(R.id.txtStart);
-		tvDateStart.setTextSize(15);
-
-		TextView tvDateEnd = (TextView) findViewById(R.id.txtEnd);
-		tvDateEnd.setTextSize(15);
-
-		TextView tvCompany = (TextView) findViewById(R.id.txtCompany);
-		tvCompany.setTextSize(15);
-
-		TextView tvContent = (TextView) findViewById(R.id.txtDescription);
-		tvContent.setTextSize(15);
-
-		tvName.setText("Program: " + intent.getStringExtra("Name"));
-		tvContent.setText("Description: " + intent.getStringExtra("Description"));
-		tvDateStart.setText("Start: " + intent.getStringExtra("Start").substring(0, 10));
-		tvDateEnd.setText("End: " + intent.getStringExtra("End").substring(0, 10));
-		tvCompany.setText("Company: " + intent.getStringExtra("Company"));
+		tvName.setText(intent.getStringExtra("Name"));
 
 		TextView tvNumProgress = (TextView) findViewById(R.id.txtNumTarget);
 		tvNumProgress.setTextSize(17);
+		tvNumProgress.setTextColor(Color.RED);
 		tvNumProgress.setText(intent.getIntExtra("NumTarget", 0) + "/" + intent.getIntExtra("NumTargetFinish", 0));
 
 		ProgressBar pBar = (ProgressBar) findViewById(R.id.pBar);
@@ -110,7 +95,7 @@ public class MissionActivity extends Activity {
 
 	private class BackgroundTask extends AsyncTask<Void, Void, Void> {
 		private ProgressDialog dialog;
-		
+
 		@Override
 		protected void onPreExecute() {
 			dialog = new ProgressDialog(MissionActivity.this);
@@ -118,14 +103,14 @@ public class MissionActivity extends Activity {
 			dialog.setMessage("Downloading mission data. Please wait!");
 			dialog.show();
 		};
-		
+
 		@Override
 		protected void onPostExecute(Void result) {
-			if(dialog.isShowing()){
+			if (dialog.isShowing()) {
 				dialog.dismiss();
 			}
 		};
-		
+
 		@Override
 		protected Void doInBackground(Void... params) {
 			loadMission();

@@ -30,7 +30,7 @@
     <string name="txtEndDay">End day: </string>
     <string name="txtCompanyName">Company Name: </string>
     <string name="txtDescribe">Describe: </string>
-    <string name="txtParticipate">Participate in: </string>
+    <string name="txtParticipate">Participate in </string>
     <string name="btnScan">Scan</string>
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_about">AboutActivity</string>
