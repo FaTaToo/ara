@@ -56,11 +56,7 @@ public class ProgramTab extends Fragment {
 				// TODO Auto-generated method stub
 				Program program = listProgram.get(position);
 				Intent intent = new Intent(getActivity(),MissionActivity.class);
-				intent.putExtra("Name", program.getName());
-				intent.putExtra("Start", program.getDateStart());
-				intent.putExtra("End", program.getDateEnd());
-				intent.putExtra("Company", program.getCompany());
-				intent.putExtra("Description", program.getContent());
+				intent.putExtra("Name", program.getName());				
 				intent.putExtra("ID", program.getId());
 				intent.putExtra("CustomerID", CustomerID);
 				intent.putExtra("ProgramState", program.getState());

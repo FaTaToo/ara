@@ -2,6 +2,7 @@ package uit.aep06.phuctung.ara;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -17,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import uit.aep06.phuctung.ara.CommonClass.Program;
 import uit.aep06.phuctung.ara.Library.SlidingTabLayout;
+import uit.aep06.phuctung.ara.Service.ProgramService;
 import uit.aep06.phuctung.ara.custom_adapter.ViewPagerAdapter;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -39,10 +41,16 @@ public class ProgramActivity extends FragmentActivity {
 
 		// Creating The ViewPagerAdapter and Passing Fragment Manager, Titles
 		// fot the Tabs and Number Of Tabs.
-		listProgram.add(new Program("1", "a", "content aa", "11/5/2015aaaaa", "11/6/2015sssss", "A", 1, 3, 0));
-		listProgram.add(new Program("1", "b", "content bb", "11/5/201aaaaa5", "11/6/2015sssss", "B", 0, 3, 0));
-		listProgram.add(new Program("1", "c", "content cc", "11/5/20aaaaaaa15", "11/6/2015sssss", "C", 0, 3, 0));
-		listProgram.add(new Program("1", "d", "content dd", "11/5/2015aaaaa", "11/6/2015sssss", "D", 1, 3, 0));
+		ProgramBackgroundTask programTask = new ProgramBackgroundTask();
+		try {
+			listProgram = programTask.execute().get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		adapter = new ViewPagerAdapter(getSupportFragmentManager(), Titles, Numboftabs, listProgram);
 
@@ -73,7 +81,7 @@ public class ProgramActivity extends FragmentActivity {
 		// task.execute();
 	}
 
-	private class BackgroundTask extends AsyncTask<Void, Void, Void> {
+	private class ProgramBackgroundTask extends AsyncTask<Void, Void, List<Program>> { 
 		private ProgressDialog dialog;
 
 		@Override
@@ -85,16 +93,16 @@ public class ProgramActivity extends FragmentActivity {
 		}
 
 		@Override
-		protected void onPostExecute(Void result) {
+		protected void onPostExecute(List<Program> result) {
 			if (dialog.isShowing()) {
 				dialog.dismiss();
 			}
 		}
 
 		@Override
-		protected Void doInBackground(Void... params) {
-			// TODO Auto-generated method stub
-			return null;
+		protected List<Program> doInBackground(Void... params) {
+			ProgramService programService = new ProgramService();
+			return programService.getListProgram();			
 		}
 
 	}

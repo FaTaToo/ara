@@ -9,7 +9,7 @@ public class Program {
 	public  String dateStart;
 	public  String dateEnd;
 	public  String company;
-	public int state;//0 for unchecked and 1 for checed state
+	public int state;//0 for unchecked and 1 for checked state
 	public int numTarget;
 	public int numTargetFinish;
 	
