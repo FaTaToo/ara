@@ -3,7 +3,7 @@ package uit.aep06.phuctung.ara.CommonClass;
 import android.content.Intent;
 import uit.aep06.phuctung.ara.HelperTargetDefaultActivity;
 
-public class TargetGPS extends Target {
+public class MissionGPS extends Mission {
 
 	private String address;
 	

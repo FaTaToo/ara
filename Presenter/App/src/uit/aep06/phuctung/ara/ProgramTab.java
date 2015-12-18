@@ -60,8 +60,8 @@ public class ProgramTab extends Fragment {
 				intent.putExtra("ID", program.getId());
 				intent.putExtra("CustomerID", CustomerID);
 				intent.putExtra("ProgramState", program.getState());
-				intent.putExtra("NumTarget",program.getNumTarget());
-				intent.putExtra("NumTargetFinish",program.getNumTargetFinish());
+				intent.putExtra("NumMission",program.getNumMission());
+				intent.putExtra("NumMissionFinish",program.getNumMission());
 				startActivity(intent);
 			}			
 		});

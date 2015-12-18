@@ -24,21 +24,21 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import uit.aep06.phuctung.ara.R;
-import uit.aep06.phuctung.ara.CommonClass.Target;
+import uit.aep06.phuctung.ara.CommonClass.Mission;
 
 public class MissionAdapter extends BaseAdapter {
-	List<Target> listTargets;
+	List<Mission> listMissions;
 	Context context;
 	int resource;
-	Target target;
+	Mission target;
 	private static LayoutInflater inflater = null;
 
-	public MissionAdapter(Context context, int resource, List<Target> listTargets) {
+	public MissionAdapter(Context context, int resource, List<Mission> listTargets) {
 		super();
 
 		this.context = context;
 		this.resource = resource;
-		this.listTargets = listTargets;
+		this.listMissions = listTargets;
 		inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
@@ -48,7 +48,7 @@ public class MissionAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return listTargets.size();
+		return listMissions.size();
 	}
 
 	@Override
@@ -82,24 +82,26 @@ public class MissionAdapter extends BaseAdapter {
 		holder.imgCheck = (ImageView) rowView.findViewById(R.id.imgCheck);
 		holder.btnHeper = (Button) rowView.findViewById(R.id.btnHelper);
 
-		target = listTargets.get(position);
+		target = listMissions.get(position);
 		if (target != null) {
-			holder.tvName.setText(Html.fromHtml("<b>Tên:</b> " + target.getName()));
-			holder.tvYear.setText(Html.fromHtml("<b>Năm sản xuất:</b> " + target.getYear()));
-			holder.tvDirection.setText(Html.fromHtml("<b>Đạo diễn:</b> " + target.getDirector()));
-			holder.tvActor.setText(Html.fromHtml("<b>Diễn viên:</b> " + target.getActor()));
-			holder.tvContent.setText(Html.fromHtml("<b>Mô tả:</b> " + target.getTargetContent()));
+			holder.tvName.setText(target.getName());
+			holder.tvYear.setText(target.getYear());
+			holder.tvDirection.setText(target.getDirector());
+			holder.tvActor.setText(target.getActor());
+			holder.tvContent.setText(target.getTargetContent());
 
+			if (target.getState() != 0) {
+				holder.imgCheck.setBackgroundResource(uit.aep06.phuctung.ara.R.drawable.icon_check);
+			} else {
+				holder.imgCheck.setBackground(null);
+			}
+			
 			BackgroundTask backgroundTask = new BackgroundTask();
 			backgroundTask.setImageView(holder.imgMission);
 			backgroundTask.setUrl(target.getUrl());
 			backgroundTask.execute();
 
-			if (target.getState() != 0) {
-				holder.imgCheck.setBackgroundResource(R.drawable.icon_check);
-			} else {
-				holder.imgCheck.setBackground(null);
-			}
+			
 
 			holder.btnHeper.setOnClickListener(new OnClickListener() {
 				@Override

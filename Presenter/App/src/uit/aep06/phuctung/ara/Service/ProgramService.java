@@ -6,8 +6,8 @@ import java.util.List;
 import org.json.JSONException;
 
 import uit.aep06.phuctung.ara.CommonClass.Program;
-import uit.aep06.phuctung.ara.CommonClass.Target;
-import uit.aep06.phuctung.ara.CommonClass.TargetDefault;
+import uit.aep06.phuctung.ara.CommonClass.Mission;
+import uit.aep06.phuctung.ara.CommonClass.MissionDefault;
 
 public class ProgramService {
 	public List<Program> getListProgram() {		
@@ -16,10 +16,10 @@ public class ProgramService {
 		listProgram.add(new Program(
 				"1", 
 				"Tên chương trình: Khuyến mãi Giáng sinh 2015",
-				"Nhân dịp lễ Giáng sinh gần đến, Galaxy Cinema hân hạnh mang ưu đãi 'Giáng sinh ấm áp': Scan tìm hiểu thông tin 4 phim: 'Em là bà nội của anh', 'Hùng ALI', 'Kẻ săn bóng đêm', 'Đêm Giáng Sinh' để có thể được xem phim với giá ưu đãi. Giảm giá vé 20% cho một trong bốn bộ phim trên!", 
+				"Nhân dịp lễ Giáng sinh gần đến, Galaxy Cinema hân hạnh mang ưu đãi 'Giáng sinh ấm áp': Scan tìm hiểu thông tin 4 phim: 'Em là bà nội của anh', 'Hùng ALI', 'Kẻ săn bóng đêm', 'Đêm Giáng Sinh' để có thể được xem phim với giá ưu đãi. Giảm giá vé 10% cho mỗi bộ phim trên!", 
 				"01/12/2015", 
 				"25/12/2015", 
-				"Galaxy Cinema", 1, 3, 1));
+				"Galaxy Cinema", 1, 4, 1));
 		listProgram.add(new Program(
 				"1", 
 				"Combo Spectre Giá Cực Sốc",
@@ -46,29 +46,52 @@ public class ProgramService {
 		
 	}
 	
-	public List<Target> getListTarget(String id) throws JSONException {
+	public List<Mission> getListMission(String id) throws JSONException {
 		// implement code to get from service
 		// fake 
-		List<Target> listTarget = new ArrayList<Target>();
+		List<Mission> listMission = new ArrayList<Mission>();
 		
-		Target target1 = new TargetDefault();
-		target1.setName("Target 1");
+		// ProgramID = 1
+		Mission target1 = new MissionDefault();
+		target1.setName("Em là bà nội của anh");
+		target1.setState(1);
 		target1.setYear("2015");
-		target1.setDirector("Pham Tang Tung");
-		target1.setActor("Pham Dinh Thinh");
-		target1.setTargetContent("This is target content");
-		target1.setUrl("http://icons.iconarchive.com/icons/designbolts/rio-2-movie/512/Rio2-Family-icon.png");
+		target1.setDirector("Phan Gia Nhật Linh");
+		target1.setActor("Miu Lê; Ngô Kiến Huy; Hứa Vĩ Văn; Hari Won");
+		target1.setTargetContent("Scan poster của phim 'Em là bà nội của anh' để nhận đc voucher giảm 10% giá vé. Nhanh tay lên nào mọi người ơi ^^");
+		target1.setUrl("http://c1.f9.img.vnecdn.net/2015/10/07/mgG0ozOdmjvkFqKDjUC-JcZm43rWCS-4487-2619-1444194762.jpg");
 		
-		Target target2 = new TargetDefault();
-		target2.setName("Target 2");
+		
+		Mission target2 = new MissionDefault();
+		target2.setName("Hùng ALI");
+		target2.setState(1);
 		target2.setYear("2015");
-		target2.setDirector("Le Sanh Phuc");
-		target2.setActor("Le Dinh Thinh");
-		target2.setTargetContent("This is target content 2");
-		target2.setUrl("http://icons.iconarchive.com/icons/designbolts/rio-2-movie/512/Rio2-Family-icon.png");
-		listTarget.add(target1);
-		listTarget.add(target2);
+		target2.setDirector("Lâm Lê Dũng");
+		target2.setActor("Ưng Hoàng Phúc , Hà Việt Dũng , Long Điền , Long Nhật");
+		target2.setTargetContent("Scan poster của phim 'Hung ALI' để nhận đc voucher giảm 10% giá vé. Nhanh tay lên nào mọi người ơi ^^");
+		target2.setUrl("http://images.motthegioi.vn/uploaded/dieulinh/2015_11_15/hungali/ung-hoang-phuc-dang-qua-mao-hiem-cho-phim-hung-ali-hinh-anh-1.jpg?width=600");
 		
-		return listTarget; 
+		Mission target3 = new MissionDefault();
+		target3.setName("Kẻ Săn Bóng Đêm - Keeper of Darkness");
+		target3.setState(1);
+		target3.setYear("2015");
+		target3.setDirector(" Trương Gia Huy");
+		target3.setActor("Trương Gia Huy, Quách Thái Khiết, Thích Hành Vũ");
+		target3.setTargetContent("Scan poster của phim 'Kẻ săn bóng đêm' để nhận đc voucher giảm 10% giá vé. Nhanh tay lên nào mọi người ơi ^^");
+		target3.setUrl("https://chieuphimquocgia.com.vn/content/images/thumbs/0007508_ke-san-bong-dem-%282d-du-kien%29.jpg");
+		
+		Mission target4 = new MissionDefault();
+		target4.setName("Đêm giáng sinh");
+		target4.setYear("2015");
+		target4.setDirector(" Trương Gia Huy");
+		target4.setActor("Trương Gia Huy, Quách Thái Khiết, Thích Hành Vũ");
+		target4.setTargetContent("Scan poster của phim 'Đêm giáng sinh' để nhận đc voucher giảm 10% giá vé. Nhanh tay lên nào mọi người ơi ^^");
+		target4.setUrl("https://chieuphimquocgia.com.vn/content/images/thumbs/0007508_ke-san-bong-dem-%282d-du-kien%29.jpg");
+		listMission.add(target1);
+		listMission.add(target2);
+		listMission.add(target3);
+		listMission.add(target4);
+		
+		return listMission; 
 	}
 }

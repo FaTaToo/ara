@@ -10,10 +10,10 @@ public class Program {
 	public  String dateEnd;
 	public  String company;
 	public int state;//0 for unchecked and 1 for checked state
-	public int numTarget;
-	public int numTargetFinish;
+	public int numMission;
+	public int numMissionFinish;
 	
-	public Program(String id, String name, String content, String dateStart, String dateEnd, String company, int state, int numTarget, int numTargetFinish){
+	public Program(String id, String name, String content, String dateStart, String dateEnd, String company, int state, int numMission, int numMissionFinish){
 		this.id = id;
 		this.name = name;
 		this.content = content;
@@ -21,21 +21,21 @@ public class Program {
 		this.dateEnd = dateEnd;
 		this.company = company;
 		this.state = state;
-		this.numTarget = numTarget;
-		this.numTargetFinish = numTargetFinish;				
+		this.numMission = numMission;
+		this.numMissionFinish = numMissionFinish;				
 	}
 	
-	public int getNumTarget() {
-		return numTarget;
+	public int getNumMission() {
+		return numMission;
 	}
-	public void setNumTarget(int numTarget) {
-		this.numTarget = numTarget;
+	public void setNumMission(int numMission) {
+		this.numMission = numMission;
 	}
-	public int getNumTargetFinish() {
-		return numTargetFinish;
+	public int getNumMissionFinish() {
+		return numMissionFinish;
 	}
-	public void setNumTargetFinish(int numTargetFinish) {
-		this.numTargetFinish = numTargetFinish;
+	public void setNumMissionFinish(int numMissionFinish) {
+		this.numMissionFinish = numMissionFinish;
 	}
 	public int getState() {
 		return state;

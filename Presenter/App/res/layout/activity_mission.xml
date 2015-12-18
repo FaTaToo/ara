@@ -2,38 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_campaign"
     android:orientation="vertical"
     android:padding="35px" >
 
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtNamePrograme" />
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
 
         <TextView
-            android:id="@+id/txtName"
+            android:id="@+id/txtNumMission"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txtNamePrograme" />
+            android:layout_height="wrap_content" />
 
-        <LinearLayout
+        <ProgressBar
+            android:id="@+id/pBar"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/txtNumTarget"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <ProgressBar
-                android:id="@+id/pBar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5px"
-                android:layout_marginTop="5px" />
-        </LinearLayout>
+            android:layout_marginLeft="5px"
+            android:layout_marginTop="5px" />
     </LinearLayout>
 
     <LinearLayout
@@ -56,11 +51,6 @@
             android:layout_gravity="center"
             android:text="@string/btnScan" />
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
 
     <ListView
         android:id="@+id/lvMission"

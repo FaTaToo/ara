@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import android.content.Context;
 
-public abstract class Target{		    		  
+public abstract class Mission{		    		  
 	public  String targetID;
 	public  String targetContent;
 	public  String url;
@@ -16,6 +16,7 @@ public abstract class Target{
 	public  String year;
 	public  String description;
 	public  String programID;
+	public int state;
 	public int type;
 	public int getType() {
 		return type;
@@ -32,8 +33,7 @@ public abstract class Target{
 	public void setContext(Context context) {
 		this.context = context;
 	}
-
-	public int state;
+	
 	public int getState() {
 		return state;
 	}

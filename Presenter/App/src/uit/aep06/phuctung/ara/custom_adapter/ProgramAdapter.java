@@ -80,7 +80,7 @@ public class ProgramAdapter extends BaseAdapter {
 
 		holder.imgCheck = (ImageView) rowView.findViewById(R.id.imgCheck);
 
-		holder.tvNum = (TextView) rowView.findViewById(R.id.txtNumTarget);
+		holder.tvNum = (TextView) rowView.findViewById(R.id.txtNumMission);
 		holder.tvNum.setTextSize(17);
 
 		holder.pBar = (ProgressBar) rowView.findViewById(R.id.pBar);
@@ -92,9 +92,9 @@ public class ProgramAdapter extends BaseAdapter {
 			holder.tvDateStart.setText(program.getDateStart());
 			holder.tvDateEnd.setText(program.getDateEnd());
 			holder.tvCompany.setText(program.getCompany());
-			holder.tvNum.setText(Html.fromHtml("<b>" + program.getNumTargetFinish() + "/" + program.getNumTarget()));
-			holder.pBar.setMax(program.getNumTarget());
-			holder.pBar.setProgress(program.getNumTargetFinish());
+			holder.tvNum.setText(Html.fromHtml("<b>" + program.getNumMissionFinish() + "/" + program.getNumMission()));
+			holder.pBar.setMax(program.getNumMission());
+			holder.pBar.setProgress(program.getNumMissionFinish());
 			holder.pBar.getProgressDrawable().setColorFilter(Color.RED, Mode.SRC_IN);
 			if (program.state == 1) {
 				holder.imgCheck.setBackgroundResource(uit.aep06.phuctung.ara.R.drawable.icon_check);

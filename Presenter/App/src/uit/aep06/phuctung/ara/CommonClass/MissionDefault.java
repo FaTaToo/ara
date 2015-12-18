@@ -3,7 +3,7 @@ package uit.aep06.phuctung.ara.CommonClass;
 import android.content.Intent;
 import uit.aep06.phuctung.ara.HelperTargetDefaultActivity;
 
-public class TargetDefault extends Target {
+public class MissionDefault extends Mission {
 
 	@Override
 	public void Helper() {

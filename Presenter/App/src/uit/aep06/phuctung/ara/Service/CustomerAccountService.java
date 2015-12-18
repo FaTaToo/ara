@@ -15,7 +15,7 @@ import org.json.JSONTokener;
 
 import uit.aep06.phuctung.ara.CommonClass.CustomerAccount;
 
-public class CustomerAccountService extends Service {
+public class CustomerAccountService {
 
 	public int addNewCustomerAccount(CustomerAccount acc) {
 		return 0;
