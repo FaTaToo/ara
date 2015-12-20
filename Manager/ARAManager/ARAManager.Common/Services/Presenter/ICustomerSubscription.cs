@@ -13,8 +13,8 @@
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Web;
-using ARAManager.Common.Dto;
-using ARAManager.Common.PresenterJson;
+using ARAManager.Common.PresenterJson.Common;
+using ARAManager.Common.PresenterJson.Subscription;
 
 namespace ARAManager.Common.Services.Presenter
 {
@@ -25,16 +25,16 @@ namespace ARAManager.Common.Services.Presenter
         [WebInvoke(UriTemplate = "/JoinCampaign",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json, Method = "POST")]
-        JsonRespone JoinCampaign(Subscription subscription);
+        JsonRespone JoinCampaign(SubscriptionJson subscriptionJson);
 
         [OperationContract]
         [WebGet(UriTemplate = "/GetListOfSubscriptions/{customerId}",
             ResponseFormat = WebMessageFormat.Json)]
-        IList<Subscription> GetListOfSubscriptions(string customerId);
+        IList<SubscriptionJson> GetListOfSubscriptions(string customerId);
 
         [OperationContract]
         [WebGet(UriTemplate = "/GetSubscription/{subscriptionId}",
             ResponseFormat = WebMessageFormat.Json)]
-        Subscription GetSubscription(string subscriptionId);
+        SubscriptionJson GetSubscription(string subscriptionId);
     }
 }

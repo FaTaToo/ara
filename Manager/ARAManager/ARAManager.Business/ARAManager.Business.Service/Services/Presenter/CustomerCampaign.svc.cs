@@ -18,6 +18,7 @@ using ARAManager.Common;
 using ARAManager.Common.Dto;
 using ARAManager.Common.Factory;
 using ARAManager.Common.PresenterJson.ArResources;
+using ARAManager.Common.PresenterJson.Campaign;
 using ARAManager.Common.Services.Presenter;
 using Newtonsoft.Json;
 using NHibernate.Criterion;
@@ -29,14 +30,15 @@ namespace ARAManager.Business.Service.Services.Presenter
     {
         #region IMethods
 
-        public IList<Campaign> GetListOfCampaigns()
+        public IList<CampaignJson> GetListOfCampaigns()
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
             var criteria = DetachedCriteria.For<Campaign>();
-            return srvDao.FindByCriteria(criteria);
+            var campaigns= srvDao.FindByCriteria(criteria);
+            return campaigns.Select(ReturnCampaignJson).ToList();
         }
 
-        public Campaign GetCampaignByName(string campaignName)
+        public CampaignJson GetCampaignByName(string campaignName)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
             var criteria = DetachedCriteria.For<Campaign>();
@@ -44,7 +46,8 @@ namespace ARAManager.Business.Service.Services.Presenter
             {
                 criteria.Add(Restrictions.Where<Campaign>(c => c.CampaignName == campaignName));
             }
-            return srvDao.FindByCriteria(criteria).FirstOrDefault();
+            var campaign = srvDao.FindByCriteria(criteria).FirstOrDefault();
+            return campaign != null ? ReturnCampaignJson(campaign) : new CampaignJson();
         }
 
         public RootObject GetArData(string targetUrl)
@@ -54,6 +57,25 @@ namespace ARAManager.Business.Service.Services.Presenter
                 var jsonFile = streamReader.ReadToEnd();
                 return JsonConvert.DeserializeObject<RootObject>(jsonFile);
             }
+        }
+
+        private CampaignJson ReturnCampaignJson(Campaign campaign)
+        {
+            return campaign.EndTime != null
+                ? new CampaignJson()
+                {
+                    CampaignName = campaign.CampaignName,
+                    StartTime = campaign.StartTime.ToString(Dictionary.DATE_FORMAT),
+                    EndTime = campaign.EndTime.Value.ToString(Dictionary.DATE_FORMAT),
+                    Avatar = campaign.Avatar,
+                    Banner = campaign.Banner,
+                    Description = campaign.Description,
+                    Gift = campaign.Gift,
+                    CampaignTypeId = campaign.CampaignTypeId.ToString(),
+                    CompanyId = campaign.Company.CompanyId.ToString(),
+                    NumMission = campaign.NumMission.ToString()
+                }
+                : new CampaignJson();
         }
 
         #endregion IMethods

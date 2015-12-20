@@ -76,6 +76,8 @@
     <Compile Include="Extension\StringExtension.cs" />
     <Compile Include="Factory\NinjectKernelFactory.cs" />
     <Compile Include="Dictionary.cs" />
+    <Compile Include="PresenterJson\Account\AuthenticationJsonRequest.cs" />
+    <Compile Include="PresenterJson\Account\CustomerJson.cs" />
     <Compile Include="PresenterJson\ArResources\ArResource.cs" />
     <Compile Include="PresenterJson\ArResources\ArResources.cs" />
     <Compile Include="PresenterJson\ArResources\Attribute.cs" />
@@ -85,8 +87,9 @@
     <Compile Include="PresenterJson\ArResources\Processor.cs" />
     <Compile Include="PresenterJson\ArResources\Processors.cs" />
     <Compile Include="PresenterJson\ArResources\RootObject.cs" />
-    <Compile Include="PresenterJson\AuthenticationJsonRequest.cs" />
-    <Compile Include="PresenterJson\JsonRespone.cs" />
+    <Compile Include="PresenterJson\Campaign\CampaignJson.cs" />
+    <Compile Include="PresenterJson\Common\JsonRespone.cs" />
+    <Compile Include="PresenterJson\Subscription\SubscriptionJson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Behaviors\PreserveReferencesAttribute.cs" />
     <Compile Include="Services\Behaviors\PreserveReferencesOperationBehavior.cs" />

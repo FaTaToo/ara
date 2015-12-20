@@ -13,8 +13,8 @@
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Web;
-using ARAManager.Common.Dto;
 using ARAManager.Common.PresenterJson.ArResources;
+using ARAManager.Common.PresenterJson.Campaign;
 
 namespace ARAManager.Common.Services.Presenter
 {
@@ -24,12 +24,12 @@ namespace ARAManager.Common.Services.Presenter
         [OperationContract]
         [WebGet(UriTemplate = "/GetListOfCampaigns",
             ResponseFormat = WebMessageFormat.Json)]
-        IList<Campaign> GetListOfCampaigns();
+        IList<CampaignJson> GetListOfCampaigns();
 
         [OperationContract]
         [WebInvoke(UriTemplate = "/GetCampaignByName/{campaignName}",
             ResponseFormat = WebMessageFormat.Json)]
-        Campaign GetCampaignByName(string campaignName);
+        CampaignJson GetCampaignByName(string campaignName);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "/GetArData/{targetUrl}",

@@ -12,11 +12,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using ARAManager.Business.Dao.DataAccess.Interfaces;
 using ARAManager.Business.Dao.NHibernate.Transaction;
 using ARAManager.Common.Dto;
 using ARAManager.Common.Factory;
-using ARAManager.Common.PresenterJson;
+using ARAManager.Common.PresenterJson.Common;
+using ARAManager.Common.PresenterJson.Subscription;
 using ARAManager.Common.Services.Presenter;
 using NHibernate.Criterion;
 using Ninject;
@@ -42,14 +44,15 @@ namespace ARAManager.Business.Service.Services.Presenter
 
         #region IMethods
 
-        public JsonRespone JoinCampaign(Subscription subscription)
+        public JsonRespone JoinCampaign(SubscriptionJson subscriptionJson)
         {
-            var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
+            var subscription = ConvertSubscriptionJsonToSubScription(subscriptionJson);
+            var srvDaoSubcription = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
             using (var tr = TransactionsFactory.CreateTransactionScope())
             {
                 try
                 {
-                    srvDao.Save(subscription);
+                    srvDaoSubcription.Save(subscription);
                     m_authenticationJsonRespone.Message = "Successfully";
                     tr.Complete();
                     return m_authenticationJsonRespone;
@@ -62,20 +65,63 @@ namespace ARAManager.Business.Service.Services.Presenter
             }
         }
 
-        public IList<Subscription> GetListOfSubscriptions(string customerId)
+        public IList<SubscriptionJson> GetListOfSubscriptions(string customerId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
             var criteria = DetachedCriteria.For<Subscription>();
             criteria.Add(Restrictions.Where<Subscription>(c => c.Customer.CustomerId == int.Parse(customerId)));
-            return srvDao.FindByCriteria(criteria);
+            var subscriptions = srvDao.FindByCriteria(criteria);
+            return subscriptions.Select(ConvertSubscriptionToSubcriptionJson).ToList();
         }
 
-        public Subscription GetSubscription(string subscriptionId)
+        public SubscriptionJson GetSubscription(string subscriptionId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
-            return srvDao.GetById(int.Parse(subscriptionId));
+            var subscription= srvDao.GetById(int.Parse(subscriptionId));
+            return ConvertSubscriptionToSubcriptionJson(subscription);
         }
 
-        #endregion IMethods
+        private bool ReturnIsCompleteSubscriptionValue(string isComplete)
+        {
+            return isComplete == "true";
+        }
+
+        private string ReturnIsCompleteSubscriptionString(bool isComplete)
+        {
+            return isComplete ? "true" : "false";
+        }
+
+        private Subscription ConvertSubscriptionJsonToSubScription(SubscriptionJson subscriptionJson)
+        {
+            var srvDaoCampaign = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
+            var srvDaoCustomer = NinjectKernelFactory.Kernel.Get<ICustomerDataAccess>();
+            var srvDaoMission = NinjectKernelFactory.Kernel.Get<IMissionDataAccess>();
+            return new Subscription()
+            {
+                Campaign = srvDaoCampaign.GetById(int.Parse(subscriptionJson.CampaignId)),
+                Customer = srvDaoCustomer.GetById(int.Parse(subscriptionJson.CustomerId)),
+                Comment = subscriptionJson.Comment,
+                CurrentMission = srvDaoMission.GetById(int.Parse(subscriptionJson.CurrentMission)),
+                IsComplete = ReturnIsCompleteSubscriptionValue(subscriptionJson.IsComplete),
+                NumOfCompletedMission = int.Parse(subscriptionJson.NumOfCompletedMission),
+                Rating = int.Parse(subscriptionJson.Rating)
+            };
+        }
+
+        private SubscriptionJson ConvertSubscriptionToSubcriptionJson(Subscription subscription)
+        {
+            return new SubscriptionJson()
+            {
+                CampaignId = subscription.Campaign.CampaignId.ToString(),
+                CurrentMission = subscription.CurrentMission.MissionId.ToString(),
+                CustomerId = subscription.Customer.CustomerId.ToString(),
+                IsComplete = ReturnIsCompleteSubscriptionString(subscription.IsComplete),
+                NumOfCompletedMission = subscription.NumOfCompletedMission.ToString(),
+                Comment = subscription.Comment,
+                Rating = subscription.ToString()
+            };
+        }
+
+    #endregion IMethods
     }
 }

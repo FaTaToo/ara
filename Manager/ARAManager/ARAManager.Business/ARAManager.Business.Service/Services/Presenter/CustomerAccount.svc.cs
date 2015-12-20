@@ -13,9 +13,11 @@
 using System;
 using ARAManager.Business.Dao.DataAccess.Interfaces;
 using ARAManager.Business.Dao.NHibernate.Transaction;
+using ARAManager.Common;
 using ARAManager.Common.Dto;
 using ARAManager.Common.Factory;
-using ARAManager.Common.PresenterJson;
+using ARAManager.Common.PresenterJson.Account;
+using ARAManager.Common.PresenterJson.Common;
 using ARAManager.Common.Services.Presenter;
 using NHibernate.Criterion;
 using Ninject;
@@ -58,8 +60,21 @@ namespace ARAManager.Business.Service.Services.Presenter
             return m_authenticationJsonRespone;
         }
 
-        public JsonRespone SignUp(Customer customer)
+        public JsonRespone SignUp(CustomerJson customerJson)
         {
+            var customer = new Customer
+            {
+                FirstName = customerJson.FirstName,
+                LastName = customerJson.LastName,
+                Sex = customerJson.Sex,
+                Address = customerJson.Address,
+                BirthDay = DateTime.ParseExact(customerJson.BirthDay, Dictionary.DATE_FORMAT, null),
+                Email = customerJson.Email,
+                Phone = customerJson.Phone,
+                UserName = customerJson.Phone,
+                Password = customerJson.Password
+            };
+
             var srvDao = NinjectKernelFactory.Kernel.Get<ICustomerDataAccess>();
             using (var tr = TransactionsFactory.CreateTransactionScope())
             {

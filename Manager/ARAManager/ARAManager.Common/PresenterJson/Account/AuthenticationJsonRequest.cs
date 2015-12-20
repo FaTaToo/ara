@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-/* <header file="AuthenticationJsonRespone.cs" group="288-462">
+/* <header file="AuthenticationJson.cs" group="288-462">
  * Author: LE Sanh Phuc - 11520288
  * </header>
  * <summary>
- *      Implement AuthenticationJsonRespone.
+ *      Implement AuthenticationJson.
  * </summary>
  * <Problems>
  * </Problems>
@@ -12,15 +12,18 @@
 
 using System.Runtime.Serialization;
 
-namespace ARAManager.Common.PresenterJson
+namespace ARAManager.Common.PresenterJson.Account
 {
     [DataContract]
-    public class JsonRespone
+    public class AuthenticationJsonRequest
     {
         #region IProperties
 
         [DataMember]
-        public string Message { get; set; }
+        public string UserName { get; set; }
+
+        [DataMember]
+        public string Password { get; set; }
 
         #endregion IProperties
     }

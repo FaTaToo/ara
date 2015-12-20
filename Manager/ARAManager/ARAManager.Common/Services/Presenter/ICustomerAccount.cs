@@ -12,8 +12,8 @@
 
 using System.ServiceModel;
 using System.ServiceModel.Web;
-using ARAManager.Common.Dto;
-using ARAManager.Common.PresenterJson;
+using ARAManager.Common.PresenterJson.Account;
+using ARAManager.Common.PresenterJson.Common;
 
 namespace ARAManager.Common.Services.Presenter
 {
@@ -26,10 +26,10 @@ namespace ARAManager.Common.Services.Presenter
             ResponseFormat = WebMessageFormat.Json, Method = "POST")]
         JsonRespone Authenticate(AuthenticationJsonRequest account);
 
-        [OperationContract]
+        [OperationContract] 
         [WebInvoke(UriTemplate = "/SignUp",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json, Method = "POST")]
-        JsonRespone SignUp(Customer customer);
+        JsonRespone SignUp(CustomerJson customerJson);
     }
 }
