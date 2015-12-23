@@ -95,7 +95,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             GMAP_Target.Add(new GControl(GControl.preBuilt.GOverviewMapControl));
             GMAP_Target.Add(new GControl(GControl.preBuilt.LargeMapControl));
-            var marker = new GMarker(new GLatLng(10, 106)); 
+            var marker = new GMarker(new GLatLng(10, 106));
             var window = new GInfoWindow(marker, "<center><b>Target location</b></center>", true);
             GMAP_Target.Add(window);
         }

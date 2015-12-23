@@ -11,16 +11,13 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using ARAManager.Business.Dao.DataAccess.Interfaces;
 using ARAManager.Common;
 using ARAManager.Common.Dto;
 using ARAManager.Common.Factory;
-using ARAManager.Common.PresenterJson.ArResources;
 using ARAManager.Common.PresenterJson.Campaign;
 using ARAManager.Common.Services.Presenter;
-using Newtonsoft.Json;
 using NHibernate.Criterion;
 using Ninject;
 
@@ -34,7 +31,7 @@ namespace ARAManager.Business.Service.Services.Presenter
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
             var criteria = DetachedCriteria.For<Campaign>();
-            var campaigns= srvDao.FindByCriteria(criteria);
+            var campaigns = srvDao.FindByCriteria(criteria);
             return campaigns.Select(ReturnCampaignJson).ToList();
         }
 
@@ -50,19 +47,10 @@ namespace ARAManager.Business.Service.Services.Presenter
             return campaign != null ? ReturnCampaignJson(campaign) : new CampaignJson();
         }
 
-        public RootObject GetArData(string targetUrl)
-        {
-            using (var streamReader = new StreamReader(Dictionary.PATH_AR_JSON + targetUrl + ".json"))
-            {
-                var jsonFile = streamReader.ReadToEnd();
-                return JsonConvert.DeserializeObject<RootObject>(jsonFile);
-            }
-        }
-
         private CampaignJson ReturnCampaignJson(Campaign campaign)
         {
             return campaign.EndTime != null
-                ? new CampaignJson()
+                ? new CampaignJson
                 {
                     CampaignName = campaign.CampaignName,
                     StartTime = campaign.StartTime.ToString(Dictionary.DATE_FORMAT),

@@ -12,14 +12,19 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using ARAManager.Business.Dao.DataAccess.Interfaces;
 using ARAManager.Business.Dao.NHibernate.Transaction;
+using ARAManager.Common;
 using ARAManager.Common.Dto;
 using ARAManager.Common.Factory;
+using ARAManager.Common.PresenterJson.ArResources;
 using ARAManager.Common.PresenterJson.Common;
+using ARAManager.Common.PresenterJson.Mission;
 using ARAManager.Common.PresenterJson.Subscription;
 using ARAManager.Common.Services.Presenter;
+using Newtonsoft.Json;
 using NHibernate.Criterion;
 using Ninject;
 
@@ -77,18 +82,38 @@ namespace ARAManager.Business.Service.Services.Presenter
         public SubscriptionJson GetSubscription(string subscriptionId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
-            var subscription= srvDao.GetById(int.Parse(subscriptionId));
-            return ConvertSubscriptionToSubcriptionJson(subscription);
+            var subscription = srvDao.GetById(int.Parse(subscriptionId));
+            return subscription != null ? ConvertSubscriptionToSubcriptionJson(subscription) : null;
+        }
+
+        public RootObject GetArData(string targetId)
+        {
+            var srvDao = NinjectKernelFactory.Kernel.Get<ITargetDataAccess>();
+            var target = srvDao.GetById(int.Parse(targetId));
+            using (var streamReader = new StreamReader(Dictionary.PATH_AR_JSON + target.Url + ".json"))
+            {
+                var jsonFile = streamReader.ReadToEnd();
+                return JsonConvert.DeserializeObject<RootObject>(jsonFile);
+            }
+        }
+
+        public IList<MissionJson> GetMissionsOfCampaign(string campaignId)
+        {
+            var srvDao = NinjectKernelFactory.Kernel.Get<IMissionDataAccess>();
+            var criteria = DetachedCriteria.For<Mission>();
+            criteria.Add(Restrictions.Where<Mission>(m => m.Campaign.CampaignId == int.Parse(campaignId)));
+            var missions = srvDao.FindByCriteria(criteria);
+            return missions.Select(ConvertMissionToMissionJson).ToList();
         }
 
         private bool ReturnIsCompleteSubscriptionValue(string isComplete)
         {
-            return isComplete == "true";
+            return isComplete == Dictionary.TRUE;
         }
 
         private string ReturnIsCompleteSubscriptionString(bool isComplete)
         {
-            return isComplete ? "true" : "false";
+            return isComplete ? Dictionary.TRUE : Dictionary.FALSE;
         }
 
         private Subscription ConvertSubscriptionJsonToSubScription(SubscriptionJson subscriptionJson)
@@ -96,7 +121,7 @@ namespace ARAManager.Business.Service.Services.Presenter
             var srvDaoCampaign = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
             var srvDaoCustomer = NinjectKernelFactory.Kernel.Get<ICustomerDataAccess>();
             var srvDaoMission = NinjectKernelFactory.Kernel.Get<IMissionDataAccess>();
-            return new Subscription()
+            return new Subscription
             {
                 Campaign = srvDaoCampaign.GetById(int.Parse(subscriptionJson.CampaignId)),
                 Customer = srvDaoCustomer.GetById(int.Parse(subscriptionJson.CustomerId)),
@@ -110,7 +135,7 @@ namespace ARAManager.Business.Service.Services.Presenter
 
         private SubscriptionJson ConvertSubscriptionToSubcriptionJson(Subscription subscription)
         {
-            return new SubscriptionJson()
+            return new SubscriptionJson
             {
                 CampaignId = subscription.Campaign.CampaignId.ToString(),
                 CurrentMission = subscription.CurrentMission.MissionId.ToString(),
@@ -122,6 +147,18 @@ namespace ARAManager.Business.Service.Services.Presenter
             };
         }
 
-    #endregion IMethods
+        private MissionJson ConvertMissionToMissionJson(Mission mission)
+        {
+            return new MissionJson
+            {
+                MissionName = mission.Name,
+                Description = mission.Description,
+                Avatar = mission.Avatar,
+                NumTarget = mission.NumTarget.ToString(),
+                CampaignId = mission.Campaign.CampaignId.ToString()
+            };
+        }
+
+        #endregion IMethods
     }
 }

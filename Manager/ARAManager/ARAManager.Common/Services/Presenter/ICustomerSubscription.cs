@@ -13,7 +13,9 @@
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Web;
+using ARAManager.Common.PresenterJson.ArResources;
 using ARAManager.Common.PresenterJson.Common;
+using ARAManager.Common.PresenterJson.Mission;
 using ARAManager.Common.PresenterJson.Subscription;
 
 namespace ARAManager.Common.Services.Presenter
@@ -36,5 +38,15 @@ namespace ARAManager.Common.Services.Presenter
         [WebGet(UriTemplate = "/GetSubscription/{subscriptionId}",
             ResponseFormat = WebMessageFormat.Json)]
         SubscriptionJson GetSubscription(string subscriptionId);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "/GetArData/{targetId}",
+            ResponseFormat = WebMessageFormat.Json)]
+        RootObject GetArData(string targetId);
+
+        [OperationContract]
+        [WebGet(UriTemplate = "/GetMissionsOfCampaign/{campaignId}",
+            ResponseFormat = WebMessageFormat.Json)]
+        IList<MissionJson> GetMissionsOfCampaign(string campaignId);
     }
 }

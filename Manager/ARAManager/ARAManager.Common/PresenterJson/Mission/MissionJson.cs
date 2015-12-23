@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-/* <header file="SubscriptionJson.cs" group="288-462">
+/* <header file="MissionJson.cs" group="288-462">
  * Author: LE Sanh Phuc - 11520288
  * </header>
  * <summary>
- *      Implement the SubscriptionJson.
+ *      Implement the MissionJson.
  * </summary>
  * <Problems>
  * </Problems>
@@ -12,33 +12,27 @@
 
 using System.Runtime.Serialization;
 
-namespace ARAManager.Common.PresenterJson.Subscription
+namespace ARAManager.Common.PresenterJson.Mission
 {
     [DataContract]
-    public class SubscriptionJson
+    public class MissionJson
     {
         #region IProperties
 
         [DataMember]
-        public string CustomerId { get; set; }
+        public string MissionName { get; set; }
+
+        [DataMember]
+        public string Description { get; set; }
+
+        [DataMember]
+        public string Avatar { get; set; }
+
+        [DataMember]
+        public string NumTarget { get; set; }
 
         [DataMember]
         public string CampaignId { get; set; }
-
-        [DataMember]
-        public string CurrentMission { get; set; }
-
-        [DataMember]
-        public string NumOfCompletedMission { get; set; }
-
-        [DataMember]
-        public string IsComplete { get; set; }
-
-        [DataMember]
-        public string Comment { get; set; }
-
-        [DataMember]
-        public string Rating { get; set; }
 
         #endregion IProperties
     }

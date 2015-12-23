@@ -19,50 +19,50 @@
                         <ul class="nav nav-pills pull-left">
                             <li role="presentation">
                                 <asp:TextBox ID="txtNumCustomers_1" Enabled="False" runat="server"
-                                    ForeColor="white"
-                                    BackColor="black"
-                                    Width="30px"
-                                    MaxLength="1">
+                                             ForeColor="white"
+                                             BackColor="black"
+                                             Width="30px"
+                                             MaxLength="1">
                                 </asp:TextBox>
                             </li>
                             <li role="presentation">
                                 <asp:TextBox ID="txtNumCustomers_2" Enabled="False" runat="server"
-                                    ForeColor="white"
-                                    BackColor="black"
-                                    Width="30px"
-                                    MaxLength="1">
+                                             ForeColor="white"
+                                             BackColor="black"
+                                             Width="30px"
+                                             MaxLength="1">
                                 </asp:TextBox>
                             </li>
                             <li role="presentation">
                                 <asp:TextBox ID="txtNumCustomers_3" Enabled="False" runat="server"
-                                    ForeColor="white"
-                                    BackColor="black"
-                                    Width="30px"
-                                    MaxLength="1">
+                                             ForeColor="white"
+                                             BackColor="black"
+                                             Width="30px"
+                                             MaxLength="1">
                                 </asp:TextBox>
                             </li>
                             <li role="presentation">
                                 <asp:TextBox ID="txtNumCustomers_4" Enabled="False" runat="server"
-                                    ForeColor="white"
-                                    BackColor="black"
-                                    Width="30px"
-                                    MaxLength="1">
+                                             ForeColor="white"
+                                             BackColor="black"
+                                             Width="30px"
+                                             MaxLength="1">
                                 </asp:TextBox>
                             </li>
                             <li role="presentation">
                                 <asp:TextBox ID="txtNumCustomers_5" Enabled="False" runat="server"
-                                    ForeColor="white"
-                                    BackColor="black"
-                                    Width="30px"
-                                    MaxLength="1">
+                                             ForeColor="white"
+                                             BackColor="black"
+                                             Width="30px"
+                                             MaxLength="1">
                                 </asp:TextBox>
                             </li>
                             <li role="presentation">
                                 <asp:TextBox ID="txtNumCustomers_6" Enabled="False" runat="server"
-                                    ForeColor="white"
-                                    BackColor="black"
-                                    Width="30px"
-                                    MaxLength="1">
+                                             ForeColor="white"
+                                             BackColor="black"
+                                             Width="30px"
+                                             MaxLength="1">
                                 </asp:TextBox>
                             </li>
                         </ul>
@@ -74,50 +74,50 @@
                         <ul class="nav nav-pills pull-left">
                             <li role="presentation">
                                 <asp:TextBox ID="txtNumCompanies_1" Enabled="False" runat="server"
-                                    ForeColor="white"
-                                    BackColor="black"
-                                    Width="30px"
-                                    MaxLength="1">
+                                             ForeColor="white"
+                                             BackColor="black"
+                                             Width="30px"
+                                             MaxLength="1">
                                 </asp:TextBox>
                             </li>
                             <li role="presentation">
                                 <asp:TextBox ID="txtNumCompanies_2" Enabled="False" runat="server"
-                                    ForeColor="white"
-                                    BackColor="black"
-                                    Width="30px"
-                                    MaxLength="1">
+                                             ForeColor="white"
+                                             BackColor="black"
+                                             Width="30px"
+                                             MaxLength="1">
                                 </asp:TextBox>
                             </li>
                             <li role="presentation">
                                 <asp:TextBox ID="txtNumCompanies_3" Enabled="False" runat="server"
-                                    ForeColor="white"
-                                    BackColor="black"
-                                    Width="30px"
-                                    MaxLength="1">
+                                             ForeColor="white"
+                                             BackColor="black"
+                                             Width="30px"
+                                             MaxLength="1">
                                 </asp:TextBox>
                             </li>
                             <li role="presentation">
                                 <asp:TextBox ID="txtNumCompanies_4" Enabled="False" runat="server"
-                                    ForeColor="white"
-                                    BackColor="black"
-                                    Width="30px"
-                                    MaxLength="1">
+                                             ForeColor="white"
+                                             BackColor="black"
+                                             Width="30px"
+                                             MaxLength="1">
                                 </asp:TextBox>
                             </li>
                             <li role="presentation">
                                 <asp:TextBox ID="txtNumCompanies_5" Enabled="False" runat="server"
-                                    ForeColor="white"
-                                    BackColor="black"
-                                    Width="30px"
-                                    MaxLength="1">
+                                             ForeColor="white"
+                                             BackColor="black"
+                                             Width="30px"
+                                             MaxLength="1">
                                 </asp:TextBox>
                             </li>
                             <li role="presentation">
                                 <asp:TextBox ID="txtNumCompanies_6" Enabled="False" runat="server"
-                                    ForeColor="white"
-                                    BackColor="black"
-                                    Width="30px"
-                                    MaxLength="1">
+                                             ForeColor="white"
+                                             BackColor="black"
+                                             Width="30px"
+                                             MaxLength="1">
                                 </asp:TextBox>
                             </li>
                         </ul>
@@ -129,50 +129,50 @@
                         <ul class="nav nav-pills pull-left">
                             <li role="presentation">
                                 <asp:TextBox ID="txtNumCampaigns_1" Enabled="False" runat="server"
-                                    ForeColor="white"
-                                    BackColor="black"
-                                    Width="30px"
-                                    MaxLength="1">
+                                             ForeColor="white"
+                                             BackColor="black"
+                                             Width="30px"
+                                             MaxLength="1">
                                 </asp:TextBox>
                             </li>
                             <li role="presentation">
                                 <asp:TextBox ID="txtNumCampaigns_2" Enabled="False" runat="server"
-                                    ForeColor="white"
-                                    BackColor="black"
-                                    Width="30px"
-                                    MaxLength="1">
+                                             ForeColor="white"
+                                             BackColor="black"
+                                             Width="30px"
+                                             MaxLength="1">
                                 </asp:TextBox>
                             </li>
                             <li role="presentation">
                                 <asp:TextBox ID="txtNumCampaigns_3" Enabled="False" runat="server"
-                                    ForeColor="white"
-                                    BackColor="black"
-                                    Width="30px"
-                                    MaxLength="1">
+                                             ForeColor="white"
+                                             BackColor="black"
+                                             Width="30px"
+                                             MaxLength="1">
                                 </asp:TextBox>
                             </li>
                             <li role="presentation">
                                 <asp:TextBox ID="txtNumCampaigns_4" Enabled="False" runat="server"
-                                    ForeColor="white"
-                                    BackColor="black"
-                                    Width="30px"
-                                    MaxLength="1">
+                                             ForeColor="white"
+                                             BackColor="black"
+                                             Width="30px"
+                                             MaxLength="1">
                                 </asp:TextBox>
                             </li>
                             <li role="presentation">
                                 <asp:TextBox ID="txtNumCampaigns_5" Enabled="False" runat="server"
-                                    ForeColor="white"
-                                    BackColor="black"
-                                    Width="30px"
-                                    MaxLength="1">
+                                             ForeColor="white"
+                                             BackColor="black"
+                                             Width="30px"
+                                             MaxLength="1">
                                 </asp:TextBox>
                             </li>
                             <li role="presentation">
                                 <asp:TextBox ID="txtNumCampaigns_6" Enabled="False" runat="server"
-                                    ForeColor="white"
-                                    BackColor="black"
-                                    Width="30px"
-                                    MaxLength="1">
+                                             ForeColor="white"
+                                             BackColor="black"
+                                             Width="30px"
+                                             MaxLength="1">
                                 </asp:TextBox>
                             </li>
                         </ul>
@@ -188,6 +188,6 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_Content" runat="server">
     <div class="container" style="margin-left: 30px; margin-top: 20px;">
-       
+
     </div>
 </asp:Content>

@@ -13,7 +13,6 @@
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Web;
-using ARAManager.Common.PresenterJson.ArResources;
 using ARAManager.Common.PresenterJson.Campaign;
 
 namespace ARAManager.Common.Services.Presenter
@@ -30,10 +29,5 @@ namespace ARAManager.Common.Services.Presenter
         [WebInvoke(UriTemplate = "/GetCampaignByName/{campaignName}",
             ResponseFormat = WebMessageFormat.Json)]
         CampaignJson GetCampaignByName(string campaignName);
-
-        [OperationContract]
-        [WebInvoke(UriTemplate = "/GetArData/{targetUrl}",
-            ResponseFormat = WebMessageFormat.Json)]
-        RootObject GetArData(string targetUrl);
     }
 }

@@ -26,7 +26,7 @@ namespace ARAManager.Common.Services.Presenter
             ResponseFormat = WebMessageFormat.Json, Method = "POST")]
         JsonRespone Authenticate(AuthenticationJsonRequest account);
 
-        [OperationContract] 
+        [OperationContract]
         [WebInvoke(UriTemplate = "/SignUp",
             RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json, Method = "POST")]

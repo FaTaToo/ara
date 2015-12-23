@@ -49,6 +49,9 @@ namespace ARAManager.Common.PresenterJson.Campaign
         [DataMember]
         public string CampaignTypeId { get; set; }
 
+        [DataMember]
+        public string IsJoin { get; set; }
+
         #endregion IProperties
     }
 }

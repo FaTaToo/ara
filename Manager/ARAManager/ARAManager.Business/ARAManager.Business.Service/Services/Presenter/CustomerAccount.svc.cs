@@ -71,7 +71,7 @@ namespace ARAManager.Business.Service.Services.Presenter
                 BirthDay = DateTime.ParseExact(customerJson.BirthDay, Dictionary.DATE_FORMAT, null),
                 Email = customerJson.Email,
                 Phone = customerJson.Phone,
-                UserName = customerJson.Phone,
+                UserName = customerJson.UserName,
                 Password = customerJson.Password
             };
 

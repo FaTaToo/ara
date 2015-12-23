@@ -36,7 +36,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             switch (m_numberofCustomers.Length)
             {
                 case 1:
-                    string tmp = " " + " " + " " + " " + " " + m_numberofCustomers;
+                    var tmp = " " + " " + " " + " " + " " + m_numberofCustomers;
                     m_numberofCustomers = tmp;
                     SetTexttxtNumCustomers_6();
                     break;
@@ -67,7 +67,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             switch (m_numberofCompanies.Length)
             {
                 case 1:
-                    string tmp = " " + " " + " " + " " + " " + m_numberofCompanies;
+                    var tmp = " " + " " + " " + " " + " " + m_numberofCompanies;
                     m_numberofCompanies = tmp;
                     SetTexttxtNumCompanies_6();
                     break;
@@ -98,7 +98,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             switch (m_numberofCampaigns.Length)
             {
                 case 1:
-                    string tmp = " " + " " + " " + " " + " " + m_numberofCampaigns;
+                    var tmp = " " + " " + " " + " " + " " + m_numberofCampaigns;
                     m_numberofCampaigns = tmp;
                     SetTexttxtNumCampaigns_6();
                     break;

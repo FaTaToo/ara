@@ -89,6 +89,7 @@
     <Compile Include="PresenterJson\ArResources\RootObject.cs" />
     <Compile Include="PresenterJson\Campaign\CampaignJson.cs" />
     <Compile Include="PresenterJson\Common\JsonRespone.cs" />
+    <Compile Include="PresenterJson\Mission\MissionJson.cs" />
     <Compile Include="PresenterJson\Subscription\SubscriptionJson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Behaviors\PreserveReferencesAttribute.cs" />

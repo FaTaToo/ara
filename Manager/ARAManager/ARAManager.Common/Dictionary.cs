@@ -150,6 +150,9 @@ namespace ARAManager.Common
         public const string CAMPAIGN_TYPE_THEATER_URL = "theater";
         //------------------------------------------------------------------------------------
 
+        public const string TRUE = "true";
+        public const string FALSE = "false";
+
         #endregion IConstants
     }
 }
