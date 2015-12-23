@@ -1,7 +1,7 @@
 package uit.aep06.phuctung.ara.CommonClass;
 
 import android.content.Intent;
-import uit.aep06.phuctung.ara.HelperTargetDefaultActivity;
+import uit.aep06.phuctung.ara.HelperTargetGPSActivity;
 
 public class MissionGPS extends Mission {
 
@@ -18,7 +18,7 @@ public class MissionGPS extends Mission {
 	@Override
 	public void Helper() {
 		// TODO Auto-generated method stub
-		Intent intent = new Intent(getContext(),HelperTargetDefaultActivity.class);
+		Intent intent = new Intent(getContext(), HelperTargetGPSActivity.class);
 		intent.putExtra("GPS", getAddress());
 		getContext().startActivity(intent);
 	}

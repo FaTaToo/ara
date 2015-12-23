@@ -6,6 +6,7 @@ import java.util.List;
 import org.json.JSONException;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -90,6 +91,7 @@ public class MissionActivity extends Activity {
 				if (programState == 0) {
 					int result = subService.joinProgram(sub);
 					btnJoin.setText("Leave program");
+					programState = 1;// implement code to update to service
 				} else {
 					DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
 
@@ -99,15 +101,18 @@ public class MissionActivity extends Activity {
 							case DialogInterface.BUTTON_POSITIVE:
 								int result = subService.leaveProgram(sub);
 								btnJoin.setText("Join program");
+								programState = 0;// implement code to update to service
 								break;
 
 							case DialogInterface.BUTTON_NEGATIVE:
 								Toast.makeText(getApplicationContext(), "Cancel leaving program...", Toast.LENGTH_LONG).show();
 								break;
 							}
-						}
-						
+						}						
 					};
+					AlertDialog.Builder builder = new AlertDialog.Builder(MissionActivity.this);
+					builder.setMessage("Are you sure to exit this program?").setPositiveButton("Yes", dialogClickListener)
+																			.setNegativeButton("Cancel", dialogClickListener).show();					
 				}
 			}
 		});

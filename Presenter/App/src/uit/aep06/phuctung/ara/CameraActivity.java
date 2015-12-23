@@ -97,7 +97,7 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 	private MissionRenderer mRenderer;
 
 	// View overlays to be displayed in the Augmented View
-	private RelativeLayout mUILayout;
+	private LinearLayout mUILayout;
 
 	LinearLayout ARResourceLayout;
 	LinearLayout ARResourceButtonLayout;
@@ -129,7 +129,7 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 		// Create camera layout
 		startLoadingAnimation();
 
-		vuforiaAppSession.initAR(this, ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+		vuforiaAppSession.initAR(this, ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		// Creates the GestureDetector listener for processing double tap
 		mGestureDetector = new GestureDetector(this, new GestureListener());
 
@@ -412,7 +412,7 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 	private void startLoadingAnimation() {
 		// Inflates the Overlay Layout to be displayed above the Camera View
 		LayoutInflater inflater = LayoutInflater.from(this);
-		mUILayout = (RelativeLayout) inflater.inflate(R.layout.activity_camera, null, false);
+		mUILayout = (LinearLayout) inflater.inflate(R.layout.activity_camera, null, false);
 
 		mUILayout.setVisibility(View.VISIBLE);
 		mUILayout.setBackgroundColor(Color.BLACK);

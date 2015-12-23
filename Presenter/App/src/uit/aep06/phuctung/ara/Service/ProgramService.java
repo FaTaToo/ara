@@ -8,6 +8,7 @@ import org.json.JSONException;
 import uit.aep06.phuctung.ara.CommonClass.Program;
 import uit.aep06.phuctung.ara.CommonClass.Mission;
 import uit.aep06.phuctung.ara.CommonClass.MissionDefault;
+import uit.aep06.phuctung.ara.CommonClass.MissionGPS;
 
 public class ProgramService {
 	public List<Program> getListProgram() {		
@@ -53,6 +54,7 @@ public class ProgramService {
 		
 		// ProgramID = 1
 		Mission target1 = new MissionDefault();
+		target1.setType(1);
 		target1.setName("Em là bà nội của anh");
 		target1.setState(1);
 		target1.setYear("2015");
@@ -63,6 +65,7 @@ public class ProgramService {
 		
 		
 		Mission target2 = new MissionDefault();
+		target2.setType(1);
 		target2.setName("Hùng ALI");
 		target2.setState(1);
 		target2.setYear("2015");
@@ -72,6 +75,7 @@ public class ProgramService {
 		target2.setUrl("http://images.motthegioi.vn/uploaded/dieulinh/2015_11_15/hungali/ung-hoang-phuc-dang-qua-mao-hiem-cho-phim-hung-ali-hinh-anh-1.jpg?width=600");
 		
 		Mission target3 = new MissionDefault();
+		target3.setType(1);
 		target3.setName("Kẻ Săn Bóng Đêm - Keeper of Darkness");
 		target3.setState(1);
 		target3.setYear("2015");
@@ -80,13 +84,16 @@ public class ProgramService {
 		target3.setTargetContent("Scan poster của phim 'Kẻ săn bóng đêm' để nhận đc voucher giảm 10% giá vé. Nhanh tay lên nào mọi người ơi ^^");
 		target3.setUrl("https://chieuphimquocgia.com.vn/content/images/thumbs/0007508_ke-san-bong-dem-%282d-du-kien%29.jpg");
 		
-		Mission target4 = new MissionDefault();
+		Mission target4 = new MissionGPS();
+		target4.setType(2);
 		target4.setName("Đêm giáng sinh");
 		target4.setYear("2015");
 		target4.setDirector(" Trương Gia Huy");
 		target4.setActor("Trương Gia Huy, Quách Thái Khiết, Thích Hành Vũ");
 		target4.setTargetContent("Scan poster của phim 'Đêm giáng sinh' để nhận đc voucher giảm 10% giá vé. Nhanh tay lên nào mọi người ơi ^^");
 		target4.setUrl("https://chieuphimquocgia.com.vn/content/images/thumbs/0007508_ke-san-bong-dem-%282d-du-kien%29.jpg");
+		((MissionGPS)target4).setAddress("1 Cong Hoa; 54 Lu Gia; 246 Nguyen Chi Thanh; 47 Nguyen Hue");		
+		
 		listMission.add(target1);
 		listMission.add(target2);
 		listMission.add(target3);

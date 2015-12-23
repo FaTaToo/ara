@@ -9,6 +9,7 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -68,7 +69,7 @@ public class MissionAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, ViewGroup parent) {
 		View rowView;
 		rowView = inflater.inflate(R.layout.mission_list_item, null);
 
@@ -90,6 +91,13 @@ public class MissionAdapter extends BaseAdapter {
 			holder.tvActor.setText(target.getActor());
 			holder.tvContent.setText(target.getTargetContent());
 
+			holder.btnHeper.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					listMissions.get(position).Helper();					
+				}
+			});
+
 			if (target.getState() != 0) {
 				holder.imgCheck.setBackgroundResource(uit.aep06.phuctung.ara.R.drawable.icon_check);
 			} else {
@@ -101,14 +109,6 @@ public class MissionAdapter extends BaseAdapter {
 			backgroundTask.setUrl(target.getUrl());
 			backgroundTask.execute();
 
-			
-
-			holder.btnHeper.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					target.Helper();
-				}
-			});
 		}
 		return rowView;
 

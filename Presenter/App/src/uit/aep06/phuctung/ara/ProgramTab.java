@@ -22,6 +22,9 @@ public class ProgramTab extends Fragment {
 	List<Program> listProgram;	;
 	ListView listView;
 	String CustomerID;
+	
+	public ProgramTab(){		
+	}
 	public ProgramTab(String userID,List<Program> list) {
 		CustomerID = userID;
 		listProgram = list;
