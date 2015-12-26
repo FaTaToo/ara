@@ -80,15 +80,15 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private int checkExists(CustomerAccount customer) throws IOException, JSONException {
 		LoginBacgroundTask task = new LoginBacgroundTask();
 		int result = 0;
-		return 1;
-//		try {
-//			result = task.execute(customer).get();
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		} catch (ExecutionException e) {
-//			e.printStackTrace();
-//		}
-//		return result;		
+//		return 1;
+		try {
+			result = task.execute(customer).get();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+		return result;		
 	}	
 	
 	private class LoginBacgroundTask extends AsyncTask<CustomerAccount, Void, Integer> {

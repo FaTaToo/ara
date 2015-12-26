@@ -22,37 +22,52 @@ import uit.aep06.phuctung.ara.Service.CustomerAccountService;
 public class RegisterActivity extends Activity implements OnClickListener {
 	Button btnRegister;
 	EditText etUser, etFirstName, etLastName, etEmail, etPass, etRetype, etAddress, etBirthday, etPhone;
-	RadioButton radioMale;
+	boolean isMale = true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
-
+		etFirstName = (EditText) findViewById(R.id.etFirstName);
+		etLastName = (EditText) findViewById(R.id.etLastName);	
+		etBirthday = (EditText) findViewById(R.id.etBirthday);
+		etAddress = (EditText) findViewById(R.id.etAddress);
+		etEmail = (EditText) findViewById(R.id.etEmail);
+		etPhone = (EditText) findViewById(R.id.etPhone);
+		etUser = (EditText) findViewById(R.id.etUsername);
+		etPass = (EditText) findViewById(R.id.etPassword);
+		etRetype = (EditText) findViewById(R.id.etRetypePassword);
+		
 		btnRegister = (Button) findViewById(R.id.btnRegister);
 		btnRegister.setOnClickListener(this);
+	}
+	
+	public void onRadioButtonClicked(View view) {	    
+	    boolean checked = ((RadioButton) view).isChecked();
+	    
+	    switch(view.getId()) {
+	        case R.id.radioMale:
+	            if (checked)
+	                isMale = true;
+	            break;
+	        case R.id.radioFemale:
+	            if (checked)
+	                isMale = false;
+	            break;
+	    }
 	}
 
 	@Override
 	public void onClick(View v) {
-		if (v.getId() == R.id.btnRegister) {
-			etFirstName = (EditText) findViewById(R.id.etFirstName);
-			etLastName = (EditText) findViewById(R.id.etLastName);
-			radioMale = (RadioButton) findViewById(R.id.radioMale);
-			etBirthday = (EditText) findViewById(R.id.etBirthday);
-			etAddress = (EditText) findViewById(R.id.etAddress);
-			etEmail = (EditText) findViewById(R.id.etEmail);
-			etPhone = (EditText) findViewById(R.id.etPhone);
-			etUser = (EditText) findViewById(R.id.etUsername);
-			etPass = (EditText) findViewById(R.id.etPassword);
-			etRetype = (EditText) findViewById(R.id.etRetypePassword);
+		if (v.getId() == R.id.btnRegister) {			
 			if (etFirstName.getText().toString().isEmpty() || etLastName.getText().toString().isEmpty()
 					|| etBirthday.getText().toString().isEmpty() || etAddress.getText().toString().isEmpty()
 					|| etEmail.getText().toString().isEmpty() || etPhone.getText().toString().isEmpty()
 					|| etUser.getText().toString().isEmpty() || etPass.getText().toString().isEmpty()
-					|| etRetype.getText().toString().isEmpty())
+					|| etRetype.getText().toString().isEmpty()){
 				Toast.makeText(getApplicationContext(), "Alert ! Can not be" + " empty.", Toast.LENGTH_LONG).show();
-			return;
+				return;
+			}				
 		}
 		if (!etPass.getText().toString().equals(etRetype.getText().toString())) {
 			etPass.setText("");
@@ -61,7 +76,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 			etPass.setHighlightColor(new Color().RED);
 			etPass.setHint("Passwords do not match");
 		} else {
-			CustomerAccount customerAccount = new CustomerAccount();
+			CustomerAccount customerAccount = new CustomerAccount();			
 			customerAccount.setFirstName(etFirstName.getText().toString());
 			customerAccount.setLastName(etLastName.getText().toString());
 			customerAccount.setBirthDay(etBirthday.getText().toString());
@@ -70,7 +85,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 			customerAccount.setPhone(etPhone.getText().toString());
 			customerAccount.setUsername(etUser.getText().toString());
 			customerAccount.setPass(etPass.getText().toString());
-			if (radioMale.isChecked()) {
+			if (isMale) {
 				customerAccount.setSex("Male");
 			} else {
 				customerAccount.setSex("Female");
@@ -81,7 +96,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 				int result = task.execute(customerAccount).get();
 
 				if (result == 0) {
-					etUser.setText("fatatoo");
+					etUser.setText("");
 					etUser.setFocusable(true);
 					etUser.setHighlightColor(new Color().RED);
 					etUser.setHint("This username or email or phone is exists.");

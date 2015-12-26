@@ -21,7 +21,6 @@
     </LinearLayout>
 
     <ScrollView
-        android:id="@+id/scrollView1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20px"
@@ -73,6 +72,7 @@
                 <RadioGroup
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:checkedButton="@+id/radioMale"
                     android:orientation="horizontal" >
 
                     <RadioButton
