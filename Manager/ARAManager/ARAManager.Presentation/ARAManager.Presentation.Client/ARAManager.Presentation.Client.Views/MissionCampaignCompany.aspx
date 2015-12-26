@@ -142,37 +142,6 @@
                         </tr>
                         <!--#endregion AVATAR-->
 
-                        <!--#region NUM_TARGET-->
-                        <tr>
-                            <td style="width: 30%">Number of target</td>
-                            <td style="width: 70%">
-                                <asp:TextBox ID="txtNumTarget" runat="server"
-                                             Width="100%"
-                                             placeholder="Number of target"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 30%"></td>
-                            <td style="width: 70%">
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator_NumTarget" runat="server"
-                                                            ForeColor="Red"
-                                                            ControlToValidate="txtNumTarget"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 30%"></td>
-                            <td style="width: 70%">
-                                <asp:RangeValidator ID="RangeValidator_NumMission" runat="server"
-                                                    Display="Dynamic"
-                                                    ForeColor="Red"
-                                                    Type="Integer"
-                                                    MinimumValue="0"
-                                                    MaximumValue="2147483647"
-                                                    ControlToValidate="txtNumTarget"/>
-                            </td>
-                        </tr>
-                        <!--#endregion NUM_TARGET-->
-
                         <!--#region ERROR_MESSAGE-->
                         <tr>
                             <td style="width: 30%"></td>

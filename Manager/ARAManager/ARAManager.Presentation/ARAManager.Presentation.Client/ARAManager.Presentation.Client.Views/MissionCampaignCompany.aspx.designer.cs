@@ -121,33 +121,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator_Avatar;
         
         /// <summary>
-        /// txtNumTarget control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumTarget;
-        
-        /// <summary>
-        /// RequiredFieldValidator_NumTarget control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_NumTarget;
-        
-        /// <summary>
-        /// RangeValidator_NumMission control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator_NumMission;
-        
-        /// <summary>
         /// lblMessage control.
         /// </summary>
         /// <remarks>

@@ -65,7 +65,6 @@ create table ARA_Mission
 	MissionName	nvarchar(100) unique not null,		
 	Description	nvarchar(500) not null,
 	Avatar		nvarchar(500) not null,	
-	NumTarget	int not null,
 	--Foreign key
 	CampaignId int not null,
 	---
