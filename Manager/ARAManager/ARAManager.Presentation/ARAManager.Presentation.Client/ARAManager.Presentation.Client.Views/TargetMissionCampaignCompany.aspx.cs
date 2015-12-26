@@ -138,7 +138,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             }
             try
             {
-                // Save image target to server - just help debugging, it does not affect system.
                 var extension = Path.GetExtension(FileUpload_Target.FileName);
                 var fileName = txtTargetName.Text + extension;
                 var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_TARGET + fileName);
@@ -183,7 +182,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                  *      _ I haven't not validate the case which string is not float format because of time
                  *      => will be fixed using tryparse
                  */
-                if (txtLat.Text != string.Empty || txtLong.Text != string.Empty)
+                if (txtLat.Text != string.Empty && txtLong.Text != string.Empty)
                 {
                     m_latitude = double.Parse(txtLat.Text);
                     m_longtitude = double.Parse(txtLong.Text);

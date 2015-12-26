@@ -55,10 +55,6 @@ namespace ARAManager.Common.Dto
         [Property(Column = "Avatar", Name = "Avatar", TypeType = typeof (string), Length = 500, NotNull = true)]
         public virtual string Avatar { get; set; }
 
-        [DataMember]
-        [Property(Column = "NumTarget", Name = "NumTarget", TypeType = typeof (int), NotNull = true)]
-        public virtual int NumTarget { get; set; }
-
         [ManyToOne(Name = "Campaign", Column = "CampaignId", NotNull = true, Fetch = FetchMode.Select)]
         [DataMember]
         public virtual Campaign Campaign { get; set; }

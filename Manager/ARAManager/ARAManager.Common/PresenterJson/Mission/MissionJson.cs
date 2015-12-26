@@ -29,9 +29,6 @@ namespace ARAManager.Common.PresenterJson.Mission
         public string Avatar { get; set; }
 
         [DataMember]
-        public string NumTarget { get; set; }
-
-        [DataMember]
         public string CampaignId { get; set; }
 
         #endregion IProperties

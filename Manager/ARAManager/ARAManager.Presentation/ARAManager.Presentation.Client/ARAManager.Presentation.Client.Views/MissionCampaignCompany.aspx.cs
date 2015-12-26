@@ -76,7 +76,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             m_mission = ClientServiceFactory.MissionService.GetMissionById(int.Parse(Request.QueryString["MissionId"]));
             txtMissionName.Text = m_mission.Name;
             txtDescription.Text = m_mission.Description;
-            txtNumTarget.Text = m_mission.NumTarget.ToString();
             s_rowVersion = m_mission.RowVersion;
         }
 
@@ -103,22 +102,18 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         {
             RequiredFieldValidator_MissionName.Enabled = flag;
             RequiredFieldValidator_Description.Enabled = flag;
-            RequiredFieldValidator_NumTarget.Enabled = flag;
             CustomValidator_MissionName.Enabled = flag;
             CustomValidator_Description.Enabled = flag;
             CustomValidator_Avatar.Enabled = flag;
-            RangeValidator_NumMission.Enabled = flag;
         }
 
         private void SetErrorMessages()
         {
             RequiredFieldValidator_MissionName.ErrorMessage = Validation.REQUIRE_MISSIONCAMPAIGNCOMPANY_NAME;
             RequiredFieldValidator_Description.ErrorMessage = Validation.REQUIRE_MISSIONCAMPAIGNCOMPANY_DESCRIPTION;
-            RequiredFieldValidator_NumTarget.ErrorMessage = Validation.REQUIRE_MISSIONCAMPAIGNCOMPANY_NUM_TARGET;
             CustomValidator_MissionName.ErrorMessage = Validation.VALIDATOR_MISSION_NAME;
             CustomValidator_Description.ErrorMessage = Validation.VALIDATOR_DESCRIPTION;
             CustomValidator_Avatar.ErrorMessage = Validation.VALIDATOR_AVATAR;
-            RangeValidator_NumMission.ErrorMessage = Validation.VALIDATOR_NUM_MISSION;
         }
 
         protected string GetAvatar(object eval)
@@ -175,7 +170,6 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
             m_mission.Name = txtMissionName.Text;
             m_mission.Description = txtDescription.Text;
-            m_mission.NumTarget = int.Parse(txtNumTarget.Text);
             m_mission.Avatar = Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + fileName;
             m_mission.Campaign = m_campaign;
             m_mission.RowVersion = s_rowVersion;

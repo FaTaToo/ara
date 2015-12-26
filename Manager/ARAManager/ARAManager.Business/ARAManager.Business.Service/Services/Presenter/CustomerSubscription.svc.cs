@@ -170,7 +170,7 @@ namespace ARAManager.Business.Service.Services.Presenter
             criteria.Add(Restrictions.Where<Subscription>(c => c.Customer.CustomerId == int.Parse(subscriptionUpdateMissionJson.CustomerId)));
             var subscription = srvDao.FindByCriteria(criteria).First();
             subscription.NumOfCompletedMission++;
-            subscription.CompletedMission+= subscriptionUpdateMissionJson.MissionId;
+            subscription.CompletedMission+= subscriptionUpdateMissionJson.MissionId+";";
             var count=0;
             var rowVersion = new byte[Dictionary.MAX_LENGTH_ROW_VERSION_ARRAY];
             foreach (var byteValue in subscriptionUpdateMissionJson.RowVersion)
@@ -238,7 +238,6 @@ namespace ARAManager.Business.Service.Services.Presenter
                 MissionName = mission.Name,
                 Description = mission.Description,
                 Avatar = mission.Avatar,
-                NumTarget = mission.NumTarget.ToString(),
                 CampaignId = mission.Campaign.CampaignId.ToString()
             };
         }

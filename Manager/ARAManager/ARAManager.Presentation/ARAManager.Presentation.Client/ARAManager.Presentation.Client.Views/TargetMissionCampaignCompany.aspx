@@ -137,13 +137,15 @@
                             <td style="width: 25%">Latitude</td>
                             <td style="width: 25%">
                                 <asp:TextBox ID="txtLat" runat="server"
-                                             Width="100%"
+                                             Width="25%"
                                              placeholder="Latitude"/>
                             </td>
+                        </tr>
+                        <tr>
                             <td style="width: 25%">Longtitude</td>
                             <td style="width: 25%">
                                 <asp:TextBox ID="txtLong" runat="server"
-                                             Width="100%"
+                                             Width="25%"
                                              placeholder="Longtitude"/>
                             </td>
                         </tr>
