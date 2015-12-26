@@ -91,6 +91,7 @@
     <Compile Include="PresenterJson\Common\JsonRespone.cs" />
     <Compile Include="PresenterJson\Mission\MissionJson.cs" />
     <Compile Include="PresenterJson\Subscription\SubscriptionJson.cs" />
+    <Compile Include="PresenterJson\Subscription\SubscriptionUpdateMissionJson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Behaviors\PreserveReferencesAttribute.cs" />
     <Compile Include="Services\Behaviors\PreserveReferencesOperationBehavior.cs" />

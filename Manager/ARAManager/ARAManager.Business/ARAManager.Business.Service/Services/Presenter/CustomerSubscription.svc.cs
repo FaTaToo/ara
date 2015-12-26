@@ -49,6 +49,11 @@ namespace ARAManager.Business.Service.Services.Presenter
 
         #region IMethods
 
+        /// <summary>
+        /// Help customer for joining campaign
+        /// </summary>
+        /// <param name="subscriptionJson"></param>
+        /// <returns></returns>
         public JsonRespone JoinCampaign(SubscriptionJson subscriptionJson)
         {
             var subscription = ConvertSubscriptionJsonToSubScription(subscriptionJson);
@@ -58,18 +63,49 @@ namespace ARAManager.Business.Service.Services.Presenter
                 try
                 {
                     srvDaoSubcription.Save(subscription);
-                    m_authenticationJsonRespone.Message = "Successfully";
+                    m_authenticationJsonRespone.Message = Dictionary.MSG_SUCCESS;
                     tr.Complete();
                     return m_authenticationJsonRespone;
                 }
                 catch (Exception)
                 {
-                    m_authenticationJsonRespone.Message = "Failed";
+                    m_authenticationJsonRespone.Message = Dictionary.MSG_FAILED;
                     return m_authenticationJsonRespone;
                 }
             }
         }
 
+        /// <summary>
+        /// Leave campaign - delete subscription by subsriptionId
+        /// </summary>
+        /// <param name="subscriptionId"></param>
+        /// <returns></returns>
+        public JsonRespone LeaveCampaign(string subscriptionId)
+        {
+            var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
+            using (var tr = TransactionsFactory.CreateTransactionScope())
+            {
+                try
+                {
+                    var deleteSubscription = srvDao.GetById(Int32.Parse(subscriptionId));
+                    srvDao.Delete(deleteSubscription);
+                    tr.Complete();
+                    m_authenticationJsonRespone.Message = Dictionary.MSG_SUCCESS;
+                    return m_authenticationJsonRespone;
+                }
+                catch (Exception)
+                {
+                    m_authenticationJsonRespone.Message = Dictionary.MSG_FAILED;
+                    return m_authenticationJsonRespone;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get list of subscriptions by customerId
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         public IList<SubscriptionJson> GetListOfSubscriptions(string customerId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
@@ -79,6 +115,11 @@ namespace ARAManager.Business.Service.Services.Presenter
             return subscriptions.Select(ConvertSubscriptionToSubcriptionJson).ToList();
         }
 
+        /// <summary>
+        /// Get subscription by subcriptionId
+        /// </summary>
+        /// <param name="subscriptionId"></param>
+        /// <returns></returns>
         public SubscriptionJson GetSubscription(string subscriptionId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
@@ -86,6 +127,11 @@ namespace ARAManager.Business.Service.Services.Presenter
             return subscription != null ? ConvertSubscriptionToSubcriptionJson(subscription) : null;
         }
 
+        /// <summary>
+        /// Get Ar Data by targetId
+        /// </summary>
+        /// <param name="targetId"></param>
+        /// <returns></returns>
         public RootObject GetArData(string targetId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ITargetDataAccess>();
@@ -97,6 +143,11 @@ namespace ARAManager.Business.Service.Services.Presenter
             }
         }
 
+        /// <summary>
+        /// Get list of missions of campaign by campaignId
+        /// </summary>
+        /// <param name="campaignId"></param>
+        /// <returns></returns>
         public IList<MissionJson> GetMissionsOfCampaign(string campaignId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<IMissionDataAccess>();
@@ -104,6 +155,40 @@ namespace ARAManager.Business.Service.Services.Presenter
             criteria.Add(Restrictions.Where<Mission>(m => m.Campaign.CampaignId == int.Parse(campaignId)));
             var missions = srvDao.FindByCriteria(criteria);
             return missions.Select(ConvertMissionToMissionJson).ToList();
+        }
+
+        /// <summary>
+        /// Update completed mission to subcription table
+        /// </summary>
+        /// <param name="subscriptionUpdateMissionJson"></param>
+        /// <returns></returns>
+        public JsonRespone UpdateCompletedMission(SubscriptionUpdateMissionJson subscriptionUpdateMissionJson)
+        {
+            var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
+            var criteria = DetachedCriteria.For<Subscription>();
+            criteria.Add(Restrictions.Where<Subscription>(c => c.Campaign.CampaignId == int.Parse(subscriptionUpdateMissionJson.CampaignId)));
+            criteria.Add(Restrictions.Where<Subscription>(c => c.Customer.CustomerId == int.Parse(subscriptionUpdateMissionJson.CustomerId)));
+            var subscription = srvDao.FindByCriteria(criteria).First();
+            subscription.NumOfCompletedMission++;
+            subscription.CompletedMission+= subscriptionUpdateMissionJson.MissionId;
+            var count=0;
+            var rowVersion = new byte[Dictionary.MAX_LENGTH_ROW_VERSION_ARRAY];
+            foreach (var byteValue in subscriptionUpdateMissionJson.RowVersion)
+            {
+                rowVersion[count++] = byte.Parse(byteValue.ToString());
+            }
+            subscription.RowVersion = rowVersion;
+            try
+            {
+                srvDao.Save(subscription);
+                m_authenticationJsonRespone.Message = Dictionary.MSG_SUCCESS;
+                return m_authenticationJsonRespone;
+            }
+            catch (Exception)
+            {
+                m_authenticationJsonRespone.Message = Dictionary.MSG_FAILED;
+                return m_authenticationJsonRespone;
+            }
         }
 
         private bool ReturnIsCompleteSubscriptionValue(string isComplete)
@@ -120,15 +205,14 @@ namespace ARAManager.Business.Service.Services.Presenter
         {
             var srvDaoCampaign = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
             var srvDaoCustomer = NinjectKernelFactory.Kernel.Get<ICustomerDataAccess>();
-            var srvDaoMission = NinjectKernelFactory.Kernel.Get<IMissionDataAccess>();
             return new Subscription
             {
-                Campaign = srvDaoCampaign.GetById(int.Parse(subscriptionJson.CampaignId)),
                 Customer = srvDaoCustomer.GetById(int.Parse(subscriptionJson.CustomerId)),
-                Comment = subscriptionJson.Comment,
-                CurrentMission = srvDaoMission.GetById(int.Parse(subscriptionJson.CurrentMission)),
+                Campaign = srvDaoCampaign.GetById(int.Parse(subscriptionJson.CampaignId)),
                 IsComplete = ReturnIsCompleteSubscriptionValue(subscriptionJson.IsComplete),
+                CompletedMission = subscriptionJson.CompletedMission,
                 NumOfCompletedMission = int.Parse(subscriptionJson.NumOfCompletedMission),
+                Comment = subscriptionJson.Comment,
                 Rating = int.Parse(subscriptionJson.Rating)
             };
         }
@@ -137,10 +221,10 @@ namespace ARAManager.Business.Service.Services.Presenter
         {
             return new SubscriptionJson
             {
-                CampaignId = subscription.Campaign.CampaignId.ToString(),
-                CurrentMission = subscription.CurrentMission.MissionId.ToString(),
                 CustomerId = subscription.Customer.CustomerId.ToString(),
+                CampaignId = subscription.Campaign.CampaignId.ToString(),
                 IsComplete = ReturnIsCompleteSubscriptionString(subscription.IsComplete),
+                CompletedMission = subscription.CompletedMission,
                 NumOfCompletedMission = subscription.NumOfCompletedMission.ToString(),
                 Comment = subscription.Comment,
                 Rating = subscription.ToString()

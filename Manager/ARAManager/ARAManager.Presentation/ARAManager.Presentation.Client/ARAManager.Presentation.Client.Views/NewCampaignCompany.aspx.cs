@@ -40,17 +40,14 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             if (rbCheckIn.Checked)
             {
                 /*
-                 * 1 campaign
-                 * 1 mission
-                 * 1 target
+                 * 1 campaign - 1 mission - 1 target
                  */
                 NavigateToEditCampaignCompanyPage(Dictionary.CAMPAIGN_TYPE_CHECK_IN_URL);
             }
             else if (rbTour.Checked)
             {
                 /*
-                 * 1 campaign
-                 * n mission
+                 * 1 campaign - n mission
                  * 1 mission - 1 target 
                  */
                 NavigateToEditCampaignCompanyPage(Dictionary.CAMPAIGN_TYPE_TOUR_URL);
@@ -58,10 +55,9 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             else if (rbTheater.Checked)
             {
                 /*
-                 * 1 campaign
-                 * 1 mission
-                 * 1 target 
-                 */
+                 * 1 campaign - n mission
+                 * 1 mission - 1 target 
+                */
                 NavigateToEditCampaignCompanyPage(Dictionary.CAMPAIGN_TYPE_THEATER_URL);
             }
         }

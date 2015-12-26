@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ARAManager.Test", "ARAManag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARAManager.Presentation.Client", "ARAManager.Presentation\ARAManager.Presentation.Client\ARAManager.Presentation.Client.csproj", "{8B7FF0C3-3794-4788-8148-178604419D5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARAManager.Test.UnitTest", "ARAManager.Test\ARAManager.Test.UnitTest\ARAManager.Test.UnitTest.csproj", "{B47F1323-4C07-4952-AE56-B2221B77E940}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,16 @@ Global
 		{8B7FF0C3-3794-4788-8148-178604419D5A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8B7FF0C3-3794-4788-8148-178604419D5A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8B7FF0C3-3794-4788-8148-178604419D5A}.Release|x86.ActiveCfg = Release|Any CPU
+		{B47F1323-4C07-4952-AE56-B2221B77E940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B47F1323-4C07-4952-AE56-B2221B77E940}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B47F1323-4C07-4952-AE56-B2221B77E940}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B47F1323-4C07-4952-AE56-B2221B77E940}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B47F1323-4C07-4952-AE56-B2221B77E940}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B47F1323-4C07-4952-AE56-B2221B77E940}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B47F1323-4C07-4952-AE56-B2221B77E940}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B47F1323-4C07-4952-AE56-B2221B77E940}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B47F1323-4C07-4952-AE56-B2221B77E940}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B47F1323-4C07-4952-AE56-B2221B77E940}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,5 +103,6 @@ Global
 		{6760E5F8-5224-4239-8B02-42937A4A34B3} = {79CB0BFB-E27B-43A2-98F0-158914361F9E}
 		{CEF9566D-F135-4099-B821-5B3F89D42D28} = {8F1F2061-23CD-4C86-ABAD-3B840199F863}
 		{8B7FF0C3-3794-4788-8148-178604419D5A} = {8F1F2061-23CD-4C86-ABAD-3B840199F863}
+		{B47F1323-4C07-4952-AE56-B2221B77E940} = {5DF282C2-4A82-41A8-89C9-CA02A40268DC}
 	EndGlobalSection
 EndGlobal

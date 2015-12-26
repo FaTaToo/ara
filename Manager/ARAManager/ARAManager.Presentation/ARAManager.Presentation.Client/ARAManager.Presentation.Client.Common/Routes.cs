@@ -1,28 +1,21 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-/* <header file="Authentication.cs" group="288-462">
+/* <header file="Routes.cs" group="288-462">
  * Author: LE Sanh Phuc - 11520288
  * </header>
  * <summary>
- *      Store Username, Password of accounts in Client.
+ *      Defines navigation path, naming aspx files in web.
  * </summary>
  * <Problems>
- *      Will be configured in hosting.
+ *      Will be updated.
  * </Problems>
 */
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common
 {
-    /// <summary>
-    ///     Define data of Username, Password in Client
-    /// </summary>
-    public class Authentication
+    public class Routes
     {
-        #region IFields
+        #region IConstants
 
-        public const string FPT_USER = "phucls11520288";
-        public const string FPT_PASSWORD = "Levantam9434";
-
-        #endregion IFields
+        #endregion IConstants
     }
 }

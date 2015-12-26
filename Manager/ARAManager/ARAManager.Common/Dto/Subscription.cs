@@ -34,8 +34,8 @@ namespace ARAManager.Common.Dto
         public virtual Campaign Campaign { get; set; }
 
         [DataMember]
-        [ManyToOne(Name = "CurrentMission", Column = "CurrentMission", NotNull = false, Fetch = FetchMode.Select)]
-        public virtual Mission CurrentMission { get; set; }
+        [Property(Column = "CompletedMission", Name = "CompletedMission", TypeType = typeof(string), Length = 500, NotNull = false)]
+        public virtual string CompletedMission { get; set; }
 
         [DataMember]
         [Property(Column = "NumOfCompletedMission", Name = "NumOfCompletedMission", TypeType = typeof (int),

@@ -132,7 +132,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             var uri = "ftp://phucls11520288@www.ara288.somee.com/www.ara288.somee.com/Ara_Data/Missions/Avatar/";
             var request = (FtpWebRequest) WebRequest.Create(uri + fileName);
             request.Method = WebRequestMethods.Ftp.UploadFile;
-            // FTP site logon.
+            // FTP site logon
             request.Credentials = new NetworkCredential(Authentication.FPT_USER, Authentication.FPT_PASSWORD);
             // Copy the entire contents of the file to the request stream.
             var sourceStream = new StreamReader(Server.MapPath(filePath));
@@ -172,6 +172,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + fileName);
             FileUpload_Avatar.SaveAs(filePath);
             UploadFileToFtpServer(fileName, Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + fileName);
+
             m_mission.Name = txtMissionName.Text;
             m_mission.Description = txtDescription.Text;
             m_mission.NumTarget = int.Parse(txtNumTarget.Text);
@@ -200,7 +201,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
         protected string GetNavigateUrl(object eval)
         {
-            return "TargetMissionCampaignCompany.aspx?RequestId=" + eval;
+            return "TargetMissionCampaignCompany.aspx?RequestId=" + eval+"&Type="+m_campaign.CampaignName;
         }
 
         protected string GetEditMissionUrl(object eval)
