@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.ServiceModel;
+using System.Web.Hosting;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ARAManager.Common;
@@ -24,6 +25,7 @@ using ARAManager.Common.Exception.Target;
 using ARAManager.Common.PresenterJson.ArResources;
 using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
 using ARAManager.Presentation.Connectivity;
+using Newtonsoft.Json;
 using Subgurim.Controles;
 using Attribute = ARAManager.Common.PresenterJson.ArResources.Attribute;
 
@@ -52,7 +54,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             InitializeDataForGMap();
             if (Request.QueryString["Type"] == Dictionary.CAMPAIGN_TYPE_CHECK_IN_URL)
             {
-                txtDirector.Enabled=false;
+                txtDirector.Enabled = false;
                 txtActor.Enabled = false;
             }
         }
@@ -138,6 +140,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             }
             try
             {
+                // Save image target to server - just help debugging, it does not affect system.
                 var extension = Path.GetExtension(FileUpload_Target.FileName);
                 var fileName = txtTargetName.Text + extension;
                 var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_TARGET + fileName);
@@ -176,7 +179,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                         sw.WriteLine(targetId);
                     }
                 }
-                
+
                 /* Get latitude and longtitude from textbox
                  * Issues:
                  *      _ I haven't not validate the case which string is not float format because of time
@@ -347,7 +350,15 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 });
                 var rootObject = new RootObject {ArResources = arResources};
 
-                ClientServiceFactory.TargetService.SaveNewTarget(target, rootObject);
+                // Save new target
+                ClientServiceFactory.TargetService.SaveNewTarget(target);
+
+                // Save JSON to server
+                var arResourcesJson = JsonConvert.SerializeObject(rootObject);
+                var jsonPath = Dictionary.PATH_AR_JSON + target.Url + ".json";
+                File.Create(HostingEnvironment.MapPath(jsonPath)).Dispose();
+                // ReSharper disable once AssignNullToNotNullAttribute - Added by PhucLS
+                File.WriteAllText(HostingEnvironment.MapPath(jsonPath), arResourcesJson);
 
                 Response.Redirect(@"~\ARAManager.Presentation.Client.Views\CampaignCompany.aspx");
             }

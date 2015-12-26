@@ -28,7 +28,7 @@ namespace ARAManager.Business.Service.Services.Presenter
         #region IMethods
 
         /// <summary>
-        /// Get list of ALL available campaigns of ALL companies
+        ///     Get list of ALL available campaigns of ALL companies
         /// </summary>
         /// <returns></returns>
         public IList<CampaignJson> GetListOfCampaigns()
@@ -40,7 +40,7 @@ namespace ARAManager.Business.Service.Services.Presenter
         }
 
         /// <summary>
-        /// Get campaign by campaign name
+        ///     Get campaign by campaign name
         /// </summary>
         /// <param name="campaignName"></param>
         /// <returns></returns>

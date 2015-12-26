@@ -11,9 +11,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
-using System.IO;
 using System.ServiceModel;
-using System.Web.Hosting;
 using ARAManager.Business.Dao.DataAccess.Interfaces;
 using ARAManager.Business.Dao.NHibernate.Transaction;
 using ARAManager.Common;
@@ -21,9 +19,7 @@ using ARAManager.Common.Dto;
 using ARAManager.Common.Exception.Generic;
 using ARAManager.Common.Exception.Target;
 using ARAManager.Common.Factory;
-using ARAManager.Common.PresenterJson.ArResources;
 using ARAManager.Common.Services;
-using Newtonsoft.Json;
 using NHibernate;
 using Ninject;
 
@@ -33,7 +29,7 @@ namespace ARAManager.Business.Service.Services
     {
         #region IMethods
 
-        public void SaveNewTarget(Target target, RootObject jsonArResources)
+        public void SaveNewTarget(Target target)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ITargetDataAccess>();
             using (var tr = TransactionsFactory.CreateTransactionScope())
@@ -41,11 +37,6 @@ namespace ARAManager.Business.Service.Services
                 try
                 {
                     srvDao.Save(target);
-                    var arResourcesJson = JsonConvert.SerializeObject(jsonArResources);
-                    var jsonPath = Dictionary.PATH_AR_JSON + target.Url + ".json";
-                    File.Create(HostingEnvironment.MapPath(jsonPath)).Dispose();
-                    // ReSharper disable once AssignNullToNotNullAttribute - Added by PhucLS
-                    File.WriteAllText(HostingEnvironment.MapPath(jsonPath), arResourcesJson);
                 }
                 catch (ADOException)
                 {

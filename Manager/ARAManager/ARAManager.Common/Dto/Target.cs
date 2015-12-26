@@ -35,7 +35,7 @@ namespace ARAManager.Common.Dto
         public virtual string TargetName { get; set; }
 
         [DataMember]
-        [Property(Column = "Address", Name = "Address", TypeType = typeof(string), Length = 500, NotNull = true)]
+        [Property(Column = "Address", Name = "Address", TypeType = typeof (string), Length = 500, NotNull = true)]
         public virtual string Address { get; set; }
 
         [DataMember]

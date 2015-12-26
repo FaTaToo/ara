@@ -44,7 +44,7 @@ namespace ARAManager.Business.Service.Services.Presenter
         #region IMethods
 
         /// <summary>
-        /// Check UserName and Password of user
+        ///     Check UserName and Password of user
         /// </summary>
         /// <param name="account"></param>
         /// <returns></returns>
@@ -66,7 +66,7 @@ namespace ARAManager.Business.Service.Services.Presenter
         }
 
         /// <summary>
-        /// Sign up a new account of customer
+        ///     Sign up a new account of customer
         /// </summary>
         /// <param name="customerJson"></param>
         /// <returns></returns>

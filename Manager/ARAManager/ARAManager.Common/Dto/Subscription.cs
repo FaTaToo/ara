@@ -34,7 +34,8 @@ namespace ARAManager.Common.Dto
         public virtual Campaign Campaign { get; set; }
 
         [DataMember]
-        [Property(Column = "CompletedMission", Name = "CompletedMission", TypeType = typeof(string), Length = 500, NotNull = false)]
+        [Property(Column = "CompletedMission", Name = "CompletedMission", TypeType = typeof (string), Length = 500,
+            NotNull = false)]
         public virtual string CompletedMission { get; set; }
 
         [DataMember]

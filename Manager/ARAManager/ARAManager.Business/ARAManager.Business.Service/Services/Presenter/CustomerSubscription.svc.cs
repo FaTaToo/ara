@@ -50,7 +50,7 @@ namespace ARAManager.Business.Service.Services.Presenter
         #region IMethods
 
         /// <summary>
-        /// Help customer for joining campaign
+        ///     Help customer for joining campaign
         /// </summary>
         /// <param name="subscriptionJson"></param>
         /// <returns></returns>
@@ -76,7 +76,7 @@ namespace ARAManager.Business.Service.Services.Presenter
         }
 
         /// <summary>
-        /// Leave campaign - delete subscription by subsriptionId
+        ///     Leave campaign - delete subscription by subsriptionId
         /// </summary>
         /// <param name="subscriptionId"></param>
         /// <returns></returns>
@@ -87,7 +87,7 @@ namespace ARAManager.Business.Service.Services.Presenter
             {
                 try
                 {
-                    var deleteSubscription = srvDao.GetById(Int32.Parse(subscriptionId));
+                    var deleteSubscription = srvDao.GetById(int.Parse(subscriptionId));
                     srvDao.Delete(deleteSubscription);
                     tr.Complete();
                     m_authenticationJsonRespone.Message = Dictionary.MSG_SUCCESS;
@@ -102,7 +102,7 @@ namespace ARAManager.Business.Service.Services.Presenter
         }
 
         /// <summary>
-        /// Get list of subscriptions by customerId
+        ///     Get list of subscriptions by customerId
         /// </summary>
         /// <param name="customerId"></param>
         /// <returns></returns>
@@ -116,7 +116,7 @@ namespace ARAManager.Business.Service.Services.Presenter
         }
 
         /// <summary>
-        /// Get subscription by subcriptionId
+        ///     Get subscription by subcriptionId
         /// </summary>
         /// <param name="subscriptionId"></param>
         /// <returns></returns>
@@ -128,7 +128,7 @@ namespace ARAManager.Business.Service.Services.Presenter
         }
 
         /// <summary>
-        /// Get Ar Data by targetId
+        ///     Get Ar Data by targetId
         /// </summary>
         /// <param name="targetId"></param>
         /// <returns></returns>
@@ -144,7 +144,7 @@ namespace ARAManager.Business.Service.Services.Presenter
         }
 
         /// <summary>
-        /// Get list of missions of campaign by campaignId
+        ///     Get list of missions of campaign by campaignId
         /// </summary>
         /// <param name="campaignId"></param>
         /// <returns></returns>
@@ -158,7 +158,7 @@ namespace ARAManager.Business.Service.Services.Presenter
         }
 
         /// <summary>
-        /// Update completed mission to subcription table
+        ///     Update completed mission to subcription table
         /// </summary>
         /// <param name="subscriptionUpdateMissionJson"></param>
         /// <returns></returns>
@@ -166,12 +166,16 @@ namespace ARAManager.Business.Service.Services.Presenter
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
             var criteria = DetachedCriteria.For<Subscription>();
-            criteria.Add(Restrictions.Where<Subscription>(c => c.Campaign.CampaignId == int.Parse(subscriptionUpdateMissionJson.CampaignId)));
-            criteria.Add(Restrictions.Where<Subscription>(c => c.Customer.CustomerId == int.Parse(subscriptionUpdateMissionJson.CustomerId)));
+            criteria.Add(
+                Restrictions.Where<Subscription>(
+                    c => c.Campaign.CampaignId == int.Parse(subscriptionUpdateMissionJson.CampaignId)));
+            criteria.Add(
+                Restrictions.Where<Subscription>(
+                    c => c.Customer.CustomerId == int.Parse(subscriptionUpdateMissionJson.CustomerId)));
             var subscription = srvDao.FindByCriteria(criteria).First();
             subscription.NumOfCompletedMission++;
-            subscription.CompletedMission+= subscriptionUpdateMissionJson.MissionId+";";
-            var count=0;
+            subscription.CompletedMission += subscriptionUpdateMissionJson.MissionId + ";";
+            var count = 0;
             var rowVersion = new byte[Dictionary.MAX_LENGTH_ROW_VERSION_ARRAY];
             foreach (var byteValue in subscriptionUpdateMissionJson.RowVersion)
             {
