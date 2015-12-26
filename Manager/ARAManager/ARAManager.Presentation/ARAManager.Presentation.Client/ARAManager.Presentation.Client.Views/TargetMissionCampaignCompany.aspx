@@ -20,7 +20,7 @@
             <div class="col-md-6">
                 <ul class="nav nav-pills nav-stacked pull-left">
                     <li role="presentation">
-                        <asp:Label ID="lblMovieInformation" runat="server" Text="Movie information"
+                        <asp:Label ID="lblInformation" runat="server" Text="Information"
                                    Width="60%"
                                    BackColor="darkred"
                                    Font-Bold="True"
@@ -133,7 +133,32 @@
                                           OnMarkerClick="GMAP_Target_OnMarkerClick"/>
                             </td>
                         </tr>
+                        <tr>
+                            <td style="width: 25%">Latitude</td>
+                            <td style="width: 25%">
+                                <asp:TextBox ID="txtLat" runat="server"
+                                             Width="100%"
+                                             placeholder="Latitude"/>
+                            </td>
+                            <td style="width: 25%">Longtitude</td>
+                            <td style="width: 25%">
+                                <asp:TextBox ID="txtLong" runat="server"
+                                             Width="100%"
+                                             placeholder="Longtitude"/>
+                            </td>
+                        </tr>
                         <!--#endregion GOOGLE_MAP-->
+                        
+                        <!--#region ADDRESS-->
+                        <tr>
+                            <td style="width: 30%">Address</td>
+                            <td style="width: 70%">
+                                <asp:TextBox ID="txtAddress" runat="server"
+                                             Width="100%"
+                                             placeholder="Location"/>
+                            </td>
+                        </tr>
+                        <!--#endregion ADDRESS-->
 
                         <!--#region FACEBOOK_URL-->
                         <tr>

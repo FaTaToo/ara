@@ -43,6 +43,11 @@ namespace ARAManager.Business.Service.Services.Presenter
 
         #region IMethods
 
+        /// <summary>
+        /// Check UserName and Password of user
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
         public JsonRespone Authenticate(AuthenticationJsonRequest account)
         {
             var username = account.UserName;
@@ -51,15 +56,20 @@ namespace ARAManager.Business.Service.Services.Presenter
             var criteria = DetachedCriteria.For<Customer>();
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                m_authenticationJsonRespone.Message = "Failed";
+                m_authenticationJsonRespone.Message = Dictionary.MSG_FAILED;
             }
             criteria.Add(Restrictions.Where<Customer>(a => a.UserName == username));
             criteria.Add(Restrictions.Where<Customer>(a => a.Password == password));
             var result = srvDao.FindByCriteria(criteria);
-            m_authenticationJsonRespone.Message = result.Count != 0 ? "Success" : "Failed";
+            m_authenticationJsonRespone.Message = result.Count != 0 ? Dictionary.MSG_SUCCESS : Dictionary.MSG_FAILED;
             return m_authenticationJsonRespone;
         }
 
+        /// <summary>
+        /// Sign up a new account of customer
+        /// </summary>
+        /// <param name="customerJson"></param>
+        /// <returns></returns>
         public JsonRespone SignUp(CustomerJson customerJson)
         {
             var customer = new Customer
@@ -81,13 +91,13 @@ namespace ARAManager.Business.Service.Services.Presenter
                 try
                 {
                     srvDao.Save(customer);
-                    m_authenticationJsonRespone.Message = "Successfully";
+                    m_authenticationJsonRespone.Message = Dictionary.MSG_SUCCESS;
                     tr.Complete();
                     return m_authenticationJsonRespone;
                 }
                 catch (Exception)
                 {
-                    m_authenticationJsonRespone.Message = "Failed";
+                    m_authenticationJsonRespone.Message = Dictionary.MSG_FAILED;
                     return m_authenticationJsonRespone;
                 }
             }

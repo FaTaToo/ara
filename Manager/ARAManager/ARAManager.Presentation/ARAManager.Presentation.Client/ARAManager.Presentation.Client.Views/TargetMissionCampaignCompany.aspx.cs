@@ -50,6 +50,11 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             m_mission = ClientServiceFactory.MissionService.GetMissionById(int.Parse(Request.QueryString["RequestId"]));
             EnableValidator(false);
             InitializeDataForGMap();
+            if (Request.QueryString["Type"] == Dictionary.CAMPAIGN_TYPE_CHECK_IN_URL)
+            {
+                txtDirector.Enabled=false;
+                txtActor.Enabled = false;
+            }
         }
 
         protected void CustomValidator_TargetName_OnServerValidate(object source, ServerValidateEventArgs args)
@@ -172,12 +177,24 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                         sw.WriteLine(targetId);
                     }
                 }
+                
+                /* Get latitude and longtitude from textbox
+                 * Issues:
+                 *      _ I haven't not validate the case which string is not float format because of time
+                 *      => will be fixed using tryparse
+                 */
+                if (txtLat.Text != string.Empty || txtLong.Text != string.Empty)
+                {
+                    m_latitude = double.Parse(txtLat.Text);
+                    m_longtitude = double.Parse(txtLong.Text);
+                }
 
                 // Save target to database
                 var target = new Target
                 {
-                    TargetName = txtTargetName.Text,
                     Url = targetId,
+                    TargetName = txtTargetName.Text,
+                    Address = txtAddress.Text,
                     Latitude = m_latitude,
                     Longitude = m_longtitude,
                     FacebookUrl = txtFacebookUrl.Text,
@@ -243,10 +260,12 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                         Value = txtYoutubeUrl.Text
                     }
                 };
+
                 // Create Platform with Processor in Platforms
                 platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
                 processors.Processor = new Processor {ProcessorType = Dictionary.AR_PROCESSOR_TYPE_YOUTUBE};
                 platforms.Platform = platform;
+
                 // Add ArResource to ArResources
                 arResources.ArResource.Add(new ArResource
                 {
@@ -260,6 +279,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 platforms = new Platforms();
                 platform = new Platform();
                 processors = new Processors();
+
                 // Create Attribute in CommonAttributes
                 commonAttributes.Attribute = new List<Attribute>
                 {
@@ -269,10 +289,12 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                         Value = txtFacebookUrl.Text
                     }
                 };
+
                 // Create Platform with Processor in Platforms
                 platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
                 processors.Processor = new Processor {ProcessorType = Dictionary.AR_PROCESSOR_TYPE_FACEBOOK};
                 platforms.Platform = platform;
+
                 // Add ArResource to ArResources
                 arResources.ArResource.Add(new ArResource
                 {
@@ -286,6 +308,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 platforms = new Platforms();
                 platform = new Platform();
                 processors = new Processors();
+
                 // Create Attribute in CommonAttributes
                 commonAttributes.Attribute = new List<Attribute>
                 {
@@ -310,10 +333,12 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                         Value = txtDescription.Text
                     }
                 };
+
                 // Create Platform with Processor in Platforms
                 platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
                 processors.Processor = new Processor {ProcessorType = Dictionary.AR_PROCESSOR_TYPE_TEXTVIEW};
                 platforms.Platform = platform;
+
                 // Add ArResource to ArResources
                 arResources.ArResource.Add(new ArResource
                 {
@@ -322,15 +347,10 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                     Platforms = platforms
                 });
                 var rootObject = new RootObject {ArResources = arResources};
+
                 ClientServiceFactory.TargetService.SaveNewTarget(target, rootObject);
 
-                txtTargetName.Text = string.Empty;
-                txtFacebookUrl.Text = string.Empty;
-                txtYoutubeUrl.Text = string.Empty;
-                txtArName.Text = string.Empty;
-                txtDirector.Text = string.Empty;
-                txtActor.Text = string.Empty;
-                txtDescription.Text = string.Empty;
+                Response.Redirect(@"~\ARAManager.Presentation.Client.Views\CampaignCompany.aspx");
             }
             catch (FaultException<TargetNameAlreadyExistException> ex)
             {

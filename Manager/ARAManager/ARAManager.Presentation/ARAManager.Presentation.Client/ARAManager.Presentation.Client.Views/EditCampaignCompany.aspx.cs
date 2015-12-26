@@ -219,9 +219,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         private void SetCampaignType()
         {
             m_campaignType = ClientServiceFactory.CampaignTypeService.GetCampaignTypeByName(m_campaignTypeName);
-            if (m_campaignTypeName == Dictionary.CAMPAIGN_TYPE_CHECK_IN_URL ||
-                m_campaignTypeName == Dictionary.CAMPAIGN_TYPE_THEATER_URL)
-            {
+            if (m_campaignTypeName == Dictionary.CAMPAIGN_TYPE_CHECK_IN_URL) {
                 txtMission.Text = "1";
                 txtMission.Enabled = false;
             }

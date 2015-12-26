@@ -22,13 +22,13 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// lblMovieInformation control.
+        /// lblInformation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMovieInformation;
+        protected global::System.Web.UI.WebControls.Label lblInformation;
         
         /// <summary>
         /// txtArName control.
@@ -146,6 +146,33 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Subgurim.Controles.GMap GMAP_Target;
+        
+        /// <summary>
+        /// txtLat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLat;
+        
+        /// <summary>
+        /// txtLong control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLong;
+        
+        /// <summary>
+        /// txtAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAddress;
         
         /// <summary>
         /// txtFacebookUrl control.

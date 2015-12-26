@@ -26,7 +26,7 @@ namespace ARAManager.Common.PresenterJson.Subscription
         public string CampaignId { get; set; }
 
         [DataMember]
-        public string CurrentMission { get; set; }
+        public string CompletedMission { get; set; }
 
         [DataMember]
         public string NumOfCompletedMission { get; set; }

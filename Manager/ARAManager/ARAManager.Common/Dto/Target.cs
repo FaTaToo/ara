@@ -35,6 +35,10 @@ namespace ARAManager.Common.Dto
         public virtual string TargetName { get; set; }
 
         [DataMember]
+        [Property(Column = "Address", Name = "Address", TypeType = typeof(string), Length = 500, NotNull = true)]
+        public virtual string Address { get; set; }
+
+        [DataMember]
         [Property(Column = "Latitude", Name = "Latitude", TypeType = typeof (double), NotNull = false)]
         public virtual double? Latitude { get; set; }
 
