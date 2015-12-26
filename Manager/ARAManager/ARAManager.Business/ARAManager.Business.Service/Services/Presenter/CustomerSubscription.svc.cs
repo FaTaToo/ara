@@ -75,6 +75,11 @@ namespace ARAManager.Business.Service.Services.Presenter
             }
         }
 
+        /// <summary>
+        /// Leave campaign - delete subscription by subsriptionId
+        /// </summary>
+        /// <param name="subscriptionId"></param>
+        /// <returns></returns>
         public JsonRespone LeaveCampaign(string subscriptionId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
@@ -150,6 +155,40 @@ namespace ARAManager.Business.Service.Services.Presenter
             criteria.Add(Restrictions.Where<Mission>(m => m.Campaign.CampaignId == int.Parse(campaignId)));
             var missions = srvDao.FindByCriteria(criteria);
             return missions.Select(ConvertMissionToMissionJson).ToList();
+        }
+
+        /// <summary>
+        /// Update completed mission to subcription table
+        /// </summary>
+        /// <param name="subscriptionUpdateMissionJson"></param>
+        /// <returns></returns>
+        public JsonRespone UpdateCompletedMission(SubscriptionUpdateMissionJson subscriptionUpdateMissionJson)
+        {
+            var srvDao = NinjectKernelFactory.Kernel.Get<ISubscriptionDataAccess>();
+            var criteria = DetachedCriteria.For<Subscription>();
+            criteria.Add(Restrictions.Where<Subscription>(c => c.Campaign.CampaignId == int.Parse(subscriptionUpdateMissionJson.CampaignId)));
+            criteria.Add(Restrictions.Where<Subscription>(c => c.Customer.CustomerId == int.Parse(subscriptionUpdateMissionJson.CustomerId)));
+            var subscription = srvDao.FindByCriteria(criteria).First();
+            subscription.NumOfCompletedMission++;
+            subscription.CompletedMission+= subscriptionUpdateMissionJson.MissionId;
+            var count=0;
+            var rowVersion = new byte[Dictionary.MAX_LENGTH_ROW_VERSION_ARRAY];
+            foreach (var byteValue in subscriptionUpdateMissionJson.RowVersion)
+            {
+                rowVersion[count++] = byte.Parse(byteValue.ToString());
+            }
+            subscription.RowVersion = rowVersion;
+            try
+            {
+                srvDao.Save(subscription);
+                m_authenticationJsonRespone.Message = Dictionary.MSG_SUCCESS;
+                return m_authenticationJsonRespone;
+            }
+            catch (Exception)
+            {
+                m_authenticationJsonRespone.Message = Dictionary.MSG_FAILED;
+                return m_authenticationJsonRespone;
+            }
         }
 
         private bool ReturnIsCompleteSubscriptionValue(string isComplete)

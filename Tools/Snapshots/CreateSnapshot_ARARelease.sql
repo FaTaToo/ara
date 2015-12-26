@@ -1,5 +1,5 @@
-CREATE DATABASE ARA20151128_Release_SNAPSHOT ON
-( NAME = ARA20151128_Release, FILENAME = 
-'D:\Projects\ARA\1.0\src\Tools\Snapshots\src\ARA20151128_Release.ss')
-AS SNAPSHOT OF ARA20151128_Release;
+CREATE DATABASE ARAOrigin_Release_SNAPSHOT ON
+( NAME = ARAOrigin_Release, FILENAME = 
+'D:\Projects\ARA\1.0\src\Tools\Snapshots\ARAOrigin_Release.ss')
+AS SNAPSHOT OF ARARelease;
 GO

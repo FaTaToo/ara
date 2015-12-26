@@ -53,5 +53,11 @@ namespace ARAManager.Common.Services.Presenter
         [WebGet(UriTemplate = "/GetMissionsOfCampaign/{campaignId}",
             ResponseFormat = WebMessageFormat.Json)]
         IList<MissionJson> GetMissionsOfCampaign(string campaignId);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "/UpdateCompletedMission",
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json, Method = "POST")]
+        JsonRespone UpdateCompletedMission(SubscriptionUpdateMissionJson subscriptionUpdateMissionJson);
     }
 }
