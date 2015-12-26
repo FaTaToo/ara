@@ -45,11 +45,10 @@
             android:text="@string/txtParticipate" />
 
         <Button
-            android:id="@+id/btnScan"
+            android:id="@+id/btnDoMission"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/btnScan" />
+            android:layout_gravity="center" />
     </LinearLayout>
 
     <ListView

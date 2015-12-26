@@ -5,7 +5,7 @@ import java.io.Serializable;
 import android.content.Context;
 
 public abstract class Mission{		    		  
-	public  String targetID;
+	public  String missionID;
 	public  String targetContent;
 	public  String url;
 	public  String name;
@@ -40,11 +40,11 @@ public abstract class Mission{
 	public void setState(int state) {
 		this.state = state;
 	}
-	public String getTargetID() {
-		return targetID;
+	public String getMissionID() {
+		return missionID;
 	}
-	public void setTargetID(String targetID) {
-		this.targetID = targetID;
+	public void setMissionID(String missionID) {
+		this.missionID = missionID;
 	}
 	public String getTargetContent() {
 		return targetContent;

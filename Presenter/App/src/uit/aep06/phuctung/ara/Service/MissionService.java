@@ -1,6 +1,6 @@
 package uit.aep06.phuctung.ara.Service;
 
-public class TargetService { //need to extends service
+public class MissionService { //need to extends service
 	public String GetDataTarget(String targetID) {
 		//Implement code to get string result from Service later
 		//Now, fake data
@@ -11,5 +11,4 @@ public class TargetService { //need to extends service
 	public int checkTargetState(String id, String userID) {
 		return 0;
 	}
-
 }

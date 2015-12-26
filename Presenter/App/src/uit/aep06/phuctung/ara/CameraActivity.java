@@ -74,7 +74,7 @@ import uit.aep06.phuctung.ara.Presenter.ARCommentProcessor;
 import uit.aep06.phuctung.ara.Presenter.ARDetailProcessor;
 import uit.aep06.phuctung.ara.Presenter.ARPictureProcessor;
 import uit.aep06.phuctung.ara.Presenter.ARYoutubeProcessor;
-import uit.aep06.phuctung.ara.Service.TargetService;
+import uit.aep06.phuctung.ara.Service.MissionService;
 import uit.aep06.phuctung.ara.VuforiaImplement.ApplicationControl;
 import uit.aep06.phuctung.ara.VuforiaImplement.ApplicationException;
 import uit.aep06.phuctung.ara.VuforiaImplement.ApplicationSession;
@@ -641,7 +641,7 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 						// Get target ID
 						doStopTrackers();
 						mTargetID = result.getUniqueTargetId();
-						TargetService ts = new TargetService();
+						MissionService ts = new MissionService();
 						String dataTarget = ts.GetDataTarget(mTargetID);
 						
 						// Read XML data

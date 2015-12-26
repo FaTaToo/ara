@@ -25,15 +25,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 import uit.aep06.phuctung.ara.CommonClass.Mission;
 import uit.aep06.phuctung.ara.CommonClass.Subscription;
+import uit.aep06.phuctung.ara.Service.MissionService;
 import uit.aep06.phuctung.ara.Service.ProgramService;
 import uit.aep06.phuctung.ara.Service.SubscriptionService;
 import uit.aep06.phuctung.ara.Service.TargetService;
 import uit.aep06.phuctung.ara.custom_adapter.MissionAdapter;
 
 public class MissionActivity extends Activity {
-	String customerID;
-	String programID;
-	int programState;
+	String customerID, programID;	
+	int programState, programType;
 	List<Mission> listMissions = new ArrayList<Mission>();
 	ListView listView;
 
@@ -42,6 +42,11 @@ public class MissionActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_mission);
 		Intent intent = getIntent();
+		programID = intent.getStringExtra("ID");
+    	customerID = intent.getStringExtra("CustomerID");
+    	programState = intent.getIntExtra("ProgramState", 0);
+    	programType = intent.getIntExtra("programType", 0);
+
 
 		TextView tvName = (TextView) findViewById(R.id.txtName);
 		tvName.setTextColor(Color.BLUE);
@@ -59,21 +64,34 @@ public class MissionActivity extends Activity {
 		pBar.setProgress(intent.getIntExtra("NumMissionFinish", 0));
 		pBar.getProgressDrawable().setColorFilter(Color.RED, Mode.SRC_IN);
 
-		Button btnScan = (Button) findViewById(R.id.btnScan);
-		btnScan.setOnClickListener(new OnClickListener() {
+		Button btnDoMission = (Button) findViewById(R.id.btnDoMission);
+		if (programType == 0) {
+			btnDoMission.setText("Check in");
+		}
+		else {
+			btnDoMission.setText("Scan");
+		}
+		
+		btnDoMission.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
-				intent.putExtra("customerID", customerID);
-				startActivity(intent);
+				// can phai check join hay chua
+				if (programType == 0) {
+					Mission mission = listMissions.get(0); 
+					boolean result = checkIn(mission.getMissionID());
+					if (result) {
+						
+					}
+				}
+				else {
+					Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
+					intent.putExtra("customerID", customerID);
+					startActivity(intent);
+				}				
 			}
 		});
 		
-		programID = intent.getStringExtra("ID");
-    	customerID = intent.getStringExtra("CustomerID");
-    	programState = intent.getIntExtra("ProgramState", 0);
-
+		
     	final SubscriptionService subService = new SubscriptionService();
 		final Subscription sub = new Subscription();
 		sub.setCustomerID(customerID);
@@ -118,17 +136,17 @@ public class MissionActivity extends Activity {
 		});
 		
 		listView = (ListView) findViewById(R.id.lvMission);
-		BackgroundTask task = new BackgroundTask();
+		ListMissionTask task = new ListMissionTask();
 		task.execute();
 	}
 
 	private void loadListViewMission() {
 		MissionAdapter missionAdapter = new MissionAdapter(this, R.layout.mission_list_item, listMissions);
-		for (Mission t : listMissions) {
+		for (Mission mission : listMissions) {
 			// implement code to process TargetGPS
-			TargetService targetService = new TargetService();
-			t.setState(targetService.checkTargetState(t.getTargetID(), customerID));
-			t.setContext(this);
+			MissionService missionService = new MissionService();
+			mission.setState(missionService.checkTargetState(mission.getMissionID(), customerID));
+			mission.setContext(this);
 		}
 
 		missionAdapter.notifyDataSetChanged();
@@ -144,7 +162,19 @@ public class MissionActivity extends Activity {
 		}
 	}
 
-	private class BackgroundTask extends AsyncTask<Void, Void, Void> {
+	private boolean checkIn(String missionID){
+		return false;
+	}
+	private class CompleteMissionTask extends AsyncTask<String, Void, Integer> {
+
+		@Override
+		protected Integer doInBackground(String... params) {
+			SubscriptionService subcriptionService = new MissionService();
+			return subcriptionService.updateCompletedMission(customerID, programID, params[0]);			
+		}
+		
+	}
+	private class ListMissionTask extends AsyncTask<Void, Void, Void> {
 		private ProgressDialog dialog;
 
 		@Override
