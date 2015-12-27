@@ -6,6 +6,7 @@
  *      Implement logic for EditCampaignCompany page.
  * </summary>
  * <Problems>
+ *      Will fix naming of photos when uploading.
  * </Problems>
 */
 // --------------------------------------------------------------------------------------------------------------------
@@ -198,8 +199,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
         private string UploadImageBanner()
         {
-            var extension = Path.GetExtension(FileUpload_Banner.FileName);
-            var fileName = FileUpload_Banner.FileName + "Banner" + extension;
+            var fileName = Dictionary.CAMPAIGN_AVATAR + m_company.CompanyId + FileUpload_Banner.FileName;
             var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_CAMPAIGNS_BANNER + fileName);
             FileUpload_Banner.SaveAs(filePath);
             UploadFileToFtpServer(fileName, Dictionary.PATH_UPLOADED_CAMPAIGNS_BANNER + fileName, false);
@@ -208,8 +208,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
         private string UploadImageAvatar()
         {
-            var extension = Path.GetExtension(FileUpload_Avatar.FileName);
-            var fileName = FileUpload_Avatar.FileName + "Avatar" + extension;
+            var fileName = Dictionary.CAMPAIGN_BANNER + m_company.CompanyId + FileUpload_Avatar.FileName;
             var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_CAMPAIGNS_AVATAR + fileName);
             FileUpload_Avatar.SaveAs(filePath);
             UploadFileToFtpServer(fileName, Dictionary.PATH_UPLOADED_CAMPAIGNS_AVATAR + fileName, true);

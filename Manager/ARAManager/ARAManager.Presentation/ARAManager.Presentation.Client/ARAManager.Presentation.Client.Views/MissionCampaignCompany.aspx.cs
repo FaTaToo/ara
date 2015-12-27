@@ -6,7 +6,7 @@
  *      Implement logic for MissionCampaignCompany page.
  * </summary>
  * <Problems>
- *      1. 
+ *      Will fix naming of photos when uploading
  * </Problems>
 */
 // --------------------------------------------------------------------------------------------------------------------
@@ -162,8 +162,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 lblMessage.Text = Dictionary.EXCEED_NUMBER_OF_MISSION;
                 return;
             }
-            var extension = Path.GetExtension(FileUpload_Avatar.FileName);
-            var fileName = FileUpload_Avatar.FileName + "Avatar" + extension;
+            var fileName = Dictionary.MISSION_AVATAR + m_campaign.CampaignId + FileUpload_Avatar.FileName;
             var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + fileName);
             FileUpload_Avatar.SaveAs(filePath);
             UploadFileToFtpServer(fileName, Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + fileName);

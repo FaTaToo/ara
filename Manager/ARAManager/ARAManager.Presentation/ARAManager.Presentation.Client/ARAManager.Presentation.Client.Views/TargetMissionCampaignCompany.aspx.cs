@@ -6,6 +6,7 @@
  *      Implement logic for TargetMissionCampaignCompany page.
  * </summary>
  * <Problems>
+ *      Will fix naming of photos when uploading
  * </Problems>
 */
 // --------------------------------------------------------------------------------------------------------------------
@@ -168,8 +169,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 else
                 {
                     // Save image target to server - just help debugging, it does not affect system.
-                    var extension = Path.GetExtension(FileUpload_Target.FileName);
-                    var fileName = txtTargetName.Text + extension;
+                    var fileName = Dictionary.TARGET + m_mission.MissionId + FileUpload_Target.FileName;
                     var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_TARGET + fileName);
                     FileUpload_Target.SaveAs(filePath);
 
@@ -239,9 +239,9 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                     // Create Attribute in CommonAttributes
                     foreach (var uploadedPicture in uploadedPicturesGallery)
                     {
-                        var fileName = "Ar" + uploadedPicture.FileName;
-                        var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_TARGET + fileName);
-                        FileUpload_Target.SaveAs(filePath);
+                        var fileName = "Ar" + m_mission.MissionId + uploadedPicture.FileName;
+                        var filePath = Dictionary.PATH_UPLOADED_TARGET + fileName;
+                        FileUpload_Target.SaveAs(Server.MapPath(filePath));
 
                         // Get the object used to communicate with the server.
                         var urip =
@@ -393,14 +393,20 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
                 // Save JSON to server
                 var arResourcesJson = JsonConvert.SerializeObject(rootObject);
+                var jsonPath = Dictionary.PATH_UPLOADED_TARGET + target.Url + ".json";
+                File.Create(Server.MapPath(jsonPath)).Dispose();
+                // ReSharper disable once AssignNullToNotNullAttribute - Added by PhucLS
+                File.WriteAllText(Server.MapPath(jsonPath), arResourcesJson);
+
                 // Get the object used to communicate with the server.
-                const string uri = "ftp://phucls11520288@www.ara288.somee.com/www.ara288.somee.com/Ar_Data/Json";
+                string uri = "ftp://phucls11520288@www.ara288.somee.com/www.ara288.somee.com/Ar_Data/Json/";
                 var request = (FtpWebRequest) WebRequest.Create(uri + target.Url + ".json");
                 request.Method = WebRequestMethods.Ftp.UploadFile;
+                
                 // FTP site logon
                 request.Credentials = new NetworkCredential(Authentication.FTP_USER, Authentication.FTP_PASSWORD);
                 // Copy the entire contents of the file to the request stream.
-                var sourceStream = new StreamReader(arResourcesJson);
+                var sourceStream = new StreamReader(Server.MapPath(jsonPath));
                 var fileContents = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd());
                 sourceStream.Close();
                 request.ContentLength = fileContents.Length;

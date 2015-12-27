@@ -116,7 +116,7 @@ namespace ARAManager.Common
         //------------------------------------------------------------------------------------
 
         // Path
-        public const string PATH_UPLOADED_TARGET = @"~/Ara_Data/Targets/";
+        public const string PATH_UPLOADED_TARGET = @"~/Ar_Data/Json/";
         public const string PATH_LIST_TARGET = @"~/Ara_Data/Targets/ListTargets.txt";
         public const string PATH_UPLOADED_CAMPAIGNS_AVATAR = @"~/Ara_Data/Campaigns/Avatar/";
         public const string PATH_UPLOADED_CAMPAIGNS_BANNER = @"~/Ara_Data/Campaigns/Banner/";
@@ -157,7 +157,10 @@ namespace ARAManager.Common
         public const string DUMMY_DATA = "Dummy data";
         public const int MAX_LENGTH_ROW_VERSION_ARRAY = 64;
         public const string NA = "NA";
-
+        public const string CAMPAIGN_AVATAR = "CampaignAvatar";
+        public const string CAMPAIGN_BANNER = "CampaignBanner";
+        public const string MISSION_AVATAR = "MissionAvatar";
+        public const string TARGET = "Target";
         #endregion IConstants
     }
 }

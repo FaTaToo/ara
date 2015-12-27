@@ -22,8 +22,9 @@ namespace ARAManager.Common.Dto
         #region IProperties
 
         [DataMember]
-        [Id(0, Column = "SubscriptionId", Name = "SubscriptionId", TypeType = typeof (string))]
-        public virtual string SubscriptionId { get; set; }
+        [Id(0, Column = "SubscriptionId", Name = "SubscriptionId", TypeType = typeof(int))]
+        [Generator(1, Class = "identity")]
+        public virtual int SubscriptionId { get; set; }
 
         [ManyToOne(Name = "Customer", Column = "CustomerId", NotNull = false, Fetch = FetchMode.Select)]
         [DataMember]

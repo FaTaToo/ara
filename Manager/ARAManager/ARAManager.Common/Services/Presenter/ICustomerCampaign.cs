@@ -26,8 +26,8 @@ namespace ARAManager.Common.Services.Presenter
         IList<CampaignJson> GetListOfCampaigns();
 
         [OperationContract]
-        [WebInvoke(UriTemplate = "/GetCampaignByName/{campaignName}",
+        [WebInvoke(UriTemplate = "/GetCampaignByName/{campaignId}",
             ResponseFormat = WebMessageFormat.Json)]
-        CampaignJson GetCampaignByName(string campaignName);
+        CampaignJson GetCampaignByName(string campaignId);
     }
 }
