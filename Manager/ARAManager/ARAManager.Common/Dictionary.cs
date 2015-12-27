@@ -155,7 +155,7 @@ namespace ARAManager.Common
         public const string MSG_SUCCESS = "Successfully";
         public const string MSG_FAILED = "Failed";
         public const string DUMMY_DATA = "Dummy data";
-        public const int MAX_LENGTH_ROW_VERSION_ARRAY = 64;
+        public const int MAX_LENGTH_ROW_VERSION_ARRAY = 8;
         public const string NA = "NA";
         public const string CAMPAIGN_AVATAR = "CampaignAvatar";
         public const string CAMPAIGN_BANNER = "CampaignBanner";
