@@ -11,7 +11,7 @@
 */
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common
+namespace ARAManager.Presentation.Client.Common
 {
     /// <summary>
     ///     Define data of Username, Password in Client
@@ -20,8 +20,10 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common
     {
         #region IFields
 
-        public const string FPT_USER = "phucls11520288";
-        public const string FPT_PASSWORD = "Levantam9434";
+        // Commented by PhucLS - 20151223 - Will be configured in hosting
+        public const string FTP_USER = "phucls11520288";
+        public const string FTP_PASSWORD = "Levantam9434";
+        // Ended by PhucLS - 20151223 - Will be configured in hosting
 
         #endregion IFields
     }

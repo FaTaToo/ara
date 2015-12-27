@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.UI;
+using ARAManager.Presentation.Client.Common;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Master_Pages
 {
@@ -14,17 +15,17 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Ma
 
         protected void btnCompany_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect(@"~\ARAManager.Presentation.Client.Views\CompanyAdmin.aspx");
+            Response.Redirect(Routes.NAVIGATION_TO_COMPANY_PAGE_OF_ADMIN);
         }
 
         protected void btnCustomer_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect(@"~\ARAManager.Presentation.Client.Views\CustomerAdmin.aspx");
+            Response.Redirect(Routes.NAVIGATION_TO_CUSTOMER_PAGE_OF_ADMIN);
         }
 
         protected void btnStatistics_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect(@"~\ARAManager.Presentation.Client.Views\StatisticsAdmin.aspx");
+            Response.Redirect(Routes.NAVIGATION_TO_STATISTIC_PAGE_OF_ADMIN);
         }
 
         #endregion IMethods

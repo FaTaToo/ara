@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.ServiceModel;
-using System.Web.Hosting;
+using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ARAManager.Common;
@@ -23,7 +23,7 @@ using ARAManager.Common.Dto;
 using ARAManager.Common.Exception.Mission;
 using ARAManager.Common.Exception.Target;
 using ARAManager.Common.PresenterJson.ArResources;
-using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
+using ARAManager.Presentation.Client.Common;
 using ARAManager.Presentation.Connectivity;
 using Newtonsoft.Json;
 using Subgurim.Controles;
@@ -54,8 +54,15 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             InitializeDataForGMap();
             if (Request.QueryString["Type"] == Dictionary.CAMPAIGN_TYPE_CHECK_IN_URL)
             {
+                txtArName.Text = Dictionary.NA;
+                txtDirector.Text = Dictionary.NA;
+                txtActor.Text = Dictionary.NA;
+                txtTargetName.Text = Dictionary.NA;
+                txtArName.Enabled = false;
                 txtDirector.Enabled = false;
                 txtActor.Enabled = false;
+                txtTargetName.Enabled = false;
+                FileUpload_Target.Enabled = false;
             }
         }
 
@@ -138,59 +145,69 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             {
                 return;
             }
+
             try
             {
-                // Save image target to server - just help debugging, it does not affect system.
-                var extension = Path.GetExtension(FileUpload_Target.FileName);
-                var fileName = txtTargetName.Text + extension;
-                var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_TARGET + fileName);
-                FileUpload_Target.SaveAs(filePath);
-
-                // Call VWS
-                var callPostNewTarget = new WebClient();
-                var result = callPostNewTarget.DownloadString(new Uri(
-                    "http://localhost:1234/ara-vws/vws/SampleSelector.php?select=PostNewTarget&targetName=" +
-                    txtTargetName.Text +
-                    "&imageLocation=" + fileName));
-
-                // Filter target id
-                var targetId = string.Empty;
-                var resultCodeIndex = result.IndexOf(@"""TargetCreated""", StringComparison.Ordinal);
-                if (resultCodeIndex > 0)
-                {
-                    var resultTargetId = result.IndexOf(@"""target_id""", StringComparison.Ordinal);
-                    var startIndex = result.IndexOf("\"", resultTargetId + 12, StringComparison.Ordinal) + 1;
-                    var endIndex = result.IndexOf("\"", startIndex, StringComparison.Ordinal) - 1;
-                    targetId = result.Substring(startIndex, endIndex - startIndex + 1);
-                }
-
-                // Save target id to ListTarget.txt
-                if (!File.Exists(Server.MapPath(Dictionary.PATH_LIST_TARGET)))
-                {
-                    using (var sw = File.CreateText(Server.MapPath(Dictionary.PATH_LIST_TARGET)))
-                    {
-                        sw.WriteLine(targetId);
-                    }
-                }
-                else
-                {
-                    using (var sw = new StreamWriter(Server.MapPath(Dictionary.PATH_LIST_TARGET), true))
-                    {
-                        sw.WriteLine(targetId);
-                    }
-                }
-
                 /* Get latitude and longtitude from textbox
                  * Issues:
                  *      _ I haven't not validate the case which string is not float format because of time
                  *      => will be fixed using tryparse
-                 */
+                */
                 if (txtLat.Text != string.Empty && txtLong.Text != string.Empty)
                 {
                     m_latitude = double.Parse(txtLat.Text);
                     m_longtitude = double.Parse(txtLong.Text);
                 }
 
+                string targetId;
+
+                if (Request.QueryString["Type"] == Dictionary.CAMPAIGN_TYPE_CHECK_IN_URL)
+                {
+                    targetId = Dictionary.NA;
+                }
+                else
+                {
+                    // Save image target to server - just help debugging, it does not affect system.
+                    var extension = Path.GetExtension(FileUpload_Target.FileName);
+                    var fileName = txtTargetName.Text + extension;
+                    var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_TARGET + fileName);
+                    FileUpload_Target.SaveAs(filePath);
+
+                    // Call VWS
+                    var callPostNewTarget = new WebClient();
+                    var result = callPostNewTarget.DownloadString(new Uri(
+                        "http://localhost:1234/ara-vws/vws/SampleSelector.php?select=PostNewTarget&targetName=" +
+                        txtTargetName.Text +
+                        "&imageLocation=" + fileName));
+
+                    // Filter target id
+                    targetId = string.Empty;
+                    var resultCodeIndex = result.IndexOf(@"""TargetCreated""", StringComparison.Ordinal);
+                    if (resultCodeIndex > 0)
+                    {
+                        var resultTargetId = result.IndexOf(@"""target_id""", StringComparison.Ordinal);
+                        var startIndex = result.IndexOf("\"", resultTargetId + 12, StringComparison.Ordinal) + 1;
+                        var endIndex = result.IndexOf("\"", startIndex, StringComparison.Ordinal) - 1;
+                        targetId = result.Substring(startIndex, endIndex - startIndex + 1);
+                    }
+
+                    // Save target id to ListTarget.txt
+                    if (!File.Exists(Server.MapPath(Dictionary.PATH_LIST_TARGET)))
+                    {
+                        using (var sw = File.CreateText(Server.MapPath(Dictionary.PATH_LIST_TARGET)))
+                        {
+                            sw.WriteLine(targetId);
+                        }
+                    }
+                    else
+                    {
+                        using (var sw = new StreamWriter(Server.MapPath(Dictionary.PATH_LIST_TARGET), true))
+                        {
+                            sw.WriteLine(targetId);
+                        }
+                    }
+                }
+              
                 // Save target to database
                 var target = new Target
                 {
@@ -203,6 +220,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                     YoutubeUrl = txtYoutubeUrl.Text,
                     Mission = m_mission
                 };
+
                 // Notes: Will be migrated into helper file
 
                 // Create ArResources
@@ -221,20 +239,40 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                     // Create Attribute in CommonAttributes
                     foreach (var uploadedPicture in uploadedPicturesGallery)
                     {
-                        fileName = "Ar" + uploadedPicture.FileName;
-                        filePath = Server.MapPath(Dictionary.PATH_UPLOADED_TARGET + fileName);
+                        var fileName = "Ar" + uploadedPicture.FileName;
+                        var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_TARGET + fileName);
                         FileUpload_Target.SaveAs(filePath);
 
+                        // Get the object used to communicate with the server.
+                        var urip = "ftp://phucls11520288@www.ara288.somee.com/www.ara288.somee.com/Ar_Data/PicturesGallery/";
+                        var requestp = (FtpWebRequest)WebRequest.Create(urip + fileName);
+                        requestp.Method = WebRequestMethods.Ftp.UploadFile;
+                        // FTP site logon
+                        requestp.Credentials = new NetworkCredential(Authentication.FTP_USER, Authentication.FTP_PASSWORD);
+                        // Copy the entire contents of the file to the request stream.
+                        var sourceStreamp = new StreamReader(Server.MapPath(filePath));
+                        var fileContentsp = Encoding.UTF8.GetBytes(sourceStreamp.ReadToEnd());
+                        sourceStreamp.Close();
+                        requestp.ContentLength = fileContentsp.Length;
+                        // Upload the file stream to the server.
+                        var requestStreamp = requestp.GetRequestStream();
+                        requestStreamp.Write(fileContentsp, 0, fileContentsp.Length);
+                        requestStreamp.Close();
+                        // Get the response from the FTP server.
+                        var responsep = (FtpWebResponse)requestp.GetResponse();
+                        // Close the connection = Happy a FTP server.
+                        responsep.Close();
+                        
                         var attribute = new Attribute
                         {
                             Key = Dictionary.AR_KEY_URL,
                             Value = filePath
                         };
-                        commonAttributes.Attribute = new List<Attribute> {attribute};
+                        commonAttributes.Attribute = new List<Attribute> { attribute };
                     }
                     // Create Platform with Processor in Platforms
                     platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
-                    processors.Processor = new Processor {ProcessorType = Dictionary.AR_PROCESSOR_TYPE_IMAGE_SWITCHER};
+                    processors.Processor = new Processor { ProcessorType = Dictionary.AR_PROCESSOR_TYPE_IMAGE_SWITCHER };
                     platforms.Platform = platform;
                     // Add ArResource to ArResources
                     arResources.ArResource = new List<ArResource>
@@ -253,6 +291,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 platforms = new Platforms();
                 platform = new Platform();
                 processors = new Processors();
+
                 // Create Attribute in CommonAttributes
                 commonAttributes.Attribute = new List<Attribute>
                 {
@@ -265,7 +304,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
                 // Create Platform with Processor in Platforms
                 platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
-                processors.Processor = new Processor {ProcessorType = Dictionary.AR_PROCESSOR_TYPE_YOUTUBE};
+                processors.Processor = new Processor { ProcessorType = Dictionary.AR_PROCESSOR_TYPE_YOUTUBE };
                 platforms.Platform = platform;
 
                 // Add ArResource to ArResources
@@ -294,7 +333,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
                 // Create Platform with Processor in Platforms
                 platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
-                processors.Processor = new Processor {ProcessorType = Dictionary.AR_PROCESSOR_TYPE_FACEBOOK};
+                processors.Processor = new Processor { ProcessorType = Dictionary.AR_PROCESSOR_TYPE_FACEBOOK };
                 platforms.Platform = platform;
 
                 // Add ArResource to ArResources
@@ -338,7 +377,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
                 // Create Platform with Processor in Platforms
                 platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
-                processors.Processor = new Processor {ProcessorType = Dictionary.AR_PROCESSOR_TYPE_TEXTVIEW};
+                processors.Processor = new Processor { ProcessorType = Dictionary.AR_PROCESSOR_TYPE_TEXTVIEW };
                 platforms.Platform = platform;
 
                 // Add ArResource to ArResources
@@ -348,19 +387,33 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                     ArType = Dictionary.ARSM_TEXT,
                     Platforms = platforms
                 });
-                var rootObject = new RootObject {ArResources = arResources};
-
-                // Save new target
-                ClientServiceFactory.TargetService.SaveNewTarget(target);
+                var rootObject = new RootObject { ArResources = arResources };
 
                 // Save JSON to server
                 var arResourcesJson = JsonConvert.SerializeObject(rootObject);
-                var jsonPath = Dictionary.PATH_AR_JSON + target.Url + ".json";
-                File.Create(HostingEnvironment.MapPath(jsonPath)).Dispose();
-                // ReSharper disable once AssignNullToNotNullAttribute - Added by PhucLS
-                File.WriteAllText(HostingEnvironment.MapPath(jsonPath), arResourcesJson);
-
-                Response.Redirect(@"~\ARAManager.Presentation.Client.Views\CampaignCompany.aspx");
+                // Get the object used to communicate with the server.
+                const string uri = "ftp://phucls11520288@www.ara288.somee.com/www.ara288.somee.com/Ar_Data/Json";
+                var request = (FtpWebRequest)WebRequest.Create(uri + target.Url + ".json");
+                request.Method = WebRequestMethods.Ftp.UploadFile;
+                // FTP site logon
+                request.Credentials = new NetworkCredential(Authentication.FTP_USER, Authentication.FTP_PASSWORD);
+                // Copy the entire contents of the file to the request stream.
+                var sourceStream = new StreamReader(arResourcesJson);
+                var fileContents = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd());
+                sourceStream.Close();
+                request.ContentLength = fileContents.Length;
+                // Upload the file stream to the server.
+                var requestStream = request.GetRequestStream();
+                requestStream.Write(fileContents, 0, fileContents.Length);
+                requestStream.Close();
+                // Get the response from the FTP server.
+                var response = (FtpWebResponse)request.GetResponse();
+                // Close the connection = Happy a FTP server.
+                response.Close();
+                
+                // Save new target
+                ClientServiceFactory.TargetService.SaveNewTarget(target);
+                Response.Redirect(Routes.NAVIGATION_TO_CAMPAIGN_PAGE_OF_COMPANY);
             }
             catch (FaultException<TargetNameAlreadyExistException> ex)
             {
@@ -374,7 +427,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
         protected void btnCancel_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect("CampaignCompany.aspx");
+            Response.Redirect(Routes.NAVIGATION_TO_CAMPAIGN_PAGE_OF_COMPANY_SHORT);
         }
 
         #endregion IMethods

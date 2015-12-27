@@ -12,6 +12,7 @@
 
 using System;
 using System.Web.UI;
+using ARAManager.Presentation.Client.Common;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Master_Pages
 {
@@ -28,12 +29,12 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Ma
 
         protected void btnCampaign_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect(@"~\ARAManager.Presentation.Client.Views\CampaignCompany.aspx");
+            Response.Redirect(Routes.NAVIGATION_TO_CAMPAIGN_PAGE_OF_COMPANY);
         }
 
         protected void btnStatistics_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect(@"~\ARAManager.Presentation.Client.Views\StatisticsCompany.aspx");
+            Response.Redirect(Routes.NAVIGATION_TO_STATISTICS_PAGE_OF_COMPANY);
         }
 
         #endregion IMethods

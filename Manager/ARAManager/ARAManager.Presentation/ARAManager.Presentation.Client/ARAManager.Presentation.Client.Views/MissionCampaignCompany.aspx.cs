@@ -22,7 +22,7 @@ using ARAManager.Common;
 using ARAManager.Common.Dto;
 using ARAManager.Common.Exception.Campaign;
 using ARAManager.Common.Exception.Mission;
-using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
+using ARAManager.Presentation.Client.Common;
 using ARAManager.Presentation.Connectivity;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
@@ -128,7 +128,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             var request = (FtpWebRequest) WebRequest.Create(uri + fileName);
             request.Method = WebRequestMethods.Ftp.UploadFile;
             // FTP site logon
-            request.Credentials = new NetworkCredential(Authentication.FPT_USER, Authentication.FPT_PASSWORD);
+            request.Credentials = new NetworkCredential(Authentication.FTP_USER, Authentication.FTP_PASSWORD);
             // Copy the entire contents of the file to the request stream.
             var sourceStream = new StreamReader(Server.MapPath(filePath));
             var fileContents = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd());
@@ -163,7 +163,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 return;
             }
             var extension = Path.GetExtension(FileUpload_Avatar.FileName);
-            var fileName = txtMissionName.Text + "Avatar" + extension;
+            var fileName = FileUpload_Avatar.FileName + "Avatar" + extension;
             var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + fileName);
             FileUpload_Avatar.SaveAs(filePath);
             UploadFileToFtpServer(fileName, Dictionary.PATH_UPLOADED_MISSIONS_AVATAR + fileName);
@@ -176,7 +176,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             try
             {
                 ClientServiceFactory.MissionService.SaveNewMission(m_mission);
-                Response.Redirect("MissionCampaignCompany.aspx?Method=New&RequestId=" + m_campaign.CampaignId);
+                Response.Redirect(Routes.NAVIGATION_TO_NEW_MISSION_OF_CAMPAIGN_PAGE_OF_COMPANY + m_campaign.CampaignId);
             }
             catch (FaultException<MissionNameAlreadyExistException> ex)
             {
@@ -190,12 +190,12 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
         protected void btnCancel_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect("CampaignCompany.aspx");
+            Response.Redirect(Routes.NAVIGATION_TO_CAMPAIGN_PAGE_OF_COMPANY_SHORT);
         }
 
         protected string GetNavigateUrl(object eval)
         {
-            return "TargetMissionCampaignCompany.aspx?RequestId=" + eval + "&Type=" + m_campaign.CampaignName;
+            return "TargetMissionCampaignCompany.aspx?RequestId=" + eval + "&Type=" + m_campaign.CampaignTypeId.CampaignTypeName;
         }
 
         protected string GetEditMissionUrl(object eval)

@@ -31,7 +31,7 @@
                     </li>
                     <li role="presentation" style="margin-left: 20px; margin-top: 20px;">
                         <asp:TextBox ID="txtArName" runat="server"
-                                     placeholder="Name of movie"/>
+                                     placeholder="Name"/>
                     </li>
                     <li role="presentation" style="margin-left: 20px; margin-top: 20px;">
                         <asp:TextBox ID="txtDirector" runat="server"
@@ -43,7 +43,7 @@
                     </li>
                     <li role="presentation" style="margin-left: 20px; margin-top: 20px;">
                         <asp:TextBox ID="txtDescription" runat="server"
-                                     placeholder="Description of movie"/>
+                                     placeholder="Description"/>
                     </li>
                     <li role="presentation" style="margin-top: 20px;">
                         <asp:Label ID="lblPicturesGallery" runat="server" Text="Picture gallery"

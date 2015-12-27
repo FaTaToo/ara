@@ -10,7 +10,7 @@
 */
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common
+namespace ARAManager.Presentation.Client.Common
 {
     public class Validation
     {

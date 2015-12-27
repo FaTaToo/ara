@@ -76,6 +76,7 @@
     <Compile Include="Extension\StringExtension.cs" />
     <Compile Include="Factory\NinjectKernelFactory.cs" />
     <Compile Include="Dictionary.cs" />
+    <Compile Include="Helper\JsonHelper.cs" />
     <Compile Include="PresenterJson\Account\AuthenticationJsonRequest.cs" />
     <Compile Include="PresenterJson\Account\CustomerJson.cs" />
     <Compile Include="PresenterJson\ArResources\ArResource.cs" />

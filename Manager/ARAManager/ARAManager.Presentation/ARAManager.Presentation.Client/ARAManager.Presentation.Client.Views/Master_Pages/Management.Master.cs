@@ -13,6 +13,7 @@
 using System;
 using System.Web.Security;
 using System.Web.UI;
+using ARAManager.Presentation.Client.Common;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Master_Pages
 {
@@ -28,7 +29,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Ma
         protected void lbLogout_OnClick(object sender, EventArgs e)
         {
             FormsAuthentication.SignOut();
-            Response.Redirect("Default.aspx");
+            Response.Redirect(Routes.NAVIGATION_TO_LOGIN_PAGE);
         }
 
         #endregion IMethods

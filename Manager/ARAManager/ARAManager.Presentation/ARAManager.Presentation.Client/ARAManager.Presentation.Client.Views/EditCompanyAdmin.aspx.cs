@@ -18,7 +18,7 @@ using ARAManager.Common;
 using ARAManager.Common.Dto;
 using ARAManager.Common.Exception.Company;
 using ARAManager.Common.Exception.Generic;
-using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
+using ARAManager.Presentation.Client.Common;
 using ARAManager.Presentation.Connectivity;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
@@ -187,7 +187,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
         private void RedirectToCompanyAdmin()
         {
-            Response.Redirect("CompanyAdmin.aspx");
+            Response.Redirect(Routes.NAVIGATION_TO_COMPANY_PAGE_OF_ADMIN_SHORT);
         }
 
         #endregion IMethods

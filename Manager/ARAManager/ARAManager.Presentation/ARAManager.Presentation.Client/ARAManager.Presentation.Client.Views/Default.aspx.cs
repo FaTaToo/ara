@@ -15,7 +15,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ARAManager.Common;
-using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
+using ARAManager.Presentation.Client.Common;
 using ARAManager.Presentation.Connectivity;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
@@ -47,7 +47,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             if (login != -1)
             {
                 FormsAuthentication.RedirectFromLoginPage(UserEmail.Text, cbRememberPassword.Checked);
-                Response.Redirect(login == 1 ? "HomeAdmin.aspx" : "CampaignCompany.aspx");
+                Response.Redirect(login == 1 ? Routes.NAVIGATION_TO_HOME_PAGE_OF_ADMIN : 
+                                               Routes.NAVIGATION_TO_CAMPAIGN_PAGE_OF_COMPANY_SHORT);
             }
             else
             {

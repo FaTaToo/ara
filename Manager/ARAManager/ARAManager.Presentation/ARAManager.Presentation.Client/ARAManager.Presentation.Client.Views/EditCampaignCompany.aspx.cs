@@ -22,7 +22,7 @@ using ARAManager.Common.Dto;
 using ARAManager.Common.Exception.Campaign;
 using ARAManager.Common.Exception.Company;
 using ARAManager.Common.Exception.Generic;
-using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
+using ARAManager.Presentation.Client.Common;
 using ARAManager.Presentation.Connectivity;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
@@ -99,7 +99,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             }
             else
             {
-                Response.Redirect("HomeAdmin.aspx");
+                Response.Redirect(Routes.NAVIGATION_TO_HOME_PAGE_OF_ADMIN);
             }
         }
 
@@ -165,7 +165,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
         private void RedirectToCampaignCompany()
         {
-            Response.Redirect("CampaignCompany.aspx");
+            Response.Redirect(Routes.NAVIGATION_TO_CAMPAIGN_PAGE_OF_COMPANY_SHORT);
         }
 
         private void SaveNewCampaignWithoutEndTime()
@@ -199,7 +199,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         private string UploadImageBanner()
         {
             var extension = Path.GetExtension(FileUpload_Banner.FileName);
-            var fileName = txtCampaignName.Text + "Banner" + extension;
+            var fileName = FileUpload_Banner.FileName + "Banner" + extension;
             var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_CAMPAIGNS_BANNER + fileName);
             FileUpload_Banner.SaveAs(filePath);
             UploadFileToFtpServer(fileName, Dictionary.PATH_UPLOADED_CAMPAIGNS_BANNER + fileName, false);
@@ -209,7 +209,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
         private string UploadImageAvatar()
         {
             var extension = Path.GetExtension(FileUpload_Avatar.FileName);
-            var fileName = txtCampaignName.Text + "Avatar" + extension;
+            var fileName = FileUpload_Avatar.FileName + "Avatar" + extension;
             var filePath = Server.MapPath(Dictionary.PATH_UPLOADED_CAMPAIGNS_AVATAR + fileName);
             FileUpload_Avatar.SaveAs(filePath);
             UploadFileToFtpServer(fileName, Dictionary.PATH_UPLOADED_CAMPAIGNS_AVATAR + fileName, true);
@@ -235,7 +235,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             var request = (FtpWebRequest) WebRequest.Create(uri + fileName);
             request.Method = WebRequestMethods.Ftp.UploadFile;
             // FTP site logon.
-            request.Credentials = new NetworkCredential(Authentication.FPT_USER, Authentication.FPT_PASSWORD);
+            request.Credentials = new NetworkCredential(Authentication.FTP_USER, Authentication.FTP_PASSWORD);
             // Copy the entire contents of the file to the request stream.
             var sourceStream = new StreamReader(Server.MapPath(filePath));
             var fileContents = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd());
@@ -274,9 +274,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             try
             {
                 ClientServiceFactory.CampaignService.SaveNewCampaign(m_campaign);
-                Response.Redirect("MissionCampaignCompany.aspx?Method=New&RequestId=" +
-                                  ClientServiceFactory.CampaignService.GetCampaignByName(txtCampaignName.Text)
-                                      .CampaignId);
+                Response.Redirect(Routes.NAVIGATION_TO_NEW_MISSION_OF_CAMPAIGN_PAGE_OF_COMPANY +
+                                  ClientServiceFactory.CampaignService.GetCampaignByName(txtCampaignName.Text).CampaignId);
             }
             catch (FaultException<CampaignNameAlreadyExistException> ex)
             {
@@ -299,7 +298,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
         protected void btnCreateMission_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect("MissionCampaignCompany.aspx?Method=New&RequestId=" + m_campaign.CampaignId);
+            Response.Redirect(Routes.NAVIGATION_TO_NEW_MISSION_OF_CAMPAIGN_PAGE_OF_COMPANY + m_campaign.CampaignId);
         }
 
         //-----------------------------------------------------------------------------------------------------

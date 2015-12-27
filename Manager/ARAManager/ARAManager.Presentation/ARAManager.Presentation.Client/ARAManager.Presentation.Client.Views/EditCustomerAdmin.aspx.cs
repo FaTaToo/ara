@@ -18,7 +18,7 @@ using System.Web.UI.WebControls;
 using ARAManager.Common;
 using ARAManager.Common.Dto;
 using ARAManager.Common.Exception.Generic;
-using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
+using ARAManager.Presentation.Client.Common;
 using ARAManager.Presentation.Connectivity;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
@@ -227,7 +227,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
         private void RedirectToCustomerAdmin()
         {
-            Response.Redirect("CustomerAdmin.aspx");
+            Response.Redirect(Routes.NAVIGATION_TO_CUSTOMER_PAGE_OF_ADMIN_SHORT);
         }
 
         #endregion IMethods

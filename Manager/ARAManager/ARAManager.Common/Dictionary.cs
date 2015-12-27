@@ -156,6 +156,7 @@ namespace ARAManager.Common
         public const string MSG_FAILED = "Failed";
         public const string DUMMY_DATA = "Dummy data";
         public const int MAX_LENGTH_ROW_VERSION_ARRAY = 64;
+        public const string NA = "NA";
 
         #endregion IConstants
     }

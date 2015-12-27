@@ -15,7 +15,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using ARAManager.Presentation.Client.ARAManager.Presentation.Client.Common;
+using ARAManager.Presentation.Client.Common;
 using ARAManager.Presentation.Connectivity;
 
 namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
@@ -127,7 +127,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
         protected void btnNewCompany_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect("EditCompanyAdmin.aspx?RequestId=-4438");
+            Response.Redirect(Routes.NAVIGATION_TO_NEW_COMPANY_PAGE_OF_ADMIN);
         }
 
         private void Search()
