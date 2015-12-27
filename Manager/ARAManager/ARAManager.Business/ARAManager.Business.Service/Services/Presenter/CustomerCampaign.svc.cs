@@ -68,7 +68,7 @@ namespace ARAManager.Business.Service.Services.Presenter
                     Banner = campaign.Banner,
                     Description = campaign.Description,
                     Gift = campaign.Gift,
-                    CampaignTypeId = campaign.CampaignTypeId.ToString(),
+                    CampaignTypeId = campaign.CampaignTypeId.CampaignTypeId.ToString(),
                     CompanyId = campaign.Company.CompanyId.ToString(),
                     NumMission = campaign.NumMission.ToString()
                 }
