@@ -89,7 +89,7 @@ create table ARA_Target
 
 create table ARA_Subscription
 (
-	SubscriptionId	nvarchar(100) primary key,	
+	SubscriptionId			int not null primary key identity(1,1),	
 	CustomerId				int not null,
 	CampaignId				int not null,
 	CompletedMission		nvarchar(500),
