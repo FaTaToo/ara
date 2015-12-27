@@ -42,15 +42,15 @@ namespace ARAManager.Business.Service.Services.Presenter
         /// <summary>
         ///     Get campaign by campaign name
         /// </summary>
-        /// <param name="campaignName"></param>
+        /// <param name="campaignId"></param>
         /// <returns></returns>
-        public CampaignJson GetCampaignByName(string campaignName)
+        public CampaignJson GetCampaignByName(string campaignId)
         {
             var srvDao = NinjectKernelFactory.Kernel.Get<ICampaignDataAccess>();
             var criteria = DetachedCriteria.For<Campaign>();
-            if (!string.IsNullOrEmpty(campaignName))
+            if (!string.IsNullOrEmpty(campaignId))
             {
-                criteria.Add(Restrictions.Where<Campaign>(c => c.CampaignName == campaignName));
+                criteria.Add(Restrictions.Where<Campaign>(c => c.CampaignId == int.Parse(campaignId)));
             }
             var campaign = srvDao.FindByCriteria(criteria).FirstOrDefault();
             return campaign != null ? ReturnCampaignJson(campaign) : new CampaignJson();
