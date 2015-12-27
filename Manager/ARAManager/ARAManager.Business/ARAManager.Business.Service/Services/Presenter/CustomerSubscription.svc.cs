@@ -231,7 +231,7 @@ namespace ARAManager.Business.Service.Services.Presenter
                 CompletedMission = subscription.CompletedMission,
                 NumOfCompletedMission = subscription.NumOfCompletedMission.ToString(),
                 Comment = subscription.Comment,
-                Rating = subscription.ToString()
+                Rating = subscription.Rating.ToString()
             };
         }
 

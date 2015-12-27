@@ -13,7 +13,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <header file="ProgramCheckInController.cs" group="288-462">
 //
-// Last modified: 
+// Last modified:
 // Author: LE Sanh Phuc - 11520288
 //
 // </header>

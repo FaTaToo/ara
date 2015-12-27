@@ -22,7 +22,7 @@ namespace ARAManager.Common.Dto
         #region IProperties
 
         [DataMember]
-        [Id(0, Column = "SubscriptionId", Name = "SubscriptionId", TypeType = typeof(int))]
+        [Id(0, Column = "SubscriptionId", Name = "SubscriptionId", TypeType = typeof (int))]
         [Generator(1, Class = "identity")]
         public virtual int SubscriptionId { get; set; }
 

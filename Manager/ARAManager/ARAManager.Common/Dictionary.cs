@@ -161,6 +161,7 @@ namespace ARAManager.Common
         public const string CAMPAIGN_BANNER = "CampaignBanner";
         public const string MISSION_AVATAR = "MissionAvatar";
         public const string TARGET = "Target";
+
         #endregion IConstants
     }
 }

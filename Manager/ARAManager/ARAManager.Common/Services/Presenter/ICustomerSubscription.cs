@@ -30,7 +30,7 @@ namespace ARAManager.Common.Services.Presenter
         JsonRespone JoinCampaign(SubscriptionJson subscriptionJson);
 
         [OperationContract]
-        [WebInvoke(UriTemplate = "/LeaveCampaign/{subscriptionId}",
+        [WebGet(UriTemplate = "/LeaveCampaign/{subscriptionId}",
             ResponseFormat = WebMessageFormat.Json)]
         JsonRespone LeaveCampaign(string subscriptionId);
 
@@ -45,7 +45,7 @@ namespace ARAManager.Common.Services.Presenter
         SubscriptionJson GetSubscription(string subscriptionId);
 
         [OperationContract]
-        [WebInvoke(UriTemplate = "/GetArData/{targetId}",
+        [WebGet(UriTemplate = "/GetArData/{targetId}",
             ResponseFormat = WebMessageFormat.Json)]
         RootObject GetArData(string targetId);
 
