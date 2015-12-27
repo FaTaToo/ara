@@ -201,8 +201,8 @@
     <div class="col-md-4">
         <ul class="nav nav-pills pull-right">
             <li role="presentation" style="margin-right: 20px">
-                <img src="../ARAManager.Presentation.Client.Resources/Images/Partners/cgv.jpg" alt="Image is lost."/>
-            </li>
+                <img src="../ARAManager.Presentation.Client.Resources/Images/Partners/Cgv.jpg" alt="Image is lost."/>
+            </li> 
             <li role="presentation" style="margin-right: 20px">
                 <img src="../ARAManager.Presentation.Client.Resources/Images/Partners/GalaxyCinema.jpg" alt="Image is lost."/>
             </li>

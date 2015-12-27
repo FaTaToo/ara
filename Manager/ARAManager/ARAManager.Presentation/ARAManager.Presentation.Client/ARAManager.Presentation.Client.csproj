@@ -149,6 +149,7 @@
     <Content Include="ARAManager.Presentation.Client.Resources\Images\CampaignTypes\checkIn.jpg" />
     <Content Include="ARAManager.Presentation.Client.Resources\Images\CampaignTypes\theater.jpg" />
     <Content Include="ARAManager.Presentation.Client.Resources\Images\CampaignTypes\tour.jpg" />
+    <Content Include="ARAManager.Presentation.Client.Resources\Images\Partners\Cgv.jpg" />
     <Content Include="ARAManager.Presentation.Client.Views\CampaignCompany.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\CompanyAdmin.aspx" />
     <Content Include="ARAManager.Presentation.Client.Views\CustomerAdmin.aspx" />
@@ -234,7 +235,6 @@
     <Content Include="ARAManager.Presentation.Client.Resources\Images\logo.png" />
     <Content Include="ARAManager.Presentation.Client.Resources\Images\mail.png" />
     <Content Include="ARAManager.Presentation.Client.Resources\Images\mastercard.png" />
-    <Content Include="ARAManager.Presentation.Client.Resources\Images\Partners\cgv.jpg" />
     <Content Include="ARAManager.Presentation.Client.Resources\Images\Partners\GalaxyCinema.jpg" />
     <Content Include="ARAManager.Presentation.Client.Resources\Images\Partners\LotteCinema.jpg" />
     <Content Include="ARAManager.Presentation.Client.Resources\Images\Payment.png" />
