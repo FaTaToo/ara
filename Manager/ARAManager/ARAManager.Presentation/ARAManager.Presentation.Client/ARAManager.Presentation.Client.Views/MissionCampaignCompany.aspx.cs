@@ -195,7 +195,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
         protected string GetNavigateUrl(object eval)
         {
-            return "TargetMissionCampaignCompany.aspx?RequestId=" + eval + "&Type=" + m_campaign.CampaignTypeId.CampaignTypeName;
+            return "TargetMissionCampaignCompany.aspx?RequestId=" + eval + "&Type=" +
+                   m_campaign.CampaignTypeId.CampaignTypeName;
         }
 
         protected string GetEditMissionUrl(object eval)

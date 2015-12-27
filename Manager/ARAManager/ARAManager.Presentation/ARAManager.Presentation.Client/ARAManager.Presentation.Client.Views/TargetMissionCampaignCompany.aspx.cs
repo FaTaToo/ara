@@ -207,7 +207,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                         }
                     }
                 }
-              
+
                 // Save target to database
                 var target = new Target
                 {
@@ -244,11 +244,13 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                         FileUpload_Target.SaveAs(filePath);
 
                         // Get the object used to communicate with the server.
-                        var urip = "ftp://phucls11520288@www.ara288.somee.com/www.ara288.somee.com/Ar_Data/PicturesGallery/";
-                        var requestp = (FtpWebRequest)WebRequest.Create(urip + fileName);
+                        var urip =
+                            "ftp://phucls11520288@www.ara288.somee.com/www.ara288.somee.com/Ar_Data/PicturesGallery/";
+                        var requestp = (FtpWebRequest) WebRequest.Create(urip + fileName);
                         requestp.Method = WebRequestMethods.Ftp.UploadFile;
                         // FTP site logon
-                        requestp.Credentials = new NetworkCredential(Authentication.FTP_USER, Authentication.FTP_PASSWORD);
+                        requestp.Credentials = new NetworkCredential(Authentication.FTP_USER,
+                            Authentication.FTP_PASSWORD);
                         // Copy the entire contents of the file to the request stream.
                         var sourceStreamp = new StreamReader(Server.MapPath(filePath));
                         var fileContentsp = Encoding.UTF8.GetBytes(sourceStreamp.ReadToEnd());
@@ -259,20 +261,20 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                         requestStreamp.Write(fileContentsp, 0, fileContentsp.Length);
                         requestStreamp.Close();
                         // Get the response from the FTP server.
-                        var responsep = (FtpWebResponse)requestp.GetResponse();
+                        var responsep = (FtpWebResponse) requestp.GetResponse();
                         // Close the connection = Happy a FTP server.
                         responsep.Close();
-                        
+
                         var attribute = new Attribute
                         {
                             Key = Dictionary.AR_KEY_URL,
                             Value = filePath
                         };
-                        commonAttributes.Attribute = new List<Attribute> { attribute };
+                        commonAttributes.Attribute = new List<Attribute> {attribute};
                     }
                     // Create Platform with Processor in Platforms
                     platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
-                    processors.Processor = new Processor { ProcessorType = Dictionary.AR_PROCESSOR_TYPE_IMAGE_SWITCHER };
+                    processors.Processor = new Processor {ProcessorType = Dictionary.AR_PROCESSOR_TYPE_IMAGE_SWITCHER};
                     platforms.Platform = platform;
                     // Add ArResource to ArResources
                     arResources.ArResource = new List<ArResource>
@@ -304,7 +306,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
                 // Create Platform with Processor in Platforms
                 platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
-                processors.Processor = new Processor { ProcessorType = Dictionary.AR_PROCESSOR_TYPE_YOUTUBE };
+                processors.Processor = new Processor {ProcessorType = Dictionary.AR_PROCESSOR_TYPE_YOUTUBE};
                 platforms.Platform = platform;
 
                 // Add ArResource to ArResources
@@ -333,7 +335,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
                 // Create Platform with Processor in Platforms
                 platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
-                processors.Processor = new Processor { ProcessorType = Dictionary.AR_PROCESSOR_TYPE_FACEBOOK };
+                processors.Processor = new Processor {ProcessorType = Dictionary.AR_PROCESSOR_TYPE_FACEBOOK};
                 platforms.Platform = platform;
 
                 // Add ArResource to ArResources
@@ -377,7 +379,7 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
 
                 // Create Platform with Processor in Platforms
                 platform.PlatformId = Dictionary.AR_PLATFORM_ID_ANDROID;
-                processors.Processor = new Processor { ProcessorType = Dictionary.AR_PROCESSOR_TYPE_TEXTVIEW };
+                processors.Processor = new Processor {ProcessorType = Dictionary.AR_PROCESSOR_TYPE_TEXTVIEW};
                 platforms.Platform = platform;
 
                 // Add ArResource to ArResources
@@ -387,13 +389,13 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                     ArType = Dictionary.ARSM_TEXT,
                     Platforms = platforms
                 });
-                var rootObject = new RootObject { ArResources = arResources };
+                var rootObject = new RootObject {ArResources = arResources};
 
                 // Save JSON to server
                 var arResourcesJson = JsonConvert.SerializeObject(rootObject);
                 // Get the object used to communicate with the server.
                 const string uri = "ftp://phucls11520288@www.ara288.somee.com/www.ara288.somee.com/Ar_Data/Json";
-                var request = (FtpWebRequest)WebRequest.Create(uri + target.Url + ".json");
+                var request = (FtpWebRequest) WebRequest.Create(uri + target.Url + ".json");
                 request.Method = WebRequestMethods.Ftp.UploadFile;
                 // FTP site logon
                 request.Credentials = new NetworkCredential(Authentication.FTP_USER, Authentication.FTP_PASSWORD);
@@ -407,10 +409,10 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
                 requestStream.Write(fileContents, 0, fileContents.Length);
                 requestStream.Close();
                 // Get the response from the FTP server.
-                var response = (FtpWebResponse)request.GetResponse();
+                var response = (FtpWebResponse) request.GetResponse();
                 // Close the connection = Happy a FTP server.
                 response.Close();
-                
+
                 // Save new target
                 ClientServiceFactory.TargetService.SaveNewTarget(target);
                 Response.Redirect(Routes.NAVIGATION_TO_CAMPAIGN_PAGE_OF_COMPANY);

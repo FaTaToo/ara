@@ -275,7 +275,8 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             {
                 ClientServiceFactory.CampaignService.SaveNewCampaign(m_campaign);
                 Response.Redirect(Routes.NAVIGATION_TO_NEW_MISSION_OF_CAMPAIGN_PAGE_OF_COMPANY +
-                                  ClientServiceFactory.CampaignService.GetCampaignByName(txtCampaignName.Text).CampaignId);
+                                  ClientServiceFactory.CampaignService.GetCampaignByName(txtCampaignName.Text)
+                                      .CampaignId);
             }
             catch (FaultException<CampaignNameAlreadyExistException> ex)
             {

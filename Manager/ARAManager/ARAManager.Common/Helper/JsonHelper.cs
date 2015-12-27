@@ -1,6 +1,6 @@
 ﻿namespace ARAManager.Common.Helper
 {
-    class JsonHelper
+    internal class JsonHelper
     {
     }
 }

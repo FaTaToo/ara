@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 /* <header file="StatisticsAdmin.cs" group="288-462">
- * Author: LE Sanh Phuc - 11520288
+ * Author: BUI Nguyen Hoang Tan
  * </header>
  * <summary>
  *      Implement logic for StatisticsAdmin page.

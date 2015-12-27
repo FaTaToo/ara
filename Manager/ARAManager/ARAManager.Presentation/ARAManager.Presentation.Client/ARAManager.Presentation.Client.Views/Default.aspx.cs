@@ -47,8 +47,9 @@ namespace ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views
             if (login != -1)
             {
                 FormsAuthentication.RedirectFromLoginPage(UserEmail.Text, cbRememberPassword.Checked);
-                Response.Redirect(login == 1 ? Routes.NAVIGATION_TO_HOME_PAGE_OF_ADMIN : 
-                                               Routes.NAVIGATION_TO_CAMPAIGN_PAGE_OF_COMPANY_SHORT);
+                Response.Redirect(login == 1
+                    ? Routes.NAVIGATION_TO_HOME_PAGE_OF_ADMIN
+                    : Routes.NAVIGATION_TO_CAMPAIGN_PAGE_OF_COMPANY_SHORT);
             }
             else
             {
