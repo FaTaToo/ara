@@ -28,7 +28,6 @@ import uit.aep06.phuctung.ara.CommonClass.Subscription;
 import uit.aep06.phuctung.ara.Service.MissionService;
 import uit.aep06.phuctung.ara.Service.ProgramService;
 import uit.aep06.phuctung.ara.Service.SubscriptionService;
-import uit.aep06.phuctung.ara.Service.TargetService;
 import uit.aep06.phuctung.ara.custom_adapter.MissionAdapter;
 
 public class MissionActivity extends Activity {
@@ -169,8 +168,15 @@ public class MissionActivity extends Activity {
 
 		@Override
 		protected Integer doInBackground(String... params) {
-			SubscriptionService subcriptionService = new MissionService();
-			return subcriptionService.updateCompletedMission(customerID, programID, params[0]);			
+			SubscriptionService subcriptionService = new SubscriptionService();
+			String rowVersion = subcriptionService.getSubcription(customerID, programID).getRowVersion();
+			try {
+				return subcriptionService.updateCompletedMission(customerID, programID, params[0], rowVersion);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return 0;
 		}
 		
 	}
