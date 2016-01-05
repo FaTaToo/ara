@@ -6,6 +6,7 @@ import java.util.concurrent.ExecutionException;
 import org.json.JSONException;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -92,6 +93,22 @@ public class LoginActivity extends Activity implements OnClickListener {
 	}	
 	
 	private class LoginBacgroundTask extends AsyncTask<CustomerAccount, Void, Integer> {
+		private ProgressDialog dialog;
+		
+		@Override
+		protected void onPreExecute() {
+			dialog = new ProgressDialog(LoginActivity.this);
+			dialog.setCancelable(false);
+			dialog.setMessage("Authenticating... Please wait!");
+			dialog.show();
+		};
+
+		@Override
+		protected void onPostExecute(Integer result) {
+			if (dialog.isShowing()) {
+				dialog.dismiss();
+			}
+		};
 
 		@Override
 		protected Integer doInBackground(CustomerAccount... customer) {

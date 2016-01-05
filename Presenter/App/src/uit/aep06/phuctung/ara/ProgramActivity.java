@@ -82,25 +82,25 @@ public class ProgramActivity extends FragmentActivity {
 	}
 
 	private class ProgramBackgroundTask extends AsyncTask<Void, Void, List<Program>> { 
-		private ProgressDialog dialog;
+		private ProgressDialog dialog;		
 
 		@Override
 		protected void onPreExecute() {
 			dialog = new ProgressDialog(ProgramActivity.this);
 			dialog.setCancelable(false);
-			dialog.setMessage("Waiting for loading....");
+			dialog.setMessage("Đang tải dữ liệu chiến dịch... Vui lòng chờ!");
 			dialog.show();
-		}
+		};
 
 		@Override
 		protected void onPostExecute(List<Program> result) {
 			if (dialog.isShowing()) {
 				dialog.dismiss();
 			}
-		}
+		};
 
 		@Override
-		protected List<Program> doInBackground(Void... params) {
+		protected List<Program> doInBackground(Void... params) {			
 			ProgramService programService = new ProgramService();
 			return programService.getListProgram();			
 		}

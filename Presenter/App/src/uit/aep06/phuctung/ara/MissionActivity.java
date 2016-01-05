@@ -7,13 +7,16 @@ import org.json.JSONException;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff.Mode;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,21 +34,21 @@ import uit.aep06.phuctung.ara.Service.SubscriptionService;
 import uit.aep06.phuctung.ara.custom_adapter.MissionAdapter;
 
 public class MissionActivity extends Activity {
-	String customerID, programID;	
+	String customerID, programID;
 	int programState, programType;
 	List<Mission> listMissions = new ArrayList<Mission>();
 	ListView listView;
-
+	final Context context = this;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_mission);
 		Intent intent = getIntent();
 		programID = intent.getStringExtra("ID");
-    	customerID = intent.getStringExtra("CustomerID");
-    	programState = intent.getIntExtra("ProgramState", 0);
-    	programType = intent.getIntExtra("programType", 0);
-
+		customerID = intent.getStringExtra("CustomerID");
+		programState = intent.getIntExtra("ProgramState", 0);
+		programType = intent.getIntExtra("programType", 0);
 
 		TextView tvName = (TextView) findViewById(R.id.txtName);
 		tvName.setTextColor(Color.BLUE);
@@ -66,32 +69,50 @@ public class MissionActivity extends Activity {
 		Button btnDoMission = (Button) findViewById(R.id.btnDoMission);
 		if (programType == 0) {
 			btnDoMission.setText("Check in");
-		}
-		else {
+		} else {
 			btnDoMission.setText("Scan");
 		}
-		
+
 		btnDoMission.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// can phai check join hay chua
 				if (programType == 0) {
-					Mission mission = listMissions.get(0); 
+					Mission mission = listMissions.get(0);
 					boolean result = checkIn(mission.getMissionID());
 					if (result) {
-						
+						Handler handler = new Handler();
+						handler.postDelayed(new Runnable() {
+							@Override
+							public void run() {
+								
+								final Dialog dialog = new Dialog(context);
+								dialog.setContentView(R.layout.custom_dialog);
+								dialog.setTitle("CHÚC MỪNG");
+								
+								TextView text = (TextView) dialog.findViewById(R.id.text);
+								text.setText("Xin chúc mừng bạn đã hoàn thành chiến dịch! Phần thưởng của bạn là giảm giá vé 10% khi xem phim Diệp Vấn 3");
+							
+								Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);								
+								dialogButton.setOnClickListener(new OnClickListener() {
+									@Override
+									public void onClick(View v) {
+										dialog.dismiss();
+									}
+								});
+								dialog.show();
+							}
+						}, 2000);						
 					}
-				}
-				else {
+				} else {
 					Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
 					intent.putExtra("customerID", customerID);
 					startActivity(intent);
-				}				
+				}
 			}
 		});
-		
-		
-    	final SubscriptionService subService = new SubscriptionService();
+
+		final SubscriptionService subService = new SubscriptionService();
 		final Subscription sub = new Subscription();
 		sub.setCustomerID(customerID);
 		sub.setProgramID(programID);
@@ -102,38 +123,41 @@ public class MissionActivity extends Activity {
 			btnJoin.setText("Leave program");
 		}
 		btnJoin.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				if (programState == 0) {
 					int result = subService.joinProgram(sub);
 					btnJoin.setText("Leave program");
-					programState = 1;// implement code to update to service
+					programState = 1; // implement code to update to service
 				} else {
 					DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
 
 						@Override
-						public void onClick(DialogInterface dialog, int which) {							
+						public void onClick(DialogInterface dialog, int which) {
 							switch (which) {
 							case DialogInterface.BUTTON_POSITIVE:
 								int result = subService.leaveProgram(sub);
 								btnJoin.setText("Join program");
-								programState = 0;// implement code to update to service
+								programState = 0;// implement code to update to
+													// service
 								break;
 
 							case DialogInterface.BUTTON_NEGATIVE:
-								Toast.makeText(getApplicationContext(), "Cancel leaving program...", Toast.LENGTH_LONG).show();
+								Toast.makeText(getApplicationContext(), "Cancel leaving program...", Toast.LENGTH_LONG)
+										.show();
 								break;
 							}
-						}						
+						}
 					};
 					AlertDialog.Builder builder = new AlertDialog.Builder(MissionActivity.this);
-					builder.setMessage("Are you sure to exit this program?").setPositiveButton("Yes", dialogClickListener)
-																			.setNegativeButton("Cancel", dialogClickListener).show();					
+					builder.setMessage("Are you sure to exit this program?")
+							.setPositiveButton("Yes", dialogClickListener)
+							.setNegativeButton("Cancel", dialogClickListener).show();
 				}
 			}
 		});
-		
+
 		listView = (ListView) findViewById(R.id.lvMission);
 		ListMissionTask task = new ListMissionTask();
 		task.execute();
@@ -162,8 +186,17 @@ public class MissionActivity extends Activity {
 	}
 
 	private boolean checkIn(String missionID){
-		return false;
+		ProgressDialog progress = new ProgressDialog(this);
+		progress.setTitle("Loading");
+		progress.setMessage("Wait while loading...");
+		progress.show();
+		
+		
+		// To dismiss the dialog
+		progress.dismiss();
+		return true;
 	}
+
 	private class CompleteMissionTask extends AsyncTask<String, Void, Integer> {
 
 		@Override
@@ -178,8 +211,9 @@ public class MissionActivity extends Activity {
 			}
 			return 0;
 		}
-		
+
 	}
+
 	private class ListMissionTask extends AsyncTask<Void, Void, Void> {
 		private ProgressDialog dialog;
 
@@ -187,7 +221,7 @@ public class MissionActivity extends Activity {
 		protected void onPreExecute() {
 			dialog = new ProgressDialog(MissionActivity.this);
 			dialog.setCancelable(false);
-			dialog.setMessage("Downloading mission data. Please wait!");
+			dialog.setMessage("Đang tải dữ liệu... Vui lòng chờ!");
 			dialog.show();
 		};
 

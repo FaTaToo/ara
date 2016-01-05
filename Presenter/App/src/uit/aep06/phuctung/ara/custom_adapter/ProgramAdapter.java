@@ -54,7 +54,7 @@ public class ProgramAdapter extends BaseAdapter {
 
 	private class Holder {
 		TextView tvName, tvDateStart, tvDateEnd, tvCompany, tvContent, tvNum;
-		ImageView imgCheck;
+		ImageView imgCheck, imgTarget;
 		ProgressBar pBar;
 	}
 
@@ -84,7 +84,9 @@ public class ProgramAdapter extends BaseAdapter {
 		holder.tvNum.setTextSize(17);
 
 		holder.pBar = (ProgressBar) rowView.findViewById(R.id.pBar);
-
+		
+		holder.imgTarget = (ImageView) rowView.findViewById(R.id.imgTarget);
+		
 		program = listPrograms.get(position);
 		if (program != null) {
 			holder.tvName.setText(program.getName());
@@ -99,7 +101,9 @@ public class ProgramAdapter extends BaseAdapter {
 			if (program.state == 1) {
 				holder.imgCheck.setBackgroundResource(uit.aep06.phuctung.ara.R.drawable.icon_check);
 			}
-//			if (program.)
+			if(program.type == 0) {
+				holder.imgTarget.setBackgroundResource(uit.aep06.phuctung.ara.R.drawable.banner_checkin);
+			}
 		}
 		return rowView;
 	}

@@ -51,8 +51,7 @@
             <ImageView
                 android:id="@+id/imgTarget"
                 android:layout_width="120px"
-                android:layout_height="120px"
-                android:src="@android:drawable/ic_menu_gallery" />
+                android:layout_height="120px" />
 
             <TextView
                 android:id="@+id/txtName"

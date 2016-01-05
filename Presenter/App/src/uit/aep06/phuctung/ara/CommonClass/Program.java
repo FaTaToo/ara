@@ -10,10 +10,11 @@ public class Program {
 	public  String dateEnd;
 	public  String company;
 	public int state;//0 for unchecked and 1 for checked state
+	public int type;//0 is check-in, 1 is tour, 2 is thesis.
 	public int numMission;
-	public int numMissionFinish;
+	public int numMissionFinish;	
 	
-	public Program(String id, String name, String content, String dateStart, String dateEnd, String company, int state, int numMission, int numMissionFinish){
+	public Program(String id, String name, String content, String dateStart, String dateEnd, String company, int state, int type, int numMission, int numMissionFinish){
 		this.id = id;
 		this.name = name;
 		this.content = content;
@@ -21,6 +22,7 @@ public class Program {
 		this.dateEnd = dateEnd;
 		this.company = company;
 		this.state = state;
+		this.type = type;
 		this.numMission = numMission;
 		this.numMissionFinish = numMissionFinish;				
 	}
@@ -42,6 +44,13 @@ public class Program {
 	}
 	public void setState(int state) {
 		this.state = state;
+	}
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 	public String getId() {
 		return id;
