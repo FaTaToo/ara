@@ -1,9 +1,12 @@
 package uit.aep06.phuctung.ara;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONException;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,9 +17,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff.Mode;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,13 +42,15 @@ import uit.aep06.phuctung.ara.Service.ProgramService;
 import uit.aep06.phuctung.ara.Service.SubscriptionService;
 import uit.aep06.phuctung.ara.custom_adapter.MissionAdapter;
 
-public class MissionActivity extends Activity {
+public class MissionActivity extends Activity implements LocationListener {
 	String customerID, programID;
 	int programState, programType;
 	List<Mission> listMissions = new ArrayList<Mission>();
 	ListView listView;
 	final Context context = this;
-	
+	LocationManager mLocationManager;
+	private LatLng currentPosition;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -48,7 +59,7 @@ public class MissionActivity extends Activity {
 		programID = intent.getStringExtra("ID");
 		customerID = intent.getStringExtra("CustomerID");
 		programState = intent.getIntExtra("ProgramState", 0);
-		programType = intent.getIntExtra("programType", 0);
+		programType = intent.getIntExtra("ProgramType", 0);
 
 		TextView tvName = (TextView) findViewById(R.id.txtName);
 		tvName.setTextColor(Color.BLUE);
@@ -59,7 +70,7 @@ public class MissionActivity extends Activity {
 		TextView tvNumProgress = (TextView) findViewById(R.id.txtNumMission);
 		tvNumProgress.setTextSize(17);
 		tvNumProgress.setTextColor(Color.RED);
-		tvNumProgress.setText(intent.getIntExtra("NumMission", 0) + "/" + intent.getIntExtra("NumMissionFinish", 0));
+		tvNumProgress.setText(intent.getIntExtra("NumMissionFinish", 0) + "/" + intent.getIntExtra("NumMission", 0));
 
 		ProgressBar pBar = (ProgressBar) findViewById(R.id.pBar);
 		pBar.setMax(intent.getIntExtra("NumMission", 0));
@@ -76,24 +87,24 @@ public class MissionActivity extends Activity {
 		btnDoMission.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// can phai check join hay chua
 				if (programType == 0) {
 					Mission mission = listMissions.get(0);
-					boolean result = checkIn(mission.getMissionID());
-					if (result) {
+					final float result = checkIn(mission);
+					if (result < 100) {
 						Handler handler = new Handler();
 						handler.postDelayed(new Runnable() {
 							@Override
 							public void run() {
-								
+
 								final Dialog dialog = new Dialog(context);
 								dialog.setContentView(R.layout.custom_dialog);
 								dialog.setTitle("CHÚC MỪNG");
-								
+
 								TextView text = (TextView) dialog.findViewById(R.id.text);
-								text.setText("Xin chúc mừng bạn đã hoàn thành chiến dịch! Phần thưởng của bạn là giảm giá vé 10% khi xem phim Diệp Vấn 3");
-							
-								Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);								
+								text.setText(
+										"Xin chúc mừng bạn đã hoàn thành chiến dịch! Phần thưởng của bạn là giảm giá vé 10% khi xem phim Diệp Vấn 3");
+
+								Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
 								dialogButton.setOnClickListener(new OnClickListener() {
 									@Override
 									public void onClick(View v) {
@@ -102,7 +113,30 @@ public class MissionActivity extends Activity {
 								});
 								dialog.show();
 							}
-						}, 2000);						
+						}, 2000);
+					} else {
+						Handler handler = new Handler();
+						handler.postDelayed(new Runnable() {
+							@Override
+							public void run() {
+
+								final Dialog dialog = new Dialog(context);
+								dialog.setContentView(R.layout.custom_dialog);
+								dialog.setTitle("CHECK-IN FAIL");
+
+								TextView text = (TextView) dialog.findViewById(R.id.text);
+								text.setText("Bạn còn cách vị trí cần check-in " + String.valueOf(result) + " m.");
+
+								Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+								dialogButton.setOnClickListener(new OnClickListener() {
+									@Override
+									public void onClick(View v) {
+										dialog.dismiss();
+									}
+								});
+								dialog.show();
+							}
+						}, 2000);
 					}
 				} else {
 					Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
@@ -185,16 +219,32 @@ public class MissionActivity extends Activity {
 		}
 	}
 
-	private boolean checkIn(String missionID){
-		ProgressDialog progress = new ProgressDialog(this);
-		progress.setTitle("Loading");
-		progress.setMessage("Wait while loading...");
-		progress.show();
-		
-		
-		// To dismiss the dialog
-		progress.dismiss();
-		return true;
+	private float checkIn(Mission mission) {
+		String addressStr = "86 Tran Mai Ninh";// get address from mission
+		Geocoder geo = new Geocoder(MissionActivity.this);
+		try {
+			List<Address> address = geo.getFromLocationName(addressStr, 1);
+			LatLng end = new LatLng(address.get(0).getLatitude(), address.get(0).getLongitude());
+			mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+			Location location = mLocationManager.getLastKnownLocation(mLocationManager.NETWORK_PROVIDER);
+			onLocationChanged(location);
+			if (currentPosition == null) {
+				Address add = (geo.getFromLocationName("227 Nguyễn Văn Cừ phường 4, Quận 5 Hồ Chí Minh, Vietnam", 6))
+						.get(0);
+				currentPosition = new LatLng(add.getLatitude(), add.getLongitude());
+			} else {
+				Log.e("Hien", currentPosition.latitude + " " + currentPosition.longitude);
+			}
+
+			float[] results = new float[1];
+			Location.distanceBetween(currentPosition.latitude, currentPosition.longitude, end.latitude, end.longitude,
+					results);
+			return results[0];
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 99999;
 	}
 
 	private class CompleteMissionTask extends AsyncTask<String, Void, Integer> {
@@ -211,7 +261,6 @@ public class MissionActivity extends Activity {
 			}
 			return 0;
 		}
-
 	}
 
 	private class ListMissionTask extends AsyncTask<Void, Void, Void> {
@@ -248,6 +297,53 @@ public class MissionActivity extends Activity {
 	}
 
 	@Override
+	protected void onRestart() {
+		super.onRestart();
+		if (programID.equals("2")) {
+			TextView tvNumProgress = (TextView) findViewById(R.id.txtNumMission);
+			tvNumProgress.setText("1/1");
+			final Dialog dialog = new Dialog(context);
+			dialog.setContentView(R.layout.custom_dialog);
+			dialog.setTitle("CHÚC MỪNG");
+
+			TextView text = (TextView) dialog.findViewById(R.id.text);
+			text.setText(
+					"Xin chúc mừng bạn đã hoàn thành chiến dịch! Phần thưởng của bạn môt phần Combo Spectre Giá chỉ 30k");
+
+			Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+			dialogButton.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					dialog.dismiss();
+				}
+			});
+			dialog.show();
+
+		}
+		if (programID.equals("3")) {
+			TextView tvNumProgress = (TextView) findViewById(R.id.txtNumMission);
+			tvNumProgress.setText("3/3");
+			final Dialog dialog = new Dialog(context);
+			dialog.setContentView(R.layout.custom_dialog);
+			dialog.setTitle("CHÚC MỪNG");
+
+			TextView text = (TextView) dialog.findViewById(R.id.text);
+			text.setText(
+					"Xin chúc mừng bạn đã hoàn thành chiến dịch! Phần thưởng của bạn là mua vé xem phim 2D chỉ với 40k");
+
+			Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+			dialogButton.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					dialog.dismiss();
+				}
+			});
+			dialog.show();
+		}
+
+	};
+
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.menu, menu);
@@ -274,5 +370,30 @@ public class MissionActivity extends Activity {
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+
+	@Override
+	public void onLocationChanged(Location location) {
+		double latitude = location.getLatitude();
+		double longitude = location.getLongitude();
+		currentPosition = new LatLng(latitude, longitude);
+	}
+
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+
 	}
 }

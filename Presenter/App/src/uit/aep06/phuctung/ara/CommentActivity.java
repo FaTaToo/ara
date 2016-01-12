@@ -33,8 +33,9 @@ public class CommentActivity extends Activity {
 	private String mUserID;
 	private String mTargetID;
 	private String urlShare;
-	private List<Comment> lstComment = new ArrayList<Comment>();
-
+	private List<Comment> lstComment; 
+	ListView lvComment; 
+	CommentAdapter ca; 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -43,34 +44,33 @@ public class CommentActivity extends Activity {
 		Intent intent = getIntent();
 		mUserID = intent.getStringExtra("UserID");
 		mTargetID = intent.getStringExtra("TargetID");
-
+		
+		lstComment = new ArrayList<Comment>();
+		Comment comment1 = new Comment();		
+		comment1.rating = 5;
+		comment1.fullName =
+				"Vo Thanh Tam";
+		comment1.customerID = 1;
+		comment1.customerComment = "Five stars!";
+		
+		Comment comment2 = new Comment();		
+		comment2.rating = 4;
+		comment2.fullName = "Tran Thai Hoa";
+		comment2.customerID = 2;
+		comment2.customerComment = "OK";
+		lstComment.add(comment1);
+		lstComment.add(comment2);
+		lvComment = (ListView) findViewById(R.id.lvComment);
+		ca = new CommentAdapter(CommentActivity.this, R.layout.comment_list_item,
+				lstComment);
+		lvComment.setAdapter(ca);
+		
 		urlShare = intent.getStringExtra("Facebook");
 		final LikeService service = new LikeService();
 		int numLikes = service.getLikeFromTargetID(mTargetID);
-
-		final TextView tvNumLikes = (TextView) findViewById(R.id.tvNumLikes);
-		tvNumLikes.setText(numLikes + "");
 			
-		BackgroundTask task = new BackgroundTask();
-		task.execute();
-
-		final Button btnLike = (Button) findViewById(R.id.btnLike);
-		btnLike.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				try {
-					int newNumLikes = service.addNewLike(mTargetID);
-					tvNumLikes.setText(newNumLikes + "");
-					btnLike.setClickable(false);
-				} catch (ClientProtocolException e) {
-					e.printStackTrace();
-				} catch (JSONException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		});
+//		BackgroundTask task = new BackgroundTask();
+//		task.execute();		
 
 		final Button btnShare = (Button) findViewById(R.id.btnshare);
 		btnShare.setOnClickListener(new OnClickListener() {
@@ -92,6 +92,7 @@ public class CommentActivity extends Activity {
 				EditText etNewComment = (EditText) findViewById(R.id.etComment);
 				cmt.setCustomerComment(etNewComment.getText().toString());
 				cmt.setCustomerID(Integer.parseInt(mUserID));
+				cmt.fullName = "Pham Tang Tung";
 				cmt.setTargetID(mTargetID);
 				int rating = Math.round(rbNewRating.getRating());
 				cmt.setRating(rating);
@@ -99,10 +100,8 @@ public class CommentActivity extends Activity {
 					CommentService s = new CommentService();
 					s.addNewComment(cmt);
 					Toast.makeText(getApplicationContext(), "Comment done", Toast.LENGTH_LONG).show();
-					Intent i = new Intent(getApplicationContext(), CommentActivity.class);
-					i.putExtra("TargetID", mTargetID);
-					i.putExtra("UserID", mUserID);
-					startActivity(i);
+					lstComment.add(cmt);
+					ca.notifyDataSetChanged();
 				} catch (ClientProtocolException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -147,11 +146,12 @@ public class CommentActivity extends Activity {
 
 			runOnUiThread(new Runnable() {
 				@Override
-				public void run() {
-					ListView lvComment = (ListView) findViewById(R.id.lvComment);
-					CommentAdapter ca = new CommentAdapter(CommentActivity.this, R.layout.comment_list_item,
-							lstComment);
-					lvComment.setAdapter(ca);
+				public void run() {					
+//					lvComment = (ListView) findViewById(R.id.lvComment);
+//					ca = new CommentAdapter(CommentActivity.this, R.layout.comment_list_item,
+//							lstComment);
+//					lvComment.setAdapter(ca);
+					ca.notifyDataSetChanged();
 				}
 			});
 			return null;

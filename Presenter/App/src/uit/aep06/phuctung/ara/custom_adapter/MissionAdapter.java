@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import uit.aep06.phuctung.ara.R;
@@ -80,6 +81,7 @@ public class MissionAdapter extends BaseAdapter {
 		holder.tvActor = (TextView) rowView.findViewById(R.id.tvActor);
 		holder.tvContent = (TextView) rowView.findViewById(R.id.tvContent);
 		holder.imgMission = (ImageView) rowView.findViewById(R.id.imgMission);
+		holder.imgMission.setScaleType(ScaleType.FIT_XY);
 		holder.imgCheck = (ImageView) rowView.findViewById(R.id.imgCheck);
 		holder.btnHeper = (Button) rowView.findViewById(R.id.btnHelper);
 

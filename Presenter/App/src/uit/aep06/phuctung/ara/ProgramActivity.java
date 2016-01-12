@@ -73,12 +73,7 @@ public class ProgramActivity extends FragmentActivity {
 		});
 
 		// Setting the ViewPager For the SlidingTabsLayout
-		tabs.setViewPager(pager);
-
-		// Intent intent = getIntent();
-		// CustomerID = intent.getStringExtra("customerID");
-		// BackgroundTask task = new BackgroundTask();
-		// task.execute();
+		tabs.setViewPager(pager);		
 	}
 
 	private class ProgramBackgroundTask extends AsyncTask<Void, Void, List<Program>> { 

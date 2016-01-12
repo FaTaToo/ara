@@ -79,7 +79,7 @@ public class ProgramAdapter extends BaseAdapter {
 		holder.tvContent.setTextSize(15);
 
 		holder.imgCheck = (ImageView) rowView.findViewById(R.id.imgCheck);
-
+		
 		holder.tvNum = (TextView) rowView.findViewById(R.id.txtNumMission);
 		holder.tvNum.setTextSize(17);
 
@@ -103,6 +103,10 @@ public class ProgramAdapter extends BaseAdapter {
 			}
 			if(program.type == 0) {
 				holder.imgTarget.setBackgroundResource(uit.aep06.phuctung.ara.R.drawable.banner_checkin);
+			} else if (program.type == 1) {
+				holder.imgTarget.setBackgroundResource(uit.aep06.phuctung.ara.R.drawable.banner_tour);
+			} else {
+				holder.imgTarget.setBackgroundResource(uit.aep06.phuctung.ara.R.drawable.banner_theater);
 			}
 		}
 		return rowView;

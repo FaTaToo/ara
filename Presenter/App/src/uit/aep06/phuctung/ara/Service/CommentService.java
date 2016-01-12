@@ -19,17 +19,17 @@ public class CommentService {
 		List<Comment> listComments = new ArrayList<Comment>();		
 		
 		Comment comment1 = new Comment();		
-		comment1.rating = 4;
+		comment1.rating = 5;
 		comment1.fullName =
-				"Pham Tang Tung";
+				"Vo Thanh Tam";
 		comment1.customerID = 1;
-		comment1.customerComment = "dua em di tron";
+		comment1.customerComment = "Five stars!";
 		
 		Comment comment2 = new Comment();		
-		comment2.rating = 2;
-		comment2.fullName = "Pham Thien Nga";
+		comment2.rating = 4;
+		comment2.fullName = "Tran Thai Hoa";
 		comment2.customerID = 2;
-		comment2.customerComment = "ok";
+		comment2.customerComment = "OK";
 		
 		listComments.add(comment1);
 		listComments.add(comment2);

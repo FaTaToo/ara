@@ -37,6 +37,7 @@ import android.widget.Toast;
 
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubePlayerView;
 
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
@@ -87,8 +88,8 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 
 	ApplicationSession vuforiaAppSession;
 
-	private static final String kAccessKey = "79ac5763947f81ef78daadcd2d826c9166afd24e";
-	private static final String kSecretKey = "41b96ac31e0c0a9b8962c1cc5f7c0123e0634ae3";
+	private static final String kAccessKey = "4f9b11aad25c6c503b47f1a413d4bac38567e460";
+	private static final String kSecretKey = "a3c43cda52d927220b31a3af5da3cbcd2fcd273b";
 
 	// Our OpenGL view:
 	private GLView mGlView;
@@ -299,10 +300,9 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 			@Override
 			public void onClick(View arg0) {				
 				doStopTrackers();
-				// Implement code for process type address
-
-				if (ARResourceLayout.getChildCount() > 1)
-					ARResourceLayout.removeViewAt(ARResourceLayout.getChildCount() - 1);
+				if (mGlView.INVISIBLE == View.INVISIBLE) 
+					mGlView.setVisibility(View.VISIBLE);
+				ARResourceLayout.removeAllViews();
 				ARResourceLayout.addView(detailProcessor.onPlay());
 			}
 		});
@@ -338,8 +338,9 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 			@Override
 			public void onClick(View arg0) {				
 				doStopTrackers();
-				if (ARResourceLayout.getChildCount() > 1)
-					ARResourceLayout.removeViewAt(ARResourceLayout.getChildCount() - 1);
+				if (mGlView.INVISIBLE == View.INVISIBLE) 
+					mGlView.setVisibility(View.VISIBLE);
+				ARResourceLayout.removeAllViews();
 				ARResourceLayout.addView(picturesProcessor.onPlay());
 			}
 		});
@@ -377,9 +378,22 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				doStopTrackers();
-				if (ARResourceLayout.getChildCount() > 1)
-					ARResourceLayout.removeViewAt(ARResourceLayout.getChildCount() - 1);
-				ARResourceLayout.addView(youtubeProcessor.onPlay());
+				//mGlView.setVisibility(View.INVISIBLE);
+				
+				ARResourceLayout.removeAllViews();
+				if (mGlView.INVISIBLE == View.INVISIBLE) 
+					mGlView.setVisibility(View.VISIBLE);
+				YouTubePlayerView youtubeView = (YouTubePlayerView) youtubeProcessor.onPlay();
+				
+				youtubeView.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						mGlView.setVisibility(View.INVISIBLE);
+					}
+				});
+				ARResourceLayout.addView(youtubeView);				
 			}
 		});
 	}
@@ -400,8 +414,7 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 			@Override
 			public void onClick(View v) {
 				ARResourceButtonLayout.removeAllViews();
-				if (ARResourceLayout.getChildCount() > 1)
-					ARResourceLayout.removeViewAt(ARResourceLayout.getChildCount() - 1);
+				ARResourceLayout.removeAllViews();
 				doStartTrackers();
 
 			}
@@ -420,6 +433,7 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 		addContentView(mUILayout, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
 		ARResourceButtonLayout = (LinearLayout) findViewById(R.id.ARResourceButtonLayout);
+		ARResourceButtonLayout.setBackgroundColor(Color.BLUE);
 		ARResourceLayout = (LinearLayout) findViewById(R.id.ARResourceLayout);
 	}
 
@@ -665,17 +679,7 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 	private void showToast(String text) {
 		Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
 	}
-
-	// @Override
-	// public void onLocationChanged(Location location) {
-	// // TODO Auto-generated method stub
-	// double latitude = location.getLatitude();
-	// double longitude = location.getLongitude();
-	// myPosition = new LatLng(latitude, longitude);
-	// myPosition_temp = new LatLng(latitude, longitude);
-	// Log.e("location",myPosition.latitude + "-"+ myPosition.longitude );
-	// }
-
+	
 	private double distance(double lat1, double lon1, double lat2, double lon2, char unit) {
 		double theta = lon1 - lon2;
 		double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2))
@@ -733,7 +737,7 @@ public class CameraActivity extends YouTubeBaseActivity implements ApplicationCo
 	public void MessengerBox(String mes) {
 		AlertDialog.Builder dlgAlert = new AlertDialog.Builder(this);
 		dlgAlert.setMessage(mes);
-		dlgAlert.setTitle("ThÃ´ng bÃ¡o");
+		dlgAlert.setTitle("Thông báo");
 		dlgAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				// call your code here
