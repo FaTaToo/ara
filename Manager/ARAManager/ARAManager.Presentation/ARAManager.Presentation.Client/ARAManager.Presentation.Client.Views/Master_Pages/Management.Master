@@ -1,0 +1,242 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Management.master.cs" Inherits="ARAManager.Presentation.Client.ARAManager.Presentation.Client.Views.Master_Pages.Management" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xmlns:v="urn:schemas-microsoft-com:vml">
+<head runat="server">
+    <title>ARA - AR advertisement on mobile - Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet"/>
+    <script src="../../Scripts/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+<!--------------------------------------------------------------------------------------------------------->
+<form runat="server">
+<div class=".container-fluid" style="background: linear-gradient(to right, darkred, red, black, darkred); height: 100%; width: 100%;">
+<!--Header-->
+<!--Top-->
+<div class="row" style="padding-top: 20px">
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
+        <img class="pull-right" src="../ARAManager.Presentation.Client.Resources/Images/vi.png" alt="Image is lost."/>
+        <a href="#" class="pull-right" style="color: white; margin-right: 20px">Instruction</a>
+        <a href="#" class="pull-right" style="color: white; margin-right: 20px">LeaderBoard</a>
+        <a href="#" class="pull-right" style="color: white; margin-right: 20px">News</a>
+        <a href="#" class="pull-right" style="color: white; margin-right: 20px">Contact</a>
+        <a href="#" class="pull-right" style="color: white; margin-right: 20px">Introduction</a>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+</div>
+<!------------------------------------------------------------------------------------------------->
+<!--User-->
+<div class="row" style="padding-top: 20px">
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
+        <asp:LinkButton ID="lbLogout" CssClass="pull-right" ForeColor="gold"
+                        OnClick="lbLogout_OnClick"
+                        runat="server">
+            Log out
+        </asp:LinkButton>
+        <ul class="nav nav-pills pull-right" style="margin-right: 30px">
+            <li role="presentation" style="color: gold">Hi, </li>
+            <li role="presentation" style="color: red">
+                <asp:Label ID="lblUser" runat="server"/>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+</div>
+<!------------------------------------------------------------------------------------------------->
+<!--Logo, create new campaign,payment methods, and menu-->
+<div class="row" style="padding-top: 20px">
+    <div class="col-md-1" style="margin-left: 15px">
+    </div>
+    <div class="col-md-1">
+        <p style="color: gold; font-family: fantasy; font-size: 36px;">
+            <strong>DASHBOARD</strong>
+        </p>
+        <br/>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
+        <!--Menu-->
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder_Menu" runat="server"></asp:ContentPlaceHolder>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+</div>
+<div class="row" style="padding-top: 20px">
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
+        <!--Payment methods-->
+        <ul class="nav nav-pills pull-right">
+            <li role="presentation" style="margin-right: 15px">
+                <img src="../ARAManager.Presentation.Client.Resources/Images/atm.png" alt="Image is lost."/>
+            </li>
+            <li role="presentation" style="margin-right: 15px">
+                <img src="../ARAManager.Presentation.Client.Resources/Images/mastercard.png" alt="Image is lost."/>
+            </li>
+            <li role="presentation" style="margin-right: 15px">
+                <img src="../ARAManager.Presentation.Client.Resources/Images/visa.png" alt="Image is lost."/>
+            </li>
+        </ul>
+
+        <img src="../ARAManager.Presentation.Client.Resources/Images/Payment.png" class="pull-right" style="margin-right: 15px" alt="Image is lost."/>
+
+        <!--Create new campaign-->
+        <a href="../ARAManager.Presentation.Client.Views/NewCampaignCompany.aspx" class="pull-right" style="color: white; font-size: 20px; font-weight: bold; margin-right: 30px">CREATE NEW CAMPAIGN </a>
+
+        <img src="../ARAManager.Presentation.Client.Resources/Images/AddNew.png" class="pull-right" style="margin-right: 15px" alt="Image is lost."/>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-1"></div>
+</div>
+<div class="row" style="padding-top: 5px">
+    <hr style="color: goldenrod;"/>
+</div>
+<!--------------------------------------------------------------------------------------------->
+<!--Body-->
+<div class="row" style="background: antiquewhite; padding-top: 20px;">
+    <div class="col-md-2">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder_BodySearch" runat="server"></asp:ContentPlaceHolder>
+    </div>
+    <div class="col-md-6" style="border: darkred; border-style: groove; margin-bottom: 20px">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder_BodyResult" runat="server"></asp:ContentPlaceHolder>
+    </div>
+    <!--Trailer-->
+    <div class="col-md-2">
+        <ul class="nav nav-pills nav-stacked" style="margin-left: 20px; margin-right: 20px;">
+            <li role="presentation">
+                <iframe width="220" height="180" src="https://www.youtube.com/embed/b6DvxkB38jg"></iframe>
+            </li>
+            <li role="presentation" style="margin-top: 15px">
+                <iframe width="220" height="180" src="https://www.youtube.com/embed/oquZifON8Eg"></iframe>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-2">
+        <ul class="nav nav-pills nav-stacked pull-right" style="margin-right: 20px">
+            <li role="presentation" style="margin-bottom: 30px">
+                <img class="img-responsive center-block" src="../ARAManager.Presentation.Client.Resources/Images/support.png" alt="Image is lost."/>
+            </li>
+            <!--Yahoo-->
+            <li role="presentation">
+                <a href="ymsgr:SendIM?YahooUser25">
+                    <img class="img-responsive center-block" src="http://opi.yahoo.com/online?u=YahooUser25&amp;m=g&amp;t=2"/>
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="ymsgr:SendIM?YahooUser25">
+                    <img class="img-responsive center-block" src="http://opi.yahoo.com/online?u=YahooUser25&amp;m=g&amp;t=2"/>
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="ymsgr:SendIM?YahooUser25">
+                    <img class="img-responsive center-block" src="http://opi.yahoo.com/online?u=YahooUser25&amp;m=g&amp;t=2"/>
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="ymsgr:SendIM?YahooUser25">
+                    <img class="img-responsive center-block" src="http://opi.yahoo.com/online?u=YahooUser25&amp;m=g&amp;t=2"/>
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="ymsgr:SendIM?YahooUser25">
+                    <img class="img-responsive center-block" src="http://opi.yahoo.com/online?u=YahooUser25&amp;m=g&amp;t=2"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row" style="padding-top: 5px">
+    <hr style="color: goldenrod;"/>
+</div>
+<!--------------------------------------------------------------------------------------------->
+<!--Partner-->
+<div class="row" style="padding-top: 20px">
+    <div class="col-md-2"></div>
+    <div class="col-md-6 pull-left">
+        <div class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your personal email"/>
+            </div>
+            <button type="submit" class="btn btn-warning">Subcribe</button>
+        </div>
+        <ul class="nav nav-pills pull-left">
+            <li role="presentation" style="margin-right: 20px; margin-top: 10px">
+                <img src="../ARAManager.Presentation.Client.Resources/Images/youtube.png" alt="Image is lost."/>
+            </li>
+            <li role="presentation" style="margin-right: 20px; margin-top: 10px">
+                <img src="../ARAManager.Presentation.Client.Resources/Images/facebook.png" alt="Image is lost."/>
+            </li>
+            <li role="presentation" style="margin-right: 20px; margin-top: 10px">
+                <img src="../ARAManager.Presentation.Client.Resources/Images/twitter.png" alt="Image is lost."/>
+            </li>
+            <li role="presentation" style="margin-right: 20px; margin-top: 10px">
+                <img src="../ARAManager.Presentation.Client.Resources/Images/in.png" alt="Image is lost."/>
+            </li>
+            <li role="presentation" style="margin-right: 20px; margin-top: 10px">
+                <img src="../ARAManager.Presentation.Client.Resources/Images/google.png" alt="Image is lost."/>
+            </li>
+            <li role="presentation" style="margin-right: 20px; margin-top: 10px">
+                <img src="../ARAManager.Presentation.Client.Resources/Images/instragram.png" alt="Image is lost."/>
+            </li>
+            <li role="presentation" style="margin-right: 20px; margin-top: 10px">
+                <img src="../ARAManager.Presentation.Client.Resources/Images/zingme.png" alt="Image is lost."/>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <ul class="nav nav-pills pull-right">
+            <li role="presentation" style="margin-right: 20px">
+                <img src="../ARAManager.Presentation.Client.Resources/Images/Partners/Cgv.jpg" alt="Image is lost."/>
+            </li> 
+            <li role="presentation" style="margin-right: 20px">
+                <img src="../ARAManager.Presentation.Client.Resources/Images/Partners/GalaxyCinema.jpg" alt="Image is lost."/>
+            </li>
+            <li role="presentation" style="margin-right: 20px">
+                <img src="../ARAManager.Presentation.Client.Resources/Images/Partners/LotteCinema.jpg" alt="Image is lost."/>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row" style="padding-top: 5px">
+    <hr style="color: goldenrod;"/>
+</div>
+<!--Footer-->
+<div class="row" style="padding-top: 20px">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+        <p class="pull-left" style="color: white">
+            Copyright © 2015 | <strong>LE</strong> Sanh Phuc - <strong>PHAM </strong>Tang Tung
+            <br/>
+            AR Advertisement on mobiles
+        </p>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+        <p class="pull-right" style="color: white; margin-right: 20px">
+            0933.111.975 (<strong style="color: gold">Phuc</strong>)
+        </p>
+        <img class="pull-right" style="margin-right: 20px" src="../ARAManager.Presentation.Client.Resources/Images/phone.png" alt="Image is lost."/>
+        <p class="pull-right" style="color: white; margin-right: 20px">phucls288@gmail.com </p>
+        <img class="pull-right" style="margin-right: 20px" src="../ARAManager.Presentation.Client.Resources/Images/mail.png" alt="Image is lost."/>
+    </div>
+</div>
+<!--------------------------------------------------------------------------------------------->
+</div>
+</form>
+</body>
+</html>

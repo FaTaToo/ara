@@ -1,0 +1,16 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"    
+    tools:context="uit.aep06.phuctung.ara.YoutubeActivity" 
+    android:background="@drawable/background_campaign">
+
+    <LinearLayout
+        android:id="@+id/youtubeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"        
+        android:orientation="horizontal"
+        android:layout_centerVertical="true" >
+    </LinearLayout>
+
+</RelativeLayout>

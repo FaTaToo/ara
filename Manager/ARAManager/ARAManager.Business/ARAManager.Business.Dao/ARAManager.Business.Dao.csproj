@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6760E5F8-5224-4239-8B02-42937A4A34B3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ARAManager.Business.Dao</RootNamespace>
+    <AssemblyName>ARAManager.Business.Dao</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\ARAManager.Business.Service\Bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate.Mapping.Attributes">
+      <HintPath>..\..\..\Lib\NHibernate 3.2\NHibernate.Mapping.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception">
+      <HintPath>..\ARAManager.Business.Service\Bin\Ninject.Extensions.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccess\Implementation\CampaignDataAccessImpl.cs" />
+    <Compile Include="DataAccess\Implementation\CampaignTypeDataAccessImpl.cs" />
+    <Compile Include="DataAccess\Implementation\CompanyDataAccessImpl.cs" />
+    <Compile Include="DataAccess\Implementation\CustomerDataAccessImpl.cs" />
+    <Compile Include="DataAccess\Implementation\GenericDataAccessImpl.cs" />
+    <Compile Include="DataAccess\Implementation\MissionDataAccessImpl.cs" />
+    <Compile Include="DataAccess\Implementation\SubscriptionDataAccessImpl.cs" />
+    <Compile Include="DataAccess\Implementation\TargetDataAccessImpl.cs" />
+    <Compile Include="DataAccess\Interfaces\ICampaignDataAccess.cs" />
+    <Compile Include="DataAccess\Interfaces\ICampaignTypeDataAccess.cs" />
+    <Compile Include="DataAccess\Interfaces\ICompanyDataAccess.cs" />
+    <Compile Include="DataAccess\Interfaces\ICustomerDataAccess.cs" />
+    <Compile Include="DataAccess\Interfaces\IGenericDataAccess.cs" />
+    <Compile Include="DataAccess\Interfaces\IMissionDataAccess.cs" />
+    <Compile Include="DataAccess\Interfaces\ISubscriptionDataAccess.cs" />
+    <Compile Include="DataAccess\Interfaces\ITargetDataAccess.cs" />
+    <Compile Include="Interceptors\ServiceInterceptor.cs" />
+    <Compile Include="NHibernate\Exception\DbDeadLockException.cs" />
+    <Compile Include="NHibernate\Exception\DbForeignKeyException.cs" />
+    <Compile Include="NHibernate\Exception\DbLoginException.cs" />
+    <Compile Include="NHibernate\Exception\DbUniqueConstraintException.cs" />
+    <Compile Include="NHibernate\Helper\AssemblyLoadingHelper.cs" />
+    <Compile Include="NHibernate\Transaction\DataExceptionStrings.Designer.cs" />
+    <Compile Include="NHibernate\Transaction\INHibernateSessionFactory.cs" />
+    <Compile Include="NHibernate\Transaction\NHibernateSessionFactory.cs" />
+    <Compile Include="NHibernate\Transaction\NHTransactionScope.cs" />
+    <Compile Include="NHibernate\Transaction\SQLServerExceptionConverter.cs" />
+    <Compile Include="NHibernate\Transaction\TransactionsFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NHibernate\Transaction\DataExceptionStrings.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Config\hibernate.cfg.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ARAManager.Common\ARAManager.Common.csproj">
+      <Project>{D7F2B050-DF7E-4A06-AE02-4FC6A64DE4B2}</Project>
+      <Name>ARAManager.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

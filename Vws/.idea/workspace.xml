@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3c202020-6fc2-474b-aec0-a9116f66a13e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/bin/Debug/ARAManager.Business.Dao.dll" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/bin/Debug/ARAManager.Business.Dao.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/bin/Debug/ARAManager.Business.Dao.pdb" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/bin/Debug/ARAManager.Business.Dao.pdb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/bin/Debug/ARAManager.Common.dll" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/bin/Debug/ARAManager.Common.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/bin/Debug/ARAManager.Common.pdb" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/bin/Debug/ARAManager.Common.pdb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/obj/Debug/ARAManager.Business.Dao.csprojResolveAssemblyReference.cache" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/obj/Debug/ARAManager.Business.Dao.csprojResolveAssemblyReference.cache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/obj/Debug/ARAManager.Business.Dao.dll" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/obj/Debug/ARAManager.Business.Dao.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/obj/Debug/ARAManager.Business.Dao.pdb" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/obj/Debug/ARAManager.Business.Dao.pdb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/bin/ARAManager.Business.Dao.dll" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/bin/ARAManager.Business.Dao.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/bin/ARAManager.Business.Dao.pdb" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/bin/ARAManager.Business.Dao.pdb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/bin/ARAManager.Business.Service.dll" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/bin/ARAManager.Business.Service.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/bin/ARAManager.Business.Service.pdb" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/bin/ARAManager.Business.Service.pdb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/bin/ARAManager.Common.dll" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/bin/ARAManager.Common.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/bin/ARAManager.Common.pdb" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/bin/ARAManager.Common.pdb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/obj/Debug/ARAManager.Business.Service.csprojResolveAssemblyReference.cache" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/obj/Debug/ARAManager.Business.Service.csprojResolveAssemblyReference.cache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/obj/Debug/ARAManager.Business.Service.dll" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/obj/Debug/ARAManager.Business.Service.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/obj/Debug/ARAManager.Business.Service.pdb" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/obj/Debug/ARAManager.Business.Service.pdb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Common/bin/Debug/ARAManager.Common.dll" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Common/bin/Debug/ARAManager.Common.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Common/bin/Debug/ARAManager.Common.pdb" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Common/bin/Debug/ARAManager.Common.pdb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Common/obj/Debug/ARAManager.Common.dll" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Common/obj/Debug/ARAManager.Common.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Common/obj/Debug/ARAManager.Common.pdb" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Common/obj/Debug/ARAManager.Common.pdb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/bin/ARAManager.Common.dll" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/bin/ARAManager.Common.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/bin/ARAManager.Common.pdb" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/bin/ARAManager.Common.pdb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/bin/ARAManager.Presentation.Client.dll" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/bin/ARAManager.Presentation.Client.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/bin/ARAManager.Presentation.Client.pdb" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/bin/ARAManager.Presentation.Client.pdb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/bin/ARAManager.Presentation.pdb" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/bin/ARAManager.Presentation.pdb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/obj/Debug/ARAManager.Presentation.Client.csprojResolveAssemblyReference.cache" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/obj/Debug/ARAManager.Presentation.Client.csprojResolveAssemblyReference.cache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/obj/Debug/ARAManager.Presentation.Client.dll" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/obj/Debug/ARAManager.Presentation.Client.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/obj/Debug/ARAManager.Presentation.Client.pdb" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/obj/Debug/ARAManager.Presentation.Client.pdb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation/bin/Debug/ARAManager.Common.dll" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation/bin/Debug/ARAManager.Common.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation/bin/Debug/ARAManager.Common.pdb" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation/bin/Debug/ARAManager.Common.pdb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation/bin/Debug/ARAManager.Presentation.pdb" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation/bin/Debug/ARAManager.Presentation.pdb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation/obj/x86/Debug/ARAManager.Presentation.csprojResolveAssemblyReference.cache" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation/obj/x86/Debug/ARAManager.Presentation.csprojResolveAssemblyReference.cache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation/obj/x86/Debug/ARAManager.Presentation.pdb" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation/obj/x86/Debug/ARAManager.Presentation.pdb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.v12.suo" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.v12.suo" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Tools/Snapshots/VwsCaller.lnk" afterPath="$PROJECT_DIR$/../Tools/Snapshots/VwsCaller.lnk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/bin/Debug/ARAManager.Business.Dao.dll.config" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/bin/Debug/ARAManager.Business.Dao.dll.config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/bin/Debug/Config/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/bin/Debug/Config/hibernate.cfg.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/obj/Debug/ARAManager.Business.Dao.csproj.FileListAbsolute.txt" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Dao/obj/Debug/ARAManager.Business.Dao.csproj.FileListAbsolute.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/ARAManager.Business.Service.csproj.user" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/ARAManager.Business.Service.csproj.user" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/Web.config" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/Web.config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/bin/ARAManager.Business.Service.dll.config" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/bin/ARAManager.Business.Service.dll.config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/bin/Config/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/bin/Config/hibernate.cfg.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/obj/Debug/ARAManager.Business.Service.csproj.FileListAbsolute.txt" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Business/ARAManager.Business.Service/obj/Debug/ARAManager.Business.Service.csproj.FileListAbsolute.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Common/bin/Debug/ARAManager.Common.dll.config" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Common/bin/Debug/ARAManager.Common.dll.config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Common/obj/Debug/ARAManager.Common.csproj.FileListAbsolute.txt" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Common/obj/Debug/ARAManager.Common.csproj.FileListAbsolute.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/ARAManager.Presentation.Client.Common/Authentication.cs" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/ARAManager.Presentation.Client.Common/Authentication.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/ARAManager.Presentation.Client.Views/CampaignCompany.aspx.cs" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/ARAManager.Presentation.Client.Views/CampaignCompany.aspx.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/ARAManager.Presentation.Client.Views/EditCampaignCompany.aspx.cs" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/ARAManager.Presentation.Client.Views/EditCampaignCompany.aspx.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/ARAManager.Presentation.Client.Views/HomeAdmin.aspx" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/ARAManager.Presentation.Client.Views/HomeAdmin.aspx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/ARAManager.Presentation.Client.Views/HomeAdmin.aspx.cs" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/ARAManager.Presentation.Client.Views/HomeAdmin.aspx.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/ARAManager.Presentation.Client.Views/MissionCampaignCompany.aspx.cs" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/ARAManager.Presentation.Client.Views/MissionCampaignCompany.aspx.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/bin/ARAManager.Presentation.Client.dll.config" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/bin/ARAManager.Presentation.Client.dll.config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/obj/Debug/ARAManager.Presentation.Client.csproj.FileListAbsolute.txt" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation.Client/obj/Debug/ARAManager.Presentation.Client.csproj.FileListAbsolute.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation/obj/x86/Debug/ARAManager.Presentation.csproj.FileListAbsolute.txt" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Presentation/ARAManager.Presentation/obj/x86/Debug/ARAManager.Presentation.csproj.FileListAbsolute.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Test/ARAManager.Test.UnitTest/bin/Debug/ARAManager.Test.UnitTest.dll.config" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Test/ARAManager.Test.UnitTest/bin/Debug/ARAManager.Test.UnitTest.dll.config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Test/ARAManager.Test.UnitTest/obj/Debug/ARAManager.Test.UnitTest.csproj.FileListAbsolute.txt" afterPath="$PROJECT_DIR$/../Manager/ARAManager/ARAManager.Test/ARAManager.Test.UnitTest/obj/Debug/ARAManager.Test.UnitTest.csproj.FileListAbsolute.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Presenter/.classpath" afterPath="$PROJECT_DIR$/../Presenter/.classpath" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Presenter/CopyVuforiaFiles.xml" afterPath="$PROJECT_DIR$/../Presenter/CopyVuforiaFiles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Presenter/bin/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../Presenter/bin/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Presenter/bin/jarlist.cache" afterPath="$PROJECT_DIR$/../Presenter/bin/jarlist.cache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Presenter/project.properties" afterPath="$PROJECT_DIR$/../Presenter/project.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Tools/Snapshots/src/VwsCaller/VwsCaller/obj/Debug/VwsCaller.csproj.FileListAbsolute.txt" afterPath="$PROJECT_DIR$/../Tools/Snapshots/src/VwsCaller/VwsCaller/obj/Debug/VwsCaller.csproj.FileListAbsolute.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
+    <ignored path="VWS.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DatabaseView">
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="VWS" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/SampleSelector.php" />
+        <option value="$PROJECT_DIR$/CheckPHPEnvironment.php" />
+        <option value="$PROJECT_DIR$/PostNewTarget.php" />
+        <option value="$PROJECT_DIR$/DeleteTarget.php" />
+        <option value="$PROJECT_DIR$/GetAllTargets.php" />
+        <option value="$PROJECT_DIR$/GetTarget.php" />
+        <option value="$PROJECT_DIR$/SignatureBuilder.php" />
+        <option value="$PROJECT_DIR$/UpdateTarget.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VWS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VWS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Vws" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\ARA\1.0\src\Manager\VWS" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <envs />
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3c202020-6fc2-474b-aec0-a9116f66a13e" name="Default" comment="" />
+      <created>1446978666697</created>
+      <option name="number" value="Default" />
+      <updated>1446978666697</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22507553" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998326" sideWeight="0.49697885" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32998326" sideWeight="0.5030211" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27211896" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/PostNewTarget.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SignatureBuilder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#7#126#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PostNewTarget.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PostNewTarget.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PostNewTarget.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CheckPHPEnvironment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.63505745">
+          <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GetAllTargets.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.6867816">
+          <caret line="64" column="1" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GetTarget.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65804595">
+          <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SampleSelector.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.887931">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SignatureBuilder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65804595">
+          <caret line="62" column="1" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="1" />
+          <folding>
+            <element signature="e#7#126#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UpdateTarget.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6091954">
+          <caret line="75" column="1" selection-start-line="75" selection-start-column="1" selection-end-line="75" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DeleteTarget.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9770115">
+          <caret line="63" column="1" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PostNewTarget.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08908046">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
